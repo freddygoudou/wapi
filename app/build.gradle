@@ -19,10 +19,77 @@ android {
 }
 
 dependencies {
+
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    //Material 1.0.0 et 1.1.0
+    def material_version = "1.2.0-alpha02"
+    implementation "com.google.android.material:material:$material_version"
+
+
+    // Picasso dependency
+    def squareup_picasso_version = "2.71828"
+    implementation "com.squareup.picasso:picasso:$squareup_picasso_version"
+
+    //Okhttp
+    def squareup_okhttp_version = "3.12.0"
+    implementation "com.squareup.okhttp3:okhttp:$squareup_okhttp_version"
+
+    // Country code de github
+    def ccp_version = "2.1.9"
+    implementation "com.hbb20:ccp:$ccp_version"
+
+
+    // Cercle image view
+    def hdodenhof_version = "2.2.0"
+    implementation "de.hdodenhof:circleimageview:$hdodenhof_version"
+
+
+    //Retrofit
+    def retrofit_version = "2.5.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+
+
+    //Gson converter
+    def retrofit_gson_converter_version = "2.4.0"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_gson_converter_version"
+
+    //ViewPager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    //RoundedImageView
+    def roundedimageview_version = "2.3.0"
+    implementation "com.makeramen:roundedimageview:$roundedimageview_version"
+
+    //RecyclerView
+    def recyclerview_version = "1.1.0"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+
+
+    // RecyclerView Selection For control over item selection of both touch and mouse driven selection
+    def recyclerview_selection_version = "1.1.0-rc01"
+    implementation "androidx.recyclerview:recyclerview-selection:$recyclerview_selection_version"
+
+    //Carrousel
+    implementation 'com.synnapps:carouselview:0.1.5'
+    //RxAndroid
+    //def rxandroid_version = "3.0.0"
+    //implementation "io.reactivex.rxjava3:rxandroid:$rxandroid_version"
+
+    //Fab Clans dependency
+    implementation "com.github.clans:fab:1.6.4"
+
+    //RxJava
+    //def rxjava_version = "3.0.0"
+    //implementation "io.reactivex.rxjava3:rxjava:$rxjava_version"
 }

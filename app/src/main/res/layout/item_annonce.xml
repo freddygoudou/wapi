@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
+    android:paddingTop="7dp"
+    android:paddingBottom="7dp"
+    android:layout_marginBottom="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rl_one_produit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_operation_photo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="0dp"
+                android:src="@drawable/avatar" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="54dp"
+                android:layout_marginTop="15dp"
+                android:text="ACHAT-cajoux"
+                android:textAllCaps="true"
+                android:textSize="13dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_qte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="54dp"
+                android:layout_marginTop="3dp"
+                android:textSize="12dp"
+                android:text="Quantité: 33 Tonnes"
+                android:textColor="#777"
+                android:textAllCaps="false"/>
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_qte"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="54dp"
+                android:layout_marginTop="3dp"
+                android:textSize="12dp"
+                android:text="Date: 2020-04-22 19:03:00"
+                android:textAllCaps="false"
+                android:textColor="#777"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_details_produit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:padding="11dp"
+            android:src="@drawable/ic_send_black_24dp"/>
+
+
+    </LinearLayout>
+</LinearLayout>

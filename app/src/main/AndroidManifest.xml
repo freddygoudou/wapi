@@ -2,18 +2,44 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bj.app.wapi">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/index"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:supportsRtl="true">
+        <activity android:name=".ui.Aide"></activity>
+        <activity
+            android:name=".ui.videoplayer.VideoPlayerActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="bj.app.wapi.VIDEOPLAYERACTIVITY" /> <!-- bj.app.wapi.MAINACTIVITY -->
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.demanderAide.DemanderAideActivity" />
+        <activity android:name=".ui.publierAnnonce.PublierAnnonceActivity" />
+        <activity
+            android:name=".ui.wapi.Wapi"
+            android:theme="@style/AppSecondTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" /> <!-- bj.app.wapi.WAPIACTIVITY -->
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.MAINACTIVITY" /> <!-- bj.app.wapi.MAINACTIVITY -->
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

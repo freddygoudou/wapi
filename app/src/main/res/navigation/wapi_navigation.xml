@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wapi_navigation"
+    app:startDestination="@+id/navigation_splash">
+
+    <fragment
+        android:id="@+id/navigation_splash"
+        android:name="bj.app.wapi.ui.splash.SplashFragment"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_navigation_splash_to_navigation_login"
+            app:destination="@id/navigation_login"
+            app:popUpTo="@+id/navigation_login"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_navigation_splash_to_navigation_main"
+            app:destination="@id/navigation_main"
+            app:popUpTo="@+id/navigation_main"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="bj.app.wapi.ui.login.LoginFragment"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_register"
+            app:destination="@id/navigation_register" />
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_main"
+            app:destination="@id/navigation_main"
+            app:popUpTo="@+id/navigation_main"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_register"
+        android:name="bj.app.wapi.ui.register.RegisterFragment"
+        android:label="@string/title_formation"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_navigation_register_to_navigation_confirm_code"
+            app:destination="@id/navigation_confirm_code" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_confirm_code"
+        android:name="bj.app.wapi.ui.confirmCode.ConfirmCodeFragment"
+        tools:layout="@layout/fragment_confirm_code" >
+        <action
+            android:id="@+id/action_navigation_confirm_code_to_navigation_register_user_form"
+            app:destination="@id/navigation_register_user_form"
+            app:popUpTo="@+id/navigation_confirm_code"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_register_user_form"
+        android:name="bj.app.wapi.ui.registerUserForm.RegisterUserFormFragment"
+        tools:layout="@layout/fragment_register_user_form" >
+        <action
+            android:id="@+id/action_navigation_register_user_form_to_navigation_main"
+            app:destination="@id/navigation_main"
+            app:popUpTo="@+id/navigation_main"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_navigation_register_user_form_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
+
+    <activity
+        android:id="@+id/navigation_main"
+        android:name="bj.app.wapi.ui.main.MainActivity"
+        android:label="@string/app_name"
+        tools:layout="@layout/activity_main" />
+
+</navigation>

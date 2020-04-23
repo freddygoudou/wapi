@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">WAPI</string>
+    <string name="password">Mot de passe</string>
+    <string name="haveNotAccount"><u>Pas encore inscrit? Inscrivez-vous!</u></string>
+    <string name="haveAccount"><u>Déjà inscrit? Connectez-vous!</u></string>
+    <string name="connexion">Connexion</string>
+    <string name="inscription">Inscription</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="inscript5ion">Inscription</string>
+    <string name="code">Code</string>
+    <string name="renvoyerCode">RENVOYER LE CODE</string>
+    <string name="slogan">World app for poor\'s incomes</string>
+    <string name="recevoirCodeConnexion">RECEVOIR LE CODE</string>
+    <string name="passwordConfirm">Confirmer le mot de passe</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_formation">Formation</string>
+    <string name="title_menage">Ménage</string>
+    <string name="title_entreprise">Entreprise</string>
+
+    <string name="compte">Compte</string>
+    <string name="title_annonce">Annonce</string>
+    <string name="documents">Documents</string>
+    <string name="videos">Vidéos</string>
+    <string name="vide">Vide</string>
+    <string name="achats">Achats</string>
+    <string name="ventes">Ventes</string>
+    <string name="newAnnonce">Nouvelle Annonce</string>
+    <string name="aide">Aide</string>
+    <string name="telecharger">Télécharger</string>
+    <string name="confirmer">Confirmer</string>
+    <string name="publier_annonce">Publier une annonce</string>
 </resources>

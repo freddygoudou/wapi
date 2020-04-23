@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@+id/navigation_formation">
+
+    <fragment
+        android:id="@+id/navigation_annonce"
+        android:name="bj.app.wapi.ui.annonce.AnnonceFragment"
+        android:label="@string/title_annonce"
+        tools:layout="@layout/fragment_annonce" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_compte"
+            app:destination="@id/navigation_compte" />
+        <action
+            android:id="@+id/action_navigation_annonce_to_navigation_publier_annonce"
+            app:destination="@id/navigation_publier_annonce" />
+        <action
+            android:id="@+id/action_navigation_annonce_to_navigation_demander_aide"
+            app:destination="@id/navigation_demander_aide" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_formation"
+        android:name="bj.app.wapi.ui.formation.FormationFragment"
+        android:label="@string/title_formation"
+        tools:layout="@layout/fragment_formation" >
+        <action
+            android:id="@+id/action_navigation_formation_to_navigation_compte"
+            app:destination="@id/navigation_compte"/>
+        <action
+            android:id="@+id/action_navigation_formation_to_navigation_suivre_video"
+            app:destination="@id/navigation_suivre_video" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_entreprise"
+        android:name="bj.app.wapi.ui.entreprise.EntrepriseFragment"
+        android:label="@string/title_entreprise"
+        tools:layout="@layout/fragment_entreprise" >
+        <action
+            android:id="@+id/action_navigation_entreprise_to_navigation_compte"
+            app:destination="@id/navigation_compte" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_menage"
+        android:name="bj.app.wapi.ui.menage.MenageFragment"
+        android:label="@string/title_menage"
+        tools:layout="@layout/fragment_menage" >
+        <action
+            android:id="@+id/action_navigation_menage_to_navigation_compte"
+            app:destination="@id/navigation_compte" />
+    </fragment>
+
+    <activity
+        android:id="@+id/navigation_compte"
+        android:name="bj.app.wapi.ui.compte.CompteActivity"
+        android:label="@string/compte"
+        tools:layout="@layout/fragment_compte" />
+
+    <activity
+        android:id="@+id/navigation_publier_annonce"
+        android:name="bj.app.wapi.ui.publierAnnonce.PublierAnnonceActivity"
+        android:label="@string/newAnnonce"
+        tools:layout="@layout/activity_publier_annonce" />
+
+    <activity
+        android:id="@+id/navigation_demander_aide"
+        android:name="bj.app.wapi.ui.demanderAide.DemanderAideActivity"
+        android:label="@string/aide"
+        tools:layout="@layout/activity_demander_aide" />
+
+    <activity
+        android:id="@+id/navigation_suivre_video"
+        android:name="bj.app.wapi.ui.videoplayer.VideoPlayerActivity"
+        android:label="@string/aide"
+        tools:layout="@layout/activity_video_player" />
+
+
+</navigation>
