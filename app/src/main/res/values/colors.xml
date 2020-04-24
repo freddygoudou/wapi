@@ -12,4 +12,10 @@
     <color name="colorGray">#7A9683</color>
     <color name="colorViolet">#673AB7</color>
     <color name="colorRed">#E73030</color> <!--075e55-->
+
+    <color name="colorBlueGPure">#3b60c4</color>
+    <color name="colorBlueGLight">#3e65cf</color>
+    <color name="colorYellowG">#f2a60c</color>
+    <color name="colorGreenG">#08851b</color>
+    <color name="colorRedG">#c71610</color>
 </resources>

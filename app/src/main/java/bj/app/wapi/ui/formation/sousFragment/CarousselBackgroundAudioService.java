@@ -26,7 +26,13 @@ public class CarousselBackgroundAudioService extends Service {
         player = MediaPlayer.create(this, Uri.parse("android.resource://" + "bj.app.wapi/" + R.raw.caroussel_audio));
         player.setLooping(false);
         player.start();
-        return START_STICKY;
+        return START_STICKY; //START_STICKY recrée le service mais START_NOT_STICKY non
+    }
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        super.onTaskRemoved(rootIntent);
+        player.stop();
     }
 
     @Override

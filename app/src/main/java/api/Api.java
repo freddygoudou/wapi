@@ -114,58 +114,5 @@ public interface Api {
             @Body User user
     );
 
-
-
-
-
-
-
-
-
-
-
-
-
-    @FormUrlEncoded
-    @POST("savecommandeonline")
-    Call<ResponseBody> saveCommandeOnLine(
-
-            @Field("id_produit") int id_produit,
-            @Field("id_client") int id_client,
-            @Field("qte_commande ") int qte_commande
-
-    );*/
-
-    /*@POST("allwaitingCommandesByClient/{id_client}")
-    Call<WcommandesResponse> getAllWaitingCommandesByClient(
-
-            @Path("id_client") int this_id_client
-    );
-
-    @GET("allmathsbooks")
-    Call<ProduitResponse> getAllMathsProduit();
-
-    @GET("allphysiquesbooks")
-    Call<ProduitResponse> getAllPhysiquesBooks();
-
-    @GET("allspiritbooks")
-    Call<ProduitResponse> getAllSpiritualiteBooks();
-
-    @GET("allinformatiquebooks")
-    Call<ProduitResponse> getAllInformatiqueBooks();
-
-    @GET("allromansbooks")
-    Call<ProduitResponse> getAllRomanBooks();
-
-    @GET("allcuisinesbooks")
-    Call<ProduitResponse> getAllCuisineBooks();
-
-    @GET("alldroitbooks")
-    Call<ProduitResponse> getAllDroitBooks();
-
-    @GET("alleconomiebooks")
-    Call<ProduitResponse> getAllEconomieBooks();*/
-
-        /*@GET("/group/{id}/users")
-    Call<ResponseBody> groupList(@Path("id") int groupId);*/
+*/
 }

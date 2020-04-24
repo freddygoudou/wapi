@@ -43,6 +43,41 @@ public class FormationFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (tabLayout.getSelectedTabPosition() != 0){
+            getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+        }
+        /*
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    if (tab.getPosition() == 0){
+                        System.out.println("TAB CURRENT POSITION IS ... "+tab.getPosition());
+                        getActivity().startService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                    }else {
+                        getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                    }
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+
+                }
+            });
+            System.out.println("ACTIVITY IS RESUMED OK COOLED ...............");
+
+         */
+    }
+
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -56,6 +91,8 @@ public class FormationFragment extends Fragment {
                 if (tab.getPosition() == 0){
                     getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
                     getActivity().startService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                }else {
+                    getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
                 }
             }
 

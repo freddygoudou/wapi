@@ -74,6 +74,7 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        exoPlayer.stop();
         startActivity(new Intent(VideoPlayerActivity.this, MainActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
     }

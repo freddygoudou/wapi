@@ -11,7 +11,28 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".ui.Aide"></activity>
+        <activity android:name=".ui.nouvelleAnnonce.NouvelleAnnonce"
+            android:label="Nouvelle Annonce"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.NOUVELLEANNONCE" /> <!-- bj.app.wapi.NOUVELLEANNONCE -->
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.compte.CompteActivity"
+            android:label="@string/mon_compte"
+            android:parentActivityName=".ui.compte.CompteActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.COMPTEACTIVITY" /> <!-- bj.app.wapi.NOUVELLEANNONCE -->
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.aide.Aide" />
         <activity
             android:name=".ui.videoplayer.VideoPlayerActivity"
             android:label="@string/app_name"
@@ -51,7 +72,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <service android:name=".ui.formation.sousFragment.CarousselBackgroundAudioService"/>
+
+        <service android:name=".ui.formation.sousFragment.CarousselBackgroundAudioService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true"/>
     </application>
 
 </manifest>

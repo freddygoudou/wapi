@@ -7,6 +7,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.main.MainActivity;
+import bj.app.wapi.ui.nouvelleAnnonce.NouvelleAnnonce;
 
 import android.content.Intent;
 import android.os.Bundle;

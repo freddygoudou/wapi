@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_one_document"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="22dp">
+
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="@string/mon_profil"
+                android:textStyle="bold"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_marginTop="22dp"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/colorPrimary"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_marginTop="11dp"
+                    android:text="@string/nom"
+                    android:paddingStart="30dp"
+                    android:layout_weight="2"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary"/>
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_weight="3"
+                    android:text="Léonard BOCOVO"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvUserEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:paddingStart="30dp"
+                    android:layout_marginTop="11dp"
+                    android:text="@string/email"
+                    android:layout_weight="2"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_weight="3"
+                    android:text="leo@gmail.com"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvUserPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:paddingStart="30dp"
+                    android:layout_marginTop="11dp"
+                    android:text="@string/telephone"
+                    android:layout_weight="2"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_weight="3"
+                    android:text="Léonard BOCOVO"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnModifierPassword"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="@string/modifierPassword"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/background_btn"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textAllCaps="false"
+                android:drawableEnd="@drawable/ic_edit_black_24dp"
+                android:backgroundTint="@color/colorAccent"/>
+            <Button
+                android:id="@+id/btnDeconnexion"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="@string/deconnexion"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/background_btn"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textAllCaps="false"
+                android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
+                android:backgroundTint="@color/colorAccent"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="20dp"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:text="@string/annonces_publiees"/>
+                    <TextView
+                        android:id="@+id/annoncePublieesCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:textColor="@color/colorWhite"
+                        android:background="@drawable/background_tv"
+                        android:textSize="18dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:textStyle="bold"
+                        android:text="255"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="15dp"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="20dp"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:text="@string/interet_recus"/>
+                    <TextView
+                        android:id="@+id/interetRecuCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:textColor="@color/colorWhite"
+                        android:background="@drawable/background_tv"
+                        android:textSize="18dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:textStyle="bold"
+                        android:text="255"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="15dp"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="20dp"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:text="@string/interet_enregistres"/>
+                    <TextView
+                        android:id="@+id/interetEnregistreCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:textColor="@color/colorWhite"
+                        android:background="@drawable/background_tv"
+                        android:textSize="18dp"
+                        android:backgroundTint="@color/colorYellowG"
+                        android:textStyle="bold"
+                        android:text="255"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+        <!--<com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/background_layout"
+            app:strokeWidth="1dp"
+            android:layout_marginTop="11dp"
+            app:strokeColor="@color/colorGray"
+            app:cardElevation="22dp"
+            app:cardPreventCornerOverlap="false"
+            style="@style/Widget.MaterialComponents.CardView">
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/background_layout"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/colorGray"
+            app:cardElevation="22dp"
+            android:layout_weight="1"
+            app:cardPreventCornerOverlap="false"
+            style="@style/Widget.MaterialComponents.CardView">
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/background_layout"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/colorGray"
+            app:cardElevation="22dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            app:cardPreventCornerOverlap="false"
+            style="@style/Widget.MaterialComponents.CardView">
+
+        </com.google.android.material.card.MaterialCardView>-->
+
+    </LinearLayout>
+
+
+
+</ScrollView>

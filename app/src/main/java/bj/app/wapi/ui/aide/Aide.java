@@ -1,4 +1,4 @@
-package bj.app.wapi.ui;
+package bj.app.wapi.ui.aide;
 
 import androidx.appcompat.app.AppCompatActivity;
 import bj.app.wapi.R;

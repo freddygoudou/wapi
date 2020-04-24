@@ -50,7 +50,7 @@ public class DocumentFragment extends Fragment {
     RecyclerView recyclerView;
     DocumentAdapter adapter;
     ArrayList<Document> mData;
-    CarouselView carouselView;
+    private CarouselView carouselView;
     ArrayList<SlideItem> slideItemList;
 
     //ViewPager2 viewPager2;
@@ -65,9 +65,22 @@ public class DocumentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         return inflater.inflate(R.layout.fragment_document, container, false);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        carouselView.pauseCarousel();
+        //System.out.println("carouselView onPause paused");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        carouselView.setCurrentItem(0, true);
+        carouselView.playCarousel();
+        //System.out.println("carouselView onResume playing");
     }
 
     @Override
@@ -109,11 +122,15 @@ public class DocumentFragment extends Fragment {
             }
         });*/
 
+
         //CarouselView
         carouselView = view.findViewById(R.id.carouselView);
         carouselView.setPageCount(slideItemList.size());
         carouselView.setImageListener(imageListener);
         carouselView.setSlideInterval(30000);
+        carouselView.setCurrentItem(0, true);
+        carouselView.playCarousel();
+        //System.out.println("carouselView main playing");
 
         //RecycleerView
         recyclerView = view.findViewById(R.id.rv_document);

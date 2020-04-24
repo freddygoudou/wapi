@@ -32,4 +32,21 @@
     <string name="telecharger">Télécharger</string>
     <string name="confirmer">Confirmer</string>
     <string name="publier_annonce">Publier une annonce</string>
+    <string name="nom">Nom</string>
+    <string name="email">Email</string>
+    <string name="nomProduit">Nom du produit</string>
+    <string name="lieuVente">Lieu de vente</string>
+    <string name="prixUnitaire">Prix unitaire</string>
+    <string name="typeAnnonce">Type d\'annonce</string>
+    <string name="achat">Achat</string>
+    <string name="vente">Vente</string>
+    <string name="publier_lannonce">PUBLIER MAINTENANT</string>
+    <string name="mon_profil">Mon Profil</string>
+    <string name="telephone">Téléphone</string>
+    <string name="modifierPassword">Modifier le mot de passe</string>
+    <string name="annonces_publiees">Annonces publiées</string>
+    <string name="interet_recus">Intérêts reçus</string>
+    <string name="interet_enregistres">Intérêts enrégistrés</string>
+    <string name="mon_compte">Mon Compte</string>
+    <string name="deconnexion">Déconnexion</string>
 </resources>

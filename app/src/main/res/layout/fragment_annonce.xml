@@ -31,7 +31,23 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tbl_annonce"/>
+        app:layout_constraintTop_toBottomOf="@id/tbl_annonce">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_annonce"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|end"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_add_black_24dp"
+        app:fab_size="normal"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!--<LinearLayout
         android:layout_width="wrap_content"

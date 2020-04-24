@@ -17,7 +17,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import bj.app.wapi.R;
+import bj.app.wapi.ui.compte.CompteActivity;
 import bj.app.wapi.ui.formation.sousFragment.CarousselBackgroundAudioService;
+import bj.app.wapi.ui.wapi.Wapi;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,8 +37,27 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+        if (getIntent().hasExtra("NEW_ANNONCE")){
+            navController.navigate(R.id.navigation_annonce);
+        }
+
+        /*if (navController.getCurrentDestination().getId() != R.id.navigation_formation){
+
+        }*/
+
     }
 
+    /*@Override
+    protected void onStart() {
+        super.onStart();
+        final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+
+            }
+        });
+    }*/
 
     @Override
     protected void onPause() {
@@ -53,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        //LAISSER LE SOIN à onResume DANS LE FRAGMENT FORMATION DE , SUIVANT LA TAB SELECTIONNÉ DE DEMARRER LE SERVICE D'AUDIO LIÉ AU CARROUSSEL
+        //stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+        //OLD CODE
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
@@ -85,19 +109,30 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         int id = item.getItemId();
         switch (id){
             case R.id.menu_search:
-                //Toast.makeText(getApplicationContext(),"Item 1 Selected", Toast.LENGTH_LONG).show();
+                openSearchDialog();
+                return true;
+            case R.id.menu_deconnexion:
+                deconnexion();
                 return true;
             case R.id.menu_compte:
-                //Toast.makeText(getApplicationContext(),"Item 2 Selected",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MainActivity.this, CompteActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    private void openSearchDialog() {
+        Toast.makeText(MainActivity.this,"Faire un recherche de quoi?", Toast.LENGTH_LONG).show();
+    }
+
+    private void deconnexion(){
+        startActivity(new Intent(MainActivity.this, Wapi.class));
+    }
 
 
 }

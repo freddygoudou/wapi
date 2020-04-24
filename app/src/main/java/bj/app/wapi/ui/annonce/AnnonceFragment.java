@@ -1,5 +1,6 @@
 package bj.app.wapi.ui.annonce;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
@@ -21,13 +22,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager2.widget.ViewPager2;
 import bj.app.wapi.R;
+import bj.app.wapi.ui.nouvelleAnnonce.NouvelleAnnonce;
 
 public class AnnonceFragment extends Fragment {
 
     private AnnonceViewModel homeViewModel;
     ViewPager2 viewPager2;
     TabLayout tabLayout;
-    //FloatingActionButton fab_main, fab_help, fab_publier_annonce;
+    FloatingActionButton fab_annonce;
     Boolean isFABOpen = false;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,19 +54,13 @@ public class AnnonceFragment extends Fragment {
         viewPager2.setAdapter(new AnnoncePagerAdapter(getActivity()));
 
 
-        /*fab_main = view.findViewById(R.id.fab_main);
-        fab_help = view.findViewById(R.id.fab_help);
-        fab_publier_annonce = view.findViewById(R.id.fab_publier_annonce);
-        fab_main.setOnClickListener(new View.OnClickListener() {
+        fab_annonce = view.findViewById(R.id.fab_annonce);
+        fab_annonce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!isFABOpen){
-                    showFABMenu();
-                }else{
-                    closeFABMenu();
-                }
+                getActivity().startActivity(new Intent(getActivity(), NouvelleAnnonce.class));
             }
-        });*/
+        });
 
 
 
