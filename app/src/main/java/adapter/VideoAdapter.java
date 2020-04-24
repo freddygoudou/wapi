@@ -1,6 +1,7 @@
 package adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
+import bj.app.wapi.ui.videoplayer.VideoPlayerActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 import entity.Article;
 import entity.Video;
@@ -57,7 +59,8 @@ public class VideoAdapter extends RecyclerView.Adapter <VideoAdapter.VideoViewHo
             public void onClick(View view) {
 
                 Toast.makeText(mContext, mData.get(position).getTitle()+"/"+mData.get(position).getDescription()+"/"+mData.get(position).getImage()+"/"+mData.get(position).getVideo(), Toast.LENGTH_LONG).show();
-                //Navigation.createNavigateOnClickListener(R.id.action_navigation_formation_to_navigation_suivre_video);
+                mContext.startActivity(new Intent(mContext, VideoPlayerActivity.class)
+                        .putExtra("video", mData.get(position)));
             }
         });
         

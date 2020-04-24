@@ -1,6 +1,7 @@
 package bj.app.wapi.ui.formation.sousFragment;
 
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -64,6 +65,8 @@ public class DocumentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         return inflater.inflate(R.layout.fragment_document, container, false);
     }
 
@@ -110,6 +113,7 @@ public class DocumentFragment extends Fragment {
         carouselView = view.findViewById(R.id.carouselView);
         carouselView.setPageCount(slideItemList.size());
         carouselView.setImageListener(imageListener);
+        carouselView.setSlideInterval(30000);
 
         //RecycleerView
         recyclerView = view.findViewById(R.id.rv_document);
@@ -129,23 +133,12 @@ public class DocumentFragment extends Fragment {
 
     }
 
+
+
     ImageListener imageListener = new ImageListener() {
         @Override
         public void setImageForPosition(int position, ImageView imageView) {
             imageView.setImageResource(slideItemList.get(position).getImage());
-            try {
-                MediaPlayer mediaPlayer = new MediaPlayer();
-                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                mediaPlayer.setDataSource(String.valueOf(Settings.System.DEFAULT_RINGTONE_URI)); //slideItemList.get(position).getAudioUrl()
-                mediaPlayer.prepare();
-                mediaPlayer.setLooping(false);
-                mediaPlayer.start();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-
         }
     };
 

@@ -1,28 +1,28 @@
 package bj.app.wapi.ui.splash;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import bj.app.wapi.R;
+import bj.app.wapi.ui.main.MainActivity;
+import bj.app.wapi.ui.wapi.Wapi;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.os.PersistableBundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-public class SplashFragment extends Fragment {
+public class SplashActivity extends AppCompatActivity {
 
     CircleImageView appIcon;
-    View view;
-    @Override
+    /*@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_splash, container, false);
+        return inflater.inflate(R.layout.activity_splash, container, false);
 
     }
 
@@ -37,15 +37,21 @@ public class SplashFragment extends Fragment {
         appIcon.startAnimation(welcome_animation);
 
         goToAppropriateScreen(navController);
+    }*/
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+
+        appIcon = findViewById(R.id.app_icon);
+        Animation welcome_animation = AnimationUtils.loadAnimation(SplashActivity.this,R.anim.welcome_animation);
+        appIcon.startAnimation(welcome_animation);
+
+        goToAppropriateScreen();
+
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-    }
-
-    public void goToAppropriateScreen(final NavController navController){
+    public void goToAppropriateScreen(){
 
         Thread timer = new Thread(){
 
@@ -60,10 +66,11 @@ public class SplashFragment extends Fragment {
                     // Voir si l'utilisateur est dejà connecté ou pas pour savoir si on doit le redirigér vers le login ou dans l'application  en même temps
 
                     if(true) { //SI NON CONNECTÉ
-
-                        navController.navigate(R.id.action_navigation_splash_to_navigation_login);
+                        startActivity(new Intent(SplashActivity.this, Wapi.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                     }else { //SI CONNECTÉ
-                        navController.navigate(R.id.action_navigation_splash_to_navigation_main);
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                     }
 
                 }

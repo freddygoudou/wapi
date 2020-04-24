@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import bj.app.wapi.R;
+import bj.app.wapi.ui.main.MainActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,7 +71,8 @@ public class LoginFragment extends Fragment {
     private void login(NavController navController, String phoneNumber, String password) {
 
         if (true){ //SI IDENTIFIANT CORRECTS
-            navController.navigate(R.id.action_navigation_login_to_navigation_main);
+            getActivity().startActivity(new Intent(getActivity(), MainActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
         }else {
 
         }

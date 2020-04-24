@@ -86,7 +86,8 @@ public class RegisterUserFormFragment extends Fragment {
 
 
         //CALL SERVICE FOR INSCRIPTION AND GO TO MAINACTIVITY
-        navController.navigate(R.id.action_navigation_register_user_form_to_navigation_main);
+        getActivity().startActivity(new Intent(getActivity(), MainActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
     }
 
 

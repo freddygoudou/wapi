@@ -15,7 +15,7 @@
         <activity
             android:name=".ui.videoplayer.VideoPlayerActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.VIDEOPLAYERACTIVITY" /> <!-- bj.app.wapi.MAINACTIVITY -->
 
@@ -25,12 +25,21 @@
         <activity android:name=".ui.demanderAide.DemanderAideActivity" />
         <activity android:name=".ui.publierAnnonce.PublierAnnonceActivity" />
         <activity
+            android:name=".ui.splash.SplashActivity"
+            android:theme="@style/AppSecondTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" /> <!-- bj.app.wapi.SPLASHACTIVITY -->
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ui.wapi.Wapi"
             android:theme="@style/AppSecondTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" /> <!-- bj.app.wapi.WAPIACTIVITY -->
+                <action android:name="bj.app.wapi.WAPIACTIVITY " /> <!-- bj.app.wapi.WAPIACTIVITY -->
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -42,6 +51,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <service android:name=".ui.formation.sousFragment.CarousselBackgroundAudioService"/>
     </application>
 
 </manifest>

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/wapi_navigation"
-    app:startDestination="@+id/navigation_splash">
+    app:startDestination="@+id/navigation_login">
 
-    <fragment
+    <!--<activity
         android:id="@+id/navigation_splash"
-        android:name="bj.app.wapi.ui.splash.SplashFragment"
-        tools:layout="@layout/fragment_splash" >
+        android:name="bj.app.wapi.ui.splash.SplashActivity"
+        tools:layout="@layout/activity_splash" >
         <action
             android:id="@+id/action_navigation_splash_to_navigation_login"
             app:destination="@id/navigation_login"
@@ -19,7 +19,7 @@
             app:destination="@id/navigation_main"
             app:popUpTo="@+id/navigation_main"
             app:popUpToInclusive="true"/>
-    </fragment>
+    </activity>-->
 
     <fragment
         android:id="@+id/navigation_login"

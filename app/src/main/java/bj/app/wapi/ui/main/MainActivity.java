@@ -1,5 +1,6 @@
 package bj.app.wapi.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -7,12 +8,16 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import bj.app.wapi.R;
+import bj.app.wapi.ui.formation.sousFragment.CarousselBackgroundAudioService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,8 +34,47 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
     }
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+                switch (destination.getId()){
+                    case R.id.navigation_formation:
+                        stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+                        startService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+                        break;
+                    default:
+                        stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+                        break;
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

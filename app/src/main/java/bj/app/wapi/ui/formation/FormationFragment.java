@@ -1,5 +1,6 @@
 package bj.app.wapi.ui.formation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 import bj.app.wapi.R;
+import bj.app.wapi.ui.formation.sousFragment.CarousselBackgroundAudioService;
 import bj.app.wapi.ui.formation.sousFragment.VideFragment;
+import bj.app.wapi.ui.main.MainActivity;
 
 public class FormationFragment extends Fragment {
 
@@ -47,6 +50,31 @@ public class FormationFragment extends Fragment {
         viewPager2.setAdapter(new FormationPagerAdapter(getActivity()));
 
         tabLayout = view.findViewById(R.id.tbl_formation);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 0){
+                    getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                    getActivity().startService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 0){
+                    getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                }
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 0){
+                    getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                    getActivity().startService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                }
+            }
+        });
+
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
                 tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
