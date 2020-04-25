@@ -50,7 +50,7 @@ public class VideoFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rv_video);
         mData = new ArrayList<>();
         mData.add(new Video("CAJOUX", "Le meilleur d'Afrique", "image url", "https://www.radiantmediaplayer.com/media/bbb-360p.mp4"));
-        mData.add(new Video("RIZ", "Le meilleur d'Afrique", "image url", "https://www.radiantmediaplayer.com/media/bbb-360p.mp4")); //android.resource://" + "bj.app.wapi/" + R.raw.ecole : FOR LOCAL VIDEO
+        mData.add(new Video("RIZ", "Le meilleur d'Afrique", "image url", "https://www.radiantmediaplayer.com/media/bbb-360p.mp4"));  //android.resource://" + "bj.app.wapi/" + R.raw.ecole : FOR LOCAL VIDEO
         mData.add(new Video("TOMATE", "Le meilleur d'Afrique", "image url", "https://www.radiantmediaplayer.com/media/bbb-360p.mp4"));
         mData.add(new Video("PIMENT", "Le meilleur d'Afrique", "image url", "https://www.radiantmediaplayer.com/media/bbb-360p.mp4"));
         mData.add(new Video("CAROTTE", "Le meilleur d'Afrique", "image url", "https://www.radiantmediaplayer.com/media/bbb-360p.mp4"));
