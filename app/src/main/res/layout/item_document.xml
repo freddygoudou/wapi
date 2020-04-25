@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="22dp">
+        android:paddingBottom="11dp">
 
         <ImageView
             android:id="@+id/iv_produit"
@@ -27,46 +27,58 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:src="@drawable/index"/>
-        <TextView
-            android:id="@+id/tv_title"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:text="BOABAB"
-            android:textStyle="bold"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:layout_marginTop="22dp"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:textColor="@color/colorPrimary"/>
-        <TextView
-            android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:layout_marginTop="11dp"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:text="Bonne pratique de transformation artisanale des feuilles de baobab"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="?android:attr/textColorSecondary"/>
-        <Button
-            android:id="@+id/btn_telecharger_ouvrir"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="@string/telecharger"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:textAlignment="textStart"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="11dp"
-            android:background="@drawable/background_btn"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:textAllCaps="false"
-            android:drawableEnd="@drawable/ic_file_download_black_24dp"
-            android:backgroundTint="@color/colorAccent"/>
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:paddingStart="7dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:text="BOABAB"
+                    android:textStyle="bold"
+                    android:paddingEnd="30dp"
+                    android:layout_marginTop="11dp"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/colorPrimary"/>
+                <TextView
+                    android:id="@+id/tv_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:layout_marginTop="11dp"
+                    android:paddingEnd="30dp"
+                    android:text="Bonne pratique de transformation artisanale des feuilles de baobab"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary"/>
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btn_telecharger_ouvrir"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                android:background="@drawable/background_btn"
+                android:backgroundTint="@color/colorPrimary"
+                android:src="@drawable/ic_file_download_black_24dp"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

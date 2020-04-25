@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -47,7 +48,15 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         holder.ll_one_document.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_scale_animation));
         holder.tv_title.setText(mData.get(position).getTitle());
         holder.tv_description.setText(mData.get(position).getDescription());
-        holder.btn_telecharger_ouvrir.setText(R.string.telecharger);
+        holder.btn_telecharger_ouvrir.setImageResource(R.drawable.ic_file_download_black_24dp);
+
+        holder.btn_telecharger_ouvrir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Téléchargement
+                holder.btn_telecharger_ouvrir.setImageResource(R.drawable.ic_insert_drive_file_white_24dp);
+            }
+        });
 
         holder.ll_one_document.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +76,7 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
 
         TextView tv_title, tv_description;
         ImageView iv_produit;
-        Button btn_telecharger_ouvrir;
+        ImageButton btn_telecharger_ouvrir;
         LinearLayout ll_one_document;
         public DocumentViewHolder(@NonNull View itemView) {
             super(itemView);

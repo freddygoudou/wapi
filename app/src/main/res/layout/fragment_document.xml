@@ -33,7 +33,7 @@
             android:id="@+id/rv_document"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="22dp"
+            android:paddingTop="9dp"
             android:paddingEnd="22dp"
             android:paddingStart="22dp"
             android:paddingBottom="?attr/actionBarSize"/>
