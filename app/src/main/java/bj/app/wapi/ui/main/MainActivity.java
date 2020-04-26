@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,9 +20,13 @@ import androidx.navigation.ui.NavigationUI;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.compte.CompteActivity;
 import bj.app.wapi.ui.formation.sousFragment.CarousselBackgroundAudioService;
+import bj.app.wapi.ui.login.LoginActivity;
+import bj.app.wapi.ui.splash.SplashActivity;
 import bj.app.wapi.ui.wapi.Wapi;
 
 public class MainActivity extends AppCompatActivity {
+
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +45,6 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().hasExtra("NEW_ANNONCE")){
             navController.navigate(R.id.navigation_annonce);
         }
-
-        /*if (navController.getCurrentDestination().getId() != R.id.navigation_formation){
-
-        }*/
 
     }
 
@@ -114,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
             case R.id.menu_search:
                 openSearchDialog();
-                return true;
             case R.id.menu_deconnexion:
                 deconnexion();
                 return true;
@@ -130,8 +130,11 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this,"Faire un recherche de quoi?", Toast.LENGTH_LONG).show();
     }
 
-    private void deconnexion(){
-        startActivity(new Intent(MainActivity.this, Wapi.class));
+    private void deconnexion() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(MainActivity.this, SplashActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        finish();
     }
 
 

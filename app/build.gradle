@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
 
 android {
     compileOptions {
@@ -31,6 +33,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
@@ -90,7 +94,7 @@ dependencies {
     //implementation "io.reactivex.rxjava3:rxandroid:$rxandroid_version"
 
     //Fab Clans dependency
-    implementation "com.github.clans:fab:1.6.4"
+    //implementation "com.github.clans:fab:1.6.4"
 
     //Exo player : https://www.youtube.com/watch?v=coIAggOC2OI
     implementation 'com.google.android.exoplayer:exoplayer:r2.4.0'

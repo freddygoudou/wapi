@@ -1,44 +1,25 @@
 package bj.app.wapi.ui.splash;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import bj.app.wapi.R;
+import bj.app.wapi.ui.login.LoginActivity;
 import bj.app.wapi.ui.main.MainActivity;
-import bj.app.wapi.ui.wapi.Wapi;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
 
     CircleImageView appIcon;
-    /*@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_splash, container, false);
-
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        final NavController navController = Navigation.findNavController(view);
-
-        appIcon = view.findViewById(R.id.app_icon);
-        Animation welcome_animation = AnimationUtils.loadAnimation(getActivity(),R.anim.welcome_animation);
-        appIcon.startAnimation(welcome_animation);
-
-        goToAppropriateScreen(navController);
-    }*/
-
+    FirebaseAuth mAuth;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
@@ -47,36 +28,47 @@ public class SplashActivity extends AppCompatActivity {
         Animation welcome_animation = AnimationUtils.loadAnimation(SplashActivity.this,R.anim.welcome_animation);
         appIcon.startAnimation(welcome_animation);
 
-        goToAppropriateScreen();
-
     }
 
-    public void goToAppropriateScreen(){
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-        Thread timer = new Thread(){
+        // Voir si l'utilisateur est dejà connecté ou pas pour savoir si on doit le redirigér vers le login ou dans l'application  en même temps
 
-            public void  run(){
-                try{
-                    sleep(3000);
-                }catch (InterruptedException e){
-                    e.printStackTrace();
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+
+                    //Toast.makeText(SplashActivity.this,"CONNECTÉÉÉÉÉ", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 }
-                finally {
+                else {
 
-                    // Voir si l'utilisateur est dejà connecté ou pas pour savoir si on doit le redirigér vers le login ou dans l'application  en même temps
+                    //Toast.makeText(SplashActivity.this,"NON CONNECTÉÉÉÉÉ", Toast.LENGTH_LONG).show();
 
-                    if(true) { //SI NON CONNECTÉ
-                        startActivity(new Intent(SplashActivity.this, Wapi.class)
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                    }else { //SI CONNECTÉ
-                        startActivity(new Intent(SplashActivity.this, MainActivity.class)
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                    }
+                    Thread timer = new Thread(){
 
+                        public void  run(){
+                            try{
+                                sleep(3000);
+                            }catch (InterruptedException e){
+                                e.printStackTrace();
+                            }
+                            finally {
+                                startActivity(new Intent(SplashActivity.this, LoginActivity.class)
+                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                            }
+                        }
+                    };
+                    timer.start();
                 }
             }
-        };
-        timer.start();
+        });
     }
 
 

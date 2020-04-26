@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingTop="33dp"
     android:orientation="vertical"
-    tools:context=".ui.login.LoginFragment">
+    tools:context=".ui.login.LoginActivity">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -52,12 +52,8 @@
     </LinearLayout>
 
 
-
-
-
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tILPassword"
+        android:id="@+id/nameTIL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp">
@@ -69,9 +65,8 @@
             android:paddingEnd="10dp"
             android:textSize="16dp"
             android:gravity="center_vertical"
-            android:inputType="textPassword"
-            android:drawableRight="@drawable/ic_vpn_key_black_24dp"
-            android:hint="@string/password"/>
+            android:drawableRight="@drawable/ic_person_black_24dp"
+            android:hint="@string/nom"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,19 +75,40 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:textAllCaps="true"
-        android:layout_margin="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="22dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         android:text="@string/connexion"/>
 
-    <TextView
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:visibility="invisible"/>
+
+    <!--<TextView
+        android:id="@+id/tvAuthMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"
+        android:text=""
+        android:visibility="invisible"/>
+-->
+   <!-- <TextView
         android:id="@+id/tvhaveNotAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="44dp"
         android:textSize="18sp"
         android:gravity="center_horizontal"
-        android:text="@string/haveNotAccount"/>
+        android:text="@string/haveNotAccount"/>-->
+
+
 
 </LinearLayout>

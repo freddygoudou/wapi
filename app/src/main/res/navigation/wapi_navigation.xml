@@ -23,8 +23,8 @@
 
     <fragment
         android:id="@+id/navigation_login"
-        android:name="bj.app.wapi.ui.login.LoginFragment"
-        tools:layout="@layout/fragment_login" >
+        android:name="bj.app.wapi.ui.login.LoginActivity"
+        tools:layout="@layout/activity_login" >
         <action
             android:id="@+id/action_navigation_login_to_navigation_register"
             app:destination="@id/navigation_register" />
