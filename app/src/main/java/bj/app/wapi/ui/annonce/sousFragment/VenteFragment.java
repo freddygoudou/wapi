@@ -48,16 +48,16 @@ public class VenteFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.rv_vente);
         mData = new ArrayList<>();
-        mData.add(new Article(VENTE+"-"+"CAJOUX", QUANTITE+": "+"33 Tonnes", DATE+": 2020-04-20"));
-        mData.add(new Article(VENTE+"-"+"RIZ", QUANTITE+": "+"21 Tonnes", DATE+": 2020-04-20"));
-        mData.add(new Article(VENTE+"-"+"POMME DE TERRE", QUANTITE+": "+"17 Tonnes", DATE+": 2020-04-22"));
-        mData.add(new Article(VENTE+"-"+"HARICOT", QUANTITE+": "+"8 Tonnes", DATE+": 2020-04-21"));
-        mData.add(new Article(VENTE+"-"+"MANIOC", QUANTITE+": "+"12 Tonnes", DATE+": 2020-04-19"));
-        mData.add(new Article(VENTE+"-"+"SOJA", QUANTITE+": "+"11 Tonnes", DATE+": 2020-04-18"));
-        mData.add(new Article(VENTE+"-"+"SORGHO", QUANTITE+": "+"10.5 Tonnes", DATE+": 2020-04-17"));
-        mData.add(new Article(VENTE+"-"+"MIL", QUANTITE+": "+"22 Tonnes", DATE+": 2020-04-16"));
-        mData.add(new Article(VENTE+"-"+"TOMATE", QUANTITE+": "+"33 Tonnes", DATE+": 2020-04-15"));
-        mData.add(new Article(VENTE+"-"+"PIMENT", QUANTITE+": "+"5 Tonnes", DATE+": 2020-04-14"));
+        mData.add(new Article(VENTE+"-"+"CAJOUX", QUANTITE+": "+"33 Tonnes", DATE+": 2020-04-20", VENTE));
+        mData.add(new Article(VENTE+"-"+"RIZ", QUANTITE+": "+"21 Tonnes", DATE+": 2020-04-20", VENTE));
+        mData.add(new Article(VENTE+"-"+"POMME DE TERRE", QUANTITE+": "+"17 Tonnes", DATE+": 2020-04-22", VENTE));
+        mData.add(new Article(VENTE+"-"+"HARICOT", QUANTITE+": "+"8 Tonnes", DATE+": 2020-04-21", VENTE));
+        mData.add(new Article(VENTE+"-"+"MANIOC", QUANTITE+": "+"12 Tonnes", DATE+": 2020-04-19", VENTE));
+        mData.add(new Article(VENTE+"-"+"SOJA", QUANTITE+": "+"11 Tonnes", DATE+": 2020-04-18", VENTE));
+        mData.add(new Article(VENTE+"-"+"SORGHO", QUANTITE+": "+"10.5 Tonnes", DATE+": 2020-04-17", VENTE));
+        mData.add(new Article(VENTE+"-"+"MIL", QUANTITE+": "+"22 Tonnes", DATE+": 2020-04-16", VENTE));
+        mData.add(new Article(VENTE+"-"+"TOMATE", QUANTITE+": "+"33 Tonnes", DATE+": 2020-04-15", VENTE));
+        mData.add(new Article(VENTE+"-"+"PIMENT", QUANTITE+": "+"5 Tonnes", DATE+": 2020-04-14", VENTE));
 
 
         adapter = new AnnonceAdapter(VenteFragment.this.getContext(), mData);

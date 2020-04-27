@@ -50,7 +50,7 @@ public class DocumentFragment extends Fragment {
     RecyclerView recyclerView;
     DocumentAdapter adapter;
     ArrayList<Document> mData;
-    private CarouselView carouselView;
+    CarouselView carouselView;
     ArrayList<SlideItem> slideItemList;
 
     //ViewPager2 viewPager2;
@@ -71,15 +71,15 @@ public class DocumentFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        carouselView.pauseCarousel();
+        //carouselView.pauseCarousel();
         //System.out.println("carouselView onPause paused");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        carouselView.setCurrentItem(0, true);
-        carouselView.playCarousel();
+        //carouselView.setCurrentItem(0, true);
+        //carouselView.playCarousel();
         //System.out.println("carouselView onResume playing");
     }
 
@@ -124,23 +124,23 @@ public class DocumentFragment extends Fragment {
 
 
         //CarouselView
-        carouselView = view.findViewById(R.id.carouselView);
+        /*carouselView = view.findViewById(R.id.carouselView);
         carouselView.setPageCount(slideItemList.size());
         carouselView.setImageListener(imageListener);
         carouselView.setSlideInterval(30000);
         carouselView.setCurrentItem(0, true);
-        carouselView.playCarousel();
+        carouselView.playCarousel();*/
         //System.out.println("carouselView main playing");
 
         //RecycleerView
         recyclerView = view.findViewById(R.id.rv_document);
         mData = new ArrayList<>();
-        mData.add(new Document("CAJOUX", "Le meilleur d'Afrique", "image url"));
-        mData.add(new Document("RIZ", "Le meilleur d'Afrique", "image url"));
-        mData.add(new Document("TOMATE", "Le meilleur d'Afrique", "image url"));
-        mData.add(new Document("PIMENT", "Le meilleur d'Afrique", "image url"));
-        mData.add(new Document("CAROTTE", "Le meilleur d'Afrique", "image url"));
-        mData.add(new Document("SOJA", "Le meilleur d'Afrique", "image url"));
+        mData.add(new Document("CAJOUX", "Le meilleur d'Afrique", R.drawable.wapipoudrefeuillebaobnab));
+        mData.add(new Document("RIZ", "Le meilleur d'Afrique", R.drawable.wapibaobabpoudre));
+        mData.add(new Document("TOMATE", "Le meilleur d'Afrique", R.drawable.wapitransdetarium));
+        mData.add(new Document("PIMENT", "Le meilleur d'Afrique", R.drawable.wapihuilebaobab));
+        mData.add(new Document("CAROTTE", "Le meilleur d'Afrique", R.drawable.wapipoudrefeuillebaobnab));
+        mData.add(new Document("SOJA", "Le meilleur d'Afrique", R.drawable.wapihuilebaobab));
 
 
         adapter = new DocumentAdapter(DocumentFragment.this.getContext(), mData);

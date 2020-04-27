@@ -23,6 +23,7 @@ public class AnnonceAdapter extends RecyclerView.Adapter <AnnonceAdapter.HomeVie
 
     private Context mContext;
     private ArrayList<Article> mData;
+    final String VENTE = "VENTE";
 
     View view;
     public AnnonceAdapter(Context mContext, ArrayList<Article> mData) {
@@ -46,6 +47,13 @@ public class AnnonceAdapter extends RecyclerView.Adapter <AnnonceAdapter.HomeVie
         holder.tv_name.setText(mData.get(position).getName());
         holder.tv_qte.setText(mData.get(position).getQuantite());
         holder.tv_date.setText(mData.get(position).getDate());
+
+        if (mData.get(position).getType().equals(VENTE)){
+            holder.civ_photo.setImageResource(R.drawable.sale);
+        }else {
+            holder.civ_photo.setImageResource(R.drawable.buy);
+        }
+
 
         holder.rl_one_produit.setOnClickListener(new View.OnClickListener() {
             @Override

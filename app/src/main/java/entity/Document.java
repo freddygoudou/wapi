@@ -4,12 +4,12 @@ public class Document {
 
     private String title;
     private String description;
-    private String image;
+    private int image;
 
     public Document() {
     }
 
-    public Document(String title, String description, String image) {
+    public Document(String title, String description, int image) {
         this.title = title;
         this.description = description;
         this.image = image;
@@ -31,11 +31,11 @@ public class Document {
         this.description = description;
     }
 
-    public String getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
     }
 }

@@ -5,14 +5,24 @@ public class Article {
     private String name;
     private String quantite;
     private String date;
+    private String type;
 
     public Article() {
     }
 
-    public Article(String name, String quantite, String date) {
+    public Article(String name, String quantite, String date, String type) {
         this.name = name;
         this.quantite = quantite;
         this.date = date;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {

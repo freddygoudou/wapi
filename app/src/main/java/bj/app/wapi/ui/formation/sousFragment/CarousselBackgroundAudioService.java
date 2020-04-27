@@ -23,7 +23,7 @@ public class CarousselBackgroundAudioService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        player = MediaPlayer.create(this, Uri.parse("android.resource://" + "bj.app.wapi/" + R.raw.caroussel_audio));
+        player = MediaPlayer.create(this, Uri.parse("android.resource://" + "bj.app.wapi/" + R.raw.marcelo));
         player.setLooping(false);
         player.start();
         return START_STICKY; //START_STICKY recrée le service mais START_NOT_STICKY non

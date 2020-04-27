@@ -50,4 +50,5 @@
     <string name="mon_compte">Mon Compte</string>
     <string name="deconnexion">Déconnexion</string>
     <string name="name_empty">Remplissez ce champ</string>
+    <string name="details_formation">Détails sur formation</string>
 </resources>

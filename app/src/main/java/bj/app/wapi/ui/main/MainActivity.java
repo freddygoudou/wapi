@@ -63,13 +63,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+        //stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+        //stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
     }
 
     @Override
@@ -84,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
                 switch (destination.getId()){
                     case R.id.navigation_formation:
-                        stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
-                        startService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+                        //stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+                        //startService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
                         break;
                     default:
-                        stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+                        //stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
                         break;
                 }
             }
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
+        //stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
     }
 
     @Override
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 deconnexion();
                 return true;
             case R.id.menu_compte:
-                startActivity(new Intent(MainActivity.this, CompteActivity.class));
+                //startActivity(new Intent(MainActivity.this, CompteActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -1,15 +1,14 @@
 package adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +17,7 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
-import de.hdodenhof.circleimageview.CircleImageView;
-import entity.Article;
+import bj.app.wapi.ui.formation.DetailsFormation;
 import entity.Document;
 
 public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.DocumentViewHolder>{
@@ -49,7 +47,7 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         holder.tv_title.setText(mData.get(position).getTitle());
         holder.tv_description.setText(mData.get(position).getDescription());
         holder.btn_telecharger_ouvrir.setImageResource(R.drawable.ic_file_download_black_24dp);
-
+        holder.iv_produit.setImageResource(mData.get(position).getImage());
         holder.btn_telecharger_ouvrir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +59,10 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         holder.ll_one_document.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mContext.startActivity(new Intent(mContext, DetailsFormation.class)
+                    .putExtra("videoTitle", mData.get(position).getTitle())
+                    .putExtra("videoDescription", mData.get(position).getDescription()));
                 Toast.makeText(mContext, mData.get(position).getTitle()+"/"+mData.get(position).getDescription()+"/"+mData.get(position).getImage(), Toast.LENGTH_LONG).show();
             }
         });

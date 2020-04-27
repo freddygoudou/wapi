@@ -46,7 +46,7 @@ public class FormationFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (tabLayout.getSelectedTabPosition() != 0){
-            getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+            //getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
         }
         /*
 
@@ -89,25 +89,25 @@ public class FormationFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0){
-                    getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
-                    getActivity().startService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                    //getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                    //getActivity().startService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
                 }else {
-                    getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                    //getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
                 }
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0){
-                    getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                    //getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
                 }
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0){
-                    getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
-                    getActivity().startService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                    //getActivity().stopService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
+                    //getActivity().startService(new Intent(getActivity(), CarousselBackgroundAudioService.class));
                 }
             }
         });
