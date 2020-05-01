@@ -6,6 +6,8 @@ import bj.app.wapi.R;
 import bj.app.wapi.ui.login.LoginActivity;
 import bj.app.wapi.ui.main.MainActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
+import entity.User;
+import storage.SharedPrefManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,9 +45,21 @@ public class SplashActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
 
-                    //Toast.makeText(SplashActivity.this,"CONNECTÉÉÉÉÉ", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(SplashActivity.this, MainActivity.class)
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+                    /*if (SharedPrefManager.getmInstance(SplashActivity.this).getUser().getId().equals("NO_FOUND")){
+
+                        //Toast.makeText(SplashActivity.this,"TO LOGIN", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(SplashActivity.this, LoginActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+                    }else {
+                        //dToast.makeText(SplashActivity.this,"CONNECTÉÉÉÉÉ", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                    }*/
+
                 }
                 else {
 

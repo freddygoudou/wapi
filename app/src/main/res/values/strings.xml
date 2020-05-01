@@ -6,7 +6,7 @@
     <string name="connexion">Connexion</string>
     <string name="inscription">Inscription</string>
     <string name="phoneNumber">Phone Number</string>
-    <string name="inscript5ion">Inscription</string>
+    <string name="finaliser_inscription">Finaliser L\'inscription</string>
     <string name="code">Code</string>
     <string name="renvoyerCode">RENVOYER LE CODE</string>
     <string name="slogan">World app for poor\'s incomes</string>
@@ -51,4 +51,5 @@
     <string name="deconnexion">Déconnexion</string>
     <string name="name_empty">Remplissez ce champ</string>
     <string name="details_formation">Détails sur formation</string>
+    <string name="title_recherche">Rechercher</string>
 </resources>

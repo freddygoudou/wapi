@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/navigation_confirm_code"
-        android:name="bj.app.wapi.ui.confirmCode.ConfirmCodeFragment"
+        android:name="bj.app.wapi.ui.confirmCode.ConfirmCodeActivity"
         tools:layout="@layout/fragment_confirm_code" >
         <action
             android:id="@+id/action_navigation_confirm_code_to_navigation_register_user_form"
@@ -54,8 +54,8 @@
 
     <fragment
         android:id="@+id/navigation_register_user_form"
-        android:name="bj.app.wapi.ui.registerUserForm.RegisterUserFormFragment"
-        tools:layout="@layout/fragment_register_user_form" >
+        android:name="bj.app.wapi.ui.registerUserForm.RegisterUserFormActivity"
+        tools:layout="@layout/activity_register_user_form" >
         <action
             android:id="@+id/action_navigation_register_user_form_to_navigation_main"
             app:destination="@id/navigation_main"/>

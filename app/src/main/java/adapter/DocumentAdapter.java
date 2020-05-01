@@ -1,16 +1,23 @@
 package adapter;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.collection.LLRBNode;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -47,12 +54,14 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         holder.tv_title.setText(mData.get(position).getTitle());
         holder.tv_description.setText(mData.get(position).getDescription());
         holder.btn_telecharger_ouvrir.setImageResource(R.drawable.ic_file_download_black_24dp);
-        holder.iv_produit.setImageResource(mData.get(position).getImage());
+        //holder.iv_produit.setImageResource(mData.get(position).getImage());
+        Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(holder.iv_produit);
         holder.btn_telecharger_ouvrir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Téléchargement
                 holder.btn_telecharger_ouvrir.setImageResource(R.drawable.ic_insert_drive_file_white_24dp);
+                //holder.btn_telecharger_ouvrir.setBackgroundColor(R.color.colorRed);
             }
         });
 
@@ -68,6 +77,7 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         });
         
     }
+
 
     @Override
     public int getItemCount() {

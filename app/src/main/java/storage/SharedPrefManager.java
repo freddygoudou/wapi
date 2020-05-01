@@ -28,10 +28,8 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putLong("id",user.getId());
+        editor.putString("id",user.getId());
         editor.putString("name",user.getName());
-        editor.putString("password",user.getPassword());
-        editor.putString("email",user.getEmail());
         editor.putString("phoneNumber",user.getPhoneNumber());
         editor.apply();
     }
@@ -40,7 +38,7 @@ public class SharedPrefManager {
     public  boolean isLoggedIn(){
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
-        if(sharedPreferences.getLong("id",-33) != -1){
+        if(!sharedPreferences.getString("id","").equals("NO_FOUND")){
             return true; // Si la valeur est différente de -1, l'utilisateur est connecté
         }
         return false;
@@ -51,10 +49,8 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         User user = null;
         user = new User(
-                sharedPreferences.getLong("id",-33),
+                sharedPreferences.getString("id","NO_FOUND"),
                 sharedPreferences.getString("name", null),
-                sharedPreferences.getString("email", null),
-                sharedPreferences.getString("password", null),
                 sharedPreferences.getString("phoneNumber", null)
         );
         return user;

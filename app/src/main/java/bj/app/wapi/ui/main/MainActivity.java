@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,6 +24,9 @@ import bj.app.wapi.ui.formation.sousFragment.CarousselBackgroundAudioService;
 import bj.app.wapi.ui.login.LoginActivity;
 import bj.app.wapi.ui.splash.SplashActivity;
 import bj.app.wapi.ui.wapi.Wapi;
+import database.DatabaseHelper;
+import entity.Ressource;
+import storage.SharedPrefManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
+        //navView.setLabelVisibilityMode();
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -45,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().hasExtra("NEW_ANNONCE")){
             navController.navigate(R.id.navigation_annonce);
         }
+
+        //DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
+        //databaseHelper.saveOneRessource(new Ressource("the path", "the name", "the type", "the formation", "firstImagePath"));
 
     }
 
@@ -60,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }*/
 
-    @Override
+    /*@Override
     protected void onPause() {
         super.onPause();
         //stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
@@ -99,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         //stopService(new Intent(MainActivity.this, CarousselBackgroundAudioService.class));
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -110,11 +118,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         int id = item.getItemId();
         switch (id){
             case R.id.menu_search:
-                openSearchDialog();
+                //openSearchDialog();
+                return true;
             case R.id.menu_deconnexion:
                 deconnexion();
                 return true;
@@ -132,7 +140,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void deconnexion() {
         FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(MainActivity.this, SplashActivity.class)
+        SharedPrefManager.getmInstance(MainActivity.this).clear();
+        startActivity(new Intent(MainActivity.this, LoginActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
         finish();
     }

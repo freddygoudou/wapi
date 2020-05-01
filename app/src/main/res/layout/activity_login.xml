@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="33dp"
     android:orientation="vertical"
+    android:paddingTop="100dp"
     tools:context=".ui.login.LoginActivity">
 
 
@@ -52,7 +52,7 @@
     </LinearLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
+    <!--<com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameTIL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
             android:drawableRight="@drawable/ic_person_black_24dp"
             android:hint="@string/nom"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>-->
 
     <Button
         android:id="@+id/btnConnexion"

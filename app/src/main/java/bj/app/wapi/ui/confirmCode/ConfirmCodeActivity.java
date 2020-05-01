@@ -1,27 +1,26 @@
-package bj.app.wapi.ui.login;
+package bj.app.wapi.ui.confirmCode;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import bj.app.wapi.R;
-import bj.app.wapi.ui.confirmCode.ConfirmCodeActivity;
+import bj.app.wapi.ui.login.LoginActivity;
 import bj.app.wapi.ui.main.MainActivity;
-import bj.app.wapi.ui.registerUserForm.RegisterUserFormActivity;
-import bj.app.wapi.ui.splash.SplashActivity;
-import entity.User;
-import storage.SharedPrefManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.android.material.textfield.TextInputLayout;
@@ -32,72 +31,69 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.hbb20.CountryCodePicker;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginActivity extends AppCompatActivity {
+public class ConfirmCodeActivity extends AppCompatActivity {
 
     private String mVerificationId;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks verificationCallbacks;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private FirebaseAuth fbAuth;
-    ProgressBar progressBar;
-    TextView tvhaveNotAccount;
-    Button btnConnexion;
-    TextInputLayout phoneNumberTIL, nameTIL;
-    CountryCodePicker ccp;
-    String completePhoneNumber, name;
     FirebaseAuth mAuth;
+    String code, phoneNumber;
+    Button btnSendCodeAgain, btnInscription;
+    TextInputLayout confirmCodeTIL;
+    ProgressBar progressBar;
     DatabaseReference mUserDatabase;
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.fragment_confirm_code);
 
+        if (getIntent().hasExtra("phoneNumber")){
+            phoneNumber = getIntent().getStringExtra("phoneNumber");
+            sendVerificationCodeToUser(phoneNumber);
+        }
 
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("User");
 
-        ccp = findViewById(R.id.ccp);
-        phoneNumberTIL = findViewById(R.id.tILPhoneNumber);
-        //nameTIL = findViewById(R.id.nameTIL);
+        mAuth = FirebaseAuth.getInstance();
 
-        //CACHER CE CHAMPS EN FONCTION DU FAIT QUI EST UTILISATEUR DEJÀ INSCRIT OU PAS
-        /*if (!SharedPrefManager.getmInstance(LoginActivity.this).getUser().getId().equals("NO_FOUND")){
-            nameTIL.setVisibility(View.INVISIBLE);
-        }*/
+        // Langue d'envoie du message d'authentification
+        mAuth.setLanguageCode("FR");
 
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
 
-        btnConnexion = findViewById(R.id.btnConnexion);
-        btnConnexion.setOnClickListener(new View.OnClickListener() {
+        confirmCodeTIL = findViewById(R.id.tILConfirmCode);
+
+        btnInscription = findViewById(R.id.btnInscription);
+        btnInscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                ccp.getFullNumberWithPlus();
-                completePhoneNumber = ccp.getSelectedCountryCodeWithPlus()+ phoneNumberTIL.getEditText().getText().toString().trim();
-                //name = nameTIL.getEditText().getText().toString();
-
-                //Toast.makeText(LoginActivity.this,"PHONE NUMBER IS "+completePhoneNumber, Toast.LENGTH_LONG).show();
-
-                if(completePhoneNumber.isEmpty() || completePhoneNumber.length() < 11){
-                    phoneNumberTIL.setError("Numero invalide");
-                    phoneNumberTIL.requestFocus();
+                code = confirmCodeTIL.getEditText().getText().toString().trim();
+                if (code.isEmpty() || code.length() < 6) {
+                    confirmCodeTIL.setError("Entrer un code valide");
+                    confirmCodeTIL.requestFocus();
                     return;
-                }else{
-
-                    startActivity(new Intent(LoginActivity.this, ConfirmCodeActivity.class)
-                        .putExtra("phoneNumber", completePhoneNumber));
-                    //sendVerificationCodeToUser(completePhoneNumber);
                 }
+                //verifying the code entered manually
+                verifyCode(code);
             }
         });
+
+        /*btnSendCodeAgain = findViewById(R.id.btnSendCodeAgain);
+        btnSendCodeAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // CALL SERVICE AND SEND CODE AGAIN
+            }
+        });*/
     }
 
     private void sendVerificationCodeToUser(String completePhoneNumber) {
@@ -116,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onVerificationCompleted(PhoneAuthCredential credential) {
-           
+
             String code = credential.getSmsCode();
             if (code != null){
                 progressBar.setVisibility(View.VISIBLE);
@@ -132,9 +128,9 @@ public class LoginActivity extends AppCompatActivity {
             Log.w("PHONE AUTH", "onVerificationFailed", e);
 
             if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                Toast.makeText(LoginActivity.this,e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ConfirmCodeActivity.this,e.getMessage(), Toast.LENGTH_LONG).show();
             } else if (e instanceof FirebaseTooManyRequestsException) {
-                Toast.makeText(LoginActivity.this,"Une error est survenue. Demandez de l'aide à l'administrateur!", Toast.LENGTH_LONG).show();
+                Toast.makeText(ConfirmCodeActivity.this,"Une error est survenue. Demandez de l'aide à l'administrateur!", Toast.LENGTH_LONG).show();
             }
         }
 
@@ -146,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
             // Save verification ID and resending token so we can use them later
             mVerificationId = verificationId;
             mResendToken = token;
-            btnConnexion.setEnabled(false);
+            btnInscription.setEnabled(false);
         }
     };
 
@@ -162,7 +158,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            startActivity(new Intent(LoginActivity.this, ConfirmCodeActivity.class));
+                            startActivity(new Intent(ConfirmCodeActivity.this, MainActivity.class)
+                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
 
                             /*User user = new User(mAuth.getCurrentUser().getUid(),"", completePhoneNumber);
                             SharedPrefManager.getmInstance(LoginActivity.this)
@@ -225,11 +222,10 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.getException() instanceof
                                     FirebaseAuthInvalidCredentialsException) {
                                 progressBar.setVisibility(View.INVISIBLE);
-                                Toast.makeText(LoginActivity.this, task.getException() .getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(ConfirmCodeActivity.this, task.getException() .getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
                     }
                 });
     }
-
 }
