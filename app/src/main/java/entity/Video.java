@@ -5,26 +5,34 @@ import android.os.Parcelable;
 
 public class Video implements Parcelable {
 
-    private String title;
+    private int id;
+    private String name;
+    private String videosPaths;
     private String description;
-    private String image;
-    private String video;
+    private String captionPath;
 
-    public Video() {
+
+    public Video(int id, String name, String videosPaths, String description, String captionPath) {
+        this.id = id;
+        this.name = name;
+        this.videosPaths = videosPaths;
+        this.description = description;
+        this.captionPath = captionPath;
     }
 
-    public Video(String title, String description, String image, String video) {
-        this.title = title;
+    public Video(String name, String videosPaths, String description, String captionPath) {
+        this.name = name;
+        this.videosPaths = videosPaths;
         this.description = description;
-        this.image = image;
-        this.video = video;
+        this.captionPath = captionPath;
     }
 
     protected Video(Parcel in) {
-        title = in.readString();
+        id = in.readInt();
+        name = in.readString();
+        videosPaths = in.readString();
         description = in.readString();
-        image = in.readString();
-        video = in.readString();
+        captionPath = in.readString();
     }
 
     public static final Creator<Video> CREATOR = new Creator<Video>() {
@@ -39,14 +47,6 @@ public class Video implements Parcelable {
         }
     };
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -55,20 +55,36 @@ public class Video implements Parcelable {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
+    public int getId() {
+        return id;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getVideo() {
-        return video;
+    public String getName() {
+        return name;
     }
 
-    public void setVideo(String video) {
-        this.video = video;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getVideosPaths() {
+        return videosPaths;
+    }
+
+    public void setVideosPaths(String videosPaths) {
+        this.videosPaths = videosPaths;
+    }
+
+    public String getCaptionPath() {
+        return captionPath;
+    }
+
+    public void setCaptionPath(String captionPath) {
+        this.captionPath = captionPath;
     }
 
     @Override
@@ -78,19 +94,21 @@ public class Video implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(title);
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(videosPaths);
         parcel.writeString(description);
-        parcel.writeString(image);
-        parcel.writeString(video);
+        parcel.writeString(captionPath);
     }
 
     @Override
     public String toString() {
         return "Video{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", videosPaths='" + videosPaths + '\'' +
                 ", description='" + description + '\'' +
-                ", image='" + image + '\'' +
-                ", video='" + video + '\'' +
+                ", captionPath='" + captionPath + '\'' +
                 '}';
     }
 }

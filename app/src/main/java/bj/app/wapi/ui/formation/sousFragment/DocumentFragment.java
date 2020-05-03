@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
@@ -41,6 +42,7 @@ import bj.app.wapi.R;
 import bj.app.wapi.ui.annonce.sousFragment.AchatFragment;
 import database.DatabaseHelper;
 import entity.Article;
+import entity.Caroussel;
 import entity.Document;
 import entity.Ressource;
 import entity.SlideItem;
@@ -50,15 +52,20 @@ import entity.SlideItem;
  */
 public class DocumentFragment extends Fragment {
 
+    //Environment.DIRECTORY_DOWNLOADS + "/Wapi/Formation/Caroussel/BAOBAB/ et ses fichiers
+    //Environment.DIRECTORY_DOWNLOADS + "/Wapi/Formation/Video/BAOBAB/ et ses fichiers
 
     RecyclerView recyclerView;
     DocumentAdapter adapter;
-    ArrayList<Document> mData = new ArrayList<>();;
+    ArrayList<Document> mData = new ArrayList<>();
     CarouselView carouselView;
     ArrayList<SlideItem> slideItemList;
     DatabaseHelper databaseHelper;
-    ArrayList<Ressource> ressourceArrayList = new ArrayList<>();;
+    ArrayList<Caroussel> ressourceArrayList = new ArrayList<>();
 
+
+    String test1="https://firebasestorage.googleapis.com/v0/b/wegoofirebase.appspot.com/o/images%2Fuser_profile%2FG8OOdW2PsffLjNuJ0iXGnywr2v43.jpg?alt=media&token=00339afd-4b57-4a5e-8e7c-5562b4ee68dd";
+    String text2="https://firebasestorage.googleapis.com/v0/b/wegoofirebase.appspot.com/o/images%2Fuser_profile%2F1obC08IjG7dj9SqPa8QNYBvGRek2.jpg?alt=media&token=5de96950-83a3-4c71-821f-6110f58a3875";
 
     public DocumentFragment() {
         // Required empty public constructor
@@ -79,58 +86,28 @@ public class DocumentFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        databaseHelper = new DatabaseHelper(getActivity());
-        ressourceArrayList = databaseHelper.getAllCaroussels();
+        loadDocuments();
     }
 
-    //CHARGER LA LISTE ICI SUIVANT LA CONNEXION INTERNET
     @Override
     public void onStart() {
         super.onStart();
-        databaseHelper = new DatabaseHelper(getActivity());
-        ressourceArrayList = databaseHelper.getAllCaroussels();
+        loadDocuments();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        databaseHelper = new DatabaseHelper(getActivity());
+        loadDocuments();
 
-        if (isNetworkConnected()){
-            //GET RESSOURCES FROM API
-            slideItemList = new ArrayList<>();
-            slideItemList.add(new SlideItem(R.drawable.voiture1, "https://singemp3.com/telechargement-mp3/7192721/quand-je-taime"));
-            slideItemList.add(new SlideItem(R.drawable.voiture2, "https://singemp3.com/telechargement-mp3/6598721/titanic"));
-            slideItemList.add(new SlideItem(R.drawable.voiture3, "https://singemp3.com/telechargement-mp3/16591169/rossignol-singuila"));
-
-            //RecycleerView
-            recyclerView = view.findViewById(R.id.rv_document);
-            mData.add(new Document("CAJOUX", "Le meilleur d'Afrique", R.drawable.wapipoudrefeuillebaobnab));
-            mData.add(new Document("RIZ", "Le meilleur d'Afrique", R.drawable.wapibaobabpoudre));
-            mData.add(new Document("TOMATE", "Le meilleur d'Afrique", R.drawable.wapitransdetarium));
-            mData.add(new Document("PIMENT", "Le meilleur d'Afrique", R.drawable.wapihuilebaobab));
-            mData.add(new Document("CAROTTE", "Le meilleur d'Afrique", R.drawable.wapipoudrefeuillebaobnab));
-            mData.add(new Document("SOJA", "Le meilleur d'Afrique", R.drawable.wapihuilebaobab));
-        }else {
-            //GET RESSOURCES FROM LOCAL DB
-            slideItemList = new ArrayList<>();
-            slideItemList.add(new SlideItem(R.drawable.voiture1, "https://singemp3.com/telechargement-mp3/7192721/quand-je-taime"));
-            slideItemList.add(new SlideItem(R.drawable.voiture2, "https://singemp3.com/telechargement-mp3/6598721/titanic"));
-            slideItemList.add(new SlideItem(R.drawable.voiture3, "https://singemp3.com/telechargement-mp3/16591169/rossignol-singuila"));
-
-            //RecycleerView
-            recyclerView = view.findViewById(R.id.rv_document);
-            mData.add(new Document("CAJOUX", "Le meilleur d'Afrique", R.drawable.wapipoudrefeuillebaobnab));
-            mData.add(new Document("RIZ", "Le meilleur d'Afrique", R.drawable.wapibaobabpoudre));
-            mData.add(new Document("TOMATE", "Le meilleur d'Afrique", R.drawable.wapitransdetarium));
-            mData.add(new Document("PIMENT", "Le meilleur d'Afrique", R.drawable.wapihuilebaobab));
-            mData.add(new Document("CAROTTE", "Le meilleur d'Afrique", R.drawable.wapipoudrefeuillebaobnab));
-            mData.add(new Document("SOJA", "Le meilleur d'Afrique", R.drawable.wapihuilebaobab));
-        }
-
-
-        adapter = new DocumentAdapter(DocumentFragment.this.getContext(), mData);
+        recyclerView = view.findViewById(R.id.rv_document);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(DocumentFragment.this.getContext()));
@@ -138,17 +115,55 @@ public class DocumentFragment extends Fragment {
     }
 
 
-
-    ImageListener imageListener = new ImageListener() {
-        @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(slideItemList.get(position).getImage());
-        }
-    };
-
-
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
+    public void loadDocuments(){
+
+        databaseHelper = new DatabaseHelper(getActivity());
+
+        if (isNetworkConnected()){
+            Toast.makeText(getActivity(),"CONNECTED ..... ", Toast.LENGTH_LONG).show();
+            //GET RESSOURCES FROM API
+            ressourceArrayList.add(new Caroussel("CAJOUX","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+            ressourceArrayList.add(new Caroussel("RIZ","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+            ressourceArrayList.add(new Caroussel("TOMATE","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+            ressourceArrayList.add(new Caroussel("PIMENT","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+            ressourceArrayList.add(new Caroussel("CAROTTE","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+            ressourceArrayList.add(new Caroussel("SOJA","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+
+
+            mData.add(new Document("CAJOUX", "Le meilleur d Afrique", R.drawable.wapipoudrefeuillebaobnab));
+            mData.add(new Document("RIZ", "Le meilleur d Afrique", R.drawable.wapibaobabpoudre));
+            mData.add(new Document("TOMATE", "Le meilleur d Afrique", R.drawable.wapitransdetarium));
+            mData.add(new Document("PIMENT", "Le meilleur d Afrique", R.drawable.wapihuilebaobab));
+            mData.add(new Document("CAROTTE", "Le meilleur d Afrique", R.drawable.wapipoudrefeuillebaobnab));
+            mData.add(new Document("SOJA", "Le meilleur d Afrique", R.drawable.wapihuilebaobab));
+
+        }else {
+            Toast.makeText(getActivity(),"NOT CONNECTED ..... ", Toast.LENGTH_LONG).show();
+
+            ressourceArrayList = databaseHelper.getAllCaroussels();
+
+            /*ressourceArrayList.add(new Caroussel("CAJOUX","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+            ressourceArrayList.add(new Caroussel("RIZ","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+            ressourceArrayList.add(new Caroussel("TOMATE","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+            ressourceArrayList.add(new Caroussel("PIMENT","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+            ressourceArrayList.add(new Caroussel("CAROTTE","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+            ressourceArrayList.add(new Caroussel("SOJA","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
+*/
+
+            mData.add(new Document("CAJOUX", "Le meilleur d Afrique", R.drawable.wapipoudrefeuillebaobnab));
+            mData.add(new Document("RIZ", "Le meilleur d Afrique", R.drawable.wapibaobabpoudre));
+            mData.add(new Document("TOMATE", "Le meilleur d Afrique", R.drawable.wapitransdetarium));
+            mData.add(new Document("PIMENT", "Le meilleur d Afrique", R.drawable.wapihuilebaobab));
+            mData.add(new Document("CAROTTE", "Le meilleur d Afrique", R.drawable.wapipoudrefeuillebaobnab));
+            mData.add(new Document("SOJA", "Le meilleur d Afrique", R.drawable.wapihuilebaobab));
+        }
+        System.out.println("C LIST IS : "+ressourceArrayList.toString());
+        adapter = new DocumentAdapter(DocumentFragment.this.getContext(), ressourceArrayList);
+        adapter.notifyDataSetChanged();
     }
 }

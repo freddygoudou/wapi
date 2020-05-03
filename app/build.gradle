@@ -4,6 +4,7 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     compileSdkVersion 28
@@ -98,15 +99,19 @@ dependencies {
     //implementation "com.github.clans:fab:1.6.4"
 
     //Exo player : https://www.youtube.com/watch?v=coIAggOC2OI
-    implementation 'com.google.android.exoplayer:exoplayer:r2.4.0'
+    /*implementation 'com.google.android.exoplayer:exoplayer:r2.4.0'
     implementation 'com.google.android.exoplayer:exoplayer-core:r2.4.0'
     implementation 'com.google.android.exoplayer:exoplayer-dash:r2.4.0'
     implementation 'com.google.android.exoplayer:exoplayer-hls:r2.4.0'
     implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:r2.4.0'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:r2.4.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:r2.4.0'*/
 
-    //ExoPlayer2 lat version
+    //ExoPlayer2 last version
     implementation 'com.google.android.exoplayer:exoplayer:2.10.5'
+    //implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
+
+    //MagicalExoPlayer
+    //implementation 'com.github.HamidrezaAmz:MagicalExoPlayer:1.0.15'
 
     //RxJava
     //def rxjava_version = "3.0.0"

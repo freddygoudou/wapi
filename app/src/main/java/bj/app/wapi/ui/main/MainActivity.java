@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             navController.navigate(R.id.navigation_annonce);
         }
 
-        //DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
+        DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
         //databaseHelper.saveOneRessource(new Ressource("the path", "the name", "the type", "the formation", "firstImagePath"));
 
     }

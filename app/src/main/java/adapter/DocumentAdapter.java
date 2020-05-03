@@ -20,20 +20,22 @@ import com.google.firebase.database.collection.LLRBNode;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.formation.DetailsFormation;
+import entity.Caroussel;
 import entity.Document;
 
 public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.DocumentViewHolder>{
 
     private Context mContext;
-    private ArrayList<Document> mData;
+    private ArrayList<Caroussel> mData;
 
     View view;
-    public DocumentAdapter(Context mContext, ArrayList<Document> mData) {
+    public DocumentAdapter(Context mContext, ArrayList<Caroussel> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -51,11 +53,10 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
     public void onBindViewHolder(@NonNull final DocumentViewHolder holder, final int position) {
 
         holder.ll_one_document.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_scale_animation));
-        holder.tv_title.setText(mData.get(position).getTitle());
+        holder.tv_title.setText(mData.get(position).getName());
         holder.tv_description.setText(mData.get(position).getDescription());
         holder.btn_telecharger_ouvrir.setImageResource(R.drawable.ic_file_download_black_24dp);
-        //holder.iv_produit.setImageResource(mData.get(position).getImage());
-        Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(holder.iv_produit);
+        Picasso.get().load(firstImage(mData.get(position).getImagesPaths())).into(holder.iv_produit);
         holder.btn_telecharger_ouvrir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,14 +71,17 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
             public void onClick(View view) {
 
                 mContext.startActivity(new Intent(mContext, DetailsFormation.class)
-                    .putExtra("videoTitle", mData.get(position).getTitle())
-                    .putExtra("videoDescription", mData.get(position).getDescription()));
-                Toast.makeText(mContext, mData.get(position).getTitle()+"/"+mData.get(position).getDescription()+"/"+mData.get(position).getImage(), Toast.LENGTH_LONG).show();
+                    .putExtra("caroussel", mData.get(position)));
+                //Toast.makeText(mContext, mData.get(position).getName()+"/"+mData.get(position).getDescription()+"/"+mData.get(position).getImagesPaths(), Toast.LENGTH_LONG).show();
             }
         });
         
     }
 
+    private String firstImage(String concatedLinks){
+        StringTokenizer stringTokenizer = new StringTokenizer(concatedLinks, ";");
+        return stringTokenizer.nextToken();
+    }
 
     @Override
     public int getItemCount() {

@@ -46,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
     private String mVerificationId;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks verificationCallbacks;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
-    private FirebaseAuth fbAuth;
     ProgressBar progressBar;
     TextView tvhaveNotAccount;
     Button btnConnexion;
@@ -63,7 +62,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("User");
 
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuth.setLanguageCode("FR");
+
+        progressBar = findViewById(R.id.progressBar);
 
         ccp = findViewById(R.id.ccp);
         phoneNumberTIL = findViewById(R.id.tILPhoneNumber);
@@ -91,10 +96,9 @@ public class LoginActivity extends AppCompatActivity {
                     phoneNumberTIL.requestFocus();
                     return;
                 }else{
-
-                    startActivity(new Intent(LoginActivity.this, ConfirmCodeActivity.class)
-                        .putExtra("phoneNumber", completePhoneNumber));
-                    //sendVerificationCodeToUser(completePhoneNumber);
+                    /*startActivity(new Intent(LoginActivity.this, ConfirmCodeActivity.class)
+                        .putExtra("phoneNumber", completePhoneNumber));*/
+                    sendVerificationCodeToUser(completePhoneNumber);
                 }
             }
         });
@@ -162,7 +166,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            startActivity(new Intent(LoginActivity.this, ConfirmCodeActivity.class));
+                            //startActivity(new Intent(LoginActivity.this, ConfirmCodeActivity.class));
 
                             /*User user = new User(mAuth.getCurrentUser().getUid(),"", completePhoneNumber);
                             SharedPrefManager.getmInstance(LoginActivity.this)
@@ -183,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
                                 SharedPrefManager.getmInstance(LoginActivity.this)
                                         .saveUser(user);
                             }*/
-                            /*mUserDatabase.child(mAuth.getCurrentUser().getUid()).child("phone").addListenerForSingleValueEvent(new ValueEventListener() {
+                            mUserDatabase.child(mAuth.getCurrentUser().getUid()).child("phone").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -219,7 +223,7 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                                 }
-                            });*/
+                            });
 
                         } else {
                             if (task.getException() instanceof

@@ -9,7 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
+import entity.Caroussel;
 import entity.Ressource;
+import entity.Video;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -20,13 +22,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "wapi.db";
 
-    final String SQL_GET_ALL_RESSOURCES = " SELECT * FROM "+DatabaseContent.DatabaseEntry.TABLE_RESSOURCES_DOWNLODED+";";
-    final String SQL_GET_ALL_CAROUSSEL_RESSOURCES = " SELECT * FROM "+DatabaseContent.DatabaseEntry.TABLE_RESSOURCES_DOWNLODED+" WHERE "+DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_TYPE+"="+" '"+ DatabaseContent.DatabaseEntry.RESSOURCES_TYPE_CAROUSSEL+"' "+" ;";
-    final String SQL_GET_ALL_VIDEO_RESSOURCES  = " SELECT * FROM "+DatabaseContent.DatabaseEntry.TABLE_RESSOURCES_DOWNLODED+" WHERE "+DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_TYPE+"="+" '"+ DatabaseContent.DatabaseEntry.RESSOURCES_TYPE_VIDEO+"' "+" ;";
+    final String SQL_GET_ALL_TABLE_CAROUSSEL = " SELECT * FROM "+DatabaseContent.DatabaseEntry.TABLE_CAROUSSEL+";";
+    final String SQL_GET_ALL_TABLE_VIDEO = " SELECT * FROM "+DatabaseContent.DatabaseEntry.TABLE_VIDEO+" ;";
 
 
 
-    private String DROP_TABLE_RESSOURCES_DOWNLODED = "DROP TABLE IF EXISTS " + DatabaseContent.DatabaseEntry.TABLE_RESSOURCES_DOWNLODED;
+    private String DROP_TABLE_CAROUSSEL = "DROP TABLE IF EXISTS " + DatabaseContent.DatabaseEntry.TABLE_CAROUSSEL;
+    private String DROP_TABLE_VIDEO = "DROP TABLE IF EXISTS " + DatabaseContent.DatabaseEntry.TABLE_VIDEO;
 
 
     public DatabaseHelper(@Nullable Context context) {
@@ -37,22 +39,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        final String SQL_CREATE_TABLE_RESSOURCES_DOWNLODED = "CREATE TABLE " + DatabaseContent.DatabaseEntry.TABLE_RESSOURCES_DOWNLODED + " (" +
-                DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_PATH + " TEXT NOT NULL," +
-                DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_NAME + " TEXT NOT NULL," +
-                DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_TYPE + " TEXT NOT NULL," +
-                DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_FORMATION + " TEXT NOT NULL,"+
-                DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_FIRST_IMAGE_PATH + " TEXT NOT NULL);";
+        final String SQL_CREATE_TABLE_CAROUSSEL = "CREATE TABLE " + DatabaseContent.DatabaseEntry.TABLE_CAROUSSEL + " (" +
+                DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_FORMATION_NAME + " TEXT NOT NULL," +
+                DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_AUDIOS_PATHS + " TEXT NOT NULL," +
+                DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION + " TEXT NOT NULL," +
+                DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_IMAGES_PATHS + " TEXT NOT NULL);";
 
-        db.execSQL(SQL_CREATE_TABLE_RESSOURCES_DOWNLODED);
+        final String SQL_CREATE_TABLE_VIDEO = "CREATE TABLE " + DatabaseContent.DatabaseEntry.TABLE_VIDEO + " (" +
+                DatabaseContent.DatabaseEntry.COLUMN_VIDEO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                DatabaseContent.DatabaseEntry.COLUMN_VIDEO_PATH + " TEXT NOT NULL," +
+                DatabaseContent.DatabaseEntry.COLUMN_VIDEO_FORMATION_NAME + " TEXT NOT NULL," +
+                DatabaseContent.DatabaseEntry.COLUMN_VIDEO_DESCRIPTION + " TEXT NOT NULL," +
+                DatabaseContent.DatabaseEntry.COLUMN_VIDEO_CAPTION_PATH + " TEXT NOT NULL);";
+
+        db.execSQL(SQL_CREATE_TABLE_CAROUSSEL);
+        db.execSQL(SQL_CREATE_TABLE_VIDEO);
     }
 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //Drop User Table if exist
-        db.execSQL(DROP_TABLE_RESSOURCES_DOWNLODED);
+        db.execSQL(DROP_TABLE_CAROUSSEL);
+        db.execSQL(DROP_TABLE_VIDEO);
 
         // Create tables again
         onCreate(db);
@@ -67,50 +77,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean saveOneRessource(Ressource ressource){
+    public boolean saveOneCaroussel(Caroussel caroussel){
 
         db = this.getWritableDatabase();
 
         ContentValues params = new ContentValues();
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_PATH , ressource.getPath());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_NAME , ressource.getName());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_TYPE , ressource.getType());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_FORMATION , ressource.getFormation());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_FIRST_IMAGE_PATH , ressource.getFirstImagePath());
+        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_FORMATION_NAME , caroussel.getName());
+        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_AUDIOS_PATHS , caroussel.getAudiosPaths());
+        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION , caroussel.getDescription());
+        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_IMAGES_PATHS , caroussel.getImagesPaths());
 
-        long l = db.insert(DatabaseContent.DatabaseEntry.TABLE_RESSOURCES_DOWNLODED, null, params);
-
+        long l = db.insert(DatabaseContent.DatabaseEntry.TABLE_CAROUSSEL, null, params);
         return l != -1;
     }
 
-    public boolean saveManyRessources(ArrayList<Ressource> ressourceArrayList){
+    public boolean saveManyRessources(ArrayList<Caroussel> carousselArrayList){
         boolean result = true;
-        for (int i=0; i<ressourceArrayList.size(); i++){
-            result = saveOneRessource(ressourceArrayList.get(i)) && result;
+        for (int i=0; i<carousselArrayList.size(); i++){
+            result = saveOneCaroussel(carousselArrayList.get(i)) && result;
         }
         return result;
     }
 
-    public ArrayList<Ressource> getAllCaroussels(){
+    public ArrayList<Caroussel> getAllCaroussels(){
 
-        ArrayList<Ressource> ressourceArrayList = new ArrayList<>();
-        Ressource ressource;
+        ArrayList<Caroussel> ressourceArrayList = new ArrayList<>();
+        Caroussel caroussel;
 
         db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery(SQL_GET_ALL_CAROUSSEL_RESSOURCES,null);
+        Cursor cursor = db.rawQuery(SQL_GET_ALL_TABLE_CAROUSSEL,null);
 
         while(cursor.moveToNext()){
 
-            int id = cursor.getInt(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_ID));
-            String path = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_PATH));
-            String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_NAME));
-            String type = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_TYPE));
-            String formation = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_FORMATION));
-            String firstImagePath = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_FIRST_IMAGE_PATH));
+            int id = cursor.getInt(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_ID));
+            String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_FORMATION_NAME));
+            String audiosPaths = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_AUDIOS_PATHS));
+            String description = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION));
+            String imagesPaths = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_IMAGES_PATHS));
 
-            ressource = new Ressource(id,path,name,type,formation, firstImagePath);
-            ressourceArrayList.add(ressource);
+            caroussel = new Caroussel(id,name, description, audiosPaths, imagesPaths);
+            ressourceArrayList.add(caroussel);
         }
 
         cursor.close();
@@ -119,58 +126,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Ressource> getAllVideos(){
+    public ArrayList<Video> getAllVideos(){
 
-        ArrayList<Ressource> ressourceArrayList = new ArrayList<>();
-        Ressource ressource;
+        ArrayList<Video> videoArrayList = new ArrayList<>();
+        Video video;
 
         db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery(SQL_GET_ALL_VIDEO_RESSOURCES,null);
+        Cursor cursor = db.rawQuery(SQL_GET_ALL_TABLE_VIDEO,null);
 
         while(cursor.moveToNext()){
 
-            int id = cursor.getInt(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_ID));
-            String path = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_PATH));
-            String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_NAME));
-            String type = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_TYPE));
-            String formation = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_FORMATION));
-            String firstImagePath = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_FIRST_IMAGE_PATH));
+            int id = cursor.getInt(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_ID));
+            String path = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_PATH));
+            String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_FORMATION_NAME));
+            String caption = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_CAPTION_PATH));
+            String description = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_DESCRIPTION));
 
-            ressource = new Ressource(id,path,name,type,formation, firstImagePath);
-            ressourceArrayList.add(ressource);
+            video = new Video(id,name,path,description,caption);
+            videoArrayList.add(video);
         }
 
         cursor.close();
 
-        return  ressourceArrayList;
+        return  videoArrayList;
 
     }
 
-    public ArrayList<Ressource> getAll(){
-        ArrayList<Ressource> ressourceArrayList = new ArrayList<>();
-        Ressource ressource;
+    public boolean saveOneVideo(Video video){
 
-        db = this.getReadableDatabase();
+        db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery(SQL_GET_ALL_RESSOURCES,null);
+        ContentValues params = new ContentValues();
+        params.put(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_PATH , video.getVideosPaths());
+        params.put(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_FORMATION_NAME , video.getName());
+        params.put(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_DESCRIPTION, video.getDescription());
+        params.put(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_CAPTION_PATH , video.getCaptionPath());
 
-        while(cursor.moveToNext()){
+        long l = db.insert(DatabaseContent.DatabaseEntry.TABLE_VIDEO, null, params);
+        return l != -1;
+    }
 
-            int id = cursor.getInt(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_ID));
-            String path = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_PATH));
-            String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_NAME));
-            String type = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_TYPE));
-            String formation = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_FORMATION));
-            String firstImagePath = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_RESSOURCES_FIRST_IMAGE_PATH));
-
-            ressource = new Ressource(id,path,name,type,formation, firstImagePath);
-            ressourceArrayList.add(ressource);
+    public boolean saveManyVideo(ArrayList<Video> videoArrayList){
+        boolean result = true;
+        for (int i=0; i<videoArrayList.size(); i++){
+            result = saveOneVideo(videoArrayList.get(i)) && result;
         }
-
-        cursor.close();
-
-        return  ressourceArrayList;
+        return result;
     }
+
+
 
 }

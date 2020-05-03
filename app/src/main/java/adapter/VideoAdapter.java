@@ -6,25 +6,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.videoplayer.VideoPlayerActivity;
-import de.hdodenhof.circleimageview.CircleImageView;
-import entity.Article;
 import entity.Video;
+import entity.Videooo;
 
 public class VideoAdapter extends RecyclerView.Adapter <VideoAdapter.VideoViewHolder>{
 
@@ -51,14 +49,15 @@ public class VideoAdapter extends RecyclerView.Adapter <VideoAdapter.VideoViewHo
     public void onBindViewHolder(@NonNull final VideoViewHolder holder, final int position) {
 
         holder.ll_one_video.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_scale_animation));
-        holder.tv_title.setText(mData.get(position).getTitle());
+        holder.tv_title.setText(mData.get(position).getName());
         holder.tv_description.setText(mData.get(position).getDescription());
+        Picasso.get().load(mData.get(position).getCaptionPath()).into(holder.iv_video);
 
         holder.ll_one_video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(mContext, mData.get(position).getTitle()+"/"+mData.get(position).getDescription()+"/"+mData.get(position).getImage()+"/"+mData.get(position).getVideo(), Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, mData.get(position).getName()+"/"+mData.get(position).getDescription()+"/"+mData.get(position).getCaptionPath()+"/"+mData.get(position).getVideosPaths(), Toast.LENGTH_LONG).show();
                 mContext.startActivity(new Intent(mContext, VideoPlayerActivity.class)
                         .putExtra("video", mData.get(position)));
             }
@@ -83,6 +82,11 @@ public class VideoAdapter extends RecyclerView.Adapter <VideoAdapter.VideoViewHo
             iv_video = itemView.findViewById(R.id.iv_video);
             ll_one_video = itemView.findViewById(R.id.ll_one_video);
         }
+    }
+
+    private String firstVideo(String concatedLinks){
+        StringTokenizer stringTokenizer = new StringTokenizer(concatedLinks, ";");
+        return stringTokenizer.nextToken();
     }
 
 
