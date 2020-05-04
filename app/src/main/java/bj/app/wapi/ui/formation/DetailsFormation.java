@@ -6,10 +6,12 @@ import bj.app.wapi.R;
 import bj.app.wapi.ui.formation.sousFragment.CarousselBackgroundAudioService;
 import database.DatabaseHelper;
 import entity.Caroussel;
+import entity.FileAndExtention;
 import entity.SlideItem;
 
 import android.Manifest;
 import android.app.DownloadManager;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -19,6 +21,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,23 +48,20 @@ LES AUDIONS : audio_"la langue de l'audio"
 
 public class DetailsFormation extends AppCompatActivity {
 
+    public static final String AUDIO = "AUDIO";
+    public static final String IMAGE= "IMAGE";
+    public static final String AUDIO_FORMAT_MP3 = ".mp4";
+    public static final String IMAGE_FORMAT_PNG = ".png";
+    public static final String IMAGE_FORMAT_JPG = ".jpg";
+    public static final String IMAGE_FORMAT_JPEG = ".jpeg";
+    public static final int PERMISSION_STORAGE_CODE = 1000;
+
     CarouselView carouselView;
     ArrayList<String> slideItemList;
     TextView tvNomFormationn, tvDescriptionFormation;
-    String videoDescription, videoTitle;
-    Button download, open;
+    Button download;
     Caroussel caroussel, carousselToSave;
     DatabaseHelper databaseHelper;
-    public static final String AUDIO = "AUDIO";
-    public static final String IMAGE= "IMAGE";
-    public static final String AUDIO_FORMAT_MP3 = "mp4";
-    public static final String IMAGE_FORMAT_PNG = "png";
-    public static final String IMAGE_FORMAT_JPG = "jpg";
-    public static final String IMAGE_FORMAT_JPEG = "jpeg";
-    public String RESSOURCES_URL = "", TYPE_RESSOURCES_LOCAL_URI = "";
-    public static final int PERMISSION_STORAGE_CODE = 1000;
-
-
 
     @Override
     protected void onStop() {
@@ -98,53 +98,10 @@ public class DetailsFormation extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(this);
 
-        System.out.println("DB CAROUSSEL  "+databaseHelper.getAllCaroussels());
-
         if (getIntent().hasExtra("caroussel")){
             caroussel = getIntent().getParcelableExtra("caroussel");
             carousselToSave = new Caroussel(caroussel.getName(),caroussel.getDescription(),"","");
         }
-
-        download = findViewById(R.id.download);
-
-        download.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                System.out.println("audiosFilesToDownlodList : "+prepareDownload(caroussel).get(AUDIO));
-                System.out.println("imagesFilesToDownlodList : "+prepareDownload(caroussel).get(IMAGE));
-
-                for (int i=0; i<prepareDownload(caroussel).get(AUDIO).size(); i++){
-
-                    String uriInLocal = downloadFile(prepareDownload(caroussel).get(AUDIO).get(i));
-                    System.out.println(" Pour i = "+i+" on a uriInLocal = "+uriInLocal);
-
-                    if (uriInLocal.length()>0){ // POURQUOI LA VALEUR TARDE À ÊTRE RETOURNÉE ?
-                        if (i != prepareDownload(caroussel).get(AUDIO).size()-1){
-                            carousselToSave.setAudiosPaths(carousselToSave.getAudiosPaths() + uriInLocal+";");
-                        }else {
-                            carousselToSave.setAudiosPaths(carousselToSave.getAudiosPaths() + uriInLocal);
-                        }
-                    }
-                }
-
-                for (int j=0; j<prepareDownload(caroussel).get(IMAGE).size(); j++){
-
-                    String uriInLocal = downloadFile(prepareDownload(caroussel).get(IMAGE).get(j));
-                    System.out.println(" Pour j = "+j+" on a uriInLocal = "+uriInLocal);
-
-                    if (uriInLocal.length()>0){ // POURQUOI LA VALEUR TARDE À ÊTRE RETOURNÉE ?
-                        if (j != prepareDownload(caroussel).get(IMAGE).size()-1){
-                            carousselToSave.setImagesPaths(carousselToSave.getImagesPaths() + uriInLocal+";");
-                        }else {
-                            carousselToSave.setImagesPaths(carousselToSave.getImagesPaths() + uriInLocal);
-                        }
-                    }
-                }
-
-                databaseHelper.saveOneCaroussel(carousselToSave);
-            }
-        });
 
         tvDescriptionFormation = findViewById(R.id.tvDescriptionFormation);
         tvNomFormationn = findViewById(R.id.tvNomFormation);
@@ -163,13 +120,71 @@ public class DetailsFormation extends AppCompatActivity {
         //Démarer l'audio
         stopService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
         startService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
+
+        download = findViewById(R.id.download);
+
+        download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ArrayList<FileAndExtention> list, audiosList, imagesList;
+
+                list = downloadFileCaroussel(caroussel, prepareDownloadCaroussel(caroussel));
+                audiosList = new ArrayList<>();
+                imagesList = new ArrayList<>();
+
+                //LOAD AUDIO FILES AND IMAGES FILES
+                for (int i=0; i<list.size(); i++){
+                    if (list.get(i).getExtention().equals(AUDIO_FORMAT_MP3)){
+                        audiosList.add(list.get(i));
+                    }else {
+                        imagesList.add(list.get(i));
+                    }
+                }
+
+                // SET AUDIOS PATHS
+                for (int i=0; i<audiosList.size(); i++){
+                    if (i != audiosList.size()-1){
+                        carousselToSave.setAudiosPaths(carousselToSave.getAudiosPaths()+audiosList.get(i).getLocation()+";");
+                    }else {
+                        carousselToSave.setAudiosPaths(carousselToSave.getAudiosPaths()+audiosList.get(i).getLocation());
+                    }
+                }
+
+                // SET IMAGES PATHS
+                for (int i=0; i<imagesList.size(); i++){
+                    if (i != imagesList.size()-1){
+                        carousselToSave.setImagesPaths(carousselToSave.getImagesPaths()+imagesList.get(i).getLocation()+";");
+                    }else {
+                        carousselToSave.setImagesPaths(carousselToSave.getImagesPaths()+imagesList.get(i).getLocation());
+                    }
+                }
+
+                System.out.println("DOWNLOADED CAROUSSEL FILES LIST : "+list.toString());
+                System.out.println("AUDIO FILES LIST : "+audiosList.toString());
+                System.out.println("IMAGES FILES LIST : "+imagesList.toString());
+                System.out.println("CAROUSSEL TO SAVE : "+carousselToSave.toString());
+
+                //SAVE CAROUSSEL
+                databaseHelper.saveOneCaroussel(carousselToSave);
+
+            }
+        });
+
     }
 
-    public void loadCarousselImage(){
-        slideItemList = new ArrayList<>();
-        StringTokenizer stringTokenizer = new StringTokenizer(caroussel.getImagesPaths(), ";");
-        while (stringTokenizer.hasMoreTokens()){
-            slideItemList.add(stringTokenizer.nextToken());
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case PERMISSION_STORAGE_CODE:{
+                if (grantResults.length > 0 &&  grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    downloadFileCaroussel(caroussel, prepareDownloadCaroussel(caroussel));
+                }else {
+                    Toast.makeText(DetailsFormation.this, "Permission d'accès au stockage externe indispensable pour le téléchargement ...", Toast.LENGTH_LONG).show();
+                }
+            }
         }
     }
 
@@ -180,9 +195,9 @@ public class DetailsFormation extends AppCompatActivity {
         }
     };
 
-    public String downloadFile(String uri){
+    public ArrayList<FileAndExtention> downloadFileCaroussel(Caroussel mCaroussel, ArrayList<String> arrayList){
 
-        RESSOURCES_URL = uri;
+        ArrayList<FileAndExtention> fileAndExtentionArrayList = new ArrayList<>();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
 
@@ -191,20 +206,39 @@ public class DetailsFormation extends AppCompatActivity {
                 requestPermissions(permissions, PERMISSION_STORAGE_CODE);
 
             }else {
-                TYPE_RESSOURCES_LOCAL_URI = startDownloading();
+                fileAndExtentionArrayList = startDownloadingCaroussel(mCaroussel, arrayList);
             }
         }else {
-            TYPE_RESSOURCES_LOCAL_URI = startDownloading();
+            fileAndExtentionArrayList = startDownloadingCaroussel(mCaroussel, arrayList);
         }
-        return TYPE_RESSOURCES_LOCAL_URI;
+
+        //SET FILES EXTENTIONS
+        for (int i=0; i<fileAndExtentionArrayList.size(); i++){
+            if(fileAndExtentionArrayList.get(i).getLocation().contains(AUDIO_FORMAT_MP3)){
+
+                fileAndExtentionArrayList.get(i).setExtention(AUDIO_FORMAT_MP3);
+
+            }else if(fileAndExtentionArrayList.get(i).getLocation().contains(IMAGE_FORMAT_JPG)){
+
+                fileAndExtentionArrayList.get(i).setExtention(IMAGE_FORMAT_JPG);
+            }
+            else if(fileAndExtentionArrayList.get(i).getLocation().contains(IMAGE_FORMAT_JPEG)){
+
+                fileAndExtentionArrayList.get(i).setExtention(IMAGE_FORMAT_JPEG);
+            }
+            else if(fileAndExtentionArrayList.get(i).getLocation().contains(IMAGE_FORMAT_PNG)){
+
+                fileAndExtentionArrayList.get(i).setExtention(IMAGE_FORMAT_PNG);
+            }
+        }
+
+        return fileAndExtentionArrayList;
     }
 
-    public HashMap<String, ArrayList<String>> prepareDownload(Caroussel caroussel){
+    public ArrayList<String> prepareDownloadCaroussel(Caroussel caroussel){
         HashMap<String, ArrayList<String>> hashMap = new HashMap<>();
-        ArrayList<String> filesToDownloadList, audiosFilesToDownlodList, imagesFilesToDownlodList;
+        ArrayList<String> filesToDownloadList;
         filesToDownloadList  = new ArrayList<>();
-        audiosFilesToDownlodList = new ArrayList<>();
-        imagesFilesToDownlodList = new ArrayList<>();
 
         StringTokenizer carousselTokenizer;
         carousselTokenizer = new StringTokenizer(caroussel.getImagesPaths(), ";");
@@ -217,57 +251,58 @@ public class DetailsFormation extends AppCompatActivity {
         while (carousselTokenizer.hasMoreTokens()){
             filesToDownloadList.add(carousselTokenizer.nextToken());
         }
-
-        for (int i=0; i<filesToDownloadList.size(); i++){
-            if (filesToDownloadList.get(i).contains(AUDIO_FORMAT_MP3)){
-                audiosFilesToDownlodList.add(filesToDownloadList.get(i));
-            }else if (filesToDownloadList.get(i).contains(IMAGE_FORMAT_JPG) || filesToDownloadList.get(i).contains(IMAGE_FORMAT_JPEG) || filesToDownloadList.get(i).contains(IMAGE_FORMAT_PNG)){
-                imagesFilesToDownlodList.add(filesToDownloadList.get(i));
-            }
-        }
-
-        hashMap.put(AUDIO, audiosFilesToDownlodList);
-        hashMap.put(IMAGE, imagesFilesToDownlodList);
-        //System.out.println("audiosFilesToDownlodList : "+audiosFilesToDownlodList.toString());
-        //System.out.println("imagesFilesToDownlodList : "+imagesFilesToDownlodList.toString());
-        return hashMap;
+        return filesToDownloadList;
     }
 
-    private String startDownloading() {
+    private ArrayList<FileAndExtention> startDownloadingCaroussel(Caroussel mCaroussel, ArrayList<String> arrayList) {
 
-        String fileName = getFileNameFrom(RESSOURCES_URL);
-        String folder = createCarousselFolder(caroussel);
+        String folder = createCarousselFolder(mCaroussel);
+        String fileName;
+        ArrayList<FileAndExtention> localFilesLocationsList = new ArrayList<>();
 
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(RESSOURCES_URL));
-        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-        request.setTitle(caroussel.getName());
-        request.setDescription(caroussel.getDescription());
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(folder, fileName);
+        for (int i=0; i<arrayList.size(); i++){
 
-        DownloadManager manager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-        manager.enqueue(request);
+            fileName = getFileNameFrom(arrayList.get(i));
 
-        return folder+"/"+fileName;
+            localFilesLocationsList.add(new FileAndExtention(folder+"/"+fileName,""));
+
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(arrayList.get(i)));
+            request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+            request.setTitle(mCaroussel.getName());
+            request.setDescription(mCaroussel.getDescription());
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+            request.setDestinationInExternalPublicDir(folder, fileName);
+            DownloadManager manager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+            manager.enqueue(request);
+        }
+        return localFilesLocationsList;
+    }
+
+    public void loadCarousselImage(){
+        slideItemList = new ArrayList<>();
+        StringTokenizer stringTokenizer = new StringTokenizer(caroussel.getImagesPaths(), ";");
+        while (stringTokenizer.hasMoreTokens()){
+            slideItemList.add(stringTokenizer.nextToken());
+        }
     }
 
     private String getFileNameFrom(String ressources_url) {
         return ressources_url.substring(ressources_url.lastIndexOf('/') + 1);
-        //String fileName = ressources_url.substring(ressources_url.lastIndexOf('/') + 1);
-        //return fileName.substring(0, fileName.lastIndexOf('.'));
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case PERMISSION_STORAGE_CODE:{
-                if (grantResults.length > 0 &&  grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    startDownloading();
-                }else {
-                    Toast.makeText(DetailsFormation.this, "Accordez la permission pour commencer le téléchargement ...", Toast.LENGTH_LONG).show();
-                }
-            }
+    private String getFileExtention(String fileName) {
+        ArrayList<String> list = new ArrayList<>();
+        StringTokenizer stringTokenizer = new StringTokenizer(fileName, ".");
+        while (stringTokenizer.hasMoreTokens()){
+            list.add(stringTokenizer.nextToken());
         }
+        return list.get(list.size()-1);
+    }
+
+    public String getMimeType(Uri uri){
+        ContentResolver resolver = getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(resolver.getType(uri));
     }
 
     public String createCarousselFolder(Caroussel caroussel) {
@@ -283,8 +318,6 @@ public class DetailsFormation extends AppCompatActivity {
         }
         return path;
     }
-
-
 
     //https://www.quora.com/How-do-I-create-a-folder-in-internal-and-external-storage-programmatically-in-an-Android-app
 }

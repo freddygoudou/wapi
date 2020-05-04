@@ -52,4 +52,21 @@
     <string name="name_empty">Remplissez ce champ</string>
     <string name="details_formation">Détails sur formation</string>
     <string name="title_recherche">Rechercher</string>
+
+    <string-array name="langueValues">
+        <item name="langueBariba">Bariba</item>
+        <item name="langueBaili">Baili</item>
+        <item name="langueGourmantche">Gourmantché</item>
+        <item name="langueMore">Moré</item>
+        <item name="langueDjerma">Djerma</item>
+        <item name="langueHaoussa">Haoussa</item>
+    </string-array>
+
+    <string name="langueBariba">Bariba</string>
+    <string name="langueBaili">Baili</string>
+    <string name="langueGourmantche">Gourmantché</string>
+    <string name="langueMore">Moré</string>
+    <string name="langueDjerma">Djerma</string>
+    <string name="langueHaoussa">Haoussa</string>
+    <string name="choisirLangue">Choisissez une langue  ...</string>
 </resources>

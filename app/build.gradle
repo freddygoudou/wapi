@@ -91,6 +91,10 @@ dependencies {
 
     //Carrousel
     implementation 'com.synnapps:carouselview:0.1.5'
+
+    //Zip Unzip Library
+    //implementation 'com.github.ghost1372:Mzip-Android:0.4.0'
+
     //RxAndroid
     //def rxandroid_version = "3.0.0"
     //implementation "io.reactivex.rxjava3:rxandroid:$rxandroid_version"

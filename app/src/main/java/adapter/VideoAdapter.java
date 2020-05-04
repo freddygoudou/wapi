@@ -2,6 +2,7 @@ package adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -28,12 +30,12 @@ public class VideoAdapter extends RecyclerView.Adapter <VideoAdapter.VideoViewHo
 
     private Context mContext;
     private ArrayList<Video> mData;
-    FragmentActivity fragmentActivity;
+    private boolean connexionState;
 
-    public VideoAdapter(FragmentActivity fragmentActivity, Context mContext, ArrayList<Video> mData) {
+    public VideoAdapter(Context mContext, ArrayList<Video> mData, boolean connexionState) {
         this.mContext = mContext;
         this.mData = mData;
-        this.fragmentActivity = fragmentActivity;
+        this.connexionState = connexionState;
     }
 
 
@@ -51,7 +53,13 @@ public class VideoAdapter extends RecyclerView.Adapter <VideoAdapter.VideoViewHo
         holder.ll_one_video.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_scale_animation));
         holder.tv_title.setText(mData.get(position).getName());
         holder.tv_description.setText(mData.get(position).getDescription());
-        Picasso.get().load(mData.get(position).getCaptionPath()).into(holder.iv_video);
+
+        if (this.connexionState){
+            Picasso.get().load(mData.get(position).getCaptionPath()).into(holder.iv_video);
+        }else {
+            File file = new File(Environment.getExternalStorageDirectory(),mData.get(position).getCaptionPath());
+            Picasso.get().load(file).into(holder.iv_video);
+        }
 
         holder.ll_one_video.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,7 +1,12 @@
 package bj.app.wapi.ui.main;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
@@ -20,17 +26,21 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.compte.CompteActivity;
+import bj.app.wapi.ui.formation.DetailsFormation;
 import bj.app.wapi.ui.formation.sousFragment.CarousselBackgroundAudioService;
 import bj.app.wapi.ui.login.LoginActivity;
 import bj.app.wapi.ui.splash.SplashActivity;
 import bj.app.wapi.ui.wapi.Wapi;
 import database.DatabaseHelper;
 import entity.Ressource;
+import entity.User;
 import storage.SharedPrefManager;
 
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
+    public static final int PERMISSION_STORAGE_CODE = 1000;
+    boolean result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
             navController.navigate(R.id.navigation_annonce);
         }
 
+        System.out.println("EXTERNAL DIRECTORY STORAGE IS : "+ Environment.getExternalStorageDirectory());
+        System.out.println("ROOT DIRECTORY STORAGE  IS : "+ Environment.getRootDirectory());
+        System.out.println("DATA DIRECTORY STORAGE  IS : "+ Environment.getDataDirectory());
+        System.out.println("DOWNLOAD CACHE DIRECTORY STORAGE  IS : "+ Environment.getDownloadCacheDirectory());
+        System.out.println("DIRECTORY_DOWNLOADS STORAGE  IS : "+ Environment.DIRECTORY_DOWNLOADS);
         DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
         //databaseHelper.saveOneRessource(new Ressource("the path", "the name", "the type", "the formation", "firstImagePath"));
 
@@ -144,6 +159,99 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, LoginActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
         finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        requestForpermission();
+
+        System.out.println("USER IS  : "+SharedPrefManager.getmInstance(MainActivity.this).getUser().toString());
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        requestForpermission();
+    }
+
+    public void requestForpermission(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permissions, PERMISSION_STORAGE_CODE);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case PERMISSION_STORAGE_CODE:{
+                if (grantResults.length > 0 &&  grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+                }else {
+                    Toast.makeText(MainActivity.this, "Permission d'accès au stockage externe insdipensable pour la suite ! ...", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    }
+
+    public boolean choisirLangue(){
+
+        if (SharedPrefManager.getmInstance(MainActivity.this).getUser().getLangue() == null){
+            User user = SharedPrefManager.getmInstance(MainActivity.this).getUser();
+            AlertDialog.Builder builder;
+            builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Selectionnez une lague que vous comprenez ...");
+            CharSequence options [] = new CharSequence[]{
+                    getResources().getString(R.string.langueBariba),
+                    getResources().getString(R.string.langueBaili),
+                    getResources().getString(R.string.langueGourmantche),
+                    getResources().getString(R.string.langueMore),
+                    getResources().getString(R.string.langueDjerma),
+                    getResources().getString(R.string.langueHaoussa)};
+            builder.setItems(options, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    if (i == 0){
+                        user.setLangue(getResources().getString(R.string.langueBariba));
+                        SharedPrefManager.getmInstance(MainActivity.this).clear();
+                        SharedPrefManager.getmInstance(MainActivity.this).saveUser(user);
+                    }else if (i == 1){
+                        user.setLangue(getResources().getString(R.string.langueBaili));
+                        SharedPrefManager.getmInstance(MainActivity.this).clear();
+                        SharedPrefManager.getmInstance(MainActivity.this).saveUser(user);
+                    }else if (i == 2){
+                        user.setLangue(getResources().getString(R.string.langueGourmantche));
+                        SharedPrefManager.getmInstance(MainActivity.this).clear();
+                        SharedPrefManager.getmInstance(MainActivity.this).saveUser(user);
+                    }else if (i == 3){
+                        user.setLangue(getResources().getString(R.string.langueMore));
+                        SharedPrefManager.getmInstance(MainActivity.this).clear();
+                        SharedPrefManager.getmInstance(MainActivity.this).saveUser(user);
+                    }else if (i == 4){
+                        user.setLangue(getResources().getString(R.string.langueDjerma));
+                        SharedPrefManager.getmInstance(MainActivity.this).clear();
+                        SharedPrefManager.getmInstance(MainActivity.this).saveUser(user);
+                    }else if (i == 5){
+                        user.setLangue(getResources().getString(R.string.langueHaoussa));
+                        SharedPrefManager.getmInstance(MainActivity.this).clear();
+                        SharedPrefManager.getmInstance(MainActivity.this).saveUser(user);
+                    }
+                    result = false;
+                }
+            });
+            builder.create().show();
+        }else {
+            Toast.makeText(this, "Sa langue est : "+SharedPrefManager.getmInstance(this).getUser().getLangue(), Toast.LENGTH_LONG).show();
+            result = true;
+        }
+
+        return result;
     }
 
 

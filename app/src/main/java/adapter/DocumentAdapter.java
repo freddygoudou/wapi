@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import com.google.firebase.database.collection.LLRBNode;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -33,11 +35,12 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
 
     private Context mContext;
     private ArrayList<Caroussel> mData;
-
+    private boolean connexionState;
     View view;
-    public DocumentAdapter(Context mContext, ArrayList<Caroussel> mData) {
+    public DocumentAdapter(Context mContext, ArrayList<Caroussel> mData, boolean connexionState) {
         this.mContext = mContext;
         this.mData = mData;
+        this.connexionState = connexionState;
     }
 
 
@@ -56,7 +59,14 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         holder.tv_title.setText(mData.get(position).getName());
         holder.tv_description.setText(mData.get(position).getDescription());
         holder.btn_telecharger_ouvrir.setImageResource(R.drawable.ic_file_download_black_24dp);
-        Picasso.get().load(firstImage(mData.get(position).getImagesPaths())).into(holder.iv_produit);
+
+        if (this.connexionState){
+            Picasso.get().load(firstImage(mData.get(position).getImagesPaths())).into(holder.iv_produit);
+        }else {
+            File file = new File("/storage/self/primary/"+firstImage(mData.get(position).getImagesPaths())); //firstImage(mData.get(position).getImagesPaths())
+            Picasso.get().load(file).into(holder.iv_produit);
+        }
+
         holder.btn_telecharger_ouvrir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +75,6 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
                 //holder.btn_telecharger_ouvrir.setBackgroundColor(R.color.colorRed);
             }
         });
-
         holder.ll_one_document.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

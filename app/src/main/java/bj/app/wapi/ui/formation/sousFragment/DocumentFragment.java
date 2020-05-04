@@ -63,9 +63,13 @@ public class DocumentFragment extends Fragment {
     DatabaseHelper databaseHelper;
     ArrayList<Caroussel> ressourceArrayList = new ArrayList<>();
 
+    //https://upload.wikimedia.org/wikipedia/commons/2/2d/Snake_River_%285mb%29.jpg
+    //String test1="https://firebasestorage.googleapis.com/v0/b/wegoofirebase.appspot.com/o/images%2Fuser_profile%2FG8OOdW2PsffLjNuJ0iXGnywr2v43.jpg?alt=media&token=00339afd-4b57-4a5e-8e7c-5562b4ee68dd";
+    //String text2="https://firebasestorage.googleapis.com/v0/b/wegoofirebase.appspot.com/o/images%2Fuser_profile%2F1obC08IjG7dj9SqPa8QNYBvGRek2.jpg?alt=media&token=5de96950-83a3-4c71-821f-6110f58a3875";
 
-    String test1="https://firebasestorage.googleapis.com/v0/b/wegoofirebase.appspot.com/o/images%2Fuser_profile%2FG8OOdW2PsffLjNuJ0iXGnywr2v43.jpg?alt=media&token=00339afd-4b57-4a5e-8e7c-5562b4ee68dd";
-    String text2="https://firebasestorage.googleapis.com/v0/b/wegoofirebase.appspot.com/o/images%2Fuser_profile%2F1obC08IjG7dj9SqPa8QNYBvGRek2.jpg?alt=media&token=5de96950-83a3-4c71-821f-6110f58a3875";
+    String test1="https://upload.wikimedia.org/wikipedia/commons/2/2d/Snake_River_%285mb%29.jpg";
+    String text2="https://upload.wikimedia.org/wikipedia/commons/2/2d/Snake_River_%285mb%29.jpg";
+
 
     public DocumentFragment() {
         // Required empty public constructor
@@ -142,6 +146,9 @@ public class DocumentFragment extends Fragment {
             mData.add(new Document("CAROTTE", "Le meilleur d Afrique", R.drawable.wapipoudrefeuillebaobnab));
             mData.add(new Document("SOJA", "Le meilleur d Afrique", R.drawable.wapihuilebaobab));
 
+            adapter = new DocumentAdapter(DocumentFragment.this.getContext(), ressourceArrayList, true);
+            adapter.notifyDataSetChanged();
+
         }else {
             Toast.makeText(getActivity(),"NOT CONNECTED ..... ", Toast.LENGTH_LONG).show();
 
@@ -161,9 +168,10 @@ public class DocumentFragment extends Fragment {
             mData.add(new Document("PIMENT", "Le meilleur d Afrique", R.drawable.wapihuilebaobab));
             mData.add(new Document("CAROTTE", "Le meilleur d Afrique", R.drawable.wapipoudrefeuillebaobnab));
             mData.add(new Document("SOJA", "Le meilleur d Afrique", R.drawable.wapihuilebaobab));
+
+            adapter = new DocumentAdapter(DocumentFragment.this.getContext(), ressourceArrayList, false);
+            adapter.notifyDataSetChanged();
         }
         System.out.println("C LIST IS : "+ressourceArrayList.toString());
-        adapter = new DocumentAdapter(DocumentFragment.this.getContext(), ressourceArrayList);
-        adapter.notifyDataSetChanged();
     }
 }

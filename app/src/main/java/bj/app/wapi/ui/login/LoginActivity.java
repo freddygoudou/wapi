@@ -5,13 +5,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.confirmCode.ConfirmCodeActivity;
+import bj.app.wapi.ui.formation.DetailsFormation;
 import bj.app.wapi.ui.main.MainActivity;
 import bj.app.wapi.ui.registerUserForm.RegisterUserFormActivity;
 import bj.app.wapi.ui.splash.SplashActivity;
 import entity.User;
 import storage.SharedPrefManager;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -57,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,13 +77,6 @@ public class LoginActivity extends AppCompatActivity {
 
         ccp = findViewById(R.id.ccp);
         phoneNumberTIL = findViewById(R.id.tILPhoneNumber);
-        //nameTIL = findViewById(R.id.nameTIL);
-
-        //CACHER CE CHAMPS EN FONCTION DU FAIT QUI EST UTILISATEUR DEJÀ INSCRIT OU PAS
-        /*if (!SharedPrefManager.getmInstance(LoginActivity.this).getUser().getId().equals("NO_FOUND")){
-            nameTIL.setVisibility(View.INVISIBLE);
-        }*/
-
 
         btnConnexion = findViewById(R.id.btnConnexion);
         btnConnexion.setOnClickListener(new View.OnClickListener() {
@@ -166,14 +164,14 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
+                            Toast.makeText(LoginActivity.this, "LOGIN OK NOW", Toast.LENGTH_LONG).show();
+
                             //startActivity(new Intent(LoginActivity.this, ConfirmCodeActivity.class));
 
-                            /*User user = new User(mAuth.getCurrentUser().getUid(),"", completePhoneNumber);
-                            SharedPrefManager.getmInstance(LoginActivity.this)
-                                    .saveUser(new User(mAuth.getCurrentUser().getUid(),
-                                            SharedPrefManager.getmInstance(LoginActivity.this).getUser().getName()
-                                            , completePhoneNumber));
-*/
+                            User user = new User(mAuth.getCurrentUser().getUid(),null, completePhoneNumber,null);
+
+                            SharedPrefManager.getmInstance(LoginActivity.this).saveUser(user);
+
                             /*if (!SharedPrefManager.getmInstance(LoginActivity.this).getUser().getId().equals("")){
 
                                 User user = new User(mAuth.getCurrentUser().getUid(),"", completePhoneNumber);
@@ -191,7 +189,7 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                    //Toast.makeText(LoginActivity.this, "PHONE DATASNAPSHOT .. "+ dataSnapshot, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LoginActivity.this, "PHONE DATASNAPSHOT .. "+ dataSnapshot, Toast.LENGTH_LONG).show();
 
                                     System.out.println("PHONE DATASNAPSHOT .. "+ dataSnapshot);
 
@@ -209,10 +207,10 @@ public class LoginActivity extends AppCompatActivity {
 
                                         String phone = dataSnapshot.getValue().toString();
 
-                                        //Toast.makeText(LoginActivity.this, "PONE EXIST .. "+ phone, Toast.LENGTH_LONG).show();
+                                        Toast.makeText(LoginActivity.this, "PONE EXIST .. "+ phone, Toast.LENGTH_LONG).show();
                                         if(phone.equals(completePhoneNumber)){
 
-                                            //Toast.makeText(LoginActivity.this, "MAIN .. "+ mAuth.getCurrentUser().getUid(), Toast.LENGTH_LONG).show();
+                                            Toast.makeText(LoginActivity.this, "MAIN .. "+ mAuth.getCurrentUser().getUid(), Toast.LENGTH_LONG).show();
 
                                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                         }
@@ -235,5 +233,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
 
 }

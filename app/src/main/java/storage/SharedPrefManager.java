@@ -31,6 +31,7 @@ public class SharedPrefManager {
         editor.putString("id",user.getId());
         editor.putString("name",user.getName());
         editor.putString("phoneNumber",user.getPhoneNumber());
+        editor.putString("langue",user.getLangue());
         editor.apply();
     }
 
@@ -51,7 +52,8 @@ public class SharedPrefManager {
         user = new User(
                 sharedPreferences.getString("id","NO_FOUND"),
                 sharedPreferences.getString("name", null),
-                sharedPreferences.getString("phoneNumber", null)
+                sharedPreferences.getString("phoneNumber", null),
+                sharedPreferences.getString("langue", null)
         );
         return user;
     }

@@ -6,7 +6,7 @@ import bj.app.wapi.R;
 import bj.app.wapi.ui.formation.DetailsFormation;
 import bj.app.wapi.ui.main.MainActivity;
 import database.DatabaseHelper;
-import entity.Caroussel;
+import entity.FileAndExtention;
 import entity.Video;
 import entity.Videooo;
 
@@ -45,25 +45,25 @@ import com.google.android.exoplayer2.util.Util;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
+
 
 public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
 
+    public static final String VIDEO_FORMAT_MP4 = ".mp4";
+    public static final String IMAGE_FORMAT_PNG = ".png";
+    public static final String IMAGE_FORMAT_JPG = ".jpg";
+    public static final String IMAGE_FORMAT_JPEG = ".jpeg";
+    public static final int PERMISSION_STORAGE_CODE = 1000;
+
     Video video, videoToSave;
-    VideoView videoView;
-    ProgressDialog dialog;
-    SimpleExoPlayerView exoPlayerView;
     PlayerView playerView;
     SimpleExoPlayer exoPlayer;
     Button download;
     DatabaseHelper databaseHelper;
-    public String RESSOURCES_URL = "", TYPE_RESSOURCES_LOCAL_URI = "";
-    public static final String VIDEO_FORMAT_MP4 = "mp4";
-    public static final String IMAGE_FORMAT_PNG = "png";
-    public static final String IMAGE_FORMAT_JPG = "jpg";
-    public static final String IMAGE_FORMAT_JPEG = "jpeg";
-
-    public static final int PERMISSION_STORAGE_CODE = 1000;
+    ArrayList<FileAndExtention> list, videosList;
+    String imageLocalPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,27 +86,60 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
             @Override
             public void onClick(View view) {
 
-                videoToSave.setCaptionPath(downloadFile(video.getCaptionPath()));
+                videosList = new ArrayList<>();
 
-                for (int i=0; i<prepareDownload(video).size(); i++){
+                list = downloadFileVideo(video, prepareDownloadVideo(video));
 
-                    String uriInLocal = "";
-
-                    uriInLocal = downloadFile(prepareDownload(video).get(i));
-
-                    if (prepareDownload(video).get(i).contains(VIDEO_FORMAT_MP4)){
-                        if (i != prepareDownload(video).size()-1){
-                            videoToSave.setVideosPaths(videoToSave.getVideosPaths() + uriInLocal+";");
-                        }else {
-                            videoToSave.setVideosPaths(videoToSave.getVideosPaths() + uriInLocal);
-                        }
+                //LOAD AUDIO FILES AND IMAGES FILES
+                for (int i=0; i<list.size(); i++){
+                    if (list.get(i).getExtention().equals(VIDEO_FORMAT_MP4)){
+                        videosList.add(list.get(i));
+                    }else {
+                        imageLocalPath = list.get(i).getLocation();
                     }
                 }
+
+                //SET IMAGE CAPTION FOR VIDEO TO SAVE
+                videoToSave.setCaptionPath(imageLocalPath);
+
+                // SET VIDEO PATHS FOR IMAGE TO SAVE
+                for (int i=0; i<videosList.size(); i++){
+                    if (i != videosList.size()-1){
+                        videoToSave.setVideosPaths(videoToSave.getVideosPaths()+videosList.get(i).getLocation()+";");
+                    }else {
+                        videoToSave.setVideosPaths(videoToSave.getVideosPaths()+videosList.get(i).getLocation());
+                    }
+                }
+
+                System.out.println("DOWNLOADED ALL FILES LIST : "+list.toString());
+                System.out.println("DOWNLOADED VIDEO FILES LIST : "+videosList.toString());
+                System.out.println("DOWNLOADED CAPTION FILES  : "+imageLocalPath);
+                System.out.println("VIDEO TO SAVE INFO : "+videoToSave.toString());
+
                 databaseHelper.saveOneVideo(videoToSave);
 
             }
         });
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        exoPlayer.release();
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case PERMISSION_STORAGE_CODE:{
+                if (grantResults.length > 0 &&  grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    downloadFileVideo(video, prepareDownloadVideo(video));
+                }else {
+                    Toast.makeText(VideoPlayerActivity.this, "Permission d'accès au stockage externe indispensable pour le téléchargement ...", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    }
+
 
     private void initExoPlayer(Video video) {
 
@@ -117,34 +150,9 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
                 Util.getUserAgent(this,"wapi_video_playing"));
 
         MediaSource mediaSource = new ExtractorMediaSource.Factory(dataSourceFactory)
-                .createMediaSource(Uri.parse(prepareDownload(video).get(0)));
+                .createMediaSource(Uri.parse(prepareDownload(video).get(0))); //GET(i) en fonction de la langue
         exoPlayer.prepare(mediaSource);
         exoPlayer.setPlayWhenReady(true);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        exoPlayer.release();
-    }
-
-    public String downloadFile(String uri){
-
-        RESSOURCES_URL = uri;
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-
-            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                requestPermissions(permissions, PERMISSION_STORAGE_CODE);
-
-            }else {
-                TYPE_RESSOURCES_LOCAL_URI = startDownloading();
-            }
-        }else {
-            TYPE_RESSOURCES_LOCAL_URI = startDownloading();
-        }
-        return TYPE_RESSOURCES_LOCAL_URI;
     }
 
     public ArrayList<String> prepareDownload(Video video){
@@ -159,39 +167,91 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
         return filesToDownloadList;
     }
 
-    private String startDownloading() {
-
-        String fileName = getFileNameFrom(RESSOURCES_URL);
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(RESSOURCES_URL));
-        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-        request.setTitle("Download");
-        request.setDescription("Downloading file ....");
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(createVideoFolder(video), fileName);
-
-        DownloadManager manager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-        manager.enqueue(request);
-
-        return createVideoFolder(video)+"/"+fileName;
-    }
-
     private String getFileNameFrom(String ressources_url) {
         return ressources_url.substring(ressources_url.lastIndexOf('/') + 1);
         //String fileName = ressources_url.substring(ressources_url.lastIndexOf('/') + 1);
         //return fileName.substring(0, fileName.lastIndexOf('.'));
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case PERMISSION_STORAGE_CODE:{
-                if (grantResults.length > 0 &&  grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    startDownloading();
-                }else {
-                    Toast.makeText(VideoPlayerActivity.this, "Accordez la permission pour commencer le téléchargement ...", Toast.LENGTH_LONG).show();
-                }
+    public ArrayList<FileAndExtention> downloadFileVideo(Video mVideo, ArrayList<String> arrayList){
+
+        ArrayList<FileAndExtention> fileAndExtentionArrayList = new ArrayList<>();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permissions, PERMISSION_STORAGE_CODE);
+
+            }else {
+                fileAndExtentionArrayList = startDownloadingVideo(mVideo, arrayList);
+            }
+        }else {
+            fileAndExtentionArrayList = startDownloadingVideo(mVideo, arrayList);
+        }
+
+        //SET FILES EXTENTIONS
+        for (int i=0; i<fileAndExtentionArrayList.size(); i++){
+            if(fileAndExtentionArrayList.get(i).getLocation().contains(VIDEO_FORMAT_MP4)){
+
+                fileAndExtentionArrayList.get(i).setExtention(VIDEO_FORMAT_MP4);
+
+            }else if(fileAndExtentionArrayList.get(i).getLocation().contains(IMAGE_FORMAT_JPG)){
+
+                fileAndExtentionArrayList.get(i).setExtention(IMAGE_FORMAT_JPG);
+            }
+            else if(fileAndExtentionArrayList.get(i).getLocation().contains(IMAGE_FORMAT_JPEG)){
+
+                fileAndExtentionArrayList.get(i).setExtention(IMAGE_FORMAT_JPEG);
+            }
+            else if(fileAndExtentionArrayList.get(i).getLocation().contains(IMAGE_FORMAT_PNG)){
+
+                fileAndExtentionArrayList.get(i).setExtention(IMAGE_FORMAT_PNG);
             }
         }
+
+        return fileAndExtentionArrayList;
+    }
+
+    public ArrayList<String> prepareDownloadVideo(Video video){
+        ArrayList<String> filesToDownloadList;
+        filesToDownloadList  = new ArrayList<>();
+
+        StringTokenizer videoTokenizer;
+        videoTokenizer = new StringTokenizer(video.getVideosPaths(), ";");
+
+        while (videoTokenizer.hasMoreTokens()){
+            filesToDownloadList.add(videoTokenizer.nextToken());
+        }
+
+        //AJOUTER CAPTION FILES À LA LISTE DE TÉLÉCHARGEMENT
+        filesToDownloadList.add(video.getCaptionPath());
+
+        return filesToDownloadList;
+    }
+
+    private ArrayList<FileAndExtention> startDownloadingVideo(Video mVideo, ArrayList<String> arrayList) {
+
+        String folder = createVideoFolder(mVideo);
+        String fileName;
+        ArrayList<FileAndExtention> localFilesLocationsList = new ArrayList<>();
+
+        for (int i=0; i<arrayList.size(); i++){
+
+            fileName = getFileNameFrom(arrayList.get(i));
+
+            localFilesLocationsList.add(new FileAndExtention(folder+"/"+fileName,""));
+
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(arrayList.get(i)));
+            request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+            request.setTitle(mVideo.getName());
+            request.setDescription(mVideo.getDescription());
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+            request.setDestinationInExternalPublicDir(folder, fileName);
+            DownloadManager manager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+            manager.enqueue(request);
+        }
+        return localFilesLocationsList;
     }
 
     public String createVideoFolder(Video video) {
@@ -207,5 +267,4 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
         }
         return path;
     }
-
 }
