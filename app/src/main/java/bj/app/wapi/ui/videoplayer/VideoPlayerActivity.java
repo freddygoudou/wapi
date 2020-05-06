@@ -64,19 +64,21 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
     DatabaseHelper databaseHelper;
     ArrayList<FileAndExtention> list, videosList;
     String imageLocalPath;
+    boolean connexionState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_player);
 
-        databaseHelper = new DatabaseHelper(this);
+        /*databaseHelper = new DatabaseHelper(this);
 
-        System.out.println("DB VIDEO  "+databaseHelper.getAllVideos());
+        System.out.println("DB VIDEO  "+databaseHelper.getAllVideos());*/
 
-        if(getIntent().hasExtra("video")){
+        if(getIntent().hasExtra("video") && getIntent().hasExtra("connexionState")){
             video = getIntent().getParcelableExtra("video");
             videoToSave = new Video(video.getName(),"",video.getDescription(),"");
+            connexionState = getIntent().getBooleanExtra("connexionState", true);
             initExoPlayer(video);
         }
 
@@ -143,6 +145,15 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
 
     private void initExoPlayer(Video video) {
 
+        Uri uri = null;
+        if (connexionState){
+            uri = Uri.parse(prepareDownload(video).get(0));
+        }else {
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), ajustFilePath(firstVideo(video.getVideosPaths())));
+            uri = Uri.fromFile(file);
+        }
+
+
         playerView = findViewById(R.id.exoplayerView);
         exoPlayer = ExoPlayerFactory.newSimpleInstance(this);
         playerView.setPlayer(exoPlayer);
@@ -150,7 +161,7 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
                 Util.getUserAgent(this,"wapi_video_playing"));
 
         MediaSource mediaSource = new ExtractorMediaSource.Factory(dataSourceFactory)
-                .createMediaSource(Uri.parse(prepareDownload(video).get(0))); //GET(i) en fonction de la langue
+                .createMediaSource(uri); //GET(i) en fonction de la langue
         exoPlayer.prepare(mediaSource);
         exoPlayer.setPlayWhenReady(true);
     }
@@ -267,4 +278,14 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
         }
         return path;
     }
+
+    public String ajustFilePath(String path){
+        return path.substring(8); //Download
+    }
+
+    private String firstVideo(String concatedLinks){
+        StringTokenizer stringTokenizer = new StringTokenizer(concatedLinks, ";");
+        return stringTokenizer.nextToken();
+    }
+
 }

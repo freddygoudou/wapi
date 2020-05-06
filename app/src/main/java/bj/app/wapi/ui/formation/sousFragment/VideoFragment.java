@@ -38,8 +38,12 @@ public class VideoFragment extends Fragment {
     //String test1="https://firebasestorage.googleapis.com/v0/b/wegoofirebase.appspot.com/o/images%2Fuser_profile%2FG8OOdW2PsffLjNuJ0iXGnywr2v43.jpg?alt=media&token=00339afd-4b57-4a5e-8e7c-5562b4ee68dd";
     //String text2="https://firebasestorage.googleapis.com/v0/b/wegoofirebase.appspot.com/o/images%2Fuser_profile%2F1obC08IjG7dj9SqPa8QNYBvGRek2.jpg?alt=media&token=5de96950-83a3-4c71-821f-6110f58a3875";
 
-    String test1="https://upload.wikimedia.org/wikipedia/commons/2/2d/Snake_River_%285mb%29.jpg";
-    String text2="https://upload.wikimedia.org/wikipedia/commons/2/2d/Snake_River_%285mb%29.jpg";
+    //String test1="https://i.postimg.cc/qMwgc348/Logo.png";
+    //String text2="https://upload.wikimedia.org/wikipedia/commons/2/2d/Snake_River_%285mb%29.jpg";
+
+    String test1="https://i.postimg.cc/qMwgc348/Logo.png";
+    String text2="https://cdn.pixabay.com/photo/2017/11/06/18/39/apple-2924531_960_720.jpg";
+
     String test4 ="https://www.radiantmediaplayer.com/media/bbb-360p.mp4";
 
     public VideoFragment() {
@@ -63,7 +67,6 @@ public class VideoFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        loadVideos();
     }
 
 
@@ -86,39 +89,41 @@ public class VideoFragment extends Fragment {
     }
 
     public void loadVideos(){
-        databaseHelper = new DatabaseHelper(getActivity());
+
+        ressourceArrayList = new ArrayList<>();
 
         if (isNetworkConnected()){
             Toast.makeText(getActivity(),"CONNECTED ..... ", Toast.LENGTH_LONG).show();
             //GET FROM API
-            mData = new ArrayList<>();
+            /*mData = new ArrayList<>();
             mData.add(new Videooo("CAJOUX", "Le meilleur d Afrique", "image url", test4));
             mData.add(new Videooo("RIZ", "Le meilleur d Afrique", "image url", test4));  //android.resource://" + "bj.app.wapi/" + R.raw.ecole : FOR LOCAL VIDEO
             mData.add(new Videooo("TOMATE", "Le meilleur d Afrique", "image url", test4));
             mData.add(new Videooo("PIMENT", "Le meilleur d Afrique", "image url", test4));
             mData.add(new Videooo("CAROTTE", "Le meilleur d Afrique", "image url", test4));
-            mData.add(new Videooo("SOJA", "Le meilleur d Afrique", "image url", test4));
-
-            ressourceArrayList.add(new Video(1,"CAJOUX", test4,"Le meilleur d Afrique", test1));
+            mData.add(new Videooo("SOJA", "Le meilleur d Afrique", "image url", test4));*/
+            ressourceArrayList.add(new Video(1,"CAJOUX", "","Le meilleur d Afrique", text2));
             ressourceArrayList.add(new Video(1,"RIZ", test4,"Le meilleur d Afrique", text2));
-            ressourceArrayList.add(new Video(1,"TOMATE", test4,"Le meilleur d Afrique", test1));
+            ressourceArrayList.add(new Video(1,"TOMATE", test4,"Le meilleur d Afrique", text2));
             ressourceArrayList.add(new Video(1,"PIMENT", test4,"Le meilleur d Afrique", text2));
-            ressourceArrayList.add(new Video(1,"CAROTTE", test4,"Le meilleur d Afrique", test1));
+            ressourceArrayList.add(new Video(1,"CAROTTE", test4,"Le meilleur d Afrique", text2));
             ressourceArrayList.add(new Video(1,"SOJA", test4,"Le meilleur d Afrique", text2));
 
             adapter = new VideoAdapter(VideoFragment.this.getContext(), ressourceArrayList, true);
             adapter.notifyDataSetChanged();
         }else {
+
+            databaseHelper = new DatabaseHelper(getActivity());
+
             Toast.makeText(getActivity(),"NOT CONNECTED ..... ", Toast.LENGTH_LONG).show();
             //GET FROM LOCAL DB
-            mData = new ArrayList<>();
+            /*mData = new ArrayList<>();
             mData.add(new Videooo("CAJOUX", "Le meilleur d Afrique", "image url", test4));
             mData.add(new Videooo("RIZ", "Le meilleur d Afrique", "image url", test4));  //android.resource://" + "bj.app.wapi/" + R.raw.ecole : FOR LOCAL VIDEO
             mData.add(new Videooo("TOMATE", "Le meilleur d Afrique", "image url", test4));
             mData.add(new Videooo("PIMENT", "Le meilleur d Afrique", "image url", test4));
             mData.add(new Videooo("CAROTTE", "Le meilleur d Afrique", "image url", test4));
-            mData.add(new Videooo("SOJA", "Le meilleur d Afrique", "image url", test4));
-
+            mData.add(new Videooo("SOJA", "Le meilleur d Afrique", "image url", test4));*/
             ressourceArrayList = databaseHelper.getAllVideos();
 
             /*ressourceArrayList.add(new Video(1,"CAJOUX", "https://www.radiantmediaplayer.com/media/bbb-360p.mp4;https://www.radiantmediaplayer.com/media/bbb-360p.mp4","Le meilleur d Afrique", test1));

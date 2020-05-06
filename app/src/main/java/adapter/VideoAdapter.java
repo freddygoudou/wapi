@@ -57,7 +57,7 @@ public class VideoAdapter extends RecyclerView.Adapter <VideoAdapter.VideoViewHo
         if (this.connexionState){
             Picasso.get().load(mData.get(position).getCaptionPath()).into(holder.iv_video);
         }else {
-            File file = new File(Environment.getExternalStorageDirectory(),mData.get(position).getCaptionPath());
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsoluteFile(),ajustFilePath(mData.get(position).getCaptionPath()));
             Picasso.get().load(file).into(holder.iv_video);
         }
 
@@ -67,7 +67,8 @@ public class VideoAdapter extends RecyclerView.Adapter <VideoAdapter.VideoViewHo
 
                 Toast.makeText(mContext, mData.get(position).getName()+"/"+mData.get(position).getDescription()+"/"+mData.get(position).getCaptionPath()+"/"+mData.get(position).getVideosPaths(), Toast.LENGTH_LONG).show();
                 mContext.startActivity(new Intent(mContext, VideoPlayerActivity.class)
-                        .putExtra("video", mData.get(position)));
+                        .putExtra("video", mData.get(position))
+                        .putExtra("connexionState", connexionState));
             }
         });
         
@@ -95,6 +96,10 @@ public class VideoAdapter extends RecyclerView.Adapter <VideoAdapter.VideoViewHo
     private String firstVideo(String concatedLinks){
         StringTokenizer stringTokenizer = new StringTokenizer(concatedLinks, ";");
         return stringTokenizer.nextToken();
+    }
+
+    public String ajustFilePath(String path){
+        return path.substring(8); //Download
     }
 
 

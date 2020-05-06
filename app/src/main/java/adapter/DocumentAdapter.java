@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.icu.text.SymbolTable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -15,9 +17,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.database.collection.LLRBNode;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -47,7 +46,6 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
     @NonNull
     @Override
     public DocumentViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
         view = LayoutInflater.from(mContext).inflate(R.layout.item_document, viewGroup, false);
         return new DocumentAdapter.DocumentViewHolder(view);
     }
@@ -63,7 +61,7 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         if (this.connexionState){
             Picasso.get().load(firstImage(mData.get(position).getImagesPaths())).into(holder.iv_produit);
         }else {
-            File file = new File("/storage/self/primary/"+firstImage(mData.get(position).getImagesPaths())); //firstImage(mData.get(position).getImagesPaths())
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsoluteFile(),ajustFilePath(firstImage(mData.get(position).getImagesPaths())));
             Picasso.get().load(file).into(holder.iv_produit);
         }
 
@@ -80,11 +78,17 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
             public void onClick(View view) {
 
                 mContext.startActivity(new Intent(mContext, DetailsFormation.class)
-                    .putExtra("caroussel", mData.get(position)));
+                    .putExtra("caroussel", mData.get(position))
+                        .putExtra("connexionState", connexionState));
                 //Toast.makeText(mContext, mData.get(position).getName()+"/"+mData.get(position).getDescription()+"/"+mData.get(position).getImagesPaths(), Toast.LENGTH_LONG).show();
             }
         });
         
+    }
+
+    @Override
+    public int getItemCount() {
+        return mData.size();
     }
 
     private String firstImage(String concatedLinks){
@@ -92,9 +96,8 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         return stringTokenizer.nextToken();
     }
 
-    @Override
-    public int getItemCount() {
-        return mData.size();
+    public String ajustFilePath(String path){
+        return path.substring(8); //Download
     }
 
     public class DocumentViewHolder extends RecyclerView.ViewHolder {
@@ -112,6 +115,110 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
             ll_one_document = itemView.findViewById(R.id.ll_one_document);
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public ArrayList<String> getFilesPathBySubFiles(String path){
+        ArrayList<String> list = new ArrayList<>();
+        String newPath = path.substring(9);
+        StringTokenizer stringTokenizer = new StringTokenizer(newPath, "/");
+        while (stringTokenizer.hasMoreTokens()){
+            list.add(stringTokenizer.nextToken());
+        }
+        list.remove(list.size()-1);
+        return list;
+    }
+
+    public String getDownloadedFile(String fileName){
+        File fileToReturn = null;
+        File[] files = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).listFiles();
+        for (File file : files){
+            if (file.isDirectory()){
+                files = file.listFiles();
+            }else {
+                if (file.getName().equals(fileName)){
+                    fileToReturn = file;
+                }
+            }
+        }
+        return fileToReturn.getName();
+    }
+
+    public File getDownloadedFile(ArrayList<String> list, File files){
+
+        File fileToReturn = null;
+        //File files = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsoluteFile();
+
+        for (File file : files.listFiles()){
+            for (int i=0; i<list.size(); i++){
+                if (file.getName().equals(list.get(i))){
+                    /*System.out.println("YOUR REAL FOLDER IS :"+file.getName());
+                    for(File f: file.listFiles()){
+                        System.out.println("CHILDREN:"+f.getName());
+                    }*/
+                    if(file.listFiles() != null)
+                        System.out.println("YOUR FOLDER IS :"+file.getName());
+                    System.out.println("YOUR FOLDER CHILDREN ARE :"+file.listFiles());
+                    getDownloadedFile(list,file);
+                }else{
+                    System.out.println("YOUR FILE IS :"+file.getName());
+                        /*for(File f: file.listFiles()){
+                            System.out.println("CHILDREN:"+f.getName());
+                        }*/
+                    fileToReturn =file;
+                }
+
+            }
+        }
+
+        /*OUTER_LOOP:
+        for (int i=0;i<list.size() ;i++ ) {
+
+            for (File file : files) {
+                if (file.getName().equals(list.get(i))) {
+
+                    System.out.println("BEFORE DIRECTORY :"+file.getName());
+                    if(file.isDirectory()) {
+                        System.out.println("YOUR DIRECTORY :"+file.getName());
+                        */
+        /*System.out.println("THE DIRECTORY IS :"+file.getName());
+                        for (File filee : file.listFiles()) {
+                            System.out.println("AND HIS FILES IS :"+filee.getName());
+                            if (filee.isFile()){
+                                System.out.println("AND HIS FILES IS :"+ filee.getName()+" is "+filee.isFile()+" with child "+filee.listFiles());
+                                fileToReturn = file;
+                                break OUTER_LOOP;
+                            }
+                        }*/
+        /*
+                        getDownloadedFile(list, file.listFiles());
+                    }else */
+        /*if (file.isFile())*//*{
+                        System.out.println("YOUR FILE IS :"+file.getName());
+                        */
+        /*fileToReturn = file;
+                        break OUTER_LOOP;*/
+        /*
+                    }
+                }else {
+                    System.out.println("AFTER DIRECTORY :"+file.getName());
+                }
+            }
+        }*/
+        return fileToReturn;
+    }
+
 
 
 }

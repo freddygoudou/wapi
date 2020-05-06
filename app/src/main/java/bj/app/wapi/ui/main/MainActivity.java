@@ -15,24 +15,17 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.File;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import bj.app.wapi.R;
-import bj.app.wapi.ui.compte.CompteActivity;
-import bj.app.wapi.ui.formation.DetailsFormation;
-import bj.app.wapi.ui.formation.sousFragment.CarousselBackgroundAudioService;
 import bj.app.wapi.ui.login.LoginActivity;
-import bj.app.wapi.ui.splash.SplashActivity;
-import bj.app.wapi.ui.wapi.Wapi;
 import database.DatabaseHelper;
-import entity.Ressource;
 import entity.User;
 import storage.SharedPrefManager;
 
@@ -61,10 +54,33 @@ public class MainActivity extends AppCompatActivity {
             navController.navigate(R.id.navigation_annonce);
         }
 
+        File[] fileArrayList = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).listFiles();
+
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsoluteFile(), "/Wapi/Formation/Caroussel/TOMATE/apple-2924531_960_720.jpg");
+        /*for (File file : fileArrayList){
+            if (file.isDirectory()){
+                System.out.println("IS DIRECTORY : "+ file.getPath());
+                File[] files = file.listFiles();
+                for (File filee : files){
+                    if (filee.isDirectory())
+                        System.out.println("IS A DIRECTORY : "+ filee.getPath());
+                    else
+                        System.out.println("IS A FILE : "+ filee.getPath());
+                }
+            }
+            else
+                System.out.println("IS FILE : "+ file.getPath());
+        }*/
+
+        System.out.println("ARE YOU FILE : "+ file.isFile());
+        System.out.println("DO YOU EXIST : "+ file.exists());
+        System.out.println("ROOT DIRECTORY STORAGE  IS : "+ Environment.getRootDirectory());
+
+
         System.out.println("EXTERNAL DIRECTORY STORAGE IS : "+ Environment.getExternalStorageDirectory());
         System.out.println("ROOT DIRECTORY STORAGE  IS : "+ Environment.getRootDirectory());
         System.out.println("DATA DIRECTORY STORAGE  IS : "+ Environment.getDataDirectory());
-        System.out.println("DOWNLOAD CACHE DIRECTORY STORAGE  IS : "+ Environment.getDownloadCacheDirectory());
+        System.out.println("DOWNLOAD EXTERNAL PUBLIC STORAGE DIRECTORY IS : "+ Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath());
         System.out.println("DIRECTORY_DOWNLOADS STORAGE  IS : "+ Environment.DIRECTORY_DOWNLOADS);
         DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
         //databaseHelper.saveOneRessource(new Ressource("the path", "the name", "the type", "the formation", "firstImagePath"));

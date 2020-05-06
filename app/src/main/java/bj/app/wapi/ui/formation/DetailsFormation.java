@@ -62,6 +62,9 @@ public class DetailsFormation extends AppCompatActivity {
     Button download;
     Caroussel caroussel, carousselToSave;
     DatabaseHelper databaseHelper;
+    boolean connexionState;
+    File file;
+    Uri uri;
 
     @Override
     protected void onStop() {
@@ -98,9 +101,11 @@ public class DetailsFormation extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(this);
 
-        if (getIntent().hasExtra("caroussel")){
+        if (getIntent().hasExtra("caroussel") && getIntent().hasExtra("connexionState")){
             caroussel = getIntent().getParcelableExtra("caroussel");
             carousselToSave = new Caroussel(caroussel.getName(),caroussel.getDescription(),"","");
+            connexionState = getIntent().getBooleanExtra("connexionState", false);
+            System.out.println("CAKAKKA :"+caroussel.toString());
         }
 
         tvDescriptionFormation = findViewById(R.id.tvDescriptionFormation);
@@ -119,7 +124,9 @@ public class DetailsFormation extends AppCompatActivity {
 
         //Démarer l'audio
         stopService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
-        startService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
+        startService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class)
+                .putExtra("caroussel", caroussel)
+                .putExtra("connexionState", connexionState));
 
         download = findViewById(R.id.download);
 
@@ -191,7 +198,13 @@ public class DetailsFormation extends AppCompatActivity {
     ImageListener imageListener = new ImageListener() {
         @Override
         public void setImageForPosition(int position, ImageView imageView) {
-            Picasso.get().load(slideItemList.get(position)).into(imageView);
+            if(connexionState)
+                Picasso.get().load(slideItemList.get(position)).into(imageView);
+            else {
+                file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), ajustFilePath(slideItemList.get(position)));
+                uri = Uri.fromFile(file);
+                Picasso.get().load(file).into(imageView);
+            }
         }
     };
 
@@ -284,6 +297,10 @@ public class DetailsFormation extends AppCompatActivity {
         while (stringTokenizer.hasMoreTokens()){
             slideItemList.add(stringTokenizer.nextToken());
         }
+    }
+
+    public String ajustFilePath(String path){
+        return path.substring(8); //Download
     }
 
     private String getFileNameFrom(String ressources_url) {
