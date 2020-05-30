@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,7 +25,7 @@ import androidx.navigation.ui.NavigationUI;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.login.LoginActivity;
 import database.DatabaseHelper;
-import entity.User;
+import entityBackend.User;
 import storage.SharedPrefManager;
 
 public class MainActivity extends AppCompatActivity {

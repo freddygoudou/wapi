@@ -2,10 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bj.app.wapi">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,32 +14,63 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
+        <activity android:name=".ui.InfosCulture"
+            android:label="@string/infos_culture"
+            android:parentActivityName=".NewChampsActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.INFOSCULTUREACTIVITY" />
 
-        <activity android:name=".ui.registerUserForm.RegisterUserFormActivity"
-            android:theme="@style/AppSecondTheme"
-            android:parentActivityName=".ui.login.LoginActivity">
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NewChampsActivity"
+            android:label="@string/title_new_champs"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.CHAMPSDETAILSACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ChampsDetailsActivity"
+            android:label="@string/title_detail_champs"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.CHAMPSDETAILSACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.GpsActivity" />
+        <activity
+            android:name=".ui.registerUserForm.RegisterUserFormActivity"
+            android:parentActivityName=".ui.login.LoginActivity"
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.REGISTERUSERFORMACTIVITY" /> <!-- bj.app.wapi.REGISTERUSERFORMACTIVITY -->
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.confirmCode.ConfirmCodeActivity"
-            android:theme="@style/AppSecondTheme"
-            android:parentActivityName=".ui.login.LoginActivity">
+        <activity
+            android:name=".ui.confirmCode.ConfirmCodeActivity"
+            android:parentActivityName=".ui.login.LoginActivity"
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.CONFIRMCODEACTIVITY" /> <!-- bj.app.wapi.CONFIRMCODEACTIVITY -->
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".ui.formation.DetailsFormation"
-            android:theme="@style/AppTheme"
+        <activity
+            android:name=".ui.formation.DetailsFormation"
             android:label="@string/details_formation"
-            android:parentActivityName=".ui.main.MainActivity">
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.DETAILSFORMATION" /> <!-- bj.app.wapi.DETAILSFORMATION -->
 

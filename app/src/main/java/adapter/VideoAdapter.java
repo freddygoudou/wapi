@@ -19,12 +19,10 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.videoplayer.VideoPlayerActivity;
-import entity.Video;
-import entity.Videooo;
+import entityBackend.Video;
 
 public class VideoAdapter extends RecyclerView.Adapter <VideoAdapter.VideoViewHolder>{
 

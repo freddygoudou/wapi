@@ -3,18 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="66dp">
 
-    <TextView
-        android:id="@+id/text_entreprise"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_exploitation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="22sp"
-        android:layout_centerInParent="true"
-        android:text="ENTREPRISE"/>
+        android:layout_margin="7dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_exploitation"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="85dp"
+        android:layout_marginRight="25dp"
+        android:src="@drawable/ic_add_white_24dp"
+        android:backgroundTint="@color/colorPrimary"/>
 
 </RelativeLayout>

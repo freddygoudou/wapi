@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.formation.sousFragment.CarousselBackgroundAudioService;
 import database.DatabaseHelper;
-import entity.Caroussel;
+import entityBackend.Caroussel;
 import entity.FileAndExtention;
-import entity.SlideItem;
 
 import android.Manifest;
 import android.app.DownloadManager;
@@ -19,7 +18,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -27,7 +25,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.core.Context;
 import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;

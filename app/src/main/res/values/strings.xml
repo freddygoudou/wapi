@@ -18,7 +18,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_formation">Formation</string>
     <string name="title_menage">Ménage</string>
-    <string name="title_entreprise">Entreprise</string>
+    <string name="title_exploitation">Exploitation</string>
 
     <string name="compte">Compte</string>
     <string name="title_annonce">Annonce</string>
@@ -69,4 +69,15 @@
     <string name="langueDjerma">Djerma</string>
     <string name="langueHaoussa">Haoussa</string>
     <string name="choisirLangue">Choisissez une langue  ...</string>
+    <string name="title_detail_champs">Détail sur le champs</string>
+    <string name="title_new_champs">Nouvelle exploitation</string>
+    <string name="valider">valider</string>
+    <string name="champs_inactif">Ce champs est inactif pour le moment</string>
+    <string name="champs_actif">Ce champs est actif</string>
+    <string name="statut_champs">Statut du champs</string>
+    <string name="employee_list">Liste des employés du champs</string>
+    <string name="delimitation_champs">Délimitation du champs</string>
+    <string name="toutes_saisons">Toutes les saisons de culture</string>
+    <string name="infos_culture_messsage">Renseignez maintenant les infos sur les cultures</string>
+    <string name="infos_culture">Infos Cultures</string>
 </resources>

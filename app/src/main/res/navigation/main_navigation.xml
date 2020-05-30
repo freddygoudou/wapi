@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/navigation_entreprise"
         android:name="bj.app.wapi.ui.entreprise.EntrepriseFragment"
-        android:label="@string/title_entreprise"
+        android:label="@string/title_exploitation"
         tools:layout="@layout/fragment_entreprise" >
         <action
             android:id="@+id/action_navigation_entreprise_to_navigation_compte"

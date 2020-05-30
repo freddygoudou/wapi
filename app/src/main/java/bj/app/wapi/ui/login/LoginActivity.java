@@ -4,18 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import bj.app.wapi.R;
-import bj.app.wapi.ui.confirmCode.ConfirmCodeActivity;
-import bj.app.wapi.ui.formation.DetailsFormation;
 import bj.app.wapi.ui.main.MainActivity;
 import bj.app.wapi.ui.registerUserForm.RegisterUserFormActivity;
-import bj.app.wapi.ui.splash.SplashActivity;
-import entity.User;
+import entityBackend.User;
 import storage.SharedPrefManager;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -85,9 +79,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 ccp.getFullNumberWithPlus();
                 completePhoneNumber = ccp.getSelectedCountryCodeWithPlus()+ phoneNumberTIL.getEditText().getText().toString().trim();
-                //name = nameTIL.getEditText().getText().toString();
-
-                //Toast.makeText(LoginActivity.this,"PHONE NUMBER IS "+completePhoneNumber, Toast.LENGTH_LONG).show();
 
                 if(completePhoneNumber.isEmpty() || completePhoneNumber.length() < 11){
                     phoneNumberTIL.setError("Numero invalide");

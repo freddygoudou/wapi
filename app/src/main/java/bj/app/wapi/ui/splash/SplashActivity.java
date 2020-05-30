@@ -1,19 +1,15 @@
 package bj.app.wapi.ui.splash;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.login.LoginActivity;
 import bj.app.wapi.ui.main.MainActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
-import entity.User;
-import storage.SharedPrefManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

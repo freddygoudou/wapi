@@ -41,7 +41,7 @@
         android:layout_height="60dp"
         android:layout_gravity="bottom|end"
         android:backgroundTint="@color/colorPrimary"
-        android:src="@drawable/ic_add_black_24dp"
+        android:src="@drawable/ic_add_white_24dp"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
         android:layout_marginEnd="22dp"
         android:layout_marginBottom="70dp"
@@ -87,7 +87,7 @@
             android:layout_gravity="bottom|end"
             app:fab_size="normal"
             android:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/ic_add_black_24dp" />
+            android:src="@drawable/ic_add_white_24dp" />
     </LinearLayout>-->
     <!--<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:layout_width="wrap_content"

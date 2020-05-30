@@ -2,12 +2,10 @@ package bj.app.wapi.ui.formation.sousFragment;
 
 import android.app.Service;
 import android.content.Intent;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.IBinder;
-import android.provider.Settings;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -15,8 +13,8 @@ import java.util.StringTokenizer;
 
 import androidx.annotation.Nullable;
 import bj.app.wapi.R;
-import entity.Caroussel;
-import entity.User;
+import entityBackend.Caroussel;
+import entityBackend.User;
 import storage.SharedPrefManager;
 
 public class CarousselBackgroundAudioService extends Service {
@@ -45,8 +43,10 @@ public class CarousselBackgroundAudioService extends Service {
         if (intent.hasExtra("caroussel") && intent.hasExtra("connexionState")){
             caroussel = intent.getParcelableExtra("caroussel");
             connexionState = intent.getBooleanExtra("connexionState", false);
-            arrayList = new ArrayList<>();
             arrayList = prepareAudioPaths(caroussel.getAudiosPaths());
+
+            if (arrayList == null)
+                arrayList = new ArrayList<>();
 
             System.out.println("COKOKO :"+caroussel.toString());
             System.out.println("COKOKO BOOLEAN :"+connexionState);

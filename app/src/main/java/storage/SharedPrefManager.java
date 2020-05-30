@@ -3,7 +3,7 @@ package storage;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import entity.User;
+import entityBackend.User;
 
 
 public class SharedPrefManager {

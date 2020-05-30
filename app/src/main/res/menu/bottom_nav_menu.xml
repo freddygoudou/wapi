@@ -14,7 +14,7 @@
     <item
         android:id="@+id/navigation_entreprise"
         android:icon="@drawable/ic_business_center_black_24dp"
-        android:title="@string/title_entreprise" />
+        android:title="@string/title_exploitation" />
 
     <item
         android:id="@+id/navigation_menage"

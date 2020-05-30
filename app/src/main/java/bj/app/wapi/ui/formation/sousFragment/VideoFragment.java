@@ -21,8 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
 import database.DatabaseHelper;
-import entity.Ressource;
-import entity.Video;
+import entityBackend.Video;
 import entity.Videooo;
 
 
@@ -102,12 +101,12 @@ public class VideoFragment extends Fragment {
             mData.add(new Videooo("PIMENT", "Le meilleur d Afrique", "image url", test4));
             mData.add(new Videooo("CAROTTE", "Le meilleur d Afrique", "image url", test4));
             mData.add(new Videooo("SOJA", "Le meilleur d Afrique", "image url", test4));*/
-            ressourceArrayList.add(new Video(1,"CAJOUX", "","Le meilleur d Afrique", text2));
-            ressourceArrayList.add(new Video(1,"RIZ", test4,"Le meilleur d Afrique", text2));
-            ressourceArrayList.add(new Video(1,"TOMATE", test4,"Le meilleur d Afrique", text2));
-            ressourceArrayList.add(new Video(1,"PIMENT", test4,"Le meilleur d Afrique", text2));
-            ressourceArrayList.add(new Video(1,"CAROTTE", test4,"Le meilleur d Afrique", text2));
-            ressourceArrayList.add(new Video(1,"SOJA", test4,"Le meilleur d Afrique", text2));
+            ressourceArrayList.add(new Video(1L,"CAJOUX", "","Le meilleur d Afrique", text2));
+            ressourceArrayList.add(new Video(1L,"RIZ", test4,"Le meilleur d Afrique", text2));
+            ressourceArrayList.add(new Video(1L,"TOMATE", test4,"Le meilleur d Afrique", text2));
+            ressourceArrayList.add(new Video(1L,"PIMENT", test4,"Le meilleur d Afrique", text2));
+            ressourceArrayList.add(new Video(1L,"CAROTTE", test4,"Le meilleur d Afrique", text2));
+            ressourceArrayList.add(new Video(1L,"SOJA", test4,"Le meilleur d Afrique", text2));
 
             adapter = new VideoAdapter(VideoFragment.this.getContext(), ressourceArrayList, true);
             adapter.notifyDataSetChanged();

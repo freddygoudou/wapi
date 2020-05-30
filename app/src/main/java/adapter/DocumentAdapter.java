@@ -1,18 +1,12 @@
 package adapter;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.icu.text.SymbolTable;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,8 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.formation.DetailsFormation;
-import entity.Caroussel;
-import entity.Document;
+import entityBackend.Caroussel;
 
 public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.DocumentViewHolder>{
 

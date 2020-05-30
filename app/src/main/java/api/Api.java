@@ -2,51 +2,50 @@ package api;
 
 import java.util.ArrayList;
 
-import okhttp3.ResponseBody;
+import entityBackend.Caroussel;
+import entityBackend.User;
+import entityBackend.Video;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public interface Api {
+public interface  Api {
 
     //    @FormUrlEncoded : Ne marche pas avec ResponseBody au niveau de Spring
 
-    /* *********************** Authentification ********************* */
+    // *********************** Authentification *********************
 
-    /*// Register User
-    @POST("api/auth/sign-up")
-    Call<User> register(
+    @POST("api/auth")
+    Call<User> auth(
             @Body User user
     );
 
-    //Login User
-    @POST("api/auth/sign-in")
-    Call<User> login(
-            @Body User user
+    //*********************** Caroussel *********************************
+
+    @POST("api/caroussel")
+    Call<Caroussel> saveCaroussel(
+            @Body Caroussel caroussel
     );
 
+    @GET("api/caroussel")
+    Call<ArrayList<Caroussel>> getAllCaroussel();
 
+    //*********************** Videos *********************************
 
-    *//* *********************** Fin Authentification ********************* *//*
-
-
-    *//* *********************** Affichage des news santé : Fragment Home ********************* *//*
-
-    @GET("api/news/get-all")
-    Call<ArrayList<HomeNews>> getHealthNews(
+    @GET("api/video")
+    Call<Video> saveVideo(
+            @Body Video video
     );
 
-    @GET("api/news/get-one")
-    Call<HomeNews> getOneHealthNews(
-    );
+    @GET("api/video")
+    Call<ArrayList<Video>> getAllVideo();
+
+    //*********************  Autres ************************************
 
 
 
-
-    *//* *********************** Gestion des chaînes : Fragment Chaînes ********************* *//*
+    /* *********************** Gestion des chaînes : Fragment Chaînes ********************* *//*
 
     @POST("api/chaine/get-all")
     Call<ArrayList<Chaine>> getAllChaines(

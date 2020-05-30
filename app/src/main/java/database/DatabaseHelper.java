@@ -9,9 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
-import entity.Caroussel;
-import entity.Ressource;
-import entity.Video;
+import entityBackend.Caroussel;
+import entityBackend.Video;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -110,7 +109,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         while(cursor.moveToNext()){
 
-            int id = cursor.getInt(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_ID));
+            Long id = cursor.getLong(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_ID));
             String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_FORMATION_NAME));
             String audiosPaths = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_AUDIOS_PATHS));
             String description = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION));
@@ -137,7 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         while(cursor.moveToNext()){
 
-            int id = cursor.getInt(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_ID));
+            Long id = cursor.getLong(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_ID));
             String path = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_PATH));
             String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_FORMATION_NAME));
             String caption = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_CAPTION_PATH));

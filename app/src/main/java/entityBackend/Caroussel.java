@@ -1,18 +1,34 @@
-package entity;
+package entityBackend;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Date;
+
 
 public class Caroussel implements Parcelable {
 
-    private int id;
+    private Long id;
     private String name;
     private String description;
     private String audiosPaths;
     private String imagesPaths;
+    private Date createdAt;
+    private Date updatedAt;
 
-    public Caroussel(int id, String name, String description, String audiosPaths, String imagesPaths) {
+    public Caroussel(){}
+
+    public Caroussel(Long id, String name, String description, String audiosPaths, String imagesPaths, Date createdAt, Date updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.audiosPaths = audiosPaths;
+        this.imagesPaths = imagesPaths;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Caroussel(String name, String description, String audiosPaths, String imagesPaths) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -20,7 +36,7 @@ public class Caroussel implements Parcelable {
         this.imagesPaths = imagesPaths;
     }
 
-    public Caroussel(String name, String description, String audiosPaths, String imagesPaths) {
+    public Caroussel(Long id, String name, String description, String audiosPaths, String imagesPaths) {
         this.name = name;
         this.description = description;
         this.audiosPaths = audiosPaths;
@@ -28,7 +44,11 @@ public class Caroussel implements Parcelable {
     }
 
     protected Caroussel(Parcel in) {
-        id = in.readInt();
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readLong();
+        }
         name = in.readString();
         description = in.readString();
         audiosPaths = in.readString();
@@ -47,11 +67,11 @@ public class Caroussel implements Parcelable {
         }
     };
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -94,7 +114,12 @@ public class Caroussel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
+        if (id == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeLong(id);
+        }
         parcel.writeString(name);
         parcel.writeString(description);
         parcel.writeString(audiosPaths);
@@ -109,6 +134,8 @@ public class Caroussel implements Parcelable {
                 ", description='" + description + '\'' +
                 ", audiosPaths='" + audiosPaths + '\'' +
                 ", imagesPaths='" + imagesPaths + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
                 '}';
     }
 }

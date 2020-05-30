@@ -2,10 +2,9 @@ package bj.app.wapi.ui.registerUserForm;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import bj.app.wapi.ui.login.LoginActivity;
 import bj.app.wapi.ui.main.MainActivity;
 import bj.app.wapi.R;
-import entity.User;
+import entityBackend.User;
 import storage.SharedPrefManager;
 
 import android.content.Intent;

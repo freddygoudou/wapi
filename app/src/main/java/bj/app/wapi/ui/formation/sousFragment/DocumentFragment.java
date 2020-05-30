@@ -2,49 +2,30 @@ package bj.app.wapi.ui.formation.sousFragment;
 
 
 import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.os.Bundle;
 
-import adapter.AnnonceAdapter;
 import adapter.DocumentAdapter;
-import adapter.SliderAdapter;
-import adapter.VideoAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.os.Handler;
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
-import androidx.viewpager2.widget.ViewPager2;
 import bj.app.wapi.R;
-import bj.app.wapi.ui.annonce.sousFragment.AchatFragment;
 import database.DatabaseHelper;
-import entity.Article;
-import entity.Caroussel;
+import entityBackend.Caroussel;
 import entity.Document;
-import entity.Ressource;
 import entity.SlideItem;
 
 /**
