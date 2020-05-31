@@ -1,8 +1,11 @@
 package api;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import entityBackend.Caroussel;
+import entityBackend.Champs;
+import entityBackend.SaisonCulture;
 import entityBackend.User;
 import entityBackend.Video;
 import retrofit2.Call;
@@ -21,6 +24,11 @@ public interface  Api {
             @Body User user
     );
 
+    @POST("api/user/create")
+    Call<User> createUser(
+            @Body User user
+    );
+
     //*********************** Caroussel *********************************
 
     @POST("api/caroussel")
@@ -29,7 +37,7 @@ public interface  Api {
     );
 
     @GET("api/caroussel")
-    Call<ArrayList<Caroussel>> getAllCaroussel();
+    Call<List<Caroussel>> getAllCaroussel();
 
     //*********************** Videos *********************************
 
@@ -39,11 +47,17 @@ public interface  Api {
     );
 
     @GET("api/video")
-    Call<ArrayList<Video>> getAllVideo();
+    Call<List<Video>> getAllVideo();
 
-    //*********************  Autres ************************************
+    //*********************  Exploitation ************************************
 
+    @POST("api/champs/create")
+    Call<Champs> saveChamps(
+            @Body Champs champs
+    );
 
+    @GET("api/champs")
+    Call<List<Champs>> getAllChamps();
 
     /* *********************** Gestion des chaînes : Fragment Chaînes ********************* *//*
 

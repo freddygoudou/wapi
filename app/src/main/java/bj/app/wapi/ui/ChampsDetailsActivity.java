@@ -40,13 +40,13 @@ public class ChampsDetailsActivity extends AppCompatActivity {
             tvChampsActif = findViewById(R.id.tv_is_active);
             tvDelaiActivation = findViewById(R.id.tv_delaie_is_active);
 
-            if (champs.isActive()){
+            /*if (champs.isActive()){
                 tvChampsActif.setText(R.string.champs_actif);
 
             }else {
                 tvChampsActif.setText(R.string.champs_inactif);
                 tvChampsActif.setText(champs.getDelaieReativite());
-            }
+            }*/
 
 
             employees = new ArrayList<>();

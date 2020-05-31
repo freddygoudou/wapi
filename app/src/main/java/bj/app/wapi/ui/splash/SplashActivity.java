@@ -1,24 +1,37 @@
 package bj.app.wapi.ui.splash;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.login.LoginActivity;
 import bj.app.wapi.ui.main.MainActivity;
+import bj.app.wapi.ui.registerUserForm.RegisterUserFormActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
+import entityBackend.User;
+import storage.SharedPrefManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SplashActivity extends AppCompatActivity {
 
     CircleImageView appIcon;
     FirebaseAuth mAuth;
     FirebaseUser mCurrentUser;
+    DatabaseReference mUserDatabase;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
@@ -34,30 +47,25 @@ public class SplashActivity extends AppCompatActivity {
         super.onStart();
 
         // Voir si l'utilisateur est dejà connecté ou pas pour savoir si on doit le redirigér vers le login ou dans l'application  en même temps
-
         // Ce listerner est responsable certainement du jeu d'activité entre le login et le RegisterUerActivity
+
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("User");
+
         if (mCurrentUser != null) {
 
-            startActivity(new Intent(SplashActivity.this, MainActivity.class)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                    /*if (SharedPrefManager.getmInstance(SplashActivity.this).getUser().getId().equals("NO_FOUND")){
-
-                        //Toast.makeText(SplashActivity.this,"TO LOGIN", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(SplashActivity.this, LoginActivity.class)
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-
-                    }else {
-                        //dToast.makeText(SplashActivity.this,"CONNECTÉÉÉÉÉ", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(SplashActivity.this, MainActivity.class)
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                    }*/
+            User user = SharedPrefManager.getmInstance(this).getUser();
+            System.out.println("User is :"+ user.toString());
+            if (user.getLangue() == null || user.getName() ==null){
+                startActivity(new Intent(SplashActivity.this, RegisterUserFormActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            }else {
+                startActivity(new Intent(SplashActivity.this, MainActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            }
         }
         else {
-
-            //Toast.makeText(SplashActivity.this,"NON CONNECTÉÉÉÉÉ", Toast.LENGTH_LONG).show();
-
             Thread timer = new Thread(){
 
                 public void  run(){
@@ -74,6 +82,7 @@ public class SplashActivity extends AppCompatActivity {
             };
             timer.start();
         }
+
         /*mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -83,7 +92,8 @@ public class SplashActivity extends AppCompatActivity {
                     startActivity(new Intent(SplashActivity.this, MainActivity.class)
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
 
-                    *//*if (SharedPrefManager.getmInstance(SplashActivity.this).getUser().getId().equals("NO_FOUND")){
+                    */
+        /*if (SharedPrefManager.getmInstance(SplashActivity.this).getUser().getId().equals("NO_FOUND")){
 
                         //Toast.makeText(SplashActivity.this,"TO LOGIN", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(SplashActivity.this, LoginActivity.class)
@@ -93,7 +103,8 @@ public class SplashActivity extends AppCompatActivity {
                         //dToast.makeText(SplashActivity.this,"CONNECTÉÉÉÉÉ", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(SplashActivity.this, MainActivity.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                    }*//*
+                    }*/
+        /*
 
                 }
                 else {

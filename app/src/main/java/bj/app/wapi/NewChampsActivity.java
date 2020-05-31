@@ -7,10 +7,23 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
+import api.RetrofitClient;
 import bj.app.wapi.ui.InfosCulture;
+import bj.app.wapi.ui.main.MainActivity;
+import entityBackend.Champs;
 import entityBackend.ChampsLocation;
+import entityBackend.Farmer;
+import entityBackend.Recolte;
+import entityBackend.SaisonCulture;
+import entityBackend.User;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import storage.SharedPrefManager;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,16 +35,21 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NewChampsActivity extends AppCompatActivity implements ChampsLocationAdapter.UiInterface{
 
@@ -39,6 +57,7 @@ public class NewChampsActivity extends AppCompatActivity implements ChampsLocati
     LocationRequest locationRequest;
     Location mLocation;
     GoogleApiClient mGoogleApiClient;
+
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private long UPDATE_INTERVAL = 4000;
     private double posLat=1.0, posLong=1.0;
@@ -52,27 +71,30 @@ public class NewChampsActivity extends AppCompatActivity implements ChampsLocati
     RecyclerView recyclerView;
     ChampsLocationAdapter adapter;
     ArrayList<ChampsLocation> mData = new ArrayList<>();
+    List<SaisonCulture> saisonCultures;
+    boolean exist;
+    String oldCulture, newCulture, nomChamps;
+    ProgressDialog mProgressDialog;
+    Champs champs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_champs);
 
-        /*locationRequest = new LocationRequest();
-        locationRequest.setInterval(1000);
-        locationRequest.setFastestInterval(1000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);*/
+        //PROGRESS DIALOG
+        mProgressDialog = new ProgressDialog(this);
 
-        isCoordFetch = false;
-
+        //VALIDATION DES COORDONNÉES
         btnValiderNewChamps =  findViewById(R.id.btnValiderNewChamps);
         btnValiderNewChamps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(NewChampsActivity.this, InfosCulture.class)
-                    .putExtra("listeCoordonnees", mData));
+                checkFarmerOldSaisonExist();
             }
         });
 
+        //AJOUT DE COORDONNÉES
         llAddCoordonnees = findViewById(R.id.ll_add_coordonnees);
         llAddCoordonnees.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +114,7 @@ public class NewChampsActivity extends AppCompatActivity implements ChampsLocati
             }
         });
 
+        //RECYCLERVIEW DES COORDONNÉES CHOISIES
         recyclerView = findViewById(R.id.rv_coordonnres);
         adapter = new ChampsLocationAdapter(NewChampsActivity.this, mData);
         recyclerView.setAdapter(adapter);
@@ -100,7 +123,7 @@ public class NewChampsActivity extends AppCompatActivity implements ChampsLocati
 
 
 
-        // Vérifier si le GPS est activé
+        // VÉRIFIER SI LE GPS EST ACTIVÉ
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
@@ -151,9 +174,154 @@ public class NewChampsActivity extends AppCompatActivity implements ChampsLocati
         }else{
             currentPositionByGps();
         }
+    }
+
+    //VÉRIFIER SI UNE CULTURE A ÉTÉ FAITE L'ANNÉE PASSÉE SUR LE CHAMPS
+    private void checkFarmerOldSaisonExist() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(NewChampsActivity.this);
+        builder.setTitle("Infos sur les cultures");
+        builder.setMessage(getString(R.string.ask_exist_old_culture));
+        builder.setPositiveButton(R.string.oui, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+                openInfosCultureDialogWithOldSaison();
+            }
+        });
+        builder.setNegativeButton(R.string.non, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+                openInfosCultureDialogWithoutOldSaison();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    //SI UNE CULTURE N'A PAS ÉTÉ FAITE L'ANNÉE PASSÉE, DEMANDER DES RENSEIGNEMENTS SUR LA NOUVELLE CULTURE AINSI QUE LE NOM DU CHAMPS
+    private void openInfosCultureDialogWithoutOldSaison() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(NewChampsActivity.this);
+        builder.setTitle("Infos sur les cultures");
+
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View dialogView = inflater.inflate(R.layout.one_infos_cultures_layout, null);
+        builder.setView(dialogView);
+        AlertDialog alert = builder.create();
+
+        EditText et_nom_champs = dialogView.findViewById(R.id.et_nom_champs);
+        EditText et_new_culture = dialogView.findViewById(R.id.et_new_culture);
+        Button btn_valider_one_culture_info = dialogView.findViewById(R.id.btn_valider_one_culture_info);
+
+        btn_valider_one_culture_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newCulture = et_new_culture.getText().toString();
+                nomChamps = et_nom_champs.getText().toString();
+                if((newCulture.length() > 0) && (nomChamps.length()>0)){
+                    mProgressDialog.setTitle("Création d'une nouvelle exploitation");
+                    mProgressDialog.setMessage("Patientez un instant ...");
+                    mProgressDialog.setCanceledOnTouchOutside(false);
+                    mProgressDialog.show();
+                    saveChamps(nomChamps, null, newCulture, mData, false);
+                    alert.dismiss();
+                }
+            }
+        });
+        alert.show();
+    }
+
+    //SI UNE CULTURE A ÉTÉ FAITE L'ANNÉE PASSÉE, DEMANDER DES RENSEIGNEMENTS SUR LA NOUVELLE CULTURE ET L'ANCIENNE AINSI QUE LE NOM DU CHAMPS
+    private void openInfosCultureDialogWithOldSaison() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(NewChampsActivity.this);
+        builder.setTitle("Infos sur les cultures");
+
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View dialogView = inflater.inflate(R.layout.two_infos_cultures_layout, null);
+        builder.setView(dialogView);
+        AlertDialog alert = builder.create();
+
+        EditText et_nom_champs = dialogView.findViewById(R.id.et_nom_champs);
+        EditText et_old_culture = dialogView.findViewById(R.id.et_old_culture);
+        EditText et_new_culture = dialogView.findViewById(R.id.et_new_culture);
+        Button btn_valider_two_culture_info = dialogView.findViewById(R.id.btn_valider_two_culture_info);
+
+        btn_valider_two_culture_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                oldCulture = et_old_culture.getText().toString();
+                newCulture = et_new_culture.getText().toString();
+                nomChamps = et_nom_champs.getText().toString();
+                if( (oldCulture.length() > 0) && (newCulture.length() > 0) && (nomChamps.length()>0)){
+                    mProgressDialog.setTitle("Création d'une nouvelle exploitation");
+                    mProgressDialog.setMessage("Patientez un instant ...");
+                    mProgressDialog.setCanceledOnTouchOutside(false);
+                    mProgressDialog.show();
+                    saveChamps(nomChamps, oldCulture, newCulture, mData, true);
+                    alert.dismiss();
+                }
+            }
+        });
+
+        alert.show();
 
 
     }
+
+    //AJOUTER UNE NOUVELLE EXPLOITATION
+    private void saveChamps(String nomChamps, String ancienneCulture, String nouvelleCulture, ArrayList<ChampsLocation> champsLocationArrayList, boolean oldChampsExist) {
+
+        ArrayList<SaisonCulture> list;
+        User user = SharedPrefManager.getmInstance(NewChampsActivity.this).getUser();
+        //Farmer farmer = new Farmer(user, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+
+        if (oldChampsExist){
+            list = new ArrayList<>();
+            list.add(new SaisonCulture(ancienneCulture,nouvelleCulture));
+            champs = new Champs(nomChamps, mData, list);
+        }else{
+            list = new ArrayList<>();
+            list.add(new SaisonCulture("NEANT",nouvelleCulture));
+            champs = new Champs(nomChamps, mData, list);
+        }
+
+        Call<Champs> call = RetrofitClient
+                .getmInstance()
+                .getApi()
+                .saveChamps(champs);
+
+        call.enqueue(new Callback<Champs>() {
+            @Override
+            public void onResponse(Call<Champs> call, Response<Champs> response) {
+                try {
+                    Champs champsReturned;
+                    if (response.code() == 200){
+                        champsReturned = response.body();
+                        if (champsReturned != null){
+                            Toast.makeText(NewChampsActivity.this, R.string.champs_creation_succed, Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(NewChampsActivity.this, MainActivity.class));
+                            mProgressDialog.dismiss();
+                        }
+                    }else {
+                        Toast.makeText(NewChampsActivity.this, "Response code is :"+response.code()+"\n"+" S_Response message "+response.message(), Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                    mProgressDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Champs> call, Throwable t) {
+                Toast.makeText(NewChampsActivity.this, "Error message "+t.getMessage(), Toast.LENGTH_LONG).show();
+                mProgressDialog.dismiss();
+            }
+        });
+        mProgressDialog.dismiss();
+    }
+
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -215,7 +383,6 @@ public class NewChampsActivity extends AppCompatActivity implements ChampsLocati
             return true;
         }
     }
-
 
     public double[] currentPosition(){
         double tab[] = {posLat, posLong};

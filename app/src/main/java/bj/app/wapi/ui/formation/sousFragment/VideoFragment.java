@@ -92,7 +92,6 @@ public class VideoFragment extends Fragment {
         ressourceArrayList = new ArrayList<>();
 
         if (isNetworkConnected()){
-            Toast.makeText(getActivity(),"CONNECTED ..... ", Toast.LENGTH_LONG).show();
             //GET FROM API
             /*mData = new ArrayList<>();
             mData.add(new Videooo("CAJOUX", "Le meilleur d Afrique", "image url", test4));
@@ -113,8 +112,6 @@ public class VideoFragment extends Fragment {
         }else {
 
             databaseHelper = new DatabaseHelper(getActivity());
-
-            Toast.makeText(getActivity(),"NOT CONNECTED ..... ", Toast.LENGTH_LONG).show();
             //GET FROM LOCAL DB
             /*mData = new ArrayList<>();
             mData.add(new Videooo("CAJOUX", "Le meilleur d Afrique", "image url", test4));

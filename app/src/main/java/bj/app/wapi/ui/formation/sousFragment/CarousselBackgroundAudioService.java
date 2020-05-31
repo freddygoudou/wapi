@@ -19,13 +19,13 @@ import storage.SharedPrefManager;
 
 public class CarousselBackgroundAudioService extends Service {
 
-    MediaPlayer player;
+    MediaPlayer player = new MediaPlayer();
     User user;
     String langue;
     Caroussel caroussel;
     String pathToPlay;
     ArrayList<String> arrayList;
-    static final String AUDIO_FORMAT_MP3 = ".mp4";
+    static final String AUDIO_FORMAT_MP3 = ".mp3";
     Uri uri;
     File file;
     boolean connexionState;
@@ -50,6 +50,7 @@ public class CarousselBackgroundAudioService extends Service {
 
             System.out.println("COKOKO :"+caroussel.toString());
             System.out.println("COKOKO BOOLEAN :"+connexionState);
+            System.out.println("COKOKO ARRAYLIST  :"+arrayList.toString());
 
 
             String url = "http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2009.mp3";
@@ -63,15 +64,16 @@ public class CarousselBackgroundAudioService extends Service {
             //C 'EST ICI QU'IL FAILLE VOIR SELON LA LANGUE LEQUEL DES AUDIO JOUER
 
             if (!connexionState){
-                //System.out.println("COKOKOPATH TO PLAY  FOR VALUE  2 :"+getAppropriateAjustedPathToplay(arrayList));
+                System.out.println("COKOKOPATH TO PLAY  FOR VALUE  2 :"+getAppropriateAjustedPathToplay(arrayList));
                 file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), getAppropriateAjustedPathToplay(arrayList));
                 uri = Uri.fromFile(file);
             }else {
+                System.out.println("COKOKOPATH IS NOW :"+getAppropriateAjustedPathToplay(arrayList)+" AND ALSO :"+arrayList);
                 uri = Uri.parse(getAppropriateAjustedPathToplay(arrayList));
             }
 
-            //player = MediaPlayer.create(this, Uri.parse(url));
-            player = MediaPlayer.create(this, Uri.parse("android.resource://" + "bj.app.wapi/" + R.raw.marcelo));
+            //player = MediaPlayer.create(this, uri);
+            player = MediaPlayer.create(this, Uri.parse("android.resource://" + "bj.app.wapi/" + R.raw.ecole));
             player.setLooping(false);
             player.start();
 
@@ -83,12 +85,16 @@ public class CarousselBackgroundAudioService extends Service {
     @Override
     public void onTaskRemoved(Intent rootIntent) {
         super.onTaskRemoved(rootIntent);
-        player.stop();
+        if(player!=null){
+            player.stop();
+        }
     }
 
     @Override
     public void onDestroy() {
-        player.stop();
+        if(player!=null){
+            player.stop();
+        }
     }
 
     public ArrayList<String> prepareAudioPaths(String path){
@@ -100,11 +106,12 @@ public class CarousselBackgroundAudioService extends Service {
     }
 
     public String getAppropriateAjustedPathToplay(ArrayList<String> arrayList){
-        String pathToPlayAjusted;
+        String pathToPlayAjusted = "";
         for (int i=0;i<arrayList.size();i++){
 
             //System.out.println("COKOKO FOR VALUE :"+arrayList.get(i));
-            if (arrayList.get(i).endsWith(langue+AUDIO_FORMAT_MP3)){ //REALLY : arrayList.get(i).endsWith(langue+AUDIO_FORMAT_MP3)
+            if (arrayList.get(i).endsWith(/*langue+*/AUDIO_FORMAT_MP3)){
+                //REALLY : arrayList.get(i).endsWith(langue+AUDIO_FORMAT_MP3)
                 //System.out.println("COKOKO FOR VALUE MATCHED :"+arrayList.get(i));
                 pathToPlayAjusted = ajustFilePath(arrayList.get(i));
                 //System.out.println("COKOKOPATH TO PLAY  FOR VALUE :"+pathToPlay);

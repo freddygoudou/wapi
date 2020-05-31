@@ -13,16 +13,131 @@ public class Champs implements Parcelable {
     private String nom;
     private List<ChampsLocation> champsLocations;
     private List<SaisonCulture> saisonCultures;
+
+    public Champs() {
+    }
+
+
+    public Champs(Long id, String nom, ArrayList<ChampsLocation> champsLocations, ArrayList<SaisonCulture> saisonCultures) {
+        this.id = id;
+        this.nom = nom;
+        this.champsLocations = champsLocations;
+        this.saisonCultures = saisonCultures;
+    }
+
+    public Champs(String nom, ArrayList<ChampsLocation> champsLocations, ArrayList<SaisonCulture> saisonCultures) {
+        this.nom = nom;
+        this.champsLocations = champsLocations;
+        this.saisonCultures = saisonCultures;
+    }
+
+
+    protected Champs(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readLong();
+        }
+        nom = in.readString();
+        champsLocations = in.createTypedArrayList(ChampsLocation.CREATOR);
+        saisonCultures = in.createTypedArrayList(SaisonCulture.CREATOR);
+    }
+
+    public static final Creator<Champs> CREATOR = new Creator<Champs>() {
+        @Override
+        public Champs createFromParcel(Parcel in) {
+            return new Champs(in);
+        }
+
+        @Override
+        public Champs[] newArray(int size) {
+            return new Champs[size];
+        }
+    };
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<ChampsLocation> getChampsLocations() {
+        return champsLocations;
+    }
+
+    public void setChampsLocations(List<ChampsLocation> champsLocations) {
+        this.champsLocations = champsLocations;
+    }
+
+    public List<SaisonCulture> getSaisonCultures() {
+        return saisonCultures;
+    }
+
+    public void setSaisonCultures(List<SaisonCulture> saisonCultures) {
+        this.saisonCultures = saisonCultures;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        if (id == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeLong(id);
+        }
+        parcel.writeString(nom);
+        parcel.writeTypedList(champsLocations);
+        parcel.writeTypedList(saisonCultures);
+    }
+}
+
+
+
+
+
+
+/*
+package entityBackend;
+
+        import android.os.Parcel;
+        import android.os.Parcelable;
+
+        import java.util.ArrayList;
+        import java.util.Date;
+        import java.util.List;
+
+public class Champs implements Parcelable {
+
+    private Long id;
+    private String nom;
+    private List<ChampsLocation> champsLocations;
+    private List<SaisonCulture> saisonCultures;
     private List<Employee> employees;
     private boolean active;
     private String delaieReativite;
+    private Farmer farmer;
     private Date createdAt;
     private Date updatedAt;
 
     public Champs() {
     }
 
-    public Champs(Long id, String nom, List<ChampsLocation> champsLocations, List<SaisonCulture> saisonCultures, List<Employee> employees, boolean active, String delaieReativite, Date createdAt, Date updatedAt) {
+    public Champs(Long id, String nom, List<ChampsLocation> champsLocations, List<SaisonCulture> saisonCultures, List<Employee> employees, boolean active, String delaieReativite, Farmer farmer, Date createdAt, Date updatedAt) {
         this.id = id;
         this.nom = nom;
         this.champsLocations = champsLocations;
@@ -30,6 +145,7 @@ public class Champs implements Parcelable {
         this.employees = employees;
         this.active = active;
         this.delaieReativite = delaieReativite;
+        this.farmer = farmer;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -40,13 +156,14 @@ public class Champs implements Parcelable {
         this.delaieReativite = delaieReativite;
     }
 
-    public Champs(String nom, ArrayList<ChampsLocation> champsLocations, ArrayList<SaisonCulture> saisonCultures, ArrayList<Employee> employees, boolean active, String delaieReativite) {
+    public Champs(String nom, List<ChampsLocation> champsLocations, List<SaisonCulture> saisonCultures, List<Employee> employees, boolean active, String delaieReativite, Farmer farmer) {
         this.nom = nom;
         this.champsLocations = champsLocations;
         this.saisonCultures = saisonCultures;
         this.employees = employees;
         this.active = active;
         this.delaieReativite = delaieReativite;
+        this.farmer = farmer;
     }
 
 
@@ -167,4 +284,4 @@ public class Champs implements Parcelable {
         parcel.writeByte((byte) (active ? 1 : 0));
         parcel.writeString(delaieReativite);
     }
-}
+}*/

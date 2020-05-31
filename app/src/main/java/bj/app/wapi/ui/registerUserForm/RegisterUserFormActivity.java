@@ -2,11 +2,18 @@ package bj.app.wapi.ui.registerUserForm;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import api.RetrofitClient;
+import bj.app.wapi.NewChampsActivity;
 import bj.app.wapi.ui.main.MainActivity;
 import bj.app.wapi.R;
+import entityBackend.Champs;
 import entityBackend.User;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import storage.SharedPrefManager;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +25,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -29,6 +38,7 @@ public class RegisterUserFormActivity extends AppCompatActivity {
     String name, email, langue, passwordAgain;
     Spinner spinner;
     ArrayList<String> langueList;
+    ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,9 +46,9 @@ public class RegisterUserFormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_user_form);
 
 
+        mProgressDialog = new ProgressDialog(this);
         spinner = findViewById(R.id.spLangue);
         nameTIL = findViewById(R.id.tILName);
-        emailTIL = findViewById(R.id.tILEmail);
 
         langueList = new ArrayList<>();
         langueList.add(getResources().getString(R.string.langueBariba));
@@ -66,43 +76,63 @@ public class RegisterUserFormActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 name = nameTIL.getEditText().getText().toString().trim();
-                email = emailTIL.getEditText().getText().toString().trim();
-                //password = tILPassword.getEditText().getText().toString();
-                //passwordAgain = tILPasswordAgain.getEditText().getText().toString();
 
-                if (langue != null){
-                    register(name, email, langue.trim());
+                if(name.length() == 0){
+                    Toast.makeText(RegisterUserFormActivity.this,"Veillez renseigner votre nom !", Toast.LENGTH_LONG).show();
+                } else if (langue != null){
+                    User user = new User(FirebaseAuth.getInstance().getUid(),name, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), langue);
+                    SharedPrefManager.getmInstance(RegisterUserFormActivity.this).saveUser(user);
+                    createUserWithApi(name, langue);
                 }else {
                     Toast.makeText(RegisterUserFormActivity.this,"Vous devez absolument sélectionner un langue pour continuer!", Toast.LENGTH_LONG).show();
                 }
-
-
             }
         });
-
-        /*tvhaveAccount = view.findViewById(R.id.tvhaveAccount);
-        tvhaveAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.action_navigation_register_user_form_to_navigation_login);
-            }
-        });*/
-
     }
 
-
-
-    private  void register(String name, String email, String langue){
+    private void createUserWithApi(String name, String langue){
 
         User user = SharedPrefManager.getmInstance(RegisterUserFormActivity.this).getUser();
         user.setName(name);
         user.setLangue(langue);
-        SharedPrefManager.getmInstance(RegisterUserFormActivity.this).clear();
-        SharedPrefManager.getmInstance(RegisterUserFormActivity.this).saveUser(user);
+        user.setFirebasUid(FirebaseAuth.getInstance().getUid());
+        User userForCall = new User(user.getFirebasUid(), user.getName(), user.getPhoneNumber(), user.getLangue());
 
-        //CALL SERVICE FOR INSCRIPTION AND GO TO MAINACTIVITY
-        startActivity(new Intent(RegisterUserFormActivity.this, MainActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+        Call<User> call = RetrofitClient
+                .getmInstance()
+                .getApi()
+                .createUser(userForCall);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                try {
+                    User userReturned = null;
+                    if (response.code() == 200){
+                        userReturned = response.body();
+                        if (userReturned != null){
+                            SharedPrefManager.getmInstance(RegisterUserFormActivity.this).clear();
+                            SharedPrefManager.getmInstance(RegisterUserFormActivity.this).saveUserWithId(userReturned);
+
+                            //CALL SERVICE FOR INSCRIPTION AND GO TO MAINACTIVITY
+                            startActivity(new Intent(RegisterUserFormActivity.this, MainActivity.class)
+                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                        }
+                    }else {
+                        Toast.makeText(RegisterUserFormActivity.this, "Response code is :"+response.code()+"\n"+" S_Response message "+response.message(), Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                    mProgressDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(RegisterUserFormActivity.this, "Error message "+t.getMessage(), Toast.LENGTH_LONG).show();
+                mProgressDialog.dismiss();
+            }
+        });
     }
 
 

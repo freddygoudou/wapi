@@ -3,8 +3,116 @@ package entityBackend;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Date;
-import java.util.List;
+public class SaisonCulture implements Parcelable {
+
+    private Long id;
+    private String ancienneCulture;
+    private String nouvelleCulture;
+
+
+    public SaisonCulture() {
+    }
+
+
+    public SaisonCulture(Long id, String ancienneCulture, String nouvelleCulture) {
+        this.id = id;
+        this.ancienneCulture  = ancienneCulture;
+        this.nouvelleCulture = nouvelleCulture;
+    }
+
+
+    public SaisonCulture(String ancienneCulture, String nouvelleCulture) {
+        this.ancienneCulture  = ancienneCulture;
+        this.nouvelleCulture = nouvelleCulture;
+    }
+
+
+    protected SaisonCulture(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readLong();
+        }
+        ancienneCulture = in.readString();
+        nouvelleCulture = in.readString();
+    }
+
+    public static final Creator<SaisonCulture> CREATOR = new Creator<SaisonCulture>() {
+        @Override
+        public SaisonCulture createFromParcel(Parcel in) {
+            return new SaisonCulture(in);
+        }
+
+        @Override
+        public SaisonCulture[] newArray(int size) {
+            return new SaisonCulture[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        if (id == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeLong(id);
+        }
+        parcel.writeString(ancienneCulture);
+        parcel.writeString(nouvelleCulture);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAncienneCulture() {
+        return ancienneCulture;
+    }
+
+    public void setAncienneCulture(String ancienneCulture) {
+        this.ancienneCulture = ancienneCulture;
+    }
+
+    public String getNouvelleCulture() {
+        return nouvelleCulture;
+    }
+
+    public void setNouvelleCulture(String nouvelleCulture) {
+        this.nouvelleCulture = nouvelleCulture;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*package entityBackend;
+
+        import android.os.Parcel;
+        import android.os.Parcelable;
+
+        import java.util.Date;
+        import java.util.List;
 
 public class SaisonCulture implements Parcelable {
 
@@ -99,4 +207,4 @@ public class SaisonCulture implements Parcelable {
         parcel.writeTypedList(depenses);
         parcel.writeParcelable(recolte, i);
     }
-}
+}*/

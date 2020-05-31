@@ -7,7 +7,8 @@ import java.util.Date;
 
 public class User implements Parcelable {
 
-    private String id;
+    private Long id;
+    private String firebasUid;
     private String name;
     private String phoneNumber;
     private String langue;
@@ -17,8 +18,9 @@ public class User implements Parcelable {
     public User() {
     }
 
-    public User(String id, String name, String phoneNumber, String langue, Date createdAt, Date updatedAt) {
+    public User(Long id, String firebasUid, String name, String phoneNumber, String langue, Date createdAt, Date updatedAt) {
         this.id = id;
+        this.firebasUid = firebasUid;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.langue = langue;
@@ -26,15 +28,23 @@ public class User implements Parcelable {
         this.updatedAt = updatedAt;
     }
 
-    public User(String id, String name, String phoneNumber, String langue) {
+    public User(Long id, String firebasUid, String name, String phoneNumber, String langue) {
         this.id = id;
+        this.firebasUid = firebasUid;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.langue = langue;
+    }
+
+    public User(String firebasUid, String name, String phoneNumber, String langue) {
+        this.firebasUid = firebasUid;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.langue = langue;
     }
 
     protected User(Parcel in) {
-        id = in.readString();
+        id = in.readLong();
         name = in.readString();
         phoneNumber = in.readString();
         langue = in.readString();
@@ -52,11 +62,19 @@ public class User implements Parcelable {
         }
     };
 
-    public String getId() {
+    public String getFirebasUid() {
+        return firebasUid;
+    }
+
+    public void setFirebasUid(String firebasUid) {
+        this.firebasUid = firebasUid;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -104,12 +122,9 @@ public class User implements Parcelable {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", langue='" + langue + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
                 '}';
     }
 
@@ -120,7 +135,7 @@ public class User implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(id);
+        parcel.writeLong(id);
         parcel.writeString(name);
         parcel.writeString(phoneNumber);
         parcel.writeString(langue);

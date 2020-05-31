@@ -5,7 +5,7 @@
     <string name="haveAccount"><u>Déjà inscrit? Connectez-vous!</u></string>
     <string name="connexion">Connexion</string>
     <string name="inscription">Inscription</string>
-    <string name="phoneNumber">Phone Number</string>
+    <string name="phoneNumber">N° Téléphone</string>
     <string name="finaliser_inscription">Finaliser L\'inscription</string>
     <string name="code">Code</string>
     <string name="renvoyerCode">RENVOYER LE CODE</string>
@@ -80,4 +80,9 @@
     <string name="toutes_saisons">Toutes les saisons de culture</string>
     <string name="infos_culture_messsage">Renseignez maintenant les infos sur les cultures</string>
     <string name="infos_culture">Infos Cultures</string>
+    <string name="champs_creation_succed">Une nouvelle exploitation a été créé avec succès ...</string>
+    <string name="ask_exist_old_culture">Avez vous déjà fait une culture l\'année passée sur ce champs que vous êtes sur le point de créer?</string>
+    <string name="oui">Oui</string>
+    <string name="non">Non</string>
+    <string name="welcome_to_wapi">Bienvenue dans Wapi</string>
 </resources>

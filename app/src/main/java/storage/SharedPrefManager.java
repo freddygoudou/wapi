@@ -28,7 +28,19 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putString("id",user.getId());
+        editor.putString("firebasUid",user.getFirebasUid());
+        editor.putString("name",user.getName());
+        editor.putString("phoneNumber",user.getPhoneNumber());
+        editor.putString("langue",user.getLangue());
+        editor.apply();
+    }
+
+    public void saveUserWithId(User user){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putLong("id",user.getId());
+        editor.putString("firebasUid",user.getFirebasUid());
         editor.putString("name",user.getName());
         editor.putString("phoneNumber",user.getPhoneNumber());
         editor.putString("langue",user.getLangue());
@@ -39,7 +51,7 @@ public class SharedPrefManager {
     public  boolean isLoggedIn(){
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
-        if(!sharedPreferences.getString("id","").equals("NO_FOUND")){
+        if(sharedPreferences.getLong("id",-33L) != -1){
             return true; // Si la valeur est différente de -1, l'utilisateur est connecté
         }
         return false;
@@ -50,7 +62,8 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         User user = null;
         user = new User(
-                sharedPreferences.getString("id","NO_FOUND"),
+                sharedPreferences.getLong("id",-1L),
+                sharedPreferences.getString("firebasUid","NO_FOUND"),
                 sharedPreferences.getString("name", null),
                 sharedPreferences.getString("phoneNumber", null),
                 sharedPreferences.getString("langue", null)

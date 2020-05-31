@@ -180,9 +180,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         requestForpermission();
-
-        System.out.println("USER IS  : "+SharedPrefManager.getmInstance(MainActivity.this).getUser().toString());
-
     }
 
     @Override

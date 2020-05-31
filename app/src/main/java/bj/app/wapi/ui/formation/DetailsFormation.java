@@ -47,7 +47,7 @@ public class DetailsFormation extends AppCompatActivity {
 
     public static final String AUDIO = "AUDIO";
     public static final String IMAGE= "IMAGE";
-    public static final String AUDIO_FORMAT_MP3 = ".mp4";
+    public static final String AUDIO_FORMAT_MP3 = ".mp3";
     public static final String IMAGE_FORMAT_PNG = ".png";
     public static final String IMAGE_FORMAT_JPG = ".jpg";
     public static final String IMAGE_FORMAT_JPEG = ".jpeg";

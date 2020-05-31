@@ -49,7 +49,6 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         holder.ll_one_document.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_scale_animation));
         holder.tv_title.setText(mData.get(position).getName());
         holder.tv_description.setText(mData.get(position).getDescription());
-        holder.btn_telecharger_ouvrir.setImageResource(R.drawable.ic_file_download_black_24dp);
 
         if (this.connexionState){
             Picasso.get().load(firstImage(mData.get(position).getImagesPaths())).into(holder.iv_produit);
@@ -57,19 +56,9 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsoluteFile(),ajustFilePath(firstImage(mData.get(position).getImagesPaths())));
             Picasso.get().load(file).into(holder.iv_produit);
         }
-
-        holder.btn_telecharger_ouvrir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Téléchargement
-                holder.btn_telecharger_ouvrir.setImageResource(R.drawable.ic_insert_drive_file_white_24dp);
-                //holder.btn_telecharger_ouvrir.setBackgroundColor(R.color.colorRed);
-            }
-        });
         holder.ll_one_document.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 mContext.startActivity(new Intent(mContext, DetailsFormation.class)
                     .putExtra("caroussel", mData.get(position))
                         .putExtra("connexionState", connexionState));
@@ -97,13 +86,11 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
 
         TextView tv_title, tv_description;
         ImageView iv_produit;
-        ImageButton btn_telecharger_ouvrir;
         LinearLayout ll_one_document;
         public DocumentViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_title = itemView.findViewById(R.id.tv_title);
             tv_description = itemView.findViewById(R.id.tv_description);
-            btn_telecharger_ouvrir = itemView.findViewById(R.id.btn_telecharger_ouvrir);
             iv_produit = itemView.findViewById(R.id.iv_produit);
             ll_one_document = itemView.findViewById(R.id.ll_one_document);
         }
@@ -197,7 +184,8 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         /*
                         getDownloadedFile(list, file.listFiles());
                     }else */
-        /*if (file.isFile())*//*{
+        /*if (file.isFile())*/
+        /*{
                         System.out.println("YOUR FILE IS :"+file.getName());
                         */
         /*fileToReturn = file;

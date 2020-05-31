@@ -109,14 +109,13 @@ public class DocumentFragment extends Fragment {
         ressourceArrayList = new ArrayList<>();
 
         if (isNetworkConnected()){
-            Toast.makeText(getActivity(),"CONNECTED ..... ", Toast.LENGTH_LONG).show();
             //GET RESSOURCES FROM API
-            ressourceArrayList.add(new Caroussel("CAJOUX","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",text2+";"+text2));
-            ressourceArrayList.add(new Caroussel("RIZ","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",text2+";"+text2));
-            ressourceArrayList.add(new Caroussel("TOMATE","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",text2+";"+text2));
-            ressourceArrayList.add(new Caroussel("PIMENT","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",text2+";"+text2));
-            ressourceArrayList.add(new Caroussel("CAROTTE","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",text2+";"+text2));
-            ressourceArrayList.add(new Caroussel("SOJA","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",text2+";"+text2));
+            ressourceArrayList.add(new Caroussel("CAJOUX","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
+            ressourceArrayList.add(new Caroussel("RIZ","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
+            ressourceArrayList.add(new Caroussel("TOMATE","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
+            ressourceArrayList.add(new Caroussel("PIMENT","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
+            ressourceArrayList.add(new Caroussel("CAROTTE","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
+            ressourceArrayList.add(new Caroussel("SOJA","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
 
             /*mData.add(new Document("CAJOUX", "Le meilleur d Afrique", R.drawable.wapipoudrefeuillebaobnab));
             mData.add(new Document("RIZ", "Le meilleur d Afrique", R.drawable.wapibaobabpoudre));
@@ -129,10 +128,7 @@ public class DocumentFragment extends Fragment {
             adapter.notifyDataSetChanged();
 
         }else {
-            Toast.makeText(getActivity(),"NOT CONNECTED ..... ", Toast.LENGTH_LONG).show();
-
             databaseHelper = new DatabaseHelper(getActivity());
-
             ressourceArrayList = databaseHelper.getAllCaroussels();
 
             /*ressourceArrayList.add(new Caroussel("CAJOUX","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));

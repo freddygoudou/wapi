@@ -8,7 +8,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static final String BASE_URL = "http://192.168.8.103:8080/"; // BASE URL DE LA OU EST LE BACKEND
+    /*
+        ERROR : CLEARTEXT communication to host not permitted by network security policy
+        SOLUTION : https://github.com/shadowsocks/shadowsocks-android/issues/1765
+     */
+
+    private static final String BASE_URL = "http://192.168.43.5:8080/"; // BASE URL DE LA OU EST LE BACKEND
     private static  RetrofitClient mInstance;
     private Retrofit retrofit;
 

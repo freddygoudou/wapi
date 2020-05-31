@@ -55,9 +55,9 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_player);
 
-        /*databaseHelper = new DatabaseHelper(this);
+        databaseHelper = new DatabaseHelper(this);
 
-        System.out.println("DB VIDEO  "+databaseHelper.getAllVideos());*/
+        //System.out.println("DB VIDEO  "+databaseHelper.getAllVideos());
 
         if(getIntent().hasExtra("video") && getIntent().hasExtra("connexionState")){
             video = getIntent().getParcelableExtra("video");

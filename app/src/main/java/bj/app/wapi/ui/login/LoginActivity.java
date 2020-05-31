@@ -155,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            Toast.makeText(LoginActivity.this, "LOGIN OK NOW", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, R.string.welcome_to_wapi, Toast.LENGTH_LONG).show();
 
                             //startActivity(new Intent(LoginActivity.this, ConfirmCodeActivity.class));
 
@@ -176,33 +176,23 @@ public class LoginActivity extends AppCompatActivity {
                                 SharedPrefManager.getmInstance(LoginActivity.this)
                                         .saveUser(user);
                             }*/
+
                             mUserDatabase.child(mAuth.getCurrentUser().getUid()).child("phone").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                                    Toast.makeText(LoginActivity.this, "PHONE DATASNAPSHOT .. "+ dataSnapshot, Toast.LENGTH_LONG).show();
-
-                                    System.out.println("PHONE DATASNAPSHOT .. "+ dataSnapshot);
 
                                     if (dataSnapshot.getValue() == null){
 
                                         mUserDatabase.child(mAuth.getCurrentUser().getUid()).child("phone").setValue(completePhoneNumber).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                //Toast.makeText(LoginActivity.this, "PONE NOT  EXIST .. "+ mAuth.getCurrentUser().getUid(), Toast.LENGTH_LONG).show();
                                                 startActivity(new Intent(LoginActivity.this, RegisterUserFormActivity.class));
                                             }
                                         });
 
                                     }else {
-
                                         String phone = dataSnapshot.getValue().toString();
-
-                                        Toast.makeText(LoginActivity.this, "PONE EXIST .. "+ phone, Toast.LENGTH_LONG).show();
                                         if(phone.equals(completePhoneNumber)){
-
-                                            Toast.makeText(LoginActivity.this, "MAIN .. "+ mAuth.getCurrentUser().getUid(), Toast.LENGTH_LONG).show();
-
                                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                         }
                                     }
