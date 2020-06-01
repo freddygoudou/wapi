@@ -68,12 +68,13 @@ public class CarousselBackgroundAudioService extends Service {
                 file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), getAppropriateAjustedPathToplay(arrayList));
                 uri = Uri.fromFile(file);
             }else {
-                System.out.println("COKOKOPATH IS NOW :"+getAppropriateAjustedPathToplay(arrayList)+" AND ALSO :"+arrayList);
+                System.out.println("COKOKOPATH IS NOW :"+arrayList.get(0)+" AND ALSO :"+arrayList);
                 uri = Uri.parse(getAppropriateAjustedPathToplay(arrayList));
             }
 
             //player = MediaPlayer.create(this, uri);
             player = MediaPlayer.create(this, Uri.parse("android.resource://" + "bj.app.wapi/" + R.raw.ecole));
+            //player = MediaPlayer.create(this, Uri.parse("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"));
             player.setLooping(false);
             player.start();
 

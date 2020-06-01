@@ -82,7 +82,9 @@ public class DetailsFormation extends AppCompatActivity {
         carouselView.setCurrentItem(0, true);
         carouselView.playCarousel();
         stopService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
-        startService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
+        startService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class)
+                .putExtra("caroussel", caroussel)
+                .putExtra("connexionState", connexionState));
     }
 
     @Override
@@ -103,78 +105,85 @@ public class DetailsFormation extends AppCompatActivity {
             carousselToSave = new Caroussel(caroussel.getName(),caroussel.getDescription(),"","");
             connexionState = getIntent().getBooleanExtra("connexionState", false);
             System.out.println("CAKAKKA :"+caroussel.toString());
-        }
 
-        tvDescriptionFormation = findViewById(R.id.tvDescriptionFormation);
-        tvNomFormationn = findViewById(R.id.tvNomFormation);
-        tvNomFormationn.setText(caroussel.getName());
-        tvDescriptionFormation.setText(caroussel.getDescription());
+            tvDescriptionFormation = findViewById(R.id.tvDescriptionFormation);
+            tvNomFormationn = findViewById(R.id.tvNomFormation);
+            tvNomFormationn.setText(caroussel.getName());
+            tvDescriptionFormation.setText(caroussel.getDescription());
 
-        loadCarousselImage();
+            loadCarousselImage();
 
-        carouselView = findViewById(R.id.carouselView);
-        carouselView.setPageCount(slideItemList.size());
-        carouselView.setImageListener(imageListener);
-        carouselView.setSlideInterval(10000);
-        carouselView.setCurrentItem(0, true);
-        carouselView.playCarousel();
+            carouselView = findViewById(R.id.carouselView);
+            carouselView.setPageCount(slideItemList.size());
+            carouselView.setImageListener(imageListener);
+            carouselView.setSlideInterval(10000);
+            carouselView.setCurrentItem(0, true);
+            carouselView.playCarousel();
 
-        //Démarer l'audio
-        stopService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
-        startService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class)
-                .putExtra("caroussel", caroussel)
-                .putExtra("connexionState", connexionState));
+            //Démarer l'audio
+            stopService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
+            startService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class)
+                    .putExtra("caroussel", caroussel)
+                    .putExtra("connexionState", connexionState));
 
-        download = findViewById(R.id.download);
 
-        download.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                ArrayList<FileAndExtention> list, audiosList, imagesList;
-
-                list = downloadFileCaroussel(caroussel, prepareDownloadCaroussel(caroussel));
-                audiosList = new ArrayList<>();
-                imagesList = new ArrayList<>();
-
-                //LOAD AUDIO FILES AND IMAGES FILES
-                for (int i=0; i<list.size(); i++){
-                    if (list.get(i).getExtention().equals(AUDIO_FORMAT_MP3)){
-                        audiosList.add(list.get(i));
-                    }else {
-                        imagesList.add(list.get(i));
-                    }
-                }
-
-                // SET AUDIOS PATHS
-                for (int i=0; i<audiosList.size(); i++){
-                    if (i != audiosList.size()-1){
-                        carousselToSave.setAudiosPaths(carousselToSave.getAudiosPaths()+audiosList.get(i).getLocation()+";");
-                    }else {
-                        carousselToSave.setAudiosPaths(carousselToSave.getAudiosPaths()+audiosList.get(i).getLocation());
-                    }
-                }
-
-                // SET IMAGES PATHS
-                for (int i=0; i<imagesList.size(); i++){
-                    if (i != imagesList.size()-1){
-                        carousselToSave.setImagesPaths(carousselToSave.getImagesPaths()+imagesList.get(i).getLocation()+";");
-                    }else {
-                        carousselToSave.setImagesPaths(carousselToSave.getImagesPaths()+imagesList.get(i).getLocation());
-                    }
-                }
-
-                System.out.println("DOWNLOADED CAROUSSEL FILES LIST : "+list.toString());
-                System.out.println("AUDIO FILES LIST : "+audiosList.toString());
-                System.out.println("IMAGES FILES LIST : "+imagesList.toString());
-                System.out.println("CAROUSSEL TO SAVE : "+carousselToSave.toString());
-
-                //SAVE CAROUSSEL
-                databaseHelper.saveOneCaroussel(carousselToSave);
-
+            download = findViewById(R.id.download);
+            if(!connexionState){
+                download.setEnabled(false);
+                download.setVisibility(View.INVISIBLE);
+            }else{
+                download.setEnabled(true);
+                download.setVisibility(View.VISIBLE);
             }
-        });
+            download.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
+                    ArrayList<FileAndExtention> list, audiosList, imagesList;
+
+                    list = downloadFileCaroussel(caroussel, prepareDownloadCaroussel(caroussel));
+                    audiosList = new ArrayList<>();
+                    imagesList = new ArrayList<>();
+
+                    //LOAD AUDIO FILES AND IMAGES FILES
+                    for (int i=0; i<list.size(); i++){
+                        if (list.get(i).getExtention().equals(AUDIO_FORMAT_MP3)){
+                            audiosList.add(list.get(i));
+                        }else {
+                            imagesList.add(list.get(i));
+                        }
+                    }
+
+                    // SET AUDIOS PATHS
+                    for (int i=0; i<audiosList.size(); i++){
+                        if (i != audiosList.size()-1){
+                            carousselToSave.setAudiosPaths(carousselToSave.getAudiosPaths()+audiosList.get(i).getLocation()+";");
+                        }else {
+                            carousselToSave.setAudiosPaths(carousselToSave.getAudiosPaths()+audiosList.get(i).getLocation());
+                        }
+                    }
+
+                    // SET IMAGES PATHS
+                    for (int i=0; i<imagesList.size(); i++){
+                        if (i != imagesList.size()-1){
+                            carousselToSave.setImagesPaths(carousselToSave.getImagesPaths()+imagesList.get(i).getLocation()+";");
+                        }else {
+                            carousselToSave.setImagesPaths(carousselToSave.getImagesPaths()+imagesList.get(i).getLocation());
+                        }
+                    }
+
+                    System.out.println("DOWNLOADED CAROUSSEL FILES LIST : "+list.toString());
+                    System.out.println("AUDIO FILES LIST : "+audiosList.toString());
+                    System.out.println("IMAGES FILES LIST : "+imagesList.toString());
+                    System.out.println("CAROUSSEL TO SAVE : "+carousselToSave.toString());
+
+                    //SAVE CAROUSSEL
+                    databaseHelper.saveOneCaroussel(carousselToSave);
+
+                }
+            });
+
+        }
     }
 
 
