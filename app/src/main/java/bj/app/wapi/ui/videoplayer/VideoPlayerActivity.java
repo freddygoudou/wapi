@@ -67,7 +67,13 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
         }
 
         download = findViewById(R.id.download);
-
+        if(!connexionState){
+            download.setEnabled(false);
+            download.setVisibility(View.INVISIBLE);
+        }else{
+            download.setEnabled(true);
+            download.setVisibility(View.VISIBLE);
+        }
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
