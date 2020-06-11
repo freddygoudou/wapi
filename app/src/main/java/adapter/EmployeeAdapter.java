@@ -1,17 +1,20 @@
 package adapter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
-import bj.app.wapi.NewChampsActivity;
+import bj.app.wapi.ui.NewChampsActivity;
 import bj.app.wapi.R;
 import entityBackend.ContactEmployee;
 import entityBackend.Employee;
@@ -21,6 +24,8 @@ public class EmployeeAdapter extends RecyclerView.Adapter <EmployeeAdapter.Champ
     private Context mContext;
     private List<Employee> mData;
     View view;
+
+
     public EmployeeAdapter(Context mContext, List<Employee> mData) {
         this.mContext = mContext;
         this.mData = mData;
@@ -36,8 +41,8 @@ public class EmployeeAdapter extends RecyclerView.Adapter <EmployeeAdapter.Champ
     @Override
     public void onBindViewHolder(@NonNull EmployeeAdapter.ChampsLocationViewHolder holder, int position) {
         String allContact = getAllEmployeeContacts(mData.get(position).getContactEmployees());
-        holder.tv_nom.setText("Nom : "+mData.get(position).getNom());
-        holder.tv_contact.setText("Téléphone : "+allContact);
+        holder.tv_nom.setText(mData.get(position).getName());
+        holder.tv_contact.setText("Téléphone : "+mData.get(position).getContactEmployees().get(0).getPhoneNumber());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,4 +83,6 @@ public class EmployeeAdapter extends RecyclerView.Adapter <EmployeeAdapter.Champ
     public interface UiInterface{
         void updateActivityUI(int size);
     }
+
+
 }

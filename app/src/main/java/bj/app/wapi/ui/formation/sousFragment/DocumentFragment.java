@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.synnapps.carouselview.CarouselView;
 
 import java.util.ArrayList;
@@ -96,6 +97,7 @@ public class DocumentFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(DocumentFragment.this.getContext()));
 
+        System.out.println("My id is : "+ FirebaseAuth.getInstance().getUid());
     }
 
 

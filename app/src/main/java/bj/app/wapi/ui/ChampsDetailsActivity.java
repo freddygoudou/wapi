@@ -4,6 +4,7 @@ import adapter.EmployeeAdapter;
 import adapter.LocationAdapter;
 import adapter.SaisonAdapter;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
@@ -16,15 +17,16 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ChampsDetailsActivity extends AppCompatActivity {
 
     Champs champs;
     TextView tvChampsActif, tvDelaiActivation;
     RecyclerView rvEmployee, rvSaisonCulture, rvChampsLocation;
-    ArrayList<Employee> employees;
-    ArrayList<ChampsLocation> locations;
-    ArrayList<SaisonCulture> saisonCultures;
+    List<Employee> employees;
+    List<ChampsLocation> locations;
+    List<SaisonCulture> saisonCultures;
     EmployeeAdapter adapterEmployee;
     LocationAdapter locationAdapter;
     SaisonAdapter saisonAdapter;
@@ -40,18 +42,19 @@ public class ChampsDetailsActivity extends AppCompatActivity {
             tvChampsActif = findViewById(R.id.tv_is_active);
             tvDelaiActivation = findViewById(R.id.tv_delaie_is_active);
 
-            /*if (champs.isActive()){
+            if (champs.isActive()){
                 tvChampsActif.setText(R.string.champs_actif);
-
+                tvDelaiActivation.setText("");
             }else {
                 tvChampsActif.setText(R.string.champs_inactif);
                 tvChampsActif.setText(champs.getDelaieReativite());
-            }*/
+            }
 
 
-            employees = new ArrayList<>();
-            locations = new ArrayList<>();
-            saisonCultures = new ArrayList<>();
+
+            employees = champs.getEmployees();
+            locations = champs.getChampsLocations();
+            saisonCultures = champs.getSaisonCultures();
 
             /*employees = champs.getEmployees();
             locations = champs.getChampsLocations();
@@ -69,9 +72,9 @@ public class ChampsDetailsActivity extends AppCompatActivity {
             rvChampsLocation.setAdapter(locationAdapter);
             rvSaisonCulture.setAdapter(saisonAdapter);
 
-            rvEmployee.setLayoutManager(new LinearLayoutManager(ChampsDetailsActivity.this));
-            rvChampsLocation.setLayoutManager(new LinearLayoutManager(ChampsDetailsActivity.this));
-            rvSaisonCulture.setLayoutManager(new LinearLayoutManager(ChampsDetailsActivity.this));
+            rvEmployee.setLayoutManager(new GridLayoutManager(ChampsDetailsActivity.this,1, LinearLayoutManager.HORIZONTAL,false));
+            rvChampsLocation.setLayoutManager(new GridLayoutManager(ChampsDetailsActivity.this,1, LinearLayoutManager.VERTICAL,false));
+            rvSaisonCulture.setLayoutManager(new GridLayoutManager(ChampsDetailsActivity.this,1, LinearLayoutManager.HORIZONTAL,false));
 
         }
     }

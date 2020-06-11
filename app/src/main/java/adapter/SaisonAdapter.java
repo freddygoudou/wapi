@@ -7,19 +7,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import bj.app.wapi.NewChampsActivity;
 import bj.app.wapi.R;
 import entityBackend.SaisonCulture;
 
 public class SaisonAdapter extends RecyclerView.Adapter <SaisonAdapter.ChampsLocationViewHolder>{
 
     private Context mContext;
-    private ArrayList<SaisonCulture> mData;
+    private List<SaisonCulture> mData;
     View view;
-    public SaisonAdapter(Context mContext, ArrayList<SaisonCulture> mData) {
+    public SaisonAdapter(Context mContext, List<SaisonCulture> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -33,9 +33,9 @@ public class SaisonAdapter extends RecyclerView.Adapter <SaisonAdapter.ChampsLoc
 
     @Override
     public void onBindViewHolder(@NonNull SaisonAdapter.ChampsLocationViewHolder holder, int position) {
-        /*holder.tv_nom_culture.setText("Culture de  : "+mData.get(position).getNomCulture());
-        holder.tv_annee_culture.setText("Année : "+mData.get(position).getAnnéeCulture());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.tv_nom_culture.setText(mContext.getResources().getString(R.string.culture_of)+mData.get(position).getNomCulture());
+        holder.tv_date_semie.setText(mContext.getResources().getString(R.string.dateSemie)+mData.get(position).getDateSemie());
+        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mData.remove(position);
@@ -53,12 +53,12 @@ public class SaisonAdapter extends RecyclerView.Adapter <SaisonAdapter.ChampsLoc
     }
 
     public class ChampsLocationViewHolder  extends RecyclerView.ViewHolder{
-        TextView tv_nom_culture, tv_annee_culture;
+        TextView tv_nom_culture, tv_date_semie;
 
         public ChampsLocationViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_nom_culture = itemView.findViewById(R.id.tv_nom_culture);
-            tv_annee_culture = itemView.findViewById(R.id.tv_annne_culture);
+            tv_date_semie = itemView.findViewById(R.id.tv_date_semie);
         }
     }
 

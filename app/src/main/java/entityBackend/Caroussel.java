@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class Caroussel implements Parcelable {
 
-    private Long id;
+    private String  _id;
     private String name;
     private String description;
     private String audiosPaths;
@@ -18,8 +18,8 @@ public class Caroussel implements Parcelable {
 
     public Caroussel(){}
 
-    public Caroussel(Long id, String name, String description, String audiosPaths, String imagesPaths, Date createdAt, Date updatedAt) {
-        this.id = id;
+    public Caroussel(String id, String name, String description, String audiosPaths, String imagesPaths, Date createdAt, Date updatedAt) {
+        this._id = id;
         this.name = name;
         this.description = description;
         this.audiosPaths = audiosPaths;
@@ -29,14 +29,6 @@ public class Caroussel implements Parcelable {
     }
 
     public Caroussel(String name, String description, String audiosPaths, String imagesPaths) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.audiosPaths = audiosPaths;
-        this.imagesPaths = imagesPaths;
-    }
-
-    public Caroussel(Long id, String name, String description, String audiosPaths, String imagesPaths) {
         this.name = name;
         this.description = description;
         this.audiosPaths = audiosPaths;
@@ -44,15 +36,25 @@ public class Caroussel implements Parcelable {
     }
 
     protected Caroussel(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
+        _id = in.readString();
         name = in.readString();
         description = in.readString();
         audiosPaths = in.readString();
         imagesPaths = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(_id);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(audiosPaths);
+        dest.writeString(imagesPaths);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Caroussel> CREATOR = new Creator<Caroussel>() {
@@ -67,16 +69,33 @@ public class Caroussel implements Parcelable {
         }
     };
 
-    public Long getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Caroussel{" +
+                "_id='" + _id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", audiosPaths='" + audiosPaths + '\'' +
+                ", imagesPaths='" + imagesPaths + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -85,10 +104,6 @@ public class Caroussel implements Parcelable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getAudiosPaths() {
@@ -107,35 +122,19 @@ public class Caroussel implements Parcelable {
         this.imagesPaths = imagesPaths;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        if (id == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeLong(id);
-        }
-        parcel.writeString(name);
-        parcel.writeString(description);
-        parcel.writeString(audiosPaths);
-        parcel.writeString(imagesPaths);
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    @Override
-    public String toString() {
-        return "Caroussel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", audiosPaths='" + audiosPaths + '\'' +
-                ", imagesPaths='" + imagesPaths + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

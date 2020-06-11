@@ -146,7 +146,7 @@
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:textAllCaps="false"
-                android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
+                android:drawableEnd="@drawable/ic_arrow_forward_white_24dp"
                 android:backgroundTint="@color/colorAccent"/>
 
             <LinearLayout

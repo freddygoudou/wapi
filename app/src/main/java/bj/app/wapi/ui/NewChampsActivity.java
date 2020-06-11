@@ -1,4 +1,4 @@
-package bj.app.wapi;
+package bj.app.wapi.ui;
 
 import adapter.ChampsLocationAdapter;
 import androidx.appcompat.app.AlertDialog;
@@ -7,12 +7,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 import api.RetrofitClient;
-import bj.app.wapi.ui.InfosCulture;
+import bj.app.wapi.R;
 import bj.app.wapi.ui.main.MainActivity;
 import entityBackend.Champs;
 import entityBackend.ChampsLocation;
+import entityBackend.Depense;
 import entityBackend.Farmer;
 import entityBackend.Recolte;
 import entityBackend.SaisonCulture;
@@ -40,13 +40,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,7 +101,7 @@ public class NewChampsActivity extends AppCompatActivity implements ChampsLocati
                 if (true){ //isCoordGpsFetch()
                     //double tab[] = currentPosition();
                     //mData.add(new ChampsLocation(tab[0],tab[1]));
-                    mData.add(new ChampsLocation(1.33367, 56.1211));
+                    mData.add(new ChampsLocation("champslocn",1.33367, 56.1211));
                     adapter.notifyDataSetChanged();
                     if (mData.size()>=3)
                         btnValiderNewChamps.setVisibility(View.VISIBLE);
@@ -272,32 +271,33 @@ public class NewChampsActivity extends AppCompatActivity implements ChampsLocati
     private void saveChamps(String nomChamps, String ancienneCulture, String nouvelleCulture, ArrayList<ChampsLocation> champsLocationArrayList, boolean oldChampsExist) {
 
         ArrayList<SaisonCulture> list;
-        User user = SharedPrefManager.getmInstance(NewChampsActivity.this).getUser();
+        //User user = SharedPrefManager.getmInstance(NewChampsActivity.this).getUser();
         //Farmer farmer = new Farmer(user, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
         if (oldChampsExist){
             list = new ArrayList<>();
-            list.add(new SaisonCulture(ancienneCulture,nouvelleCulture));
-            champs = new Champs(nomChamps, mData, list);
+            list.add(new SaisonCulture("acu1",ancienneCulture, "",true,new ArrayList<>(), null));
+            list.add(new SaisonCulture("acu2",nouvelleCulture, "",true,new ArrayList<>(), null));
+            champs = new Champs("champ1",nomChamps, true, "", champsLocationArrayList,list, new ArrayList<>());
         }else{
             list = new ArrayList<>();
-            list.add(new SaisonCulture("NEANT",nouvelleCulture));
-            champs = new Champs(nomChamps, mData, list);
+            list.add(new SaisonCulture("acu1",nouvelleCulture, "",true,new ArrayList<>(),  null));
+            champs = new Champs("champ1",nomChamps, true, "", mData, list, new ArrayList<>());
         }
 
-        Call<Champs> call = RetrofitClient
+        Call<Farmer> call = RetrofitClient
                 .getmInstance()
                 .getApi()
-                .saveChamps(champs);
+                .saveChamps(FirebaseAuth.getInstance().getUid(), champs);
 
-        call.enqueue(new Callback<Champs>() {
+        call.enqueue(new Callback<Farmer>() {
             @Override
-            public void onResponse(Call<Champs> call, Response<Champs> response) {
+            public void onResponse(Call<Farmer> call, Response<Farmer> response) {
                 try {
-                    Champs champsReturned;
+                    Farmer farmer;
                     if (response.code() == 200){
-                        champsReturned = response.body();
-                        if (champsReturned != null){
+                        farmer = response.body();
+                        if (farmer != null){
                             Toast.makeText(NewChampsActivity.this, R.string.champs_creation_succed, Toast.LENGTH_LONG).show();
                             startActivity(new Intent(NewChampsActivity.this, MainActivity.class));
                             mProgressDialog.dismiss();
@@ -312,7 +312,7 @@ public class NewChampsActivity extends AppCompatActivity implements ChampsLocati
             }
 
             @Override
-            public void onFailure(Call<Champs> call, Throwable t) {
+            public void onFailure(Call<Farmer> call, Throwable t) {
                 Toast.makeText(NewChampsActivity.this, "Error message "+t.getMessage(), Toast.LENGTH_LONG).show();
                 mProgressDialog.dismiss();
             }

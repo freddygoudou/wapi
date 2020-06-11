@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.carrousel_formation.FormationCarrousel">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_carrousel_formation_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tv_formation_texte_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:textSize="13dp"
+                    android:layout_below="@+id/rv_carrousel_formation_image"
+                    android:text="Voici le contenu du module"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:weightSum="3"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/ib_back_formation"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_height="match_parent"/>
+        <ImageButton
+            android:id="@+id/ib_repeat_formation"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_arrow_upward_black_24dp"
+            android:layout_height="match_parent"/>
+        <ImageButton
+            android:id="@+id/ib_next_formation"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_arrow_upward_black_24dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</RelativeLayout>

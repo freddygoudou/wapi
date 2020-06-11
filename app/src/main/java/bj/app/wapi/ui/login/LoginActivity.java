@@ -4,14 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import bj.app.wapi.R;
+import bj.app.wapi.ui.ChoixLangue;
 import bj.app.wapi.ui.main.MainActivity;
 import bj.app.wapi.ui.registerUserForm.RegisterUserFormActivity;
+import bj.app.wapi.ui.splash.SplashActivity;
 import entityBackend.User;
 import storage.SharedPrefManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseLongArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -28,6 +31,7 @@ import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
@@ -52,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
     String completePhoneNumber, name;
     FirebaseAuth mAuth;
     DatabaseReference mUserDatabase;
+    FirebaseUser mCurrentUser;
+
 
 
 
@@ -125,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
             Log.w("PHONE AUTH", "onVerificationFailed", e);
 
             if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                Toast.makeText(LoginActivity.this,e.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(LoginActivity.this,e.getMessage(), Toast.LENGTH_LONG).show();
             } else if (e instanceof FirebaseTooManyRequestsException) {
                 Toast.makeText(LoginActivity.this,"Une error est survenue. Demandez de l'aide à l'administrateur!", Toast.LENGTH_LONG).show();
             }
@@ -193,7 +199,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }else {
                                         String phone = dataSnapshot.getValue().toString();
                                         if(phone.equals(completePhoneNumber)){
-                                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                            startActivity(new Intent(LoginActivity.this, ChoixLangue.class));
                                         }
                                     }
                                 }
@@ -215,5 +221,46 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Voir si l'utilisateur est dejà connecté ou pas pour savoir si on doit le redirigér vers le login ou dans l'application  en même temps
+        // Ce listerner est responsable certainement du jeu d'activité entre le login et le RegisterUerActivity
+
+        mAuth = FirebaseAuth.getInstance();
+        mCurrentUser = mAuth.getCurrentUser();
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("User");
+
+        if (mCurrentUser != null) {
+
+            User user = SharedPrefManager.getmInstance(this).getUser();
+            System.out.println("User is :"+ user.toString());
+            if (user.getLangue() == null || user.getName() ==null){
+                startActivity(new Intent(LoginActivity.this, RegisterUserFormActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            }else {
+                startActivity(new Intent(LoginActivity.this, SplashActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            }
+        }
+        else {
+            /*Thread timer = new Thread(){
+
+                public void  run(){
+                    try{
+                        sleep(3000);
+                    }catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+                    finally {
+                        startActivity(new Intent(LoginActivity.this, LoginActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                    }
+                }
+            };
+            timer.start();*/
+        }
+    }
 
 }

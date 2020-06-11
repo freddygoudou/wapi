@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginBottom="16dp"
+    android:layout_margin="16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -20,22 +20,22 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="15dp"
-                android:text="Champs de "
+                android:text="Culture de manioc"
                 android:textAllCaps="false"
                 android:textSize="13dp"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_annne_culture"
+                android:id="@+id/tv_date_semie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_name"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:textSize="12dp"
-                android:text="Quantité: 33 Tonnes"
+                android:text="Date de semie : 12/02/2017"
                 android:textColor="#777"
                 android:textAllCaps="false"/>
 

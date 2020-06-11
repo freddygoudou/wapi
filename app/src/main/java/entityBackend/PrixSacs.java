@@ -7,21 +7,17 @@ import java.util.Date;
 
 public class PrixSacs implements Parcelable {
 
-    private Long id;
+    private String _id;
     private String nomCulture;
     private Double prixUnitaire;
-    private Date createdAt;
-    private Date updatedAt;
 
     public PrixSacs() {
     }
 
-    public PrixSacs(Long id, String nomCulture, Double prixUnitaire, Date createdAt, Date updatedAt) {
-        this.id = id;
+    public PrixSacs(String id, String nomCulture, Double prixUnitaire) {
+        this._id = id;
         this.nomCulture = nomCulture;
         this.prixUnitaire = prixUnitaire;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public PrixSacs(String nomCulture, Double prixUnitaire) {
@@ -29,12 +25,9 @@ public class PrixSacs implements Parcelable {
         this.prixUnitaire = prixUnitaire;
     }
 
+
     protected PrixSacs(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
+        _id = in.readString();
         nomCulture = in.readString();
         if (in.readByte() == 0) {
             prixUnitaire = null;
@@ -55,12 +48,12 @@ public class PrixSacs implements Parcelable {
         }
     };
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return _id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this._id = id;
     }
 
     public String getNomCulture() {
@@ -79,6 +72,16 @@ public class PrixSacs implements Parcelable {
         this.prixUnitaire = prixUnitaire;
     }
 
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -86,12 +89,7 @@ public class PrixSacs implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        if (id == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeLong(id);
-        }
+        parcel.writeString(_id);
         parcel.writeString(nomCulture);
         if (prixUnitaire == null) {
             parcel.writeByte((byte) 0);
@@ -104,11 +102,9 @@ public class PrixSacs implements Parcelable {
     @Override
     public String toString() {
         return "PrixSacs{" +
-                "id=" + id +
+                "_id='" + _id + '\'' +
                 ", nomCulture='" + nomCulture + '\'' +
                 ", prixUnitaire=" + prixUnitaire +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
                 '}';
     }
 }

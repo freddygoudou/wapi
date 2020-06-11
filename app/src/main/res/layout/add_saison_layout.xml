@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="22dp">
+
+    <EditText
+        android:id="@+id/et_nom_culture"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Nom de la culture"/>
+
+    <EditText
+        android:id="@+id/et_date_semie"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="60dp"
+        android:hint="Date de semie"/>
+
+    <Button
+        android:id="@+id/btn_valider"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="22dp"
+        android:textAllCaps="true"
+        android:textSize="16dp"
+        android:text="VALIDER"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimary"/>
+
+</LinearLayout>

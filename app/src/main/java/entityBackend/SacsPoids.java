@@ -8,21 +8,17 @@ import java.util.List;
 
 public class SacsPoids implements Parcelable {
 
-    private Long id;
+    private String _id;
     private Double nombreSacs;
     private Double poids;
-    private Date createdAt;
-    private Date updatedAt;
 
     public SacsPoids() {
     }
 
-    public SacsPoids(Long id, Double nombreSacs, Double poids, Date createdAt, Date updatedAt) {
-        this.id = id;
+    public SacsPoids(String id, Double nombreSacs, Double poids) {
+        this._id = id;
         this.nombreSacs = nombreSacs;
         this.poids = poids;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public SacsPoids(Double nombreSacs, Double poids) {
@@ -30,12 +26,9 @@ public class SacsPoids implements Parcelable {
         this.poids = poids;
     }
 
+
     protected SacsPoids(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
+        _id = in.readString();
         if (in.readByte() == 0) {
             nombreSacs = null;
         } else {
@@ -60,12 +53,12 @@ public class SacsPoids implements Parcelable {
         }
     };
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return _id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this._id = id;
     }
 
     public Double getNombreSacs() {
@@ -92,34 +85,16 @@ public class SacsPoids implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        if (id == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeLong(id);
-        }
-        if (nombreSacs == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeDouble(nombreSacs);
-        }
-        if (poids == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeDouble(poids);
-        }
+
     }
+
 
     @Override
     public String toString() {
         return "SacsPoids{" +
-                "id=" + id +
+                "id=" + _id +
                 ", nombreSacs=" + nombreSacs +
                 ", poids=" + poids +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
                 '}';
     }
 }

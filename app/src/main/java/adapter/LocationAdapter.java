@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,9 +17,9 @@ import entityBackend.ChampsLocation;
 public class LocationAdapter extends RecyclerView.Adapter <LocationAdapter.ChampsLocationViewHolder>{
 
     private Context mContext;
-    private ArrayList<ChampsLocation> mData;
+    private List<ChampsLocation> mData;
     View view;
-    public LocationAdapter(Context mContext, ArrayList<ChampsLocation> mData) {
+    public LocationAdapter(Context mContext, List<ChampsLocation> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }

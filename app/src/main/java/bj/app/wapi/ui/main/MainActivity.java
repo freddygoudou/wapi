@@ -51,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (getIntent().hasExtra("NEW_ANNONCE")){
             navController.navigate(R.id.navigation_annonce);
+        }else if (getIntent().hasExtra("from_wapi_e_learning")){
+            navController.navigate(R.id.navigation_formation);
+        }else if (getIntent().hasExtra("from_wapi_mon_exploitation")){
+            navController.navigate(R.id.navigation_entreprise);
+        }else if (getIntent().hasExtra("from_wapi_business")){
+            navController.navigate(R.id.navigation_annonce);
         }
 
         File[] fileArrayList = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).listFiles();
@@ -220,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
             builder.setTitle("Selectionnez une lague que vous comprenez ...");
             CharSequence options [] = new CharSequence[]{
                     getResources().getString(R.string.langueBariba),
-                    getResources().getString(R.string.langueBaili),
+                    getResources().getString(R.string.langueBiali),
                     getResources().getString(R.string.langueGourmantche),
                     getResources().getString(R.string.langueMore),
                     getResources().getString(R.string.langueDjerma),
@@ -234,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
                         SharedPrefManager.getmInstance(MainActivity.this).clear();
                         SharedPrefManager.getmInstance(MainActivity.this).saveUser(user);
                     }else if (i == 1){
-                        user.setLangue(getResources().getString(R.string.langueBaili));
+                        user.setLangue(getResources().getString(R.string.langueBiali));
                         SharedPrefManager.getmInstance(MainActivity.this).clear();
                         SharedPrefManager.getmInstance(MainActivity.this).saveUser(user);
                     }else if (i == 2){

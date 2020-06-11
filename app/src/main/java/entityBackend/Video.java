@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Video implements Parcelable {
 
-    private Long id;
+    private String _id;
     private String name;
     private String videosPaths;
     private String description;
@@ -17,8 +17,8 @@ public class Video implements Parcelable {
 
     public Video(){}
 
-    public Video(Long id, String name, String videosPaths, String description, String captionPath, Date createdAt, Date updatedAt) {
-        this.id = id;
+    public Video(String id, String name, String videosPaths, String description, String captionPath, Date createdAt, Date updatedAt) {
+        this._id = id;
         this.name = name;
         this.videosPaths = videosPaths;
         this.description = description;
@@ -34,8 +34,8 @@ public class Video implements Parcelable {
         this.captionPath = captionPath;
     }
 
-    public Video(Long id, String name, String videosPaths, String description, String captionPath) {
-        this.id = id;
+    public Video(String id, String name, String videosPaths, String description, String captionPath) {
+        this._id = id;
         this.name = name;
         this.videosPaths = videosPaths;
         this.description = description;
@@ -44,15 +44,20 @@ public class Video implements Parcelable {
 
 
     protected Video(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
+        _id = in.readString();
         name = in.readString();
         videosPaths = in.readString();
         description = in.readString();
         captionPath = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(_id);
+        dest.writeString(name);
+        dest.writeString(videosPaths);
+        dest.writeString(description);
+        dest.writeString(captionPath);
     }
 
     public static final Creator<Video> CREATOR = new Creator<Video>() {
@@ -75,12 +80,12 @@ public class Video implements Parcelable {
         this.description = description;
     }
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return _id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this._id = id;
     }
 
     public String getName() {
@@ -110,7 +115,7 @@ public class Video implements Parcelable {
     @Override
     public String toString() {
         return "Video{" +
-                "id=" + id +
+                "id=" + _id +
                 ", name='" + name + '\'' +
                 ", videosPaths='" + videosPaths + '\'' +
                 ", description='" + description + '\'' +
@@ -125,17 +130,5 @@ public class Video implements Parcelable {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        if (id == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeLong(id);
-        }
-        parcel.writeString(name);
-        parcel.writeString(videosPaths);
-        parcel.writeString(description);
-        parcel.writeString(captionPath);
-    }
+
 }

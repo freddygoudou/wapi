@@ -3,44 +3,83 @@ package entityBackend;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Champs implements Parcelable {
 
-    private Long id;
-    private String nom;
+    private String _id;
+    private String name;
+    private boolean active;
+    private String delaieReativite;
     private List<ChampsLocation> champsLocations;
     private List<SaisonCulture> saisonCultures;
+    private List<Employee> employees;
+
+
 
     public Champs() {
     }
 
-
-    public Champs(Long id, String nom, ArrayList<ChampsLocation> champsLocations, ArrayList<SaisonCulture> saisonCultures) {
-        this.id = id;
-        this.nom = nom;
+    public Champs(String _id, String name, boolean active, String delaieReativite, List<ChampsLocation> champsLocations, List<SaisonCulture> saisonCultures, List<Employee> employees) {
+        this._id = _id;
+        this.name = name;
+        this.active = active;
+        this.delaieReativite = delaieReativite;
         this.champsLocations = champsLocations;
         this.saisonCultures = saisonCultures;
+        this.employees = employees;
     }
 
-    public Champs(String nom, ArrayList<ChampsLocation> champsLocations, ArrayList<SaisonCulture> saisonCultures) {
-        this.nom = nom;
+    public Champs(String name, boolean active, String delaieReativite, List<ChampsLocation> champsLocations, List<SaisonCulture> saisonCultures, List<Employee> employees) {
+        this.name = name;
+        this.active = active;
+        this.delaieReativite = delaieReativite;
         this.champsLocations = champsLocations;
         this.saisonCultures = saisonCultures;
+        this.employees = employees;
     }
 
+    @Override
+    public String toString() {
+        return "Champs{" +
+                "_id='" + _id + '\'' +
+                ", name='" + name + '\'' +
+                ", active=" + active +
+                ", delaieReativite='" + delaieReativite + '\'' +
+                ", champsLocations=" + champsLocations +
+                ", saisonCultures=" + saisonCultures +
+                ", employees=" + employees +
+                '}';
+    }
 
     protected Champs(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
-        nom = in.readString();
+        _id = in.readString();
+        name = in.readString();
+        active = in.readByte() != 0;
+        delaieReativite = in.readString();
         champsLocations = in.createTypedArrayList(ChampsLocation.CREATOR);
         saisonCultures = in.createTypedArrayList(SaisonCulture.CREATOR);
+        employees = in.createTypedArrayList(Employee.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(_id);
+        dest.writeString(name);
+        dest.writeByte((byte) (active ? 1 : 0));
+        dest.writeString(delaieReativite);
+        dest.writeTypedList(champsLocations);
+        dest.writeTypedList(saisonCultures);
+        dest.writeTypedList(employees);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Champs> CREATOR = new Creator<Champs>() {
@@ -55,12 +94,36 @@ public class Champs implements Parcelable {
         }
     };
 
-    public Long getId() {
-        return id;
+    public String get_id() {
+        return _id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getDelaieReativite() {
+        return delaieReativite;
+    }
+
+    public void setDelaieReativite(String delaieReativite) {
+        this.delaieReativite = delaieReativite;
     }
 
     public List<ChampsLocation> getChampsLocations() {
@@ -79,30 +142,12 @@ public class Champs implements Parcelable {
         this.saisonCultures = saisonCultures;
     }
 
-    public String getNom() {
-        return nom;
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        if (id == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeLong(id);
-        }
-        parcel.writeString(nom);
-        parcel.writeTypedList(champsLocations);
-        parcel.writeTypedList(saisonCultures);
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }
 

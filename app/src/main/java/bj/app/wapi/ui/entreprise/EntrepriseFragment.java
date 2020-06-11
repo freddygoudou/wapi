@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +17,17 @@ import adapter.ExploitationAdapter;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import api.RetrofitClient;
-import bj.app.wapi.NewChampsActivity;
+import bj.app.wapi.ui.NewChampsActivity;
 import bj.app.wapi.R;
 import entityBackend.Champs;
 import entityBackend.ChampsLocation;
 import entityBackend.Depense;
 import entityBackend.Employee;
+import entityBackend.Farmer;
 import entityBackend.SaisonCulture;
-import entityBackend.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,12 +36,15 @@ public class EntrepriseFragment extends Fragment {
 
     RecyclerView recyclerView;
     ExploitationAdapter adapter;
-    List<Champs> mData = new ArrayList<>();;
+    List<Champs> mData = new ArrayList<>();
     List<ChampsLocation> mDataLoacation = new ArrayList<>();
     List<SaisonCulture> mDataSaison = new ArrayList<>();
     List<Employee> mDataEmployee = new ArrayList<>();
     List<Depense> mDataDepense = new ArrayList<>();
     FloatingActionButton floatingActionButton;
+    Farmer famer;
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -64,32 +67,42 @@ public class EntrepriseFragment extends Fragment {
                 startActivity(new Intent(getActivity(), NewChampsActivity.class));
             }
         });
-
         recyclerView = view.findViewById(R.id.rv_exploitation);
-        adapter = new ExploitationAdapter(EntrepriseFragment.this.getActivity(), mData);
-        recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
-        recyclerView.setLayoutManager(new LinearLayoutManager(EntrepriseFragment.this.getContext()));
-
         loadRessoucesChamps();
     }
 
     private void loadRessoucesChamps() {
-
-        /*mData = new ArrayList<>();
-        Call<List<Champs>> call = RetrofitClient
+        //System.out.println("User id is now  :"+FirebaseAuth.getInstance().getUid());
+        Call<Farmer> call = RetrofitClient
                 .getmInstance()
                 .getApi()
-                .getAllChamps();
+                .getAllChamps(FirebaseAuth.getInstance().getUid()); // "XsVVqDCcw4dsuKsg3f2cGSz7EfB3"
 
-        call.enqueue(new Callback<List<Champs>>() {
+        call.enqueue(new Callback<Farmer>() {
             @Override
-            public void onResponse(Call<List<Champs>> call, Response<List<Champs>> response) {
+            public void onResponse(Call<Farmer> call, Response<Farmer> response) {
                 try {
                     if (response.code() == 200){
-                        mData = response.body();
-                        if (mData != null)
-                            adapter.notifyDataSetChanged();
+
+                        famer = response.body();
+
+                        //for (int i=0; i<list.size(); i++){
+                            System.out.println("Result Champs : "+famer.toString());
+                        //}
+
+                        mData = famer.getChamps();
+                        adapter = new ExploitationAdapter(EntrepriseFragment.this.getActivity(), mData);
+                        recyclerView.setAdapter(adapter);
+                        //recyclerView.addItemDecoration(new DividerItemDecoration(EntrepriseFragment.this.getContext(), LinearLayoutManager.VERTICAL));
+                        recyclerView.setLayoutManager(new LinearLayoutManager(EntrepriseFragment.this.getContext()));
+                        adapter.notifyDataSetChanged();
+
+                        //JSONArray jsonArray = new JSONArray(response.body().toString());
+                        //mData = response.body();
+                        //System.out.println("Result is in string : "+jsonArray);
+                        //System.out.println("Result is in jsonArray : "+jsonArray);
+                        //if (mData != null)
+                          //  adapter.notifyDataSetChanged();
                     }else {
                         Toast.makeText(getActivity(), "Response code is :"+response.code()+"\n"+" S_Response message "+response.message(), Toast.LENGTH_LONG).show();
                     }
@@ -99,11 +112,13 @@ public class EntrepriseFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Champs>> call, Throwable t) {
+            public void onFailure(Call<Farmer> call, Throwable t) {
                 Toast.makeText(getActivity(), "Error message "+t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-*/
+
+
+
         /*mDataLoacation = new ArrayList<>();
         mDataEmployee = new ArrayList<>();
         mDataDepense = new ArrayList<>();

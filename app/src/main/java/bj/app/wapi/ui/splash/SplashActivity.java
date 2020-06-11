@@ -3,14 +3,19 @@ package bj.app.wapi.ui.splash;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import bj.app.wapi.R;
+import bj.app.wapi.ui.AudioBackgroundService;
+import bj.app.wapi.ui.ChoixLangue;
 import bj.app.wapi.ui.login.LoginActivity;
 import bj.app.wapi.ui.main.MainActivity;
 import bj.app.wapi.ui.registerUserForm.RegisterUserFormActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
+import entity.AudioCarrousel;
 import entityBackend.User;
 import storage.SharedPrefManager;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -25,12 +30,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class SplashActivity extends AppCompatActivity {
 
     CircleImageView appIcon;
-    FirebaseAuth mAuth;
-    FirebaseUser mCurrentUser;
-    DatabaseReference mUserDatabase;
+    ArrayList<AudioCarrousel> audioCarrousels;
+    MediaPlayer player;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +46,25 @@ public class SplashActivity extends AppCompatActivity {
         Animation welcome_animation = AnimationUtils.loadAnimation(SplashActivity.this,R.anim.welcome_animation);
         appIcon.startAnimation(welcome_animation);
 
+        startAudios(audioCarrousels);
     }
 
-    @Override
+    public void startAudios(ArrayList<AudioCarrousel> audioCarrousels){
+
+        player = MediaPlayer.create(getApplicationContext(), R.raw.welcome_to_wapi);
+        player.setLooping(false);
+        player.start();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                player.stop();
+                player.release();
+                player = null;
+                startActivity(new Intent(SplashActivity.this, ChoixLangue.class));
+            }
+        });
+    }
+    /*@Override
     protected void onStart() {
         super.onStart();
 
@@ -61,7 +83,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, RegisterUserFormActivity.class)
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }else {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class)
+                startActivity(new Intent(SplashActivity.this, ChoixLangue.class)
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }
         }
@@ -83,7 +105,8 @@ public class SplashActivity extends AppCompatActivity {
             timer.start();
         }
 
-        /*mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+        */
+    /*mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -93,7 +116,9 @@ public class SplashActivity extends AppCompatActivity {
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
 
                     */
-        /*if (SharedPrefManager.getmInstance(SplashActivity.this).getUser().getId().equals("NO_FOUND")){
+    /*
+        */
+    /*if (SharedPrefManager.getmInstance(SplashActivity.this).getUser().getId().equals("NO_FOUND")){
 
                         //Toast.makeText(SplashActivity.this,"TO LOGIN", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(SplashActivity.this, LoginActivity.class)
@@ -104,7 +129,9 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(new Intent(SplashActivity.this, MainActivity.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                     }*/
-        /*
+    /*
+        */
+    /*
 
                 }
                 else {
@@ -129,7 +156,8 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }
         });*/
-    }
+    /*
+    }*/
 
 
 }

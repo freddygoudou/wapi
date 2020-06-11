@@ -6,31 +6,24 @@ import android.os.Parcelable;
 import java.util.Date;
 
 public class ContactEmployee implements Parcelable {
-    private Long id;
+    private String _id;
     private String phoneNumber;
-    private Date createdAt;
-    private Date updatedAt;
 
     public ContactEmployee() {
     }
 
-    public ContactEmployee(Long id, String phoneNumber, Date createdAt, Date updatedAt) {
-        this.id = id;
+        public ContactEmployee(String id, String phoneNumber) {
+        this._id = id;
         this.phoneNumber = phoneNumber;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public ContactEmployee(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+
     protected ContactEmployee(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
+        _id = in.readString();
         phoneNumber = in.readString();
     }
 
@@ -46,12 +39,12 @@ public class ContactEmployee implements Parcelable {
         }
     };
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return _id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this._id = id;
     }
 
     public String getPhoneNumber() {
@@ -65,12 +58,11 @@ public class ContactEmployee implements Parcelable {
     @Override
     public String toString() {
         return "ContactEmployee{" +
-                "id=" + id +
+                "id=" + _id +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
                 '}';
     }
+
 
     @Override
     public int describeContents() {
@@ -79,12 +71,7 @@ public class ContactEmployee implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        if (id == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeLong(id);
-        }
+        parcel.writeString(_id);
         parcel.writeString(phoneNumber);
     }
 }

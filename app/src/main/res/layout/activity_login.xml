@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="100dp"
+    android:gravity="center"
     tools:context=".ui.login.LoginActivity">
 
 
@@ -14,16 +15,16 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="11dp"
-        android:src="@drawable/index" />
+        android:layout_marginBottom="33dp"
+        android:src="@drawable/wapi" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:background="@drawable/background_iv"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="25dp"
         android:orientation="horizontal">
 
         <com.hbb20.CountryCodePicker
@@ -38,6 +39,7 @@
             android:id="@+id/tILPhoneNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/colorWhite"
             android:layout_weight="3">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -45,8 +47,11 @@
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:gravity="center_vertical"
-                android:paddingLeft="11dp"
+                android:layout_margin="4dp"
                 android:textSize="16dp"
+                android:textStyle="bold"
+                android:background="@null"
+                android:backgroundTint="@color/colorWhite"
                 android:hint="@string/phoneNumber"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -72,12 +77,13 @@
 
     <Button
         android:id="@+id/btnConnexion"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:textAllCaps="true"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"

@@ -8,37 +8,41 @@ import java.util.List;
 
 public class Employee implements Parcelable {
 
-    private Long id;
-    private String nom;
+    private String _id;
+    private String name;
     private List<ContactEmployee> contactEmployees;
-    private Date createdAt;
-    private Date updatedAt;
 
     public Employee() {
     }
 
-    public Employee(Long id, String nom, List<ContactEmployee> contactEmployees, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.nom = nom;
+    public Employee(String id, String nom, List<ContactEmployee> contactEmployees) {
+        this._id = id;
+        this.name = nom;
         this.contactEmployees = contactEmployees;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public Employee(String nom, List<ContactEmployee> contactEmployees) {
-        this.nom = nom;
+        this.name = nom;
         this.contactEmployees = contactEmployees;
     }
 
 
     protected Employee(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
-        nom = in.readString();
+        _id = in.readString();
+        name = in.readString();
         contactEmployees = in.createTypedArrayList(ContactEmployee.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(_id);
+        dest.writeString(name);
+        dest.writeTypedList(contactEmployees);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Employee> CREATOR = new Creator<Employee>() {
@@ -53,20 +57,20 @@ public class Employee implements Parcelable {
         }
     };
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return _id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this._id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String nom) {
+        this.name = nom;
     }
 
     public List<ContactEmployee> getContactEmployees() {
@@ -80,28 +84,11 @@ public class Employee implements Parcelable {
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
+                "id=" + _id +
+                ", nom='" + name + '\'' +
                 ", contactEmployees=" + contactEmployees.toString() +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
                 '}';
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        if (id == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeLong(id);
-        }
-        parcel.writeString(nom);
-        parcel.writeTypedList(contactEmployees);
-    }
 }

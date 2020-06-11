@@ -11,14 +11,55 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/wapi"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true">
-        <activity android:name=".ui.InfosCulture"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.ThreeImagesMenu"
+            android:label="@string/app_name"
+            android:theme="@style/AppSecondTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.THREEIMAGESMENU " /> <!-- bj.app.wapi.THREEIMAGESMENU -->
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ChoixLangue"
+            android:label="@string/app_name"
+            android:theme="@style/AppSecondTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.CHOIXLANGUE " /> <!-- bj.app.wapi.CHOIXLANGUE -->
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.carrousel_formation.FormationCarrousel"
+            android:label="@string/app_name"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.FORMATIONCARROUSEL" /> <!-- bj.app.wapi.FORMATIONCARROUSEL -->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.DetailsExploitation"
+            android:label="@string/title_activity_details_exploitation"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.DETAILSEXPLOITATION-" /> <!-- bj.app.wapi.DETAILSEXPLOITATION -->
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.InfosCulture"
             android:label="@string/infos_culture"
-            android:parentActivityName=".NewChampsActivity"
+            android:parentActivityName=".ui.NewChampsActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.INFOSCULTUREACTIVITY" />
@@ -27,7 +68,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NewChampsActivity"
+            android:name=".ui.NewChampsActivity"
             android:label="@string/title_new_champs"
             android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/AppTheme">
@@ -40,6 +81,7 @@
         <activity
             android:name=".ui.ChampsDetailsActivity"
             android:label="@string/title_detail_champs"
+            android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.CHAMPSDETAILSACTIVITY" />
@@ -83,9 +125,8 @@
             android:name=".ui.login.LoginActivity"
             android:theme="@style/AppSecondTheme">
             <intent-filter>
-                <action android:name="bj.app.wapi.LOGINACTIVITY" /> <!-- bj.app.wapi.NOUVELLEANNONCE -->
-
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.MAIN" /> <!-- bj.app.wapi.LOGINACTIVITY -->
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -127,9 +168,8 @@
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/AppSecondTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" /> <!-- bj.app.wapi.SPLASHACTIVITY -->
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="bj.app.wapi.SPLASHACTIVITY " /> <!-- bj.app.wapi.SPLASHACTIVITY -->
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -153,6 +193,11 @@
 
         <service
             android:name=".ui.formation.sousFragment.CarousselBackgroundAudioService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true" />
+        <service
+            android:name=".ui.AudioBackgroundService"
             android:enabled="true"
             android:exported="false"
             android:stopWithTask="true" />

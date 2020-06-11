@@ -7,40 +7,29 @@ import java.util.Date;
 
 public class Vente implements Parcelable {
 
-    private Long id;
+    private String _id;
     private String montant;
-    private Double description;
-    private Date createdAt;
-    private Date updatedAt;
+    private String description;
 
     public Vente() {
     }
 
-    public Vente(String montant, Double description) {
+    public Vente(String montant, String description) {
         this.montant = montant;
         this.description = description;
     }
 
-    public Vente(Long id, String montant, Double description, Date createdAt, Date updatedAt) {
-        this.id = id;
+    public Vente(String id, String montant, String description) {
+        this._id = id;
         this.montant = montant;
         this.description = description;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
+
 
     protected Vente(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
+        _id = in.readString();
         montant = in.readString();
-        if (in.readByte() == 0) {
-            description = null;
-        } else {
-            description = in.readDouble();
-        }
+        description = in.readString();
     }
 
     public static final Creator<Vente> CREATOR = new Creator<Vente>() {
@@ -58,11 +47,9 @@ public class Vente implements Parcelable {
     @Override
     public String toString() {
         return "Vente{" +
-                "id=" + id +
+                "id=" + _id +
                 ", montant='" + montant + '\'' +
                 ", description=" + description +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
                 '}';
     }
 
@@ -73,18 +60,38 @@ public class Vente implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        if (id == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeLong(id);
-        }
+        parcel.writeString(_id);
         parcel.writeString(montant);
         if (description == null) {
             parcel.writeByte((byte) 0);
         } else {
             parcel.writeByte((byte) 1);
-            parcel.writeDouble(description);
+            parcel.writeString(description);
         }
     }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public String getMontant() {
+        return montant;
+    }
+
+    public void setMontant(String montant) {
+        this.montant = montant;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }

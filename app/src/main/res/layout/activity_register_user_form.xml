@@ -57,7 +57,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 -->
-        <TextView
+        <!--<TextView
             android:id="@+id/tvLangue"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -69,15 +69,15 @@
             android:textSize="18sp"
             android:textColor="@color/colorBlack"
             android:textStyle="bold|italic"
-            android:text="@string/choisirLangue"/>
+            android:text="@string/choisirLangue"/>-->
 
-        <Spinner
+        <!--<Spinner
             android:id="@+id/spLangue"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_margin="15dp"
             android:entries="@array/langueValues"
-            android:contentDescription="@string/choisirLangue"/>
+            android:contentDescription="@string/choisirLangue"/>-->
 
         <!--<com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tILPassword"

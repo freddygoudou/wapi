@@ -3,15 +3,18 @@ package api;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.CarrouselFormation;
 import entityBackend.Caroussel;
 import entityBackend.Champs;
-import entityBackend.SaisonCulture;
+import entityBackend.Farmer;
 import entityBackend.User;
 import entityBackend.Video;
+import response.FarmerResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface  Api {
 
@@ -51,30 +54,28 @@ public interface  Api {
 
     //*********************  Exploitation ************************************
 
-    @POST("api/champs/create")
-    Call<Champs> saveChamps(
+    @POST("api/farmers/{firebaseId}/create-champs")
+    Call<Farmer> saveChamps(
+            @Path("firebaseId") String firebaseId,
             @Body Champs champs
     );
 
-    @GET("api/champs")
-    Call<List<Champs>> getAllChamps();
-
-    /* *********************** Gestion des chaînes : Fragment Chaînes ********************* *//*
-
-    @POST("api/chaine/get-all")
-    Call<ArrayList<Chaine>> getAllChaines(
-            @Body User user
-    ); // Ordonné par les chaines suivie
-
-    @POST("api/chaine/get-one")
-    Call<ArrayList<Informations>> getOneChainesInfos(
-            @Body Chaine chaine
+    @POST("api/farmers/{firebaseId}/update-champs")
+    Call<Farmer> updateChamps(
+            @Path("firebaseId") String firebaseId,
+            @Body Champs champs
     );
 
+    @GET("api/farmers/read_one/{firebaseId}")
+    Call<Farmer> getAllChamps(@Path("firebaseId") String firebaseId);
+
+    /* *********************** Gestion des formations Audio et Images ********************* */
+
+    @GET("api/carrousels_formation/read_all")
+    Call<ArrayList<CarrouselFormation>> getAllImagesAudiosFormations();
 
 
-
-    *//* *********************** Gestion des messages : Fragment Message ********************* *//*
+    /* *********************** Gestion des messages : Fragment Message ********************* *//*
 
     @POST("api/message/get-all")
     Call<ArrayList<Message>> getAllMessageCoUser(

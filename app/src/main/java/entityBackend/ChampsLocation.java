@@ -7,32 +7,26 @@ import java.util.Date;
 
 public class ChampsLocation implements Parcelable {
 
-    private Long id;
+    private String _id;
     private Double longitutde;
     private Double latitude;
 
     public ChampsLocation() {
     }
 
-    public ChampsLocation(Long id, Double longitutde, Double latitude) {
-        this.id = id;
+    public ChampsLocation(String _id, Double longitutde, Double latitude) {
+        this._id = _id;
         this.longitutde = longitutde;
         this.latitude = latitude;
     }
-
 
     public ChampsLocation(Double longitutde, Double latitude) {
         this.longitutde = longitutde;
         this.latitude = latitude;
     }
 
-
     protected ChampsLocation(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
+        _id = in.readString();
         if (in.readByte() == 0) {
             longitutde = null;
         } else {
@@ -43,6 +37,28 @@ public class ChampsLocation implements Parcelable {
         } else {
             latitude = in.readDouble();
         }
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(_id);
+        if (longitutde == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(longitutde);
+        }
+        if (latitude == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(latitude);
+        }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<ChampsLocation> CREATOR = new Creator<ChampsLocation>() {
@@ -57,12 +73,12 @@ public class ChampsLocation implements Parcelable {
         }
     };
 
-    public Long getId() {
-        return id;
+    public String get_id() {
+        return _id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public Double getLongitutde() {
@@ -82,30 +98,12 @@ public class ChampsLocation implements Parcelable {
     }
 
     @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        if (id == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeLong(id);
-        }
-        if (longitutde == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeDouble(longitutde);
-        }
-        if (latitude == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeDouble(latitude);
-        }
+    public String toString() {
+        return "ChampsLocation{" +
+                "_id='" + _id + '\'' +
+                ", longitutde=" + longitutde +
+                ", latitude=" + latitude +
+                '}';
     }
 }
 

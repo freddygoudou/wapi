@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.offline.DownloadProgress;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.ui.PlayerView;
@@ -243,6 +244,8 @@ public class VideoPlayerActivity extends AppCompatActivity /*implements View.OnC
 
             localFilesLocationsList.add(new FileAndExtention(folder+"/"+fileName,""));
 
+            DownloadProgress progress = new DownloadProgress();
+            Float pourcentage = progress.percentDownloaded;
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(arrayList.get(i)));
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
             request.setTitle(mVideo.getName());

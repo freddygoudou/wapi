@@ -7,21 +7,17 @@ import java.util.Date;
 
 public class Depense implements Parcelable {
 
-    private Long id;
+    private String _id;
     private String montant;
     private String description;
-    private Date createdAt;
-    private Date updatedAt;
 
     public Depense() {
     }
 
-    public Depense(Long id, String montant, String description, Date createdAt, Date updatedAt) {
-        this.id = id;
+    public Depense(String id, String montant, String description) {
+        this._id = id;
         this.montant = montant;
         this.description = description;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public Depense(String montant, String description) {
@@ -29,12 +25,9 @@ public class Depense implements Parcelable {
         this.description = description;
     }
 
+
     protected Depense(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
+        _id = in.readString();
         montant = in.readString();
         description = in.readString();
     }
@@ -51,12 +44,12 @@ public class Depense implements Parcelable {
         }
     };
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return _id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this._id = id;
     }
 
     public String getMontant() {
@@ -82,12 +75,7 @@ public class Depense implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        if (id == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeLong(id);
-        }
+        parcel.writeString(_id);
         parcel.writeString(montant);
         parcel.writeString(description);
     }
@@ -95,11 +83,9 @@ public class Depense implements Parcelable {
     @Override
     public String toString() {
         return "Depense{" +
-                "id=" + id +
+                "_id='" + _id + '\'' +
                 ", montant='" + montant + '\'' +
                 ", description='" + description + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
                 '}';
     }
 }

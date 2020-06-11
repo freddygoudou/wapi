@@ -3,15 +3,18 @@ package entityBackend;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Farmer implements Parcelable {
-    private Long id;
-    private User user;
+    private String _id;
+    private String firebaseId;
+    private String name;
+    private String phoneNumber;
+    private String langue;
     private List<PrixSacs> prixSacs;
-    private List<Recolte> recoltes;
     private List<Champs> champs;
     private Date createdAt;
     private Date updatedAt;
@@ -19,33 +22,51 @@ public class Farmer implements Parcelable {
     public Farmer() {
     }
 
-    public Farmer(Long id, User user, List<PrixSacs> prixSacs, List<Recolte> recoltes, List<Champs> champs, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.user = user;
+    public Farmer(String _id, String firebaseId, String name, String phoneNumber, String langue, List<PrixSacs> prixSacs, List<Champs> champs, Date createdAt, Date updatedAt) {
+        this._id = _id;
+        this.firebaseId = firebaseId;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.langue = langue;
         this.prixSacs = prixSacs;
-        this.recoltes = recoltes;
         this.champs = champs;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Farmer(User user, List<PrixSacs> prixSacs, List<Recolte> recoltes, List<Champs> champs) {
-        this.user = user;
+    public Farmer(String firebaseId, String name, String phoneNumber, String langue, List<PrixSacs> prixSacs, List<Champs> champs) {
+        this.firebaseId = firebaseId;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.langue = langue;
         this.prixSacs = prixSacs;
-        this.recoltes = recoltes;
         this.champs = champs;
     }
 
     protected Farmer(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
-        user = in.readParcelable(User.class.getClassLoader());
+        _id = in.readString();
+        firebaseId = in.readString();
+        name = in.readString();
+        phoneNumber = in.readString();
+        langue = in.readString();
         prixSacs = in.createTypedArrayList(PrixSacs.CREATOR);
-        recoltes = in.createTypedArrayList(Recolte.CREATOR);
         champs = in.createTypedArrayList(Champs.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(_id);
+        dest.writeString(firebaseId);
+        dest.writeString(name);
+        dest.writeString(phoneNumber);
+        dest.writeString(langue);
+        dest.writeTypedList(prixSacs);
+        dest.writeTypedList(champs);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Farmer> CREATOR = new Creator<Farmer>() {
@@ -60,20 +81,44 @@ public class Farmer implements Parcelable {
         }
     };
 
-    public Long getId() {
-        return id;
+    public String get_id() {
+        return _id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
-    public User getUser() {
-        return user;
+    public String getFirebaseId() {
+        return firebaseId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setFirebaseId(String firebaseId) {
+        this.firebaseId = firebaseId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getLangue() {
+        return langue;
+    }
+
+    public void setLangue(String langue) {
+        this.langue = langue;
     }
 
     public List<PrixSacs> getPrixSacs() {
@@ -84,35 +129,44 @@ public class Farmer implements Parcelable {
         this.prixSacs = prixSacs;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public List<Champs> getChamps() {
+        return champs;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        if (id == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeLong(id);
-        }
-        parcel.writeParcelable(user, i);
-        parcel.writeTypedList(prixSacs);
-        parcel.writeTypedList(recoltes);
-        parcel.writeTypedList(champs);
+    public void setChamps(List<Champs> champs) {
+        this.champs = champs;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
     public String toString() {
         return "Farmer{" +
-                "id=" + id +
-                ", user=" + user +
-                ", prixSacs=" + prixSacs.toString() +
-                ", recoltes=" + recoltes.toString() +
-                ", champs=" + champs.toString() +
+                "_id='" + _id + '\'' +
+                ", firebaseId='" + firebaseId + '\'' +
+                ", name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", langue='" + langue + '\'' +
+                ", prixSacs=" + prixSacs +
+                ", champs=" + champs +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
     }
+
+
 }

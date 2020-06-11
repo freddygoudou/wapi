@@ -3,10 +3,10 @@ package bj.app.wapi.ui.registerUserForm;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import api.RetrofitClient;
-import bj.app.wapi.NewChampsActivity;
+import bj.app.wapi.ui.ChoixLangue;
 import bj.app.wapi.ui.main.MainActivity;
 import bj.app.wapi.R;
-import entityBackend.Champs;
+import bj.app.wapi.ui.splash.SplashActivity;
 import entityBackend.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +26,6 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -36,7 +35,7 @@ public class RegisterUserFormActivity extends AppCompatActivity {
     TextView tvhaveAccount;
     TextInputLayout nameTIL, emailTIL, tILPassword, tILPasswordAgain;
     String name, email, langue, passwordAgain;
-    Spinner spinner;
+    //Spinner spinner;
     ArrayList<String> langueList;
     ProgressDialog mProgressDialog;
 
@@ -47,18 +46,18 @@ public class RegisterUserFormActivity extends AppCompatActivity {
 
 
         mProgressDialog = new ProgressDialog(this);
-        spinner = findViewById(R.id.spLangue);
+       // spinner = findViewById(R.id.spLangue);
         nameTIL = findViewById(R.id.tILName);
 
         langueList = new ArrayList<>();
         langueList.add(getResources().getString(R.string.langueBariba));
-        langueList.add(getResources().getString(R.string.langueBaili));
+        langueList.add(getResources().getString(R.string.langueBiali));
         langueList.add(getResources().getString(R.string.langueGourmantche));
         langueList.add(getResources().getString(R.string.langueMore));
         langueList.add(getResources().getString(R.string.langueDjerma));
         langueList.add(getResources().getString(R.string.langueHaoussa));
 
-        spinner.setAdapter(new ArrayAdapter<String>(RegisterUserFormActivity.this, android.R.layout.simple_list_item_1, langueList));
+        /*spinner.setAdapter(new ArrayAdapter<String>(RegisterUserFormActivity.this, android.R.layout.simple_list_item_1, langueList));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -68,7 +67,7 @@ public class RegisterUserFormActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
-        });
+        });*/
 
         btnInscription = findViewById(R.id.btnInscription);
         btnInscription.setOnClickListener(new View.OnClickListener() {
@@ -79,12 +78,11 @@ public class RegisterUserFormActivity extends AppCompatActivity {
 
                 if(name.length() == 0){
                     Toast.makeText(RegisterUserFormActivity.this,"Veillez renseigner votre nom !", Toast.LENGTH_LONG).show();
-                } else if (langue != null){
-                    User user = new User(FirebaseAuth.getInstance().getUid(),name, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), langue);
+                } else {
+                    User user = new User(FirebaseAuth.getInstance().getUid(),name, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), "");
                     SharedPrefManager.getmInstance(RegisterUserFormActivity.this).saveUser(user);
-                    createUserWithApi(name, langue);
-                }else {
-                    Toast.makeText(RegisterUserFormActivity.this,"Vous devez absolument sélectionner un langue pour continuer!", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(RegisterUserFormActivity.this, ChoixLangue.class));
+                    //createUserWithApi(name, "");
                 }
             }
         });
@@ -115,7 +113,7 @@ public class RegisterUserFormActivity extends AppCompatActivity {
                             SharedPrefManager.getmInstance(RegisterUserFormActivity.this).saveUserWithId(userReturned);
 
                             //CALL SERVICE FOR INSCRIPTION AND GO TO MAINACTIVITY
-                            startActivity(new Intent(RegisterUserFormActivity.this, MainActivity.class)
+                            startActivity(new Intent(RegisterUserFormActivity.this, SplashActivity.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         }
                     }else {

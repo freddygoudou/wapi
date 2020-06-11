@@ -115,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String description = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION));
             String imagesPaths = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_IMAGES_PATHS));
 
-            caroussel = new Caroussel(id,name, description, audiosPaths, imagesPaths);
+            caroussel = new Caroussel(name, description, audiosPaths, imagesPaths);
             ressourceArrayList.add(caroussel);
         }
 
@@ -142,7 +142,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String caption = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_CAPTION_PATH));
             String description = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_VIDEO_DESCRIPTION));
 
-            video = new Video(id,name,path,description,caption);
+            video = new Video(name,path,description,caption);
             videoArrayList.add(video);
         }
 

@@ -20,6 +20,7 @@ import java.util.StringTokenizer;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
+import bj.app.wapi.ui.carrousel_formation.FormationCarrousel;
 import bj.app.wapi.ui.formation.DetailsFormation;
 import entityBackend.Caroussel;
 
@@ -59,9 +60,10 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         holder.ll_one_document.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext, DetailsFormation.class)
+                mContext.startActivity(new Intent(mContext, FormationCarrousel.class));
+                /*mContext.startActivity(new Intent(mContext, DetailsFormation.class)
                     .putExtra("caroussel", mData.get(position))
-                        .putExtra("connexionState", connexionState));
+                        .putExtra("connexionState", connexionState));*/
                 //Toast.makeText(mContext, mData.get(position).getName()+"/"+mData.get(position).getDescription()+"/"+mData.get(position).getImagesPaths(), Toast.LENGTH_LONG).show();
             }
         });

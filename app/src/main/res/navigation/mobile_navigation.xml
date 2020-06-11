@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_saisons">
+
+    <fragment
+        android:id="@+id/navigation_saisons"
+        android:name="bj.app.wapi.ui.ui.saisons.SaisonsFragment"
+        android:label="@string/Saisons"
+        tools:layout="@layout/fragment_saisons" />
+
+    <fragment
+        android:id="@+id/navigation_employee"
+        android:name="bj.app.wapi.ui.ui.employee.EmployeeFragment"
+        android:label="@string/my_employees"
+        tools:layout="@layout/fragment_employee" />
+
+    <fragment
+        android:id="@+id/navigation_geo_loc"
+        android:name="bj.app.wapi.ui.ui.geo_locs.GeoLocsFragment"
+        android:label="@string/coordonnees_geo"
+        tools:layout="@layout/fragment_geo_locs" />
+
+</navigation>

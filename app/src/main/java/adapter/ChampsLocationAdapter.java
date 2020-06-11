@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import bj.app.wapi.NewChampsActivity;
+import bj.app.wapi.ui.NewChampsActivity;
 import bj.app.wapi.R;
 import entityBackend.ChampsLocation;
 

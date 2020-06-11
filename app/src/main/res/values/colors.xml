@@ -6,10 +6,10 @@
     <color name="colorWhite">#FFF</color>
     <color name="colorBlack">#000</color>
     <color name="colorGrayBackground">#EEE</color>
-    <color name="colorWhiteBackground">#f3f4f5</color>
+    <color name="colorWhiteBackground">#F8FBFD</color>
     <color name="colorGreenSante">#049c4c</color>
     <color name="colorDivider">#ececec</color>
-    <color name="colorGray">#7A9683</color>
+    <color name="colorGray">#54685A</color>
     <color name="colorViolet">#673AB7</color>
     <color name="colorRed">#E73030</color> <!--075e55-->
 
