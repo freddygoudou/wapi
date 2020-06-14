@@ -4,27 +4,20 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Environment;
 import android.os.IBinder;
 import android.widget.Toast;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 import androidx.annotation.Nullable;
 import bj.app.wapi.R;
 import entity.AudioCarrousel;
-import entity.ImageCarrousel;
-import entityBackend.Caroussel;
-import entityBackend.User;
-import storage.SharedPrefManager;
 
 public class AudioBackgroundService extends Service {
 
     MediaPlayer player;
     ArrayList<AudioCarrousel> audioCarrousels;
-    ArrayList<Integer> audios;
+    ArrayList<String> audios;
     int my_position;
 
     @Nullable
@@ -38,12 +31,14 @@ public class AudioBackgroundService extends Service {
         if (intent.hasExtra("audiosFormation")){
             audios = new ArrayList<>();
             audioCarrousels = new ArrayList<>();
+            //System.out.println("VALEUR RECU : "+intent.getParcelableArrayListExtra("audiosFormation"));
             audioCarrousels = intent.getParcelableArrayListExtra("audiosFormation");
 
+            //System.out.println("VALEUR RECU : "+audioCarrousels.toString());
             for (int i=0; i<audioCarrousels.size(); i++){
-                //audios.add(audioCarrousels.get(i).getAudio());
+                audios.add(audioCarrousels.get(i).getUrl());
                 //audios.add(audioCarrousels.get(i).getUrl());
-                audios.add(audioCarrousels.get(i).getAudio());
+                //audios.add(audioCarrousels.get(i).getAudio());
             }
 
             System.out.println("Audio is : "+audios.toString());
@@ -114,8 +109,8 @@ public class AudioBackgroundService extends Service {
         }
 
         my_position = position;
-        player = MediaPlayer.create(getApplicationContext(), audios.get(my_position));
-        //player = MediaPlayer.create(getApplicationContext(), Uri.parse(audios.get(my_position)));
+        //player = MediaPlayer.create(getApplicationContext(), R.raw.welcome_to_wapi);
+        player = MediaPlayer.create(getApplicationContext(), Uri.parse(audios.get(my_position)));
         player.setLooping(false);
         player.start();
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {

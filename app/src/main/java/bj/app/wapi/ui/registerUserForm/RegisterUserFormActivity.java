@@ -7,6 +7,7 @@ import bj.app.wapi.ui.ChoixLangue;
 import bj.app.wapi.ui.main.MainActivity;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.splash.SplashActivity;
+import entityBackend.Farmer;
 import entityBackend.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,6 +29,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RegisterUserFormActivity extends AppCompatActivity {
 
@@ -82,56 +84,22 @@ public class RegisterUserFormActivity extends AppCompatActivity {
                     User user = new User(FirebaseAuth.getInstance().getUid(),name, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), "");
                     SharedPrefManager.getmInstance(RegisterUserFormActivity.this).saveUser(user);
                     startActivity(new Intent(RegisterUserFormActivity.this, ChoixLangue.class));
-                    //createUserWithApi(name, "");
+                    updateUser(name, "");
                 }
             }
         });
     }
 
-    private void createUserWithApi(String name, String langue){
-
+    void updateUser(String name, String langue){
         User user = SharedPrefManager.getmInstance(RegisterUserFormActivity.this).getUser();
         user.setName(name);
         user.setLangue(langue);
         user.setFirebasUid(FirebaseAuth.getInstance().getUid());
         User userForCall = new User(user.getFirebasUid(), user.getName(), user.getPhoneNumber(), user.getLangue());
-
-
-        Call<User> call = RetrofitClient
-                .getmInstance()
-                .getApi()
-                .createUser(userForCall);
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                try {
-                    User userReturned = null;
-                    if (response.code() == 200){
-                        userReturned = response.body();
-                        if (userReturned != null){
-                            SharedPrefManager.getmInstance(RegisterUserFormActivity.this).clear();
-                            SharedPrefManager.getmInstance(RegisterUserFormActivity.this).saveUserWithId(userReturned);
-
-                            //CALL SERVICE FOR INSCRIPTION AND GO TO MAINACTIVITY
-                            startActivity(new Intent(RegisterUserFormActivity.this, SplashActivity.class)
-                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                        }
-                    }else {
-                        Toast.makeText(RegisterUserFormActivity.this, "Response code is :"+response.code()+"\n"+" S_Response message "+response.message(), Toast.LENGTH_LONG).show();
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
-                    mProgressDialog.dismiss();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(RegisterUserFormActivity.this, "Error message "+t.getMessage(), Toast.LENGTH_LONG).show();
-                mProgressDialog.dismiss();
-            }
-        });
+        SharedPrefManager.getmInstance(this).saveUser(userForCall);
+        Farmer farmer = new Farmer("",FirebaseAuth.getInstance().getUid(), name, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), "",  new ArrayList<>(), new ArrayList<>(), new Date(), new Date());
+        System.out.println("Voici farmer : "+farmer.toString());
+        startActivity(new Intent(RegisterUserFormActivity.this, SplashActivity.class)
+                .putExtra("farmer", farmer));
     }
-
-
 }

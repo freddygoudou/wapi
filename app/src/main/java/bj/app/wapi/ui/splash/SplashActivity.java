@@ -10,6 +10,7 @@ import bj.app.wapi.ui.main.MainActivity;
 import bj.app.wapi.ui.registerUserForm.RegisterUserFormActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 import entity.AudioCarrousel;
+import entityBackend.Farmer;
 import entityBackend.User;
 import storage.SharedPrefManager;
 
@@ -37,10 +38,16 @@ public class SplashActivity extends AppCompatActivity {
     CircleImageView appIcon;
     ArrayList<AudioCarrousel> audioCarrousels;
     MediaPlayer player;
+    Farmer farmer;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        if (getIntent().hasExtra("farmer")){
+            farmer = getIntent().getParcelableExtra("farmer");
+            System.out.println("Voici farmer : "+farmer.toString());
+        }
 
         appIcon = findViewById(R.id.app_icon);
         Animation welcome_animation = AnimationUtils.loadAnimation(SplashActivity.this,R.anim.welcome_animation);
@@ -51,6 +58,7 @@ public class SplashActivity extends AppCompatActivity {
 
     public void startAudios(ArrayList<AudioCarrousel> audioCarrousels){
 
+        User user = SharedPrefManager.getmInstance(this).getUser();
         player = MediaPlayer.create(getApplicationContext(), R.raw.welcome_to_wapi);
         player.setLooping(false);
         player.start();
@@ -60,7 +68,22 @@ public class SplashActivity extends AppCompatActivity {
                 player.stop();
                 player.release();
                 player = null;
-                startActivity(new Intent(SplashActivity.this, ChoixLangue.class));
+                if (user != null){
+                    if (user.getLangue() != null){
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                .putExtra("farmer", farmer));
+                    }else {
+                        startActivity(new Intent(SplashActivity.this, ChoixLangue.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                .putExtra("farmer", farmer));
+                    }
+                }else{
+                    startActivity(new Intent(SplashActivity.this, ChoixLangue.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            .putExtra("farmer", farmer));
+                }
+
             }
         });
     }

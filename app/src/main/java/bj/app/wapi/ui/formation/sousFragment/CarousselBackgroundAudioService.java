@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
 
 import androidx.annotation.Nullable;
 import bj.app.wapi.R;
-import entityBackend.Caroussel;
+import entityBackend.Carrousel;
 import entityBackend.User;
 import storage.SharedPrefManager;
 
@@ -22,7 +22,7 @@ public class CarousselBackgroundAudioService extends Service {
     MediaPlayer player = new MediaPlayer();
     User user;
     String langue;
-    Caroussel caroussel;
+    Carrousel carrousel;
     String pathToPlay;
     ArrayList<String> arrayList;
     static final String AUDIO_FORMAT_MP3 = ".mp3";
@@ -41,14 +41,14 @@ public class CarousselBackgroundAudioService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         if (intent.hasExtra("caroussel") && intent.hasExtra("connexionState")){
-            caroussel = intent.getParcelableExtra("caroussel");
+            carrousel = intent.getParcelableExtra("caroussel");
             connexionState = intent.getBooleanExtra("connexionState", false);
-            arrayList = prepareAudioPaths(caroussel.getAudiosPaths());
+            //arrayList = prepareAudioPaths(carrousel.getAudiosPaths());
 
             if (arrayList == null)
                 arrayList = new ArrayList<>();
 
-            System.out.println("COKOKO :"+caroussel.toString());
+            System.out.println("COKOKO :"+ carrousel.toString());
             System.out.println("COKOKO BOOLEAN :"+connexionState);
             System.out.println("COKOKO ARRAYLIST  :"+arrayList.toString());
 

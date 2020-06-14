@@ -111,4 +111,5 @@
     <string name="Saisons">Saisons</string>
     <string name="my_employees">Mes employés</string>
     <string name="add_new_champs_position_message">Vous êtes sur le point de prendre la osition actuelle comme une coordonnée de l\'exploitation. \nVoulez vous  vraiment le faire?</string>
+    <string name="download">Télécharger</string>
 </resources>

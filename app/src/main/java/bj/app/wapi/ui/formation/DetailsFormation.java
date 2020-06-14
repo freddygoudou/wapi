@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.formation.sousFragment.CarousselBackgroundAudioService;
 import database.DatabaseHelper;
-import entityBackend.Caroussel;
+import entityBackend.Carrousel;
 import entity.FileAndExtention;
 
 import android.Manifest;
@@ -57,7 +57,7 @@ public class DetailsFormation extends AppCompatActivity {
     ArrayList<String> slideItemList;
     TextView tvNomFormationn, tvDescriptionFormation;
     Button download;
-    Caroussel caroussel, carousselToSave;
+    Carrousel carrousel, carrouselToSave;
     DatabaseHelper databaseHelper;
     boolean connexionState;
     File file;
@@ -83,7 +83,7 @@ public class DetailsFormation extends AppCompatActivity {
         carouselView.playCarousel();
         stopService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
         startService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class)
-                .putExtra("caroussel", caroussel)
+                .putExtra("caroussel", carrousel)
                 .putExtra("connexionState", connexionState));
     }
 
@@ -98,18 +98,18 @@ public class DetailsFormation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detals_formation);
 
-        databaseHelper = new DatabaseHelper(this);
+       /* databaseHelper = new DatabaseHelper(this);
 
         if (getIntent().hasExtra("caroussel") && getIntent().hasExtra("connexionState")){
-            caroussel = getIntent().getParcelableExtra("caroussel");
-            carousselToSave = new Caroussel(caroussel.getName(),caroussel.getDescription(),"","");
+            carrousel = getIntent().getParcelableExtra("caroussel");
+            carrouselToSave = new Carrousel(carrousel.getName(), carrousel.getDescription(),"","");
             connexionState = getIntent().getBooleanExtra("connexionState", false);
-            System.out.println("CAKAKKA :"+caroussel.toString());
+            System.out.println("CAKAKKA :"+ carrousel.toString());
 
             tvDescriptionFormation = findViewById(R.id.tvDescriptionFormation);
             tvNomFormationn = findViewById(R.id.tvNomFormation);
-            tvNomFormationn.setText(caroussel.getName());
-            tvDescriptionFormation.setText(caroussel.getDescription());
+            tvNomFormationn.setText(carrousel.getName());
+            tvDescriptionFormation.setText(carrousel.getDescription());
 
             loadCarousselImage();
 
@@ -123,7 +123,7 @@ public class DetailsFormation extends AppCompatActivity {
             //Démarer l'audio
             stopService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
             startService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class)
-                    .putExtra("caroussel", caroussel)
+                    .putExtra("caroussel", carrousel)
                     .putExtra("connexionState", connexionState));
 
 
@@ -141,7 +141,7 @@ public class DetailsFormation extends AppCompatActivity {
 
                     ArrayList<FileAndExtention> list, audiosList, imagesList;
 
-                    list = downloadFileCaroussel(caroussel, prepareDownloadCaroussel(caroussel));
+                    list = downloadFileCaroussel(carrousel, prepareDownloadCaroussel(carrousel));
                     audiosList = new ArrayList<>();
                     imagesList = new ArrayList<>();
 
@@ -157,33 +157,33 @@ public class DetailsFormation extends AppCompatActivity {
                     // SET AUDIOS PATHS
                     for (int i=0; i<audiosList.size(); i++){
                         if (i != audiosList.size()-1){
-                            carousselToSave.setAudiosPaths(carousselToSave.getAudiosPaths()+audiosList.get(i).getLocation()+";");
+                            carrouselToSave.setAudiosPaths(carrouselToSave.getAudiosPaths()+audiosList.get(i).getLocation()+";");
                         }else {
-                            carousselToSave.setAudiosPaths(carousselToSave.getAudiosPaths()+audiosList.get(i).getLocation());
+                            carrouselToSave.setAudiosPaths(carrouselToSave.getAudiosPaths()+audiosList.get(i).getLocation());
                         }
                     }
 
                     // SET IMAGES PATHS
                     for (int i=0; i<imagesList.size(); i++){
                         if (i != imagesList.size()-1){
-                            carousselToSave.setImagesPaths(carousselToSave.getImagesPaths()+imagesList.get(i).getLocation()+";");
+                            carrouselToSave.setImagesPaths(carrouselToSave.getImagesPaths()+imagesList.get(i).getLocation()+";");
                         }else {
-                            carousselToSave.setImagesPaths(carousselToSave.getImagesPaths()+imagesList.get(i).getLocation());
+                            carrouselToSave.setImagesPaths(carrouselToSave.getImagesPaths()+imagesList.get(i).getLocation());
                         }
                     }
 
                     System.out.println("DOWNLOADED CAROUSSEL FILES LIST : "+list.toString());
                     System.out.println("AUDIO FILES LIST : "+audiosList.toString());
                     System.out.println("IMAGES FILES LIST : "+imagesList.toString());
-                    System.out.println("CAROUSSEL TO SAVE : "+carousselToSave.toString());
+                    System.out.println("CAROUSSEL TO SAVE : "+ carrouselToSave.toString());
 
                     //SAVE CAROUSSEL
-                    databaseHelper.saveOneCaroussel(carousselToSave);
+                    databaseHelper.saveOneCaroussel(carrouselToSave);
 
                 }
             });
 
-        }
+        }*/
     }
 
 
@@ -193,7 +193,7 @@ public class DetailsFormation extends AppCompatActivity {
         switch (requestCode){
             case PERMISSION_STORAGE_CODE:{
                 if (grantResults.length > 0 &&  grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    downloadFileCaroussel(caroussel, prepareDownloadCaroussel(caroussel));
+                    //downloadFileCaroussel(carrousel, prepareDownloadCaroussel(carrousel));
                 }else {
                     Toast.makeText(DetailsFormation.this, "Permission d'accès au stockage externe indispensable pour le téléchargement ...", Toast.LENGTH_LONG).show();
                 }
@@ -214,7 +214,7 @@ public class DetailsFormation extends AppCompatActivity {
         }
     };
 
-    public ArrayList<FileAndExtention> downloadFileCaroussel(Caroussel mCaroussel, ArrayList<String> arrayList){
+    public ArrayList<FileAndExtention> downloadFileCaroussel(Carrousel mCarrousel, ArrayList<String> arrayList){
 
         ArrayList<FileAndExtention> fileAndExtentionArrayList = new ArrayList<>();
 
@@ -225,10 +225,10 @@ public class DetailsFormation extends AppCompatActivity {
                 requestPermissions(permissions, PERMISSION_STORAGE_CODE);
 
             }else {
-                fileAndExtentionArrayList = startDownloadingCaroussel(mCaroussel, arrayList);
+                fileAndExtentionArrayList = startDownloadingCaroussel(mCarrousel, arrayList);
             }
         }else {
-            fileAndExtentionArrayList = startDownloadingCaroussel(mCaroussel, arrayList);
+            fileAndExtentionArrayList = startDownloadingCaroussel(mCarrousel, arrayList);
         }
 
         //SET FILES EXTENTIONS
@@ -254,28 +254,28 @@ public class DetailsFormation extends AppCompatActivity {
         return fileAndExtentionArrayList;
     }
 
-    public ArrayList<String> prepareDownloadCaroussel(Caroussel caroussel){
+    /*public ArrayList<String> prepareDownloadCaroussel(Carrousel carrousel){
         HashMap<String, ArrayList<String>> hashMap = new HashMap<>();
         ArrayList<String> filesToDownloadList;
         filesToDownloadList  = new ArrayList<>();
 
         StringTokenizer carousselTokenizer;
-        carousselTokenizer = new StringTokenizer(caroussel.getImagesPaths(), ";");
+        carousselTokenizer = new StringTokenizer(carrousel.getImagesPaths(), ";");
 
         while (carousselTokenizer.hasMoreTokens()){
             filesToDownloadList.add(carousselTokenizer.nextToken());
         }
 
-        carousselTokenizer = new StringTokenizer(caroussel.getAudiosPaths(), ";");
+        //carousselTokenizer = new StringTokenizer(carrousel.getAudiosPaths(), ";");
         while (carousselTokenizer.hasMoreTokens()){
             filesToDownloadList.add(carousselTokenizer.nextToken());
         }
         return filesToDownloadList;
-    }
+    }*/
 
-    private ArrayList<FileAndExtention> startDownloadingCaroussel(Caroussel mCaroussel, ArrayList<String> arrayList) {
+    private ArrayList<FileAndExtention> startDownloadingCaroussel(Carrousel mCarrousel, ArrayList<String> arrayList) {
 
-        String folder = createCarousselFolder(mCaroussel);
+        String folder = createCarousselFolder(mCarrousel);
         String fileName;
         ArrayList<FileAndExtention> localFilesLocationsList = new ArrayList<>();
 
@@ -287,8 +287,8 @@ public class DetailsFormation extends AppCompatActivity {
 
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(arrayList.get(i)));
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-            request.setTitle(mCaroussel.getName());
-            request.setDescription(mCaroussel.getDescription());
+            request.setTitle(mCarrousel.getName());
+            request.setDescription(mCarrousel.getDescription());
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
             request.setDestinationInExternalPublicDir(folder, fileName);
             DownloadManager manager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
@@ -297,13 +297,13 @@ public class DetailsFormation extends AppCompatActivity {
         return localFilesLocationsList;
     }
 
-    public void loadCarousselImage(){
+    /*public void loadCarousselImage(){
         slideItemList = new ArrayList<>();
-        StringTokenizer stringTokenizer = new StringTokenizer(caroussel.getImagesPaths(), ";");
+        StringTokenizer stringTokenizer = new StringTokenizer(carrousel.getImagesPaths(), ";");
         while (stringTokenizer.hasMoreTokens()){
             slideItemList.add(stringTokenizer.nextToken());
         }
-    }
+    }*/
 
     public String ajustFilePath(String path){
         return path.substring(8); //Download
@@ -328,8 +328,8 @@ public class DetailsFormation extends AppCompatActivity {
         return mimeTypeMap.getExtensionFromMimeType(resolver.getType(uri));
     }
 
-    public String createCarousselFolder(Caroussel caroussel) {
-        String path = Environment.DIRECTORY_DOWNLOADS + "/Wapi/Formation/Caroussel/"+caroussel.getName();
+    public String createCarousselFolder(Carrousel carrousel) {
+        String path = Environment.DIRECTORY_DOWNLOADS + "/Wapi/Formation/Caroussel/"+ carrousel.getName();
         File dir = new File(path);
         boolean isDirectoryCreated = dir.exists();
         if (!isDirectoryCreated) {

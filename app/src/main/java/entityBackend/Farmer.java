@@ -156,7 +156,6 @@ public class Farmer implements Parcelable {
     @Override
     public String toString() {
         return "Farmer{" +
-                "_id='" + _id + '\'' +
                 ", firebaseId='" + firebaseId + '\'' +
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +

@@ -1,37 +1,28 @@
 package adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
-import entity.CarrouselFormation;
 import entity.ImageCarrousel;
 
 public class CarrouselFormationAdapter extends RecyclerView.Adapter <CarrouselFormationAdapter.CarrouselFormationViewHolder>{
 
     private Context mContext;
-    private List<ImageCarrousel> mData;
+    private ArrayList<ImageCarrousel> mData;
     View view;
 
-    public CarrouselFormationAdapter(Context mContext, List<ImageCarrousel> mData) {
+    public CarrouselFormationAdapter(Context mContext, ArrayList<ImageCarrousel> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }

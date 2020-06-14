@@ -19,15 +19,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.synnapps.carouselview.CarouselView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import api.RetrofitClient;
 import bj.app.wapi.R;
 import database.DatabaseHelper;
-import entityBackend.Caroussel;
+import entityBackend.Carrousel;
 import entity.Document;
 import entity.SlideItem;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +48,7 @@ public class DocumentFragment extends Fragment {
     CarouselView carouselView;
     ArrayList<SlideItem> slideItemList;
     DatabaseHelper databaseHelper;
-    ArrayList<Caroussel> ressourceArrayList = new ArrayList<>();
+    ArrayList<Carrousel> carrouselsList = new ArrayList<>();
 
     //https://upload.wikimedia.org/wikipedia/commons/2/2d/Snake_River_%285mb%29.jpg
     //String test1="https://firebasestorage.googleapis.com/v0/b/wegoofirebase.appspot.com/o/images%2Fuser_profile%2FG8OOdW2PsffLjNuJ0iXGnywr2v43.jpg?alt=media&token=00339afd-4b57-4a5e-8e7c-5562b4ee68dd";
@@ -72,7 +77,7 @@ public class DocumentFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadDocuments();
+        loadCarrousels();
     }
 
     @Override
@@ -89,13 +94,9 @@ public class DocumentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        loadDocuments();
-
         recyclerView = view.findViewById(R.id.rv_document);
-        recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
-        recyclerView.setLayoutManager(new LinearLayoutManager(DocumentFragment.this.getContext()));
+        loadCarrousels();
+
 
         System.out.println("My id is : "+ FirebaseAuth.getInstance().getUid());
     }
@@ -106,32 +107,48 @@ public class DocumentFragment extends Fragment {
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 
-    public void loadDocuments(){
+    public void loadCarrousels(){
 
-        ressourceArrayList = new ArrayList<>();
+        carrouselsList = new ArrayList<>();
 
         if (isNetworkConnected()){
             //GET RESSOURCES FROM API
-            ressourceArrayList.add(new Caroussel("CAJOUX","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
-            ressourceArrayList.add(new Caroussel("RIZ","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
-            ressourceArrayList.add(new Caroussel("TOMATE","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
-            ressourceArrayList.add(new Caroussel("PIMENT","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
-            ressourceArrayList.add(new Caroussel("CAROTTE","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
-            ressourceArrayList.add(new Caroussel("SOJA","Le meilleur d'Afrique","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",text2+";"+text2));
+            Call<List<Carrousel>> call = RetrofitClient
+                    .getmInstance()
+                    .getApi()
+                    .getAllCaroussels();
+            call.enqueue(new Callback<List<Carrousel>>() {
+                @Override
+                public void onResponse(Call<List<Carrousel>> call, Response<List<Carrousel>> response) {
+                    if (response.code() == 200){
+                        try {
+                            carrouselsList.clear();
+                            carrouselsList.addAll(response.body());
+                            adapter = new DocumentAdapter(DocumentFragment.this.getContext(), carrouselsList, true);
+                            recyclerView.setAdapter(adapter);
+                            //recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+                            recyclerView.setLayoutManager(new LinearLayoutManager(DocumentFragment.this.getContext()));
+                            System.out.println("Voila la liste de carrousels : "+carrouselsList.toString());
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }else {
+                        Toast.makeText(getActivity(), "Response code is :"+response.code()+"\n"+" S_Response message "+response.message(), Toast.LENGTH_LONG).show();
+                    }
+                }
 
-            /*mData.add(new Document("CAJOUX", "Le meilleur d Afrique", R.drawable.wapipoudrefeuillebaobnab));
-            mData.add(new Document("RIZ", "Le meilleur d Afrique", R.drawable.wapibaobabpoudre));
-            mData.add(new Document("TOMATE", "Le meilleur d Afrique", R.drawable.wapitransdetarium));
-            mData.add(new Document("PIMENT", "Le meilleur d Afrique", R.drawable.wapihuilebaobab));
-            mData.add(new Document("CAROTTE", "Le meilleur d Afrique", R.drawable.wapipoudrefeuillebaobnab));
-            mData.add(new Document("SOJA", "Le meilleur d Afrique", R.drawable.wapihuilebaobab));*/
+                @Override
+                public void onFailure(Call<List<Carrousel>> call, Throwable t) {
+                    Toast.makeText(getActivity(), "Error message "+t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
 
-            adapter = new DocumentAdapter(DocumentFragment.this.getContext(), ressourceArrayList, true);
+            adapter = new DocumentAdapter(DocumentFragment.this.getContext(), carrouselsList, true);
             adapter.notifyDataSetChanged();
 
         }else {
             databaseHelper = new DatabaseHelper(getActivity());
-            ressourceArrayList = databaseHelper.getAllCaroussels();
+            carrouselsList = databaseHelper.getAllCaroussels();
 
             /*ressourceArrayList.add(new Caroussel("CAJOUX","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
             ressourceArrayList.add(new Caroussel("RIZ","Le meilleur d'Afrique","https://www.radiantmediaplayer.com/media/bbb-360p.mp4",test1+";"+text2));
@@ -148,7 +165,7 @@ public class DocumentFragment extends Fragment {
             mData.add(new Document("CAROTTE", "Le meilleur d Afrique", R.drawable.wapipoudrefeuillebaobnab));
             mData.add(new Document("SOJA", "Le meilleur d Afrique", R.drawable.wapihuilebaobab));*/
 
-            adapter = new DocumentAdapter(DocumentFragment.this.getContext(), ressourceArrayList, false);
+            adapter = new DocumentAdapter(DocumentFragment.this.getContext(), carrouselsList, false);
             adapter.notifyDataSetChanged();
         }
     }

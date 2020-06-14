@@ -1,60 +1,41 @@
-package entity;
+package entityBackend;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.provider.MediaStore;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
+import entity.AudioCarrousel;
+import entity.ImageCarrousel;
 
 public class CarrouselFormation implements Parcelable {
-    private String _id;
-    private String name;
+    private String texte;
+    private String order;
     private ArrayList<ImageCarrousel> images;
     private ArrayList<AudioCarrousel> audios;
-    private Date createdAt;
-    private Date updatedAt;
 
     public CarrouselFormation() {
     }
 
-    public CarrouselFormation(String _id, String texte, String name, ArrayList<ImageCarrousel> images, ArrayList<AudioCarrousel> audios, Date createdAt, Date updatedAt) {
-        this._id = _id;
-        this.name = name;
+    public CarrouselFormation(String texte, String order, ArrayList<ImageCarrousel> images, ArrayList<AudioCarrousel> audios) {
+        this.texte = texte;
+        this.order = order;
         this.images = images;
         this.audios = audios;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    public CarrouselFormation(String _id, String name, ArrayList<ImageCarrousel> images, ArrayList<AudioCarrousel> audios) {
-        this._id = _id;
-        this.name = name;
-        this.images = images;
-        this.audios = audios;
-    }
-
-    public CarrouselFormation(String _id, String name, ArrayList<ImageCarrousel> images, ArrayList<AudioCarrousel> audios, Date createdAt, Date updatedAt) {
-        this._id = _id;
-        this.name = name;
-        this.images = images;
-        this.audios = audios;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     protected CarrouselFormation(Parcel in) {
-        _id = in.readString();
-        name = in.readString();
+        texte = in.readString();
+        order = in.readString();
         images = in.createTypedArrayList(ImageCarrousel.CREATOR);
         audios = in.createTypedArrayList(AudioCarrousel.CREATOR);
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(_id);
-        dest.writeString(name);
+        dest.writeString(texte);
+        dest.writeString(order);
         dest.writeTypedList(images);
         dest.writeTypedList(audios);
     }
@@ -76,21 +57,20 @@ public class CarrouselFormation implements Parcelable {
         }
     };
 
-    public String get_id() {
-        return _id;
+    public String getTexte() {
+        return texte;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
+    public void setTexte(String texte) {
+        this.texte = texte;
     }
 
-
-    public String getName() {
-        return name;
+    public String getOrder() {
+        return order;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOrder(String order) {
+        this.order = order;
     }
 
     public ArrayList<ImageCarrousel> getImages() {
@@ -112,11 +92,10 @@ public class CarrouselFormation implements Parcelable {
     @Override
     public String toString() {
         return "CarrouselFormation{" +
-                "_id='" + _id + '\'' +
-                ", name='" + name + '\'' +
-                ", images=" + images.toString() +
-                ", audios=" + audios.toString() +
+                "texte='" + texte + '\'' +
+                ", order='" + order + '\'' +
+                ", images=" + images.toString()+
+                ", audios=" + audios.toString()+
                 '}';
     }
-
 }

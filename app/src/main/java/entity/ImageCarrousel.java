@@ -6,29 +6,32 @@ import android.os.Parcelable;
 import java.util.Date;
 
 public class ImageCarrousel implements Parcelable {
-    private String _id;
     private String url;
-    private String name;
+    private String baseUri;
     private int image;
 
-    public ImageCarrousel(String _id, String url, String name, int image) {
-        this._id = _id;
+    public ImageCarrousel(String url, String baseUri, int image) {
         this.url = url;
-        this.name = name;
-        this.image = image;
-    }
-
-    public ImageCarrousel(String url, String name, int image) {
-        this.url = url;
-        this.name = name;
+        this.baseUri = baseUri;
         this.image = image;
     }
 
     protected ImageCarrousel(Parcel in) {
-        _id = in.readString();
         url = in.readString();
-        name = in.readString();
+        baseUri = in.readString();
         image = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(url);
+        dest.writeString(baseUri);
+        dest.writeInt(image);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<ImageCarrousel> CREATOR = new Creator<ImageCarrousel>() {
@@ -43,20 +46,20 @@ public class ImageCarrousel implements Parcelable {
         }
     };
 
-    public String get_id() {
-        return _id;
-    }
-
-    public void set_id(String _id) {
-        this._id = _id;
-    }
-
     public String getUrl() {
         return url;
     }
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getBaseUri() {
+        return baseUri;
+    }
+
+    public void setBaseUri(String baseUri) {
+        this.baseUri = baseUri;
     }
 
     public int getImage() {
@@ -67,34 +70,12 @@ public class ImageCarrousel implements Parcelable {
         this.image = image;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public String toString() {
         return "ImageCarrousel{" +
-                "_id='" + _id + '\'' +
-                ", url='" + url + '\'' +
-                ", name='" + name + '\'' +
+                "url='" + url + '\'' +
+                ", baseUri='" + baseUri + '\'' +
                 ", image=" + image +
                 '}';
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(_id);
-        parcel.writeString(url);
-        parcel.writeString(name);
-        parcel.writeInt(image);
     }
 }

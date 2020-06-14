@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
-import entityBackend.Caroussel;
+import entityBackend.Carrousel;
 import entityBackend.Video;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -76,32 +76,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean saveOneCaroussel(Caroussel caroussel){
+    public boolean saveOneCaroussel(Carrousel carrousel){
 
         db = this.getWritableDatabase();
 
         ContentValues params = new ContentValues();
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_FORMATION_NAME , caroussel.getName());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_AUDIOS_PATHS , caroussel.getAudiosPaths());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION , caroussel.getDescription());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_IMAGES_PATHS , caroussel.getImagesPaths());
+        //params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_FORMATION_NAME , carrousel.getName());
+        //params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_AUDIOS_PATHS , carrousel.getAudiosPaths());
+        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION , carrousel.getDescription());
+        //params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_IMAGES_PATHS , carrousel.getImagesPaths());
 
         long l = db.insert(DatabaseContent.DatabaseEntry.TABLE_CAROUSSEL, null, params);
         return l != -1;
     }
 
-    public boolean saveManyRessources(ArrayList<Caroussel> carousselArrayList){
+    public boolean saveManyRessources(ArrayList<Carrousel> carrouselArrayList){
         boolean result = true;
-        for (int i=0; i<carousselArrayList.size(); i++){
-            result = saveOneCaroussel(carousselArrayList.get(i)) && result;
+        for (int i = 0; i< carrouselArrayList.size(); i++){
+            result = saveOneCaroussel(carrouselArrayList.get(i)) && result;
         }
         return result;
     }
 
-    public ArrayList<Caroussel> getAllCaroussels(){
+    public ArrayList<Carrousel> getAllCaroussels(){
 
-        ArrayList<Caroussel> ressourceArrayList = new ArrayList<>();
-        Caroussel caroussel;
+        ArrayList<Carrousel> ressourceArrayList = new ArrayList<>();
+        Carrousel carrousel;
 
         db = this.getReadableDatabase();
 
@@ -115,8 +115,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String description = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION));
             String imagesPaths = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_IMAGES_PATHS));
 
-            caroussel = new Caroussel(name, description, audiosPaths, imagesPaths);
-            ressourceArrayList.add(caroussel);
+            //carrousel = new Carrousel(name, description, audiosPaths, imagesPaths);
+            // ok ressourceArrayList.add(carrousel);
         }
 
         cursor.close();

@@ -3,13 +3,12 @@ package api;
 import java.util.ArrayList;
 import java.util.List;
 
-import entity.CarrouselFormation;
-import entityBackend.Caroussel;
+import entityBackend.CarrouselFormation;
+import entityBackend.Carrousel;
 import entityBackend.Champs;
 import entityBackend.Farmer;
 import entityBackend.User;
 import entityBackend.Video;
-import response.FarmerResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -27,20 +26,23 @@ public interface  Api {
             @Body User user
     );
 
-    @POST("api/user/create")
-    Call<User> createUser(
-            @Body User user
+    @POST("api/farmers/create")
+    Call<Farmer> createUser(
+            @Body Farmer farmer
     );
 
     //*********************** Caroussel *********************************
 
     @POST("api/caroussel")
-    Call<Caroussel> saveCaroussel(
-            @Body Caroussel caroussel
+    Call<Carrousel> saveCaroussel(
+            @Body Carrousel carrousel
     );
 
-    @GET("api/caroussel")
-    Call<List<Caroussel>> getAllCaroussel();
+    @GET("api/carrousels/read_all")
+    Call<List<Carrousel>> getAllCaroussels();
+
+    @GET("api/carrousels_formation/read_all")
+    Call<ArrayList<CarrouselFormation>> getAllCarousselsFormation();
 
     //*********************** Videos *********************************
 
