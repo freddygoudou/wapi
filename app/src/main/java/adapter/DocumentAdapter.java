@@ -120,7 +120,7 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
                 intent.putExtra("my_id", mData.get(position).get_id());
                // bundle.putParcelab("connexionState",connexionState);
                 intent.putExtras(bundle);
-                intent.putExtra("connexionState",connexionState);
+               // intent.putExtra("connexionState",connexionState);
 
                //  mData.get(position).getCarrouselFormations()
                // JSONObject jsonObject = (JSONObject) new JsonParser().parse(your json string);
