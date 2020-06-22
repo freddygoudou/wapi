@@ -6,580 +6,580 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml
+8-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="28" />
-9-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml
+9-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:6:5-67
-11-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:6:22-64
+11-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:6:5-67
+11-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:6:22-64
 12    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-12-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:7:5-76
-12-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:7:22-73
+12-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:7:5-76
+12-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:7:22-73
 13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-13-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:8:5-79
-13-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:8:22-76
+13-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:8:5-79
+13-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:8:22-76
 14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-14-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:9:5-81
-14-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:9:22-78
+14-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:9:5-81
+14-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:9:22-78
 15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-15-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:10:5-80
-15-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:10:22-77
+15-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:10:5-80
+15-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:10:22-77
 16    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
-16-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:11:5-81
-16-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:11:22-78
+16-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:11:5-81
+16-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:11:22-78
 17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-17-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:12:5-81
-17-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:12:22-78
+17-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:12:5-81
+17-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:12:22-78
 18
 19    <application
-19-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:14:5-236:19
+19-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:14:5-236:19
 20        android:allowBackup="true"
-20-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:15:9-35
+20-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:15:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.1.0] /home/ki/.gradle/caches/transforms-2/files-2.1/331630a23dfa1f0594bcf54d5352aa36/core-1.1.0/AndroidManifest.xml:24:18-86
+21-->[androidx.core:core:1.1.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\331630a23dfa1f0594bcf54d5352aa36\core-1.1.0\AndroidManifest.xml:24:18-86
 22        android:debuggable="true"
 23        android:icon="@drawable/wapi"
-23-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:16:9-38
+23-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:16:9-38
 24        android:label="@string/app_name"
-24-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:17:9-41
+24-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:17:9-41
 25        android:roundIcon="@mipmap/ic_launcher_round"
-25-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:18:9-54
+25-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:18:9-54
 26        android:supportsRtl="true"
-26-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:19:9-35
+26-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:19:9-35
 27        android:testOnly="true"
 28        android:usesCleartextTraffic="true" >
-28-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:21:9-44
+28-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:21:9-44
 29        <activity
-29-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:22:9-29:20
+29-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:22:9-29:20
 30            android:name="bj.app.wapi.ui.AudioVideoChoixFormation"
-30-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:22:19-62
+30-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:22:19-62
 31            android:screenOrientation="portrait"
-31-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:23:13-49
+31-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:23:13-49
 32            android:theme="@style/AppSecondTheme" >
-32-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:24:13-50
+32-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:24:13-50
 33            <intent-filter>
-33-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:25:13-28:29
+33-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:25:13-28:29
 34                <action android:name="bj.app.wapi.AUDIOVIDEOCHOIXFORMATION " />
-34-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:26:17-80
-34-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:26:25-77
+34-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:26:17-80
+34-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:26:25-77
 35
 36                <category android:name="android.intent.category.DEFAULT" />
-36-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-36-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+36-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+36-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 37            </intent-filter>
 38        </activity>
 39        <activity
-39-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:30:9-40:20
+39-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:30:9-40:20
 40            android:name="bj.app.wapi.ui.ThreeImagesMenu"
-40-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:31:13-47
+40-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:31:13-47
 41            android:label="@string/app_name"
-41-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:32:13-45
+41-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:32:13-45
 42            android:screenOrientation="portrait"
-42-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:33:13-49
+42-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:33:13-49
 43            android:theme="@style/AppSecondTheme" >
-43-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:34:13-50
+43-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:34:13-50
 44            <intent-filter>
-44-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:35:13-39:29
+44-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:35:13-39:29
 45                <action android:name="bj.app.wapi.THREEIMAGESMENU " /> <!-- bj.app.wapi.THREEIMAGESMENU -->
-45-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:36:17-71
-45-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:36:25-68
+45-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:36:17-71
+45-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:36:25-68
 46
 47                <category android:name="android.intent.category.DEFAULT" />
-47-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-47-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+47-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+47-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 48            </intent-filter>
 49        </activity>
 50        <activity
-50-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:41:9-51:20
+50-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:41:9-51:20
 51            android:name="bj.app.wapi.ui.ChoixLangue"
-51-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:42:13-43
+51-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:42:13-43
 52            android:label="@string/app_name"
-52-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:43:13-45
+52-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:43:13-45
 53            android:screenOrientation="portrait"
-53-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:44:13-49
+53-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:44:13-49
 54            android:theme="@style/AppSecondTheme" >
-54-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:45:13-50
+54-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:45:13-50
 55            <intent-filter>
-55-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:46:13-50:29
+55-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:46:13-50:29
 56                <action android:name="bj.app.wapi.CHOIXLANGUE " /> <!-- bj.app.wapi.CHOIXLANGUE -->
-56-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:47:17-67
-56-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:47:25-64
+56-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:47:17-67
+56-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:47:25-64
 57
 58                <category android:name="android.intent.category.DEFAULT" />
-58-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-58-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+58-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+58-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 59            </intent-filter>
 60        </activity>
 61        <activity
-61-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:52:9-62:20
+61-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:52:9-62:20
 62            android:name="bj.app.wapi.ui.carrousel_formation.FormationCarrousel"
-62-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:53:13-70
+62-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:53:13-70
 63            android:label="@string/app_name"
-63-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:54:13-45
+63-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:54:13-45
 64            android:parentActivityName="bj.app.wapi.ui.main.MainActivity"
-64-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:56:13-63
+64-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:56:13-63
 65            android:screenOrientation="portrait"
-65-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:55:13-49
+65-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:55:13-49
 66            android:theme="@style/AppTheme" >
-66-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:57:13-44
+66-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:57:13-44
 67            <intent-filter>
-67-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:58:13-61:29
+67-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:58:13-61:29
 68                <action android:name="bj.app.wapi.FORMATIONCARROUSEL" /> <!-- bj.app.wapi.FORMATIONCARROUSEL -->
-68-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:59:17-73
-68-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:59:25-70
+68-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:59:17-73
+68-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:59:25-70
 69                <category android:name="android.intent.category.DEFAULT" />
-69-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-69-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+69-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+69-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 70            </intent-filter>
 71        </activity>
 72        <activity
-72-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:63:9-74:20
+72-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:63:9-74:20
 73            android:name="bj.app.wapi.ui.DetailsExploitation"
-73-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:64:13-51
+73-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:64:13-51
 74            android:label="@string/title_activity_details_exploitation"
-74-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:65:13-72
+74-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:65:13-72
 75            android:parentActivityName="bj.app.wapi.ui.main.MainActivity"
-75-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:67:13-63
+75-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:67:13-63
 76            android:screenOrientation="portrait"
-76-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:66:13-49
+76-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:66:13-49
 77            android:theme="@style/AppTheme" >
-77-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:68:13-44
+77-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:68:13-44
 78            <intent-filter>
-78-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:69:13-73:29
+78-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:69:13-73:29
 79                <action android:name="bj.app.wapi.DETAILSEXPLOITATION-" /> <!-- bj.app.wapi.DETAILSEXPLOITATION -->
-79-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:70:17-75
-79-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:70:25-72
+79-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:70:17-75
+79-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:70:25-72
 80
 81                <category android:name="android.intent.category.DEFAULT" />
-81-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-81-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+81-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+81-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 82            </intent-filter>
 83        </activity>
 84        <activity
-84-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:75:9-86:20
+84-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:75:9-86:20
 85            android:name="bj.app.wapi.ui.InfosCulture"
-85-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:76:13-44
+85-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:76:13-44
 86            android:label="@string/infos_culture"
-86-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:77:13-50
+86-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:77:13-50
 87            android:parentActivityName="bj.app.wapi.ui.NewChampsActivity"
-87-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:79:13-63
+87-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:79:13-63
 88            android:screenOrientation="portrait"
-88-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:78:13-49
+88-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:78:13-49
 89            android:theme="@style/AppTheme" >
-89-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:80:13-44
+89-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:80:13-44
 90            <intent-filter>
-90-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:81:13-85:29
+90-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:81:13-85:29
 91                <action android:name="bj.app.wapi.INFOSCULTUREACTIVITY" />
-91-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:82:17-75
-91-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:82:25-72
+91-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:82:17-75
+91-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:82:25-72
 92
 93                <category android:name="android.intent.category.DEFAULT" />
-93-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-93-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+93-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+93-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 94            </intent-filter>
 95        </activity>
 96        <activity
-96-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:87:9-98:20
+96-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:87:9-98:20
 97            android:name="bj.app.wapi.ui.NewChampsActivity"
-97-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:88:13-49
+97-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:88:13-49
 98            android:label="@string/title_new_champs"
-98-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:90:13-53
+98-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:90:13-53
 99            android:parentActivityName="bj.app.wapi.ui.main.MainActivity"
-99-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:91:13-63
+99-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:91:13-63
 100            android:screenOrientation="portrait"
-100-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:89:13-49
+100-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:89:13-49
 101            android:theme="@style/AppTheme" >
-101-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:92:13-44
+101-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:92:13-44
 102            <intent-filter>
-102-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:93:13-97:29
+102-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:93:13-97:29
 103                <action android:name="bj.app.wapi.CHAMPSDETAILSACTIVITY" />
-103-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:94:17-76
-103-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:94:25-73
+103-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:94:17-76
+103-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:94:25-73
 104
 105                <category android:name="android.intent.category.DEFAULT" />
-105-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-105-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+105-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+105-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 106            </intent-filter>
 107        </activity>
 108        <activity
-108-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:99:9-110:20
+108-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:99:9-110:20
 109            android:name="bj.app.wapi.ui.ChampsDetailsActivity"
-109-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:100:13-53
+109-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:100:13-53
 110            android:label="@string/title_detail_champs"
-110-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:101:13-56
+110-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:101:13-56
 111            android:parentActivityName="bj.app.wapi.ui.main.MainActivity"
-111-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:103:13-63
+111-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:103:13-63
 112            android:screenOrientation="portrait"
-112-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:102:13-49
+112-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:102:13-49
 113            android:theme="@style/AppTheme" >
-113-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:104:13-44
+113-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:104:13-44
 114            <intent-filter>
-114-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:93:13-97:29
+114-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:93:13-97:29
 115                <action android:name="bj.app.wapi.CHAMPSDETAILSACTIVITY" />
-115-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:94:17-76
-115-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:94:25-73
+115-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:94:17-76
+115-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:94:25-73
 116
 117                <category android:name="android.intent.category.DEFAULT" />
-117-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-117-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+117-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+117-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 118            </intent-filter>
 119        </activity>
 120        <activity android:name="bj.app.wapi.ui.GpsActivity" />
-120-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:111:9-52
-120-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:111:19-49
+120-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:111:9-52
+120-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:111:19-49
 121        <activity
-121-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:112:9-122:20
+121-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:112:9-122:20
 122            android:name="bj.app.wapi.ui.registerUserForm.RegisterUserFormActivity"
-122-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:113:13-73
+122-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:113:13-73
 123            android:parentActivityName="bj.app.wapi.ui.login.LoginActivity"
-123-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:114:13-65
+123-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:114:13-65
 124            android:screenOrientation="portrait"
-124-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:115:13-49
+124-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:115:13-49
 125            android:theme="@style/AppSecondTheme" >
-125-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:116:13-50
+125-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:116:13-50
 126            <intent-filter>
-126-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:117:13-121:29
+126-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:117:13-121:29
 127                <action android:name="bj.app.wapi.REGISTERUSERFORMACTIVITY" /> <!-- bj.app.wapi.REGISTERUSERFORMACTIVITY -->
-127-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:118:17-79
-127-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:118:25-76
+127-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:118:17-79
+127-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:118:25-76
 128
 129                <category android:name="android.intent.category.DEFAULT" />
-129-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-129-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+129-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+129-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 130            </intent-filter>
 131        </activity>
 132        <activity
-132-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:123:9-133:20
+132-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:123:9-133:20
 133            android:name="bj.app.wapi.ui.confirmCode.ConfirmCodeActivity"
-133-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:124:13-63
+133-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:124:13-63
 134            android:parentActivityName="bj.app.wapi.ui.login.LoginActivity"
-134-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:125:13-65
+134-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:125:13-65
 135            android:screenOrientation="portrait"
-135-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:126:13-49
+135-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:126:13-49
 136            android:theme="@style/AppSecondTheme" >
-136-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:127:13-50
+136-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:127:13-50
 137            <intent-filter>
-137-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:128:13-132:29
+137-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:128:13-132:29
 138                <action android:name="bj.app.wapi.CONFIRMCODEACTIVITY" /> <!-- bj.app.wapi.CONFIRMCODEACTIVITY -->
-138-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:129:17-74
-138-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:129:25-71
+138-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:129:17-74
+138-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:129:25-71
 139
 140                <category android:name="android.intent.category.DEFAULT" />
-140-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-140-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+140-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+140-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 141            </intent-filter>
 142        </activity>
 143        <activity
-143-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:134:9-145:20
+143-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:134:9-145:20
 144            android:name="bj.app.wapi.ui.formation.DetailsFormation"
-144-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:135:13-58
+144-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:135:13-58
 145            android:label="@string/details_formation"
-145-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:136:13-54
+145-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:136:13-54
 146            android:parentActivityName="bj.app.wapi.ui.main.MainActivity"
-146-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:138:13-63
+146-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:138:13-63
 147            android:screenOrientation="portrait"
-147-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:137:13-49
+147-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:137:13-49
 148            android:theme="@style/AppTheme" >
-148-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:139:13-44
+148-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:139:13-44
 149            <intent-filter>
-149-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:140:13-144:29
+149-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:140:13-144:29
 150                <action android:name="bj.app.wapi.DETAILSFORMATION" /> <!-- bj.app.wapi.DETAILSFORMATION -->
-150-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:141:17-71
-150-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:141:25-68
+150-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:141:17-71
+150-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:141:25-68
 151
 152                <category android:name="android.intent.category.DEFAULT" />
-152-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-152-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+152-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+152-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 153            </intent-filter>
 154        </activity>
 155        <activity
-155-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:146:9-154:20
+155-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:146:9-154:20
 156            android:name="bj.app.wapi.ui.login.LoginActivity"
-156-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:147:13-51
+156-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:147:13-51
 157            android:screenOrientation="portrait"
-157-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:148:13-49
+157-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:148:13-49
 158            android:theme="@style/AppSecondTheme" >
-158-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:149:13-50
+158-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:149:13-50
 159            <intent-filter>
-159-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:150:13-153:29
+159-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:150:13-153:29
 160                <action android:name="android.intent.action.MAIN" /> <!-- bj.app.wapi.LOGINACTIVITY -->
-160-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:151:17-69
-160-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:151:25-66
+160-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:151:17-69
+160-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:151:25-66
 161                <category android:name="android.intent.category.LAUNCHER" />
-161-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:152:17-77
-161-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:152:27-74
+161-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:152:17-77
+161-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:152:27-74
 162            </intent-filter>
 163        </activity>
 164        <activity
-164-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:155:9-166:20
+164-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:155:9-166:20
 165            android:name="bj.app.wapi.ui.nouvelleAnnonce.NouvelleAnnonce"
-165-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:156:13-63
+165-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:156:13-63
 166            android:label="Nouvelle Annonce"
-166-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:157:13-45
+166-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:157:13-45
 167            android:parentActivityName="bj.app.wapi.ui.main.MainActivity"
-167-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:159:13-63
+167-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:159:13-63
 168            android:screenOrientation="portrait"
-168-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:158:13-49
+168-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:158:13-49
 169            android:theme="@style/AppTheme" >
-169-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:160:13-44
+169-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:160:13-44
 170            <intent-filter>
-170-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:161:13-165:29
+170-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:161:13-165:29
 171                <action android:name="bj.app.wapi.NOUVELLEANNONCE" /> <!-- bj.app.wapi.NOUVELLEANNONCE -->
-171-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:162:17-70
-171-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:162:25-67
+171-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:162:17-70
+171-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:162:25-67
 172
 173                <category android:name="android.intent.category.DEFAULT" />
-173-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-173-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+173-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+173-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 174            </intent-filter>
 175        </activity>
 176        <activity
-176-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:167:9-178:20
+176-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:167:9-178:20
 177            android:name="bj.app.wapi.ui.compte.CompteActivity"
-177-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:168:13-53
+177-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:168:13-53
 178            android:label="@string/mon_compte"
-178-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:169:13-47
+178-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:169:13-47
 179            android:parentActivityName="bj.app.wapi.ui.compte.CompteActivity"
-179-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:171:13-67
+179-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:171:13-67
 180            android:screenOrientation="portrait"
-180-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:170:13-49
+180-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:170:13-49
 181            android:theme="@style/AppTheme" >
-181-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:172:13-44
+181-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:172:13-44
 182            <intent-filter>
-182-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:173:13-177:29
+182-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:173:13-177:29
 183                <action android:name="bj.app.wapi.COMPTEACTIVITY" /> <!-- bj.app.wapi.NOUVELLEANNONCE -->
-183-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:174:17-69
-183-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:174:25-66
+183-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:174:17-69
+183-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:174:25-66
 184
 185                <category android:name="android.intent.category.DEFAULT" />
-185-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-185-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+185-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+185-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 186            </intent-filter>
 187        </activity>
 188        <activity
-188-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:179:9-180:51
+188-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:179:9-180:51
 189            android:name="bj.app.wapi.ui.aide.Aide"
-189-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:179:19-47
+189-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:179:19-47
 190            android:screenOrientation="portrait" />
-190-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:180:13-49
+190-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:180:13-49
 191        <activity
-191-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:181:9-191:20
+191-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:181:9-191:20
 192            android:name="bj.app.wapi.ui.videoplayer.VideoPlayerActivity"
-192-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:182:13-63
+192-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:182:13-63
 193            android:label="@string/app_name"
-193-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:184:13-45
+193-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:184:13-45
 194            android:screenOrientation="portrait"
-194-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:183:13-49
+194-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:183:13-49
 195            android:theme="@style/AppSecondTheme" >
-195-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:185:13-50
+195-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:185:13-50
 196            <intent-filter>
-196-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:186:13-190:29
+196-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:186:13-190:29
 197                <action android:name="bj.app.wapi.VIDEOPLAYERACTIVITY" /> <!-- bj.app.wapi.MAINACTIVITY -->
-197-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:187:17-74
-197-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:187:25-71
+197-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:187:17-74
+197-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:187:25-71
 198
 199                <category android:name="android.intent.category.DEFAULT" />
-199-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-199-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+199-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+199-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 200            </intent-filter>
 201        </activity>
 202        <activity
-202-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:192:9-193:51
+202-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:192:9-193:51
 203            android:name="bj.app.wapi.ui.demanderAide.DemanderAideActivity"
-203-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:192:19-71
+203-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:192:19-71
 204            android:screenOrientation="portrait" />
-204-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:193:13-49
+204-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:193:13-49
 205        <activity
-205-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:194:9-195:51
+205-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:194:9-195:51
 206            android:name="bj.app.wapi.ui.publierAnnonce.PublierAnnonceActivity"
-206-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:194:19-75
+206-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:194:19-75
 207            android:screenOrientation="portrait" />
-207-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:195:13-49
+207-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:195:13-49
 208        <activity
-208-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:196:9-204:20
+208-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:196:9-204:20
 209            android:name="bj.app.wapi.ui.splash.SplashActivity"
-209-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:197:13-53
+209-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:197:13-53
 210            android:screenOrientation="portrait"
-210-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:198:13-49
+210-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:198:13-49
 211            android:theme="@style/AppSecondTheme" >
-211-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:199:13-50
+211-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:199:13-50
 212            <intent-filter>
-212-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:200:13-203:29
+212-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:200:13-203:29
 213                <action android:name="bj.app.wapi.SPLASHACTIVITY" /> <!-- bj.app.wapi.SPLASHACTIVITY -->
-213-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:201:17-69
-213-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:201:25-66
+213-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:201:17-69
+213-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:201:25-66
 214                <category android:name="android.intent.category.DEFAULT" />
-214-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-214-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+214-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+214-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 215            </intent-filter>
 216        </activity>
 217        <activity
-217-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:205:9-214:20
+217-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:205:9-214:20
 218            android:name="bj.app.wapi.ui.wapi.Wapi"
-218-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:206:13-41
+218-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:206:13-41
 219            android:screenOrientation="portrait"
-219-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:207:13-49
+219-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:207:13-49
 220            android:theme="@style/AppSecondTheme" >
-220-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:208:13-50
+220-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:208:13-50
 221            <intent-filter>
-221-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:209:13-213:29
+221-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:209:13-213:29
 222                <action android:name="bj.app.wapi.WAPIACTIVITY " /> <!-- bj.app.wapi.WAPIACTIVITY -->
-222-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:210:17-68
-222-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:210:25-65
+222-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:210:17-68
+222-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:210:25-65
 223
 224                <category android:name="android.intent.category.DEFAULT" />
-224-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-224-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+224-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+224-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 225            </intent-filter>
 226        </activity>
 227        <activity
-227-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:215:9-224:20
+227-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:215:9-224:20
 228            android:name="bj.app.wapi.ui.main.MainActivity"
-228-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:216:13-49
+228-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:216:13-49
 229            android:screenOrientation="portrait"
-229-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:217:13-49
+229-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:217:13-49
 230            android:theme="@style/AppTheme" >
-230-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:218:13-44
+230-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:218:13-44
 231            <intent-filter>
-231-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:219:13-223:29
+231-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:219:13-223:29
 232                <action android:name="bj.app.wapi.MAINACTIVITY" /> <!-- bj.app.wapi.MAINACTIVITY -->
-232-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:220:17-67
-232-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:220:25-64
+232-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:220:17-67
+232-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:220:25-64
 233
 234                <category android:name="android.intent.category.DEFAULT" />
-234-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:17-76
-234-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:27:27-73
+234-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:17-76
+234-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:27:27-73
 235            </intent-filter>
 236        </activity>
 237
 238        <service
-238-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:226:9-230:43
+238-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:226:9-230:43
 239            android:name="bj.app.wapi.ui.formation.sousFragment.StartBackgroundAudioService"
-239-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:227:13-82
+239-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:227:13-82
 240            android:enabled="true"
-240-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:228:13-35
+240-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:228:13-35
 241            android:exported="false"
-241-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:229:13-37
+241-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:229:13-37
 242            android:stopWithTask="true" />
-242-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:230:13-40
+242-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:230:13-40
 243        <service
-243-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:231:9-235:43
+243-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:231:9-235:43
 244            android:name="bj.app.wapi.ui.AudioBackgroundService"
-244-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:232:13-54
+244-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:232:13-54
 245            android:enabled="true"
-245-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:233:13-35
+245-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:233:13-35
 246            android:exported="false"
-246-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:234:13-37
+246-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:234:13-37
 247            android:stopWithTask="true" />
-247-->/home/ki/AndroidStudioProjects/ProjetKaderSaka/wapi/app/src/main/AndroidManifest.xml:235:13-40
+247-->C:\Users\anslabs\StudioProjects\ifri\wapi\app\src\main\AndroidManifest.xml:235:13-40
 248
 249        <activity
-249-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:24:9-31:50
+249-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:24:9-31:50
 250            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
-250-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:25:13-85
+250-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:25:13-85
 251            android:excludeFromRecents="true"
-251-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:26:13-46
+251-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:26:13-46
 252            android:exported="true"
-252-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:27:13-36
+252-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:27:13-36
 253            android:launchMode="singleTask"
-253-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:28:13-44
+253-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:28:13-44
 254            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
-254-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:29:13-102
+254-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:29:13-102
 255            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-255-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:30:13-72
+255-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:30:13-72
 256
 257        <service
-257-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:33:9-39:19
+257-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:33:9-39:19
 258            android:name="com.google.firebase.components.ComponentDiscoveryService"
-258-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:34:13-84
+258-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:34:13-84
 259            android:directBootAware="true"
-259-->[com.google.firebase:firebase-common:19.3.0] /home/ki/.gradle/caches/transforms-2/files-2.1/a480442a10fd8f56aa5f68f35c4dd1a0/jetified-firebase-common-19.3.0/AndroidManifest.xml:34:13-43
+259-->[com.google.firebase:firebase-common:19.3.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\cca78d642f6bc668ca40463524e4734d\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
 260            android:exported="false" >
-260-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:35:13-37
+260-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:35:13-37
 261            <meta-data
-261-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:36:13-38:85
+261-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:36:13-38:85
 262                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-262-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:37:17-109
+262-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:37:17-109
 263                android:value="com.google.firebase.components.ComponentRegistrar" />
-263-->[com.google.firebase:firebase-auth:19.2.0] /home/ki/.gradle/caches/transforms-2/files-2.1/1569b356ae21c59997606b87853bf436/firebase-auth-19.2.0/AndroidManifest.xml:38:17-82
+263-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\1569b356ae21c59997606b87853bf436\firebase-auth-19.2.0\AndroidManifest.xml:38:17-82
 264            <meta-data
-264-->[com.google.firebase:firebase-database:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/79dd8250f1ffa1741c322fbd65555d8d/jetified-firebase-database-17.0.0/AndroidManifest.xml:30:13-32:85
+264-->[com.google.firebase:firebase-database:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\93ef364594608ed2dd906e70a4a9b715\jetified-firebase-database-17.0.0\AndroidManifest.xml:30:13-32:85
 265                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-265-->[com.google.firebase:firebase-database:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/79dd8250f1ffa1741c322fbd65555d8d/jetified-firebase-database-17.0.0/AndroidManifest.xml:31:17-109
+265-->[com.google.firebase:firebase-database:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\93ef364594608ed2dd906e70a4a9b715\jetified-firebase-database-17.0.0\AndroidManifest.xml:31:17-109
 266                android:value="com.google.firebase.components.ComponentRegistrar" />
-266-->[com.google.firebase:firebase-database:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/79dd8250f1ffa1741c322fbd65555d8d/jetified-firebase-database-17.0.0/AndroidManifest.xml:32:17-82
+266-->[com.google.firebase:firebase-database:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\93ef364594608ed2dd906e70a4a9b715\jetified-firebase-database-17.0.0\AndroidManifest.xml:32:17-82
 267        </service>
 268
 269        <activity
-269-->[com.google.android.gms:play-services-auth:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/59706fb0cd949f5b3e2f42e1e02500e1/play-services-auth-17.0.0/AndroidManifest.xml:23:9-27:75
+269-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\59706fb0cd949f5b3e2f42e1e02500e1\play-services-auth-17.0.0\AndroidManifest.xml:23:9-27:75
 270            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-270-->[com.google.android.gms:play-services-auth:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/59706fb0cd949f5b3e2f42e1e02500e1/play-services-auth-17.0.0/AndroidManifest.xml:24:13-93
+270-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\59706fb0cd949f5b3e2f42e1e02500e1\play-services-auth-17.0.0\AndroidManifest.xml:24:13-93
 271            android:excludeFromRecents="true"
-271-->[com.google.android.gms:play-services-auth:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/59706fb0cd949f5b3e2f42e1e02500e1/play-services-auth-17.0.0/AndroidManifest.xml:25:13-46
+271-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\59706fb0cd949f5b3e2f42e1e02500e1\play-services-auth-17.0.0\AndroidManifest.xml:25:13-46
 272            android:exported="false"
-272-->[com.google.android.gms:play-services-auth:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/59706fb0cd949f5b3e2f42e1e02500e1/play-services-auth-17.0.0/AndroidManifest.xml:26:13-37
+272-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\59706fb0cd949f5b3e2f42e1e02500e1\play-services-auth-17.0.0\AndroidManifest.xml:26:13-37
 273            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-273-->[com.google.android.gms:play-services-auth:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/59706fb0cd949f5b3e2f42e1e02500e1/play-services-auth-17.0.0/AndroidManifest.xml:27:13-72
+273-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\59706fb0cd949f5b3e2f42e1e02500e1\play-services-auth-17.0.0\AndroidManifest.xml:27:13-72
 274        <!--
 275            Service handling Google Sign-In user revocation. For apps that do not integrate with
 276            Google Sign-In, this service will never be started.
 277        -->
 278        <service
-278-->[com.google.android.gms:play-services-auth:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/59706fb0cd949f5b3e2f42e1e02500e1/play-services-auth-17.0.0/AndroidManifest.xml:33:9-36:110
+278-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\59706fb0cd949f5b3e2f42e1e02500e1\play-services-auth-17.0.0\AndroidManifest.xml:33:9-36:110
 279            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-279-->[com.google.android.gms:play-services-auth:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/59706fb0cd949f5b3e2f42e1e02500e1/play-services-auth-17.0.0/AndroidManifest.xml:34:13-89
+279-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\59706fb0cd949f5b3e2f42e1e02500e1\play-services-auth-17.0.0\AndroidManifest.xml:34:13-89
 280            android:exported="true"
-280-->[com.google.android.gms:play-services-auth:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/59706fb0cd949f5b3e2f42e1e02500e1/play-services-auth-17.0.0/AndroidManifest.xml:35:13-36
+280-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\59706fb0cd949f5b3e2f42e1e02500e1\play-services-auth-17.0.0\AndroidManifest.xml:35:13-36
 281            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
-281-->[com.google.android.gms:play-services-auth:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/59706fb0cd949f5b3e2f42e1e02500e1/play-services-auth-17.0.0/AndroidManifest.xml:36:13-107
+281-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\59706fb0cd949f5b3e2f42e1e02500e1\play-services-auth-17.0.0\AndroidManifest.xml:36:13-107
 282
 283        <provider
-283-->[com.squareup.picasso:picasso:2.71828] /home/ki/.gradle/caches/transforms-2/files-2.1/3360a1a5edd23fd83a87138e0e2d7f8f/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
+283-->[com.squareup.picasso:picasso:2.71828] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\edc7b364669f983a512e2f7d4fc4bdb0\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
 284            android:name="com.squareup.picasso.PicassoProvider"
-284-->[com.squareup.picasso:picasso:2.71828] /home/ki/.gradle/caches/transforms-2/files-2.1/3360a1a5edd23fd83a87138e0e2d7f8f/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
+284-->[com.squareup.picasso:picasso:2.71828] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\edc7b364669f983a512e2f7d4fc4bdb0\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
 285            android:authorities="bj.app.wapi.com.squareup.picasso"
-285-->[com.squareup.picasso:picasso:2.71828] /home/ki/.gradle/caches/transforms-2/files-2.1/3360a1a5edd23fd83a87138e0e2d7f8f/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
+285-->[com.squareup.picasso:picasso:2.71828] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\edc7b364669f983a512e2f7d4fc4bdb0\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
 286            android:exported="false" />
-286-->[com.squareup.picasso:picasso:2.71828] /home/ki/.gradle/caches/transforms-2/files-2.1/3360a1a5edd23fd83a87138e0e2d7f8f/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
+286-->[com.squareup.picasso:picasso:2.71828] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\edc7b364669f983a512e2f7d4fc4bdb0\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
 287
 288        <activity
-288-->[com.google.android.gms:play-services-base:17.1.0] /home/ki/.gradle/caches/transforms-2/files-2.1/6d206c10dfcd7e4d261b33c292c090cb/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+288-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\6d206c10dfcd7e4d261b33c292c090cb\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
 289            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-289-->[com.google.android.gms:play-services-base:17.1.0] /home/ki/.gradle/caches/transforms-2/files-2.1/6d206c10dfcd7e4d261b33c292c090cb/play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+289-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\6d206c10dfcd7e4d261b33c292c090cb\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
 290            android:exported="false"
-290-->[com.google.android.gms:play-services-base:17.1.0] /home/ki/.gradle/caches/transforms-2/files-2.1/6d206c10dfcd7e4d261b33c292c090cb/play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+290-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\6d206c10dfcd7e4d261b33c292c090cb\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
 291            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-291-->[com.google.android.gms:play-services-base:17.1.0] /home/ki/.gradle/caches/transforms-2/files-2.1/6d206c10dfcd7e4d261b33c292c090cb/play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+291-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\6d206c10dfcd7e4d261b33c292c090cb\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
 292
 293        <provider
-293-->[com.google.firebase:firebase-common:19.3.0] /home/ki/.gradle/caches/transforms-2/files-2.1/a480442a10fd8f56aa5f68f35c4dd1a0/jetified-firebase-common-19.3.0/AndroidManifest.xml:26:9-30:39
+293-->[com.google.firebase:firebase-common:19.3.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\cca78d642f6bc668ca40463524e4734d\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
 294            android:name="com.google.firebase.provider.FirebaseInitProvider"
-294-->[com.google.firebase:firebase-common:19.3.0] /home/ki/.gradle/caches/transforms-2/files-2.1/a480442a10fd8f56aa5f68f35c4dd1a0/jetified-firebase-common-19.3.0/AndroidManifest.xml:27:13-77
+294-->[com.google.firebase:firebase-common:19.3.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\cca78d642f6bc668ca40463524e4734d\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
 295            android:authorities="bj.app.wapi.firebaseinitprovider"
-295-->[com.google.firebase:firebase-common:19.3.0] /home/ki/.gradle/caches/transforms-2/files-2.1/a480442a10fd8f56aa5f68f35c4dd1a0/jetified-firebase-common-19.3.0/AndroidManifest.xml:28:13-72
+295-->[com.google.firebase:firebase-common:19.3.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\cca78d642f6bc668ca40463524e4734d\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
 296            android:exported="false"
-296-->[com.google.firebase:firebase-common:19.3.0] /home/ki/.gradle/caches/transforms-2/files-2.1/a480442a10fd8f56aa5f68f35c4dd1a0/jetified-firebase-common-19.3.0/AndroidManifest.xml:29:13-37
+296-->[com.google.firebase:firebase-common:19.3.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\cca78d642f6bc668ca40463524e4734d\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
 297            android:initOrder="100" />
-297-->[com.google.firebase:firebase-common:19.3.0] /home/ki/.gradle/caches/transforms-2/files-2.1/a480442a10fd8f56aa5f68f35c4dd1a0/jetified-firebase-common-19.3.0/AndroidManifest.xml:30:13-36
+297-->[com.google.firebase:firebase-common:19.3.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\cca78d642f6bc668ca40463524e4734d\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
 298
 299        <meta-data
-299-->[com.google.android.gms:play-services-basement:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/4655a28dc38212bd0f78735c434fd706/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+299-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\29d0cb9e5725c1661b06501423121fdb\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
 300            android:name="com.google.android.gms.version"
-300-->[com.google.android.gms:play-services-basement:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/4655a28dc38212bd0f78735c434fd706/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+300-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\29d0cb9e5725c1661b06501423121fdb\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
 301            android:value="@integer/google_play_services_version" />
-301-->[com.google.android.gms:play-services-basement:17.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/4655a28dc38212bd0f78735c434fd706/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+301-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\29d0cb9e5725c1661b06501423121fdb\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
 302
 303        <provider
-303-->[androidx.lifecycle:lifecycle-process:2.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/12fd5a076df57dd1ea8b164c6ea7dbc6/lifecycle-process-2.0.0/AndroidManifest.xml:23:9-27:43
+303-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\12fd5a076df57dd1ea8b164c6ea7dbc6\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
 304            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-304-->[androidx.lifecycle:lifecycle-process:2.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/12fd5a076df57dd1ea8b164c6ea7dbc6/lifecycle-process-2.0.0/AndroidManifest.xml:24:13-79
+304-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\12fd5a076df57dd1ea8b164c6ea7dbc6\lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
 305            android:authorities="bj.app.wapi.lifecycle-process"
-305-->[androidx.lifecycle:lifecycle-process:2.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/12fd5a076df57dd1ea8b164c6ea7dbc6/lifecycle-process-2.0.0/AndroidManifest.xml:25:13-69
+305-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\12fd5a076df57dd1ea8b164c6ea7dbc6\lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
 306            android:exported="false"
-306-->[androidx.lifecycle:lifecycle-process:2.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/12fd5a076df57dd1ea8b164c6ea7dbc6/lifecycle-process-2.0.0/AndroidManifest.xml:26:13-37
+306-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\12fd5a076df57dd1ea8b164c6ea7dbc6\lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
 307            android:multiprocess="true" />
-307-->[androidx.lifecycle:lifecycle-process:2.0.0] /home/ki/.gradle/caches/transforms-2/files-2.1/12fd5a076df57dd1ea8b164c6ea7dbc6/lifecycle-process-2.0.0/AndroidManifest.xml:27:13-40
+307-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\anslabs\.gradle\caches\transforms-2\files-2.1\12fd5a076df57dd1ea8b164c6ea7dbc6\lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
 308    </application>
 309
 310</manifest>
