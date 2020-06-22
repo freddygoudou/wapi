@@ -102,7 +102,8 @@ public class SplashActivity extends AppCompatActivity {
         Animation welcome_animation = AnimationUtils.loadAnimation(SplashActivity.this,R.anim.welcome_animation);
         appIcon.startAnimation(welcome_animation);
 
-        /*MediaPlayer player = MediaPlayer.create(this, Uri.fromFile(Environment.getExternalStoragePublicDirectory("Download/Wapi/Formation/Carrousel/biali/mungbean/production/1/audio1.mp3")));
+        /*
+        MediaPlayer player = MediaPlayer.create(this, Uri.fromFile(Environment.getExternalStoragePublicDirectory("Download/Wapi/Formation/Carrousel/french/mungbean/production/1/audio1.mp3")));
         player.start();*/
 
         System.out.println("Unzip Start ..."+Environment.DIRECTORY_DOWNLOADS+"/Wapi/FormationCaroussel/Biali/Mung Been/Mung Been.zip");

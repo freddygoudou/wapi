@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.gson.JsonParser;
 import com.squareup.picasso.Picasso;
 
 import net.lingala.zip4j.model.ZipModel;
@@ -33,6 +35,10 @@ import java.util.StringTokenizer;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import bj.app.wapi.R;
 import bj.app.wapi.ui.ThreeImagesMenu;
 import bj.app.wapi.ui.WapiApplication;
@@ -109,10 +115,22 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         holder.ll_one_document.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                 Intent intent = new Intent(mContext,  FormationCarrousel.class);
+                Bundle bundle = new Bundle();
+                intent.putExtra("carrouselFormations", mData.get(position).get_id());
+               // bundle.putParcelab("connexionState",connexionState);
+                intent.putExtras(bundle);
+                intent.putExtra("connexionState",connexionState);
+
+               //  mData.get(position).getCarrouselFormations()
+               // JSONObject jsonObject = (JSONObject) new JsonParser().parse(your json string);
+
+                mContext.startActivity(intent);
+
                 //System.out.println("carrouselFormations is now :"+mData.get(position).getCarrouselFormations().toString());
-                mContext.startActivity(new Intent(mContext, FormationCarrousel.class)
-                    .putExtra("carrouselFormations",mData.get(position).getCarrouselFormations())
-                        .putExtra("connexionState",connexionState));
+//               mContext. startActivity(new Intent(mContext, FormationCarrousel.class)
+//                    .putExtra("carrouselFormations",mData.get(position).getCarrouselFormations())
+//                        .putExtra("connexionState",connexionState));
                 //WapiApplication app = (WapiApplication) mContext.getApplicationContext();
                 //app.setCarrouselFormations(mData.get(position).getCarrouselFormations());
                 /*WapiApplication wapiApplication = new WapiApplication(mData.get(position).getCarrouselFormations());

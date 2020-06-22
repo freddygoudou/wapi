@@ -86,7 +86,8 @@ public class Carrousel implements Parcelable {
     }
 
     public ArrayList<CarrouselFormation> getCarrouselFormations() {
-        return carrouselFormations;
+         return carrouselFormations;
+       // return  new ArrayList<CarrouselFormation>();
     }
 
     public void setCarrouselFormations(ArrayList<CarrouselFormation> carrouselFormations) {
