@@ -117,15 +117,21 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
             public void onClick(View view) {
                  Intent intent = new Intent(mContext,  FormationCarrousel.class);
                 Bundle bundle = new Bundle();
-                intent.putExtra("carrouselFormations", mData.get(position).get_id());
+                intent.putExtra("my_id", mData.get(position).get_id());
                // bundle.putParcelab("connexionState",connexionState);
                 intent.putExtras(bundle);
                 intent.putExtra("connexionState",connexionState);
 
                //  mData.get(position).getCarrouselFormations()
                // JSONObject jsonObject = (JSONObject) new JsonParser().parse(your json string);
+                if(connexionState){
+               mContext. startActivity(new Intent(mContext, FormationCarrousel.class)
+                    .putExtra("carrouselFormations",mData.get(position).getCarrouselFormations())
+                        .putExtra("connexionState",connexionState));
+                }else {
+                    mContext.startActivity(intent);
+                }
 
-                mContext.startActivity(intent);
 
                 //System.out.println("carrouselFormations is now :"+mData.get(position).getCarrouselFormations().toString());
 //               mContext. startActivity(new Intent(mContext, FormationCarrousel.class)

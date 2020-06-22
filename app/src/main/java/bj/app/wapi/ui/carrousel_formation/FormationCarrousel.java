@@ -226,18 +226,21 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
 //            System.out.println("LA VALEUR ENVOYÉE EST : "+carrouselFormations.get(0).getAudios().get(0));
 //        }
 
-        if (getIntent().hasExtra("carrouselFormations") && (getIntent().hasExtra("connexionState"))) {
+        if (getIntent().hasExtra("my_id") && (getIntent().hasExtra("connexionState"))) {
             Long my_id = Long.parseLong(getIntent().getStringExtra("carrouselFormations"));
             System.out.println("=============================================================my_id:"+my_id);
 
             DatabaseHelper databaseHelper = new DatabaseHelper(this);
 
+            if(!connexionState) {
 
+                carrouselFormations = new ArrayList<CarrouselFormation>();
+                carrouselFormations.clear();
+                carrouselFormations.addAll(databaseHelper.getAllCarousselFormationsById(my_id));
+            }
+            else{
 
-            carrouselFormations = new ArrayList<CarrouselFormation>();
-            carrouselFormations.clear();
-            carrouselFormations.addAll(databaseHelper.getAllCarousselFormationsById(my_id));
-
+            }
           //  carrouselFormations.addAll(getIntent().getParcelableArrayListExtra("carrouselFormations"));
             connexionState = getIntent().getBooleanExtra("connexionState", false);
 
