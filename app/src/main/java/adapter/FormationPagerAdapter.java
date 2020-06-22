@@ -19,16 +19,19 @@ public class FormationPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
 
-            if (position == 0) {
+        switch (position){
+            case 0:
                 return new DocumentFragment();
-            }else if (position == 0) {
-                return  new VideoFragment();
-            }
-        return  null;
+            case 1:
+                return new VideoFragment();
+            default:
+                return new VideFragment();
+
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

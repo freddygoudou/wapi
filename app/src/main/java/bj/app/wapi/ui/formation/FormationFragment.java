@@ -122,10 +122,10 @@ public class FormationFragment extends Fragment {
                         //tab.setText(R.string.videos);
                         tab.setIcon(R.drawable.ic_video_library_black_24dp);
                         break;
-                    /*case 2:
+                    case 2:
                         //tab.setText(R.string.vide);
                         tab.setIcon(R.drawable.ic_directions_walk_black_24dp);
-                        break;*/
+                        break;
                 }
             }
         }
