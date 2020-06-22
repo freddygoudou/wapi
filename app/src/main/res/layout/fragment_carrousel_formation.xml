@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FEFEFE"
     tools:context=".ui.carrousel_formation.FormationCarrousel">
 
     <ScrollView
@@ -28,11 +29,11 @@
                     android:id="@+id/rv_carrousel_formation_image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-                <ProgressBar
+                <!--ProgressBar
                     android:layout_width="33dp"
                     android:layout_height="33dp"
                     android:layout_marginTop="11dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"/-->
                 <Button
                     android:id="@+id/btn_show_texte"
                     android:layout_width="wrap_content"
@@ -50,7 +51,7 @@
                     android:layout_marginTop="18dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:layout_marginBottom="66dp"
+                    android:layout_marginBottom="90dp"
                     android:textSize="13dp"
                     android:visibility="invisible"
                     android:textColor="@color/colorGray"
@@ -59,29 +60,54 @@
         </LinearLayout>
     </ScrollView>
 
+    <!--<View
+        android:layout_above="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorGray"/>-->
     <LinearLayout
+        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:weightSum="3"
         android:orientation="horizontal">
+        <!--<View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray"/>-->
         <ImageButton
             android:id="@+id/ib_back_formation"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:background="@color/colorWhite"
+            android:src="@drawable/ponit_left"
             android:layout_height="match_parent"/>
+        <!--<View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray"/>-->
         <ImageButton
             android:id="@+id/ib_repeat_formation"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_arrow_upward_black_24dp"
+            android:background="@color/colorWhite"
+            android:src="@drawable/point_middle"
             android:layout_height="match_parent"/>
+        <!--<View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray"/>-->
         <ImageButton
             android:id="@+id/ib_next_formation"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_arrow_upward_black_24dp"
+            android:background="@color/colorWhite"
+            android:src="@drawable/point_right"
             android:layout_height="match_parent"/>
+        <!--<View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray"/>-->
     </LinearLayout>
 </RelativeLayout>

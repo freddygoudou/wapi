@@ -81,10 +81,10 @@ public class RegisterUserFormActivity extends AppCompatActivity {
                 if(name.length() == 0){
                     Toast.makeText(RegisterUserFormActivity.this,"Veillez renseigner votre nom !", Toast.LENGTH_LONG).show();
                 } else {
-                    User user = new User(FirebaseAuth.getInstance().getUid(),name, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), "");
+                    User user = new User(FirebaseAuth.getInstance().getUid(),name, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), null);
                     SharedPrefManager.getmInstance(RegisterUserFormActivity.this).saveUser(user);
-                    startActivity(new Intent(RegisterUserFormActivity.this, ChoixLangue.class));
-                    updateUser(name, "");
+                    startActivity(new Intent(RegisterUserFormActivity.this, SplashActivity.class));
+                    updateUser(name, null);
                 }
             }
         });
@@ -97,9 +97,9 @@ public class RegisterUserFormActivity extends AppCompatActivity {
         user.setFirebasUid(FirebaseAuth.getInstance().getUid());
         User userForCall = new User(user.getFirebasUid(), user.getName(), user.getPhoneNumber(), user.getLangue());
         SharedPrefManager.getmInstance(this).saveUser(userForCall);
-        Farmer farmer = new Farmer("",FirebaseAuth.getInstance().getUid(), name, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), "",  new ArrayList<>(), new ArrayList<>(), new Date(), new Date());
-        System.out.println("Voici farmer : "+farmer.toString());
+        //Farmer farmer = new Farmer("",FirebaseAuth.getInstance().getUid(), name, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), "",  new ArrayList<>(), new ArrayList<>(), new Date(), new Date());
+        //System.out.println("Voici farmer : "+farmer.toString());
         startActivity(new Intent(RegisterUserFormActivity.this, SplashActivity.class)
-                .putExtra("farmer", farmer));
+                /*.putExtra("farmer", farmer)*/);
     }
 }

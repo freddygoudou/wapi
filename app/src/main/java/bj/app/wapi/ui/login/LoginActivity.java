@@ -3,12 +3,18 @@ package bj.app.wapi.ui.login;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import api.RetrofitClient;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.ChoixLangue;
+import bj.app.wapi.ui.ThreeImagesMenu;
 import bj.app.wapi.ui.main.MainActivity;
 import bj.app.wapi.ui.registerUserForm.RegisterUserFormActivity;
 import bj.app.wapi.ui.splash.SplashActivity;
+import entityBackend.Farmer;
 import entityBackend.User;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import storage.SharedPrefManager;
 
 import android.content.Intent;
@@ -57,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference mUserDatabase;
     FirebaseUser mCurrentUser;
+    Farmer farmer;
 
 
 
@@ -163,25 +170,9 @@ public class LoginActivity extends AppCompatActivity {
 
                             Toast.makeText(LoginActivity.this, R.string.welcome_to_wapi, Toast.LENGTH_LONG).show();
 
-                            //startActivity(new Intent(LoginActivity.this, ConfirmCodeActivity.class));
-
                             User user = new User(mAuth.getCurrentUser().getUid(),null, completePhoneNumber,null);
 
                             SharedPrefManager.getmInstance(LoginActivity.this).saveUser(user);
-
-                            /*if (!SharedPrefManager.getmInstance(LoginActivity.this).getUser().getId().equals("")){
-
-                                User user = new User(mAuth.getCurrentUser().getUid(),"", completePhoneNumber);
-                                SharedPrefManager.getmInstance(LoginActivity.this)
-                                        .saveUser(new User(mAuth.getCurrentUser().getUid(),
-                                                SharedPrefManager.getmInstance(LoginActivity.this).getUser().getName()
-                                                , completePhoneNumber));
-
-                            }else {
-                                User user = new User(mAuth.getCurrentUser().getUid(),name, completePhoneNumber);
-                                SharedPrefManager.getmInstance(LoginActivity.this)
-                                        .saveUser(user);
-                            }*/
 
                             mUserDatabase.child(mAuth.getCurrentUser().getUid()).child("phone").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
@@ -199,7 +190,36 @@ public class LoginActivity extends AppCompatActivity {
                                     }else {
                                         String phone = dataSnapshot.getValue().toString();
                                         if(phone.equals(completePhoneNumber)){
-                                            startActivity(new Intent(LoginActivity.this, ChoixLangue.class));
+
+                                            //SI FARMER EXISTE  CONTINUER SI NON RegisterUserFormActivity
+                                            Call<Farmer> call = RetrofitClient
+                                                    .getmInstance()
+                                                    .getApi()
+                                                    .readOneFarmer(FirebaseAuth.getInstance().getUid());
+                                            call.enqueue(new Callback<Farmer>() {
+                                                @Override
+                                                public void onResponse(Call<Farmer> call, Response<Farmer> response) {
+                                                    if (response.code() == 200){
+                                                        farmer = response.body();
+                                                        if (farmer != null){
+                                                            User user = new User(FirebaseAuth.getInstance().getUid(), farmer.getName(), farmer.getPhoneNumber(),farmer.getLangue());
+                                                            SharedPrefManager.getmInstance(LoginActivity.this).saveUser(user);
+                                                            startActivity(new Intent(LoginActivity.this, ThreeImagesMenu.class));
+                                                        }else {
+                                                            startActivity(new Intent(LoginActivity.this, RegisterUserFormActivity.class));
+                                                        }
+                                                    }else {
+                                                        System.out.println("Farmer n'existe pas  : "+response.message());
+                                                        startActivity(new Intent(LoginActivity.this, RegisterUserFormActivity.class));
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onFailure(Call<Farmer> call, Throwable t) {
+                                                    System.out.println("Une erreur  .... à corriger : "+t.getMessage());
+                                                }
+                                            });
+                                            //startActivity(new Intent(LoginActivity.this, ChoixLangue.class));
                                         }
                                     }
                                 }
@@ -236,7 +256,7 @@ public class LoginActivity extends AppCompatActivity {
 
             User user = SharedPrefManager.getmInstance(this).getUser();
             System.out.println("User is :"+ user.toString());
-            if (user.getLangue() == null || user.getName() ==null){
+            if (user.getName() == null){
                 startActivity(new Intent(LoginActivity.this, RegisterUserFormActivity.class)
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }else {

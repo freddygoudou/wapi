@@ -3,6 +3,10 @@ package storage;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
+
+import entity.CarrouselDownloded;
+import entityBackend.Carrousel;
 import entityBackend.User;
 
 
@@ -57,6 +61,17 @@ public class SharedPrefManager {
         return false;
     }
 
+    public void saveFormationInDownloadingName(String formationName){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("formationName", formationName);
+    }
+
+    public String getFormationInDownloadingName(){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return  sharedPreferences.getString("formationName", null);
+    }
+
     public  User getUser(){
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -70,6 +85,7 @@ public class SharedPrefManager {
         );
         return user;
     }
+
 
     public void clear(){
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);

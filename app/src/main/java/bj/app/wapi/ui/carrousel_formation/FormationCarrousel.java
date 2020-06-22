@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -18,15 +19,12 @@ import java.util.ArrayList;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import api.RetrofitClient;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.AudioBackgroundService;
+import bj.app.wapi.ui.WapiApplication;
 import entity.AudioCarrousel;
 import entityBackend.CarrouselFormation;
 import entity.ImageCarrousel;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class FormationCarrousel extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,11 +43,15 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
     int formationPosition = 0;
     Intent serviceIntent;
     Button btn_show_texte;
+    Boolean connexionState;
 
     @Override
     public void onStart() {
         super.onStart();
         formationPosition = 0;
+        //WapiApplication wapiApplication = getApplicationContext();
+        //System.out.println("In FormationCarrousel 1117 : "+wapiApplication.getCarrouselFormations().toString());
+        //System.out.println("App data is : "+wapiApplication.getCarrouselFormations().toString());
     }
 
     @Override
@@ -61,14 +63,23 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
     @Override
     public void onStop() {
         super.onStop();
+        //getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         formationPosition = 0;
         stopService(new Intent(getApplicationContext(), AudioBackgroundService.class));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_carrousel_formation);
+
+            //getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
             tv_formation_texte_content = findViewById(R.id.tv_formation_texte_content);
 
@@ -119,12 +130,15 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
                 //rv_carrousel_formation_image.setAdapter(adapter);
                 //PLAY AUDIOS
                 startService(new Intent(getApplicationContext(), AudioBackgroundService.class)
-                    .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(position).getAudios()));
+                    .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(position).getAudios())
+                        .putExtra("connexionState",connexionState));
 
             }else if (direction.equals(REPEAT)){
                 //REPEAT AUDIOS
+                stopService(new Intent(getApplicationContext(), AudioBackgroundService.class));
                 startService(new Intent(getApplicationContext(), AudioBackgroundService.class)
-                        .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(position).getAudios()));
+                        .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(position).getAudios())
+                        .putExtra("connexionState",connexionState));
 
                 //System.out.println("Adapter Item count ="+adapter.getItemCount()+" .En position "+formationPosition+" MDATA SIZE = "+mData.size()+" AND MDATA = "+mData.toString());
 
@@ -139,7 +153,8 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
                 //System.out.println("Adapter Item count ="+adapter.getItemCount()+" .En position "+formationPosition+" MDATA SIZE = "+mData.size()+" AND MDATA = "+mData.toString());
                 //PLAY AUDIOS
                 startService(new Intent(getApplicationContext(), AudioBackgroundService.class)
-                        .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(position).getAudios()));
+                        .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(position).getAudios())
+                        .putExtra("connexionState",connexionState));
             }
         }else if(carrouselFormations.size()-1>=formationPosition){
             Toast.makeText(FormationCarrousel.this, R.string.dernier_module_formation, Toast.LENGTH_SHORT).show();
@@ -184,10 +199,11 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
 
     private void loadRessources() {
 
-        if (getIntent().hasExtra("carrouselFormations") && (getIntent().getParcelableArrayListExtra("carrouselFormations") != null)) {
+        if (getIntent().hasExtra("carrouselFormations") && (getIntent().getParcelableArrayListExtra("carrouselFormations") != null) && (getIntent().hasExtra("connexionState"))) {
             carrouselFormations = new ArrayList<>();
             carrouselFormations.clear();
             carrouselFormations.addAll(getIntent().getParcelableArrayListExtra("carrouselFormations"));
+            connexionState = getIntent().getBooleanExtra("connexionState", false);
 
             mData.clear();
             mData.addAll(carrouselFormations.get(0).getImages());
@@ -200,10 +216,12 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
             //JOUER LE PREMIER AUDIO
             stopService(new Intent(getApplicationContext(), AudioBackgroundService.class));
             startService(new Intent(getApplicationContext(), AudioBackgroundService.class)
+                    .putExtra("connexionState",connexionState)
                     .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(0).getAudios()));
 
             System.out.println("LA VALEUR ENVOYÉE EST : "+carrouselFormations.get(0).getAudios().get(0));
         }
+
 
         /*Call<ArrayList<CarrouselFormation>> call = RetrofitClient
                 .getmInstance()

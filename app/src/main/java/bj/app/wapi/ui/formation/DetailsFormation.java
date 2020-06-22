@@ -3,7 +3,7 @@ package bj.app.wapi.ui.formation;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import bj.app.wapi.R;
-import bj.app.wapi.ui.formation.sousFragment.CarousselBackgroundAudioService;
+import bj.app.wapi.ui.formation.sousFragment.StartBackgroundAudioService;
 import database.DatabaseHelper;
 import entityBackend.Carrousel;
 import entity.FileAndExtention;
@@ -18,7 +18,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
-import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,7 +30,6 @@ import com.synnapps.carouselview.ImageListener;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.StringTokenizer;
 
 /*
@@ -67,13 +65,13 @@ public class DetailsFormation extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         //Arrèter l'audio
-        stopService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
+        stopService(new Intent(DetailsFormation.this, StartBackgroundAudioService.class));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stopService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
+        stopService(new Intent(DetailsFormation.this, StartBackgroundAudioService.class));
     }
 
     @Override
@@ -81,8 +79,8 @@ public class DetailsFormation extends AppCompatActivity {
         super.onResume();
         carouselView.setCurrentItem(0, true);
         carouselView.playCarousel();
-        stopService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
-        startService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class)
+        stopService(new Intent(DetailsFormation.this, StartBackgroundAudioService.class));
+        startService(new Intent(DetailsFormation.this, StartBackgroundAudioService.class)
                 .putExtra("caroussel", carrousel)
                 .putExtra("connexionState", connexionState));
     }
@@ -90,7 +88,7 @@ public class DetailsFormation extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        stopService(new Intent(DetailsFormation.this, CarousselBackgroundAudioService.class));
+        stopService(new Intent(DetailsFormation.this, StartBackgroundAudioService.class));
     }
 
     @Override

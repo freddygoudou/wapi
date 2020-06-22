@@ -41,6 +41,11 @@ public interface  Api {
     @GET("api/carrousels/read_all")
     Call<List<Carrousel>> getAllCaroussels();
 
+    @GET("api/carrousels/read_all/{langue}")
+    Call<List<Carrousel>> getAllCarousselsByLangue(
+            @Path("langue") String langue
+    );
+
     @GET("api/carrousels_formation/read_all")
     Call<ArrayList<CarrouselFormation>> getAllCarousselsFormation();
 
@@ -70,6 +75,9 @@ public interface  Api {
 
     @GET("api/farmers/read_one/{firebaseId}")
     Call<Farmer> getAllChamps(@Path("firebaseId") String firebaseId);
+
+    @GET("api/farmers/read_one/{firebaseId}")
+    Call<Farmer> readOneFarmer(@Path("firebaseId") String firebaseId);
 
     /* *********************** Gestion des formations Audio et Images ********************* */
 

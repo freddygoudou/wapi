@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="bj.app.wapi">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -7,6 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
@@ -15,9 +17,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        tools:ignore="LockedOrientationActivity"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.ThreeImagesMenu"
+        <activity android:name=".ui.AudioVideoChoixFormation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppSecondTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.AUDIOVIDEOCHOIXFORMATION " />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ThreeImagesMenu"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.THREEIMAGESMENU " /> <!-- bj.app.wapi.THREEIMAGESMENU -->
@@ -28,6 +41,7 @@
         <activity
             android:name=".ui.ChoixLangue"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.CHOIXLANGUE " /> <!-- bj.app.wapi.CHOIXLANGUE -->
@@ -38,6 +52,7 @@
         <activity
             android:name=".ui.carrousel_formation.FormationCarrousel"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -48,6 +63,7 @@
         <activity
             android:name=".ui.DetailsExploitation"
             android:label="@string/title_activity_details_exploitation"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -59,6 +75,7 @@
         <activity
             android:name=".ui.InfosCulture"
             android:label="@string/infos_culture"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ui.NewChampsActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -69,6 +86,7 @@
         </activity>
         <activity
             android:name=".ui.NewChampsActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_new_champs"
             android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/AppTheme">
@@ -81,6 +99,7 @@
         <activity
             android:name=".ui.ChampsDetailsActivity"
             android:label="@string/title_detail_champs"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -93,6 +112,7 @@
         <activity
             android:name=".ui.registerUserForm.RegisterUserFormActivity"
             android:parentActivityName=".ui.login.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.REGISTERUSERFORMACTIVITY" /> <!-- bj.app.wapi.REGISTERUSERFORMACTIVITY -->
@@ -103,6 +123,7 @@
         <activity
             android:name=".ui.confirmCode.ConfirmCodeActivity"
             android:parentActivityName=".ui.login.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.CONFIRMCODEACTIVITY" /> <!-- bj.app.wapi.CONFIRMCODEACTIVITY -->
@@ -113,6 +134,7 @@
         <activity
             android:name=".ui.formation.DetailsFormation"
             android:label="@string/details_formation"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -123,6 +145,7 @@
         </activity>
         <activity
             android:name=".ui.login.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" /> <!-- bj.app.wapi.LOGINACTIVITY -->
@@ -132,6 +155,7 @@
         <activity
             android:name=".ui.nouvelleAnnonce.NouvelleAnnonce"
             android:label="Nouvelle Annonce"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -143,6 +167,7 @@
         <activity
             android:name=".ui.compte.CompteActivity"
             android:label="@string/mon_compte"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ui.compte.CompteActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -151,9 +176,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.aide.Aide" />
+        <activity android:name=".ui.aide.Aide"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.videoplayer.VideoPlayerActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/AppSecondTheme">
             <intent-filter>
@@ -162,18 +189,22 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.demanderAide.DemanderAideActivity" />
-        <activity android:name=".ui.publierAnnonce.PublierAnnonceActivity" />
+        <activity android:name=".ui.demanderAide.DemanderAideActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.publierAnnonce.PublierAnnonceActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.splash.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppSecondTheme">
             <intent-filter>
-                <action android:name="bj.app.wapi.SPLASHACTIVITY " /> <!-- bj.app.wapi.SPLASHACTIVITY -->
+                <action android:name="bj.app.wapi.SPLASHACTIVITY" /> <!-- bj.app.wapi.SPLASHACTIVITY -->
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.wapi.Wapi"
+            android:screenOrientation="portrait"
             android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.WAPIACTIVITY " /> <!-- bj.app.wapi.WAPIACTIVITY -->
@@ -183,6 +214,7 @@
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.MAINACTIVITY" /> <!-- bj.app.wapi.MAINACTIVITY -->
@@ -192,7 +224,7 @@
         </activity>
 
         <service
-            android:name=".ui.formation.sousFragment.CarousselBackgroundAudioService"
+            android:name=".ui.formation.sousFragment.StartBackgroundAudioService"
             android:enabled="true"
             android:exported="false"
             android:stopWithTask="true" />

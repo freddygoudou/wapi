@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,9 +31,11 @@ import database.DatabaseHelper;
 import entityBackend.Carrousel;
 import entity.Document;
 import entity.SlideItem;
+import entityBackend.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import storage.SharedPrefManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,15 +72,17 @@ public class DocumentFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_document, container, false);
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
 
     @Override
     public void onResume() {
         super.onResume();
         loadCarrousels();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
@@ -88,6 +93,7 @@ public class DocumentFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
     }
 
@@ -96,8 +102,6 @@ public class DocumentFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.rv_document);
         loadCarrousels();
-
-
         System.out.println("My id is : "+ FirebaseAuth.getInstance().getUid());
     }
 
@@ -112,41 +116,44 @@ public class DocumentFragment extends Fragment {
         carrouselsList = new ArrayList<>();
 
         if (isNetworkConnected()){
-            //GET RESSOURCES FROM API
-            Call<List<Carrousel>> call = RetrofitClient
-                    .getmInstance()
-                    .getApi()
-                    .getAllCaroussels();
-            call.enqueue(new Callback<List<Carrousel>>() {
-                @Override
-                public void onResponse(Call<List<Carrousel>> call, Response<List<Carrousel>> response) {
-                    if (response.code() == 200){
-                        try {
-                            carrouselsList.clear();
-                            carrouselsList.addAll(response.body());
-                            adapter = new DocumentAdapter(DocumentFragment.this.getContext(), carrouselsList, true);
-                            recyclerView.setAdapter(adapter);
-                            //recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
-                            recyclerView.setLayoutManager(new LinearLayoutManager(DocumentFragment.this.getContext()));
-                            System.out.println("Voila la liste de carrousels : "+carrouselsList.toString());
-                        }catch (Exception e){
-                            e.printStackTrace();
+            User user = SharedPrefManager.getmInstance(getActivity()).getUser();
+            if(user != null){
+                //GET RESSOURCES FROM API
+                Call<List<Carrousel>> call = RetrofitClient
+                        .getmInstance()
+                        .getApi()
+                        .getAllCarousselsByLangue(user.getLangue());
+                call.enqueue(new Callback<List<Carrousel>>() {
+                    @Override
+                    public void onResponse(Call<List<Carrousel>> call, Response<List<Carrousel>> response) {
+                        if (response.code() == 200){
+                            try {
+                                carrouselsList.clear();
+                                carrouselsList.addAll(response.body());
+                                adapter = new DocumentAdapter(DocumentFragment.this.getContext(), carrouselsList, true);
+                                recyclerView.setAdapter(adapter);
+                                //recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+                                recyclerView.setLayoutManager(new LinearLayoutManager(DocumentFragment.this.getContext()));
+                                //System.out.println("Voila la liste de carrousels : "+carrouselsList.toString());
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }else {
+                            Toast.makeText(getActivity(), "Response code is :"+response.code()+"\n"+" S_Response message "+response.message(), Toast.LENGTH_LONG).show();
                         }
-                    }else {
-                        Toast.makeText(getActivity(), "Response code is :"+response.code()+"\n"+" S_Response message "+response.message(), Toast.LENGTH_LONG).show();
                     }
-                }
 
-                @Override
-                public void onFailure(Call<List<Carrousel>> call, Throwable t) {
-                    Toast.makeText(getActivity(), "Error message "+t.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<List<Carrousel>> call, Throwable t) {
+                        Toast.makeText(getActivity(), "Error message "+t.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
 
-            adapter = new DocumentAdapter(DocumentFragment.this.getContext(), carrouselsList, true);
-            adapter.notifyDataSetChanged();
-
-        }else {
+                adapter = new DocumentAdapter(DocumentFragment.this.getContext(), carrouselsList, true);
+                adapter.notifyDataSetChanged();
+            }
+        }
+        else {
             databaseHelper = new DatabaseHelper(getActivity());
             carrouselsList = databaseHelper.getAllCaroussels();
 
@@ -166,7 +173,11 @@ public class DocumentFragment extends Fragment {
             mData.add(new Document("SOJA", "Le meilleur d Afrique", R.drawable.wapihuilebaobab));*/
 
             adapter = new DocumentAdapter(DocumentFragment.this.getContext(), carrouselsList, false);
-            adapter.notifyDataSetChanged();
+            recyclerView.setAdapter(adapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(DocumentFragment.this.getContext()));
         }
+
+        //databaseHelper = new DatabaseHelper(getActivity());
+        //System.out.println("CONTENU IS : "+databaseHelper.getAllCarousselDownloaded().toString());
     }
 }

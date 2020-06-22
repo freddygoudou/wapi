@@ -13,7 +13,8 @@ public class RetrofitClient {
         SOLUTION : https://github.com/shadowsocks/shadowsocks-android/issues/1765
      */
 
-    private static final String BASE_URL = "http://192.168.43.5:8181/"; // BASE URL DE LA OU EST LE BACKEND //217.160.241.185
+    //192.168.43.5
+    private static final String BASE_URL = "http://217.160.241.185:8181/"; // BASE URL DE LA OU EST LE BACKEND //http://217.160.241.185:8181/
     private static  RetrofitClient mInstance;
     private Retrofit retrofit;
 

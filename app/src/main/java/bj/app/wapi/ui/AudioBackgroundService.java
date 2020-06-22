@@ -4,13 +4,14 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Environment;
 import android.os.IBinder;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
-import bj.app.wapi.R;
 import entity.AudioCarrousel;
 
 public class AudioBackgroundService extends Service {
@@ -18,6 +19,7 @@ public class AudioBackgroundService extends Service {
     MediaPlayer player;
     ArrayList<AudioCarrousel> audioCarrousels;
     ArrayList<String> audios;
+    boolean connexionState;
     int my_position;
 
     @Nullable
@@ -28,22 +30,15 @@ public class AudioBackgroundService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent.hasExtra("audiosFormation")){
+        if (intent.hasExtra("audiosFormation") && intent.hasExtra("connexionState")){
+            connexionState = intent.getBooleanExtra("connexionState", false);
             audios = new ArrayList<>();
             audioCarrousels = new ArrayList<>();
-            //System.out.println("VALEUR RECU : "+intent.getParcelableArrayListExtra("audiosFormation"));
             audioCarrousels = intent.getParcelableArrayListExtra("audiosFormation");
-
-            //System.out.println("VALEUR RECU : "+audioCarrousels.toString());
             for (int i=0; i<audioCarrousels.size(); i++){
                 audios.add(audioCarrousels.get(i).getUrl());
-                //audios.add(audioCarrousels.get(i).getUrl());
-                //audios.add(audioCarrousels.get(i).getAudio());
             }
-
             System.out.println("Audio is : "+audios.toString());
-
-            // JOUER MAINTENANTLA LISTE DES AUDIOS DEPUIS LE PREMIER EN POSITION 0
             playAudio(0);
         }else {
             Toast.makeText(AudioBackgroundService.this,"Extra not find", Toast.LENGTH_LONG).show();
@@ -58,8 +53,8 @@ public class AudioBackgroundService extends Service {
 
         */
     /*audios = new ArrayList<>();
-        audios.add(R.raw.welcome_to_wapi);
-        audios.add(R.raw.si_tu_souhaite_je_accompagne_ta_langue);
+        audios.add(R.raw.audio_french_d_1_1);
+        audios.add(R.raw.audio_french_d_1_2);
         audios.add(R.raw.grace_a_cette_application);
         audios.add(R.raw.tu_sauras_comment_bien_gerer_tes_champs_tes_recoltes_et_ton_elevage_comme_grand_patron);
         audios.add(R.raw.tu_pourras_trouver_ou_acheter);
@@ -98,19 +93,14 @@ public class AudioBackgroundService extends Service {
 
     public void playAudio(int position){
         System.out.println("Audio for position : "+position+" start");
-        if (player != null) {
-            if (player.isPlaying())
-                System.out.println("Playing Audio for position : "+position);
-            else
-                System.out.println("Not Playing Audio for position : "+position);
-            player.stop();
-            player.release();
-            player = null;
-        }
 
+        Toast.makeText(AudioBackgroundService.this, "connexion sate :"+connexionState, Toast.LENGTH_SHORT).show();
         my_position = position;
-        //player = MediaPlayer.create(getApplicationContext(), R.raw.welcome_to_wapi);
-        player = MediaPlayer.create(getApplicationContext(), Uri.parse(audios.get(my_position)));
+        if (connexionState)
+            player = MediaPlayer.create(AudioBackgroundService.this, Uri.parse(audios.get(my_position)));
+        else
+            player = MediaPlayer.create(AudioBackgroundService.this, Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(audios.get(my_position)).toString())));
+
         player.setLooping(false);
         player.start();
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
