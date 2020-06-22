@@ -90,10 +90,10 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         if (this.connexionState){
             Picasso.get().load(mData.get(position).getCarrouselFormations().get(0).getImages().get(0).getUrl()).placeholder(R.drawable.mung_bean).into(holder.iv_produit);
         }
-        /*else {
+        else {
             File file = new File(String.valueOf(Uri.fromFile(Environment.getExternalStoragePublicDirectory(mData.get(position).getCarrouselFormations().get(0).getImages().get(0).getBaseUri()))));
             Picasso.get().load(file).into(holder.iv_produit);
-        }*/
+        }
 
         if (checkIfDownloaded(mData.get(position),carrouselDownlodeds)){
             holder.btn_download_carrousel.setEnabled(false);

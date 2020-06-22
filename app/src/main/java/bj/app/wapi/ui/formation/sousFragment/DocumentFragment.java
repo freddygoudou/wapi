@@ -76,7 +76,7 @@ public class DocumentFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadCarrousels();
+        //loadCarrousels();
     }
 
     @Override

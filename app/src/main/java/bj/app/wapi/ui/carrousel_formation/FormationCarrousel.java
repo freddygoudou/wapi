@@ -207,7 +207,7 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
 
             mData.clear();
             mData.addAll(carrouselFormations.get(0).getImages());
-            adapter = new CarrouselFormationAdapter(FormationCarrousel.this, mData);
+            adapter = new CarrouselFormationAdapter(FormationCarrousel.this, mData, connexionState);
             rv_carrousel_formation_image.setLayoutManager(new GridLayoutManager(FormationCarrousel.this, 2));
             rv_carrousel_formation_image.setAdapter(adapter);
 

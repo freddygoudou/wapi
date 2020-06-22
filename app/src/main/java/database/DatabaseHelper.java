@@ -124,30 +124,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Carrousel carrousel;
 
         db = this.getReadableDatabase();
+        db.beginTransaction();
+        try{
+            Cursor cursor = db.rawQuery(SQL_GET_ALL_TABLE_CAROUSSEL,null);
+            while(cursor.moveToNext()){
 
-        Cursor cursor = db.rawQuery(SQL_GET_ALL_TABLE_CAROUSSEL,null);
+                Long id = cursor.getLong(cursor.getColumnIndex(COLUMN_CAROUSSEL_ID));
+                String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_NAME));
+                String subname = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_SUBNAME));
+                String description = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION));
+                String url = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_URL));
+                String langue = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_LANGUE));
+                carrousel = new Carrousel(String.valueOf(id), name, subname, url, description, langue, getAllCarousselFormationsById(id));
+                carrousels.add(carrousel);
+            }
+            cursor.close();
+        }catch (Exception e){
 
-        while(cursor.moveToNext()){
-
-            Long id = cursor.getLong(cursor.getColumnIndex(COLUMN_CAROUSSEL_ID));
-            String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_NAME));
-            String subname = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_SUBNAME));
-            String description = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION));
-            String url = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_URL));
-            String langue = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_LANGUE));
-            carrousel = new Carrousel(String.valueOf(id), name, subname, url, description, langue, getAllCarousselFormationsById(id));
-            carrousels.add(carrousel);
+        }finally {
+            db.endTransaction();
         }
-        cursor.close();
         return  carrousels;
     }
 
     public int getAllCarousselsRowsCount(){
         db = this.getReadableDatabase();
-        int count;
-        Cursor cursor = db.rawQuery(SQL_GET_ALL_TABLE_CAROUSSEL,null); //SQL_GET_ALL_TABLE_CAROUSSEL
-        count = cursor.getCount();
-        cursor.close();
+        db.beginTransaction();
+        int count = 0;
+        try{
+            Cursor cursor = db.rawQuery(SQL_GET_ALL_TABLE_CAROUSSEL,null); //SQL_GET_ALL_TABLE_CAROUSSEL
+            count = cursor.getCount();
+            cursor.close();
+        }catch (Exception e){
+
+        }finally {
+            db.endTransaction();
+        }
+
         return  count;
     }
 
@@ -156,19 +169,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         System.out.println("Insertion of : "+carrousel.toString());
         boolean result = true;
         db = this.getWritableDatabase();
+        db.beginTransaction();
+        try{
+            ContentValues params = new ContentValues();
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_NAME, carrousel.getName());
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_SUBNAME, carrousel.getSubname());
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION , carrousel.getDescription());
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_URL , carrousel.getUrl());
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_LANGUE , carrousel.getLangue());
 
-        ContentValues params = new ContentValues();
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_NAME, carrousel.getName());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_SUBNAME, carrousel.getSubname());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_DESCRIPTION , carrousel.getDescription());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_URL , carrousel.getUrl());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CAROUSSEL_LANGUE , carrousel.getLangue());
+            long l = db.insert(TABLE_CAROUSSEL, null, params);
 
-        long l = db.insert(TABLE_CAROUSSEL, null, params);
-
-        if (l != -1){
-            int id_carrousel = getAllCarousselsRowsCount();
-            result = saveManyCarousselFormation(carrousel.getCarrouselFormations(), id_carrousel);
+            if (l != -1){
+                int id_carrousel = getAllCarousselsRowsCount();
+                result = saveManyCarousselFormation(carrousel.getCarrouselFormations(), id_carrousel);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            db.endTransaction();
         }
         return result;
     }
@@ -181,50 +200,60 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         CarrouselFormation carrouselFormation;
 
         db = this.getReadableDatabase();
+        db.beginTransaction();
+        try{
+            String SQL_GET_ALL_TABLE_CARROUSEL_FORMATION_BY_ID = " SELECT * FROM "+ TABLE_CARROUSEL_FORMATION+" WHERE "+COLUMN_CARROUSEL_ID_FK +"="+id+";";
+            Cursor cursor = db.rawQuery(SQL_GET_ALL_TABLE_CARROUSEL_FORMATION_BY_ID,null);
+            while(cursor.moveToNext()){
+                String audio = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_FORMATION_AUDIOS));
+                String image = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_FORMATION_IMAGES));
+                String texte = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CCARROUSEL_FORMATION_TEXTE));
 
-        String SQL_GET_ALL_TABLE_CARROUSEL_FORMATION_BY_ID = " SELECT * FROM "+ TABLE_CARROUSEL_FORMATION+" WHERE "+COLUMN_CARROUSEL_ID_FK +"="+id+";";
+                //loading audios
+                resources = exportLocalsResources(audio);
+                for (int i=0;i<resources.size();i++){
+                    audios.add(new AudioCarrousel(resources.get(i),resources.get(i),i+1,1));
+                }
 
-        Cursor cursor = db.rawQuery(SQL_GET_ALL_TABLE_CARROUSEL_FORMATION_BY_ID,null);
+                //loading image
+                resources.clear();
+                resources = exportLocalsResources(image);
+                for (int i=0;i<resources.size();i++){
+                    images.add(new ImageCarrousel(resources.get(i),resources.get(i),1));
+                }
 
-        while(cursor.moveToNext()){
-            String audio = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_FORMATION_AUDIOS));
-            String image = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_FORMATION_IMAGES));
-            String texte = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CCARROUSEL_FORMATION_TEXTE));
-
-            //loading audios
-            resources = exportLocalsResources(audio);
-            for (int i=0;i<resources.size();i++){
-                audios.add(new AudioCarrousel(resources.get(i),resources.get(i),i+1,1));
+                carrouselFormation = new CarrouselFormation(texte,String.valueOf(cursor.getCount()),images, audios);
+                carrouselFormations.add(carrouselFormation);
             }
 
-            //loading image
-            resources.clear();
-            resources = exportLocalsResources(image);
-            for (int i=0;i<resources.size();i++){
-                images.add(new ImageCarrousel(resources.get(i),resources.get(i),1));
-            }
+            cursor.close();
 
-            carrouselFormation = new CarrouselFormation(texte,String.valueOf(cursor.getCount()),images, audios);
-            carrouselFormations.add(carrouselFormation);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            db.endTransaction();
         }
-
-        cursor.close();
-
         return  carrouselFormations;
 
     }
 
     public boolean saveCarousselFormation(CarrouselFormation carrouselFormation, int id_carrousel){
 
+        long l = 0;
         db = this.getWritableDatabase();
+        db.beginTransaction();
+        try{
+            ContentValues params = new ContentValues();
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CCARROUSEL_FORMATION_TEXTE, carrouselFormation.getTexte());
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_FORMATION_IMAGES , importLocalsResources(getBaseUrlListFromImages(carrouselFormation.getImages())));
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_FORMATION_AUDIOS , importLocalsResources(getBaseUrlListFromAudios(carrouselFormation.getAudios())));
+            params.put(COLUMN_CARROUSEL_ID_FK , id_carrousel);
+            l = db.insert(TABLE_CARROUSEL_FORMATION, null, params);
+        }catch (Exception e){
 
-        ContentValues params = new ContentValues();
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CCARROUSEL_FORMATION_TEXTE, carrouselFormation.getTexte());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_FORMATION_IMAGES , importLocalsResources(getBaseUrlListFromImages(carrouselFormation.getImages())));
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_FORMATION_AUDIOS , importLocalsResources(getBaseUrlListFromAudios(carrouselFormation.getAudios())));
-        params.put(COLUMN_CARROUSEL_ID_FK , id_carrousel);
-
-        long l = db.insert(TABLE_CARROUSEL_FORMATION, null, params);
+        }finally {
+            db.endTransaction();
+        }
         return l != -1;
     }
 
@@ -253,7 +282,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return localResources;
     }
-
     private String importLocalsResources(ArrayList<String> list){
         String resources="";
         for (int i=0; i<list.size(); i++){
@@ -266,7 +294,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         System.out.println(" RESSUCE IPORT IS : "+resources);
         return resources;
     }
-
     private ArrayList<String> getBaseUrlListFromAudios(ArrayList<AudioCarrousel> list){
         ArrayList<String> stringArrayList = new ArrayList<>();
         for (int i=0; i<list.size(); i++){
@@ -274,7 +301,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return stringArrayList;
     }
-
     private ArrayList<String> getBaseUrlListFromImages(ArrayList<ImageCarrousel> list){
         ArrayList<String> stringArrayList = new ArrayList<>();
         for (int i=0; i<list.size(); i++){
@@ -282,50 +308,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return stringArrayList;
     }
-
-
-
-
-
-
-
-
     public ArrayList<CarrouselDownloded> getAllCarousselDownloaded(){
 
         ArrayList<CarrouselDownloded> carrouselDownlodeds = new ArrayList<>();
         CarrouselDownloded carrouselDownloded;
 
         db = this.getReadableDatabase();
+        db.beginTransaction();
+        try{
+            Cursor cursor = db.rawQuery(SQL_GET_ALL_TABLE_CARROUSEL_DOWNLOADED,null);
 
-        Cursor cursor = db.rawQuery(SQL_GET_ALL_TABLE_CARROUSEL_DOWNLOADED,null);
+            while(cursor.moveToNext()){
 
-        while(cursor.moveToNext()){
+                Long id = cursor.getLong(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_ID));
+                String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_NAME));
+                String subname = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_SUBNAME));
+                String langue = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_LANGUE));
 
-            Long id = cursor.getLong(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_ID));
-            String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_NAME));
-            String subname = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_SUBNAME));
-            String langue = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_LANGUE));
+                carrouselDownloded = new CarrouselDownloded(id, name, subname, langue);
+                carrouselDownlodeds.add(carrouselDownloded);
+            }
 
-            carrouselDownloded = new CarrouselDownloded(id, name, subname, langue);
-            carrouselDownlodeds.add(carrouselDownloded);
+            cursor.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            db.endTransaction();
         }
-
-        cursor.close();
 
         return  carrouselDownlodeds;
 
     }
-
     public boolean saveCarousselDownloaded(CarrouselDownloded carrouselDownloded){
-
+        long l = 0;
         db = this.getWritableDatabase();
+        db.beginTransaction();
+        try{
+            ContentValues params = new ContentValues();
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_NAME , carrouselDownloded.getName());
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_SUBNAME , carrouselDownloded.getSubname());
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_LANGUE , carrouselDownloded.getLangue());
 
-        ContentValues params = new ContentValues();
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_NAME , carrouselDownloded.getName());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_SUBNAME , carrouselDownloded.getSubname());
-        params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_LANGUE , carrouselDownloded.getLangue());
+            l = db.insert(DatabaseContent.DatabaseEntry.TABLE_CARROUSEL_DOWNLOADED, null, params);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            db.endTransaction();
+        }
 
-        long l = db.insert(DatabaseContent.DatabaseEntry.TABLE_CARROUSEL_DOWNLOADED, null, params);
         return l != -1;
     }
 
