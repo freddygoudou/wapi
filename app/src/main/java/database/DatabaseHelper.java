@@ -191,11 +191,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String image = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_FORMATION_IMAGES));
             String texte = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CCARROUSEL_FORMATION_TEXTE));
 
+            System.out.println("Images en db :"+image);
+            System.out.println("Audio en db :"+audio);
+
             //loading audios
             resources = exportLocalsResources(audio);
             for (int i=0;i<resources.size();i++){
                 audios.add(new AudioCarrousel(resources.get(i),resources.get(i),i+1,1));
             }
+
+            System.out.println(" ressources image en db :"+resources);
+
 
             //loading image
             resources.clear();
@@ -204,7 +210,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 images.add(new ImageCarrousel(resources.get(i),resources.get(i),1));
             }
 
+            System.out.println(" ressources Audio en db :"+resources);
+
             carrouselFormation = new CarrouselFormation(texte,String.valueOf(cursor.getCount()),images, audios);
+
+            System.out.println(" ressources carrouselFormation en db :"+carrouselFormation.toString());
+
             carrouselFormations.add(carrouselFormation);
         }
 
@@ -217,6 +228,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean saveCarousselFormation(CarrouselFormation carrouselFormation, int id_carrousel){
 
         db = this.getWritableDatabase();
+
 
         ContentValues params = new ContentValues();
         params.put(DatabaseContent.DatabaseEntry.COLUMN_CCARROUSEL_FORMATION_TEXTE, carrouselFormation.getTexte());
@@ -263,7 +275,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 resources = resources.concat(list.get(i));
         }
 
-        System.out.println(" RESSUCE IPORT IS : "+resources);
+        System.out.println("====================================================================== RESSUCE IPORT IS : "+resources);
         return resources;
     }
 

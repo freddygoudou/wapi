@@ -8,6 +8,7 @@ import adapter.CarrouselFormationAdapter;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -275,24 +276,33 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
                     carrouselFormations.clear();
                     carrouselFormations.addAll(databaseHelper.getAllCarousselFormationsById(my_id));
 
+                   // Toast.makeText("")
+
+                //Log.d("my_id", "================================================="+my_id);
+                System.out.println("nums des caroousels : "+databaseHelper.getAllCarousselFormationsById(my_id).size());
+                System.out.println("count des caroousels formation : "+databaseHelper.getAllCarousselsRowsCount());
+                System.out.println("lescaroousels "+databaseHelper.getAllCarousselFormationsById(my_id).get(0).toString());
+
                 //  carrouselFormations.addAll(getIntent().getParcelableArrayListExtra("carrouselFormations"));
                 connexionState = getIntent().getBooleanExtra("connexionState", false);
 
                 mData.clear();
                 mData.addAll(carrouselFormations.get(0).getImages());
+                System.out.println("Les images :"+carrouselFormations.get(2).getImages().size());
+                System.out.println("Les audios :"+carrouselFormations.get(2).getAudios().size());
                 adapter = new CarrouselFormationAdapter(FormationCarrousel.this, mData);
                 rv_carrousel_formation_image.setLayoutManager(new GridLayoutManager(FormationCarrousel.this, 2));
                 rv_carrousel_formation_image.setAdapter(adapter);
 
                 tv_formation_texte_content.setText(carrouselFormations.get(0).getTexte());
+                //tv_formation_texte_content.setText(carrouselFormations.get(0).getAudios().toString());
 
                 //JOUER LE PREMIER AUDIO
                 stopService(new Intent(getApplicationContext(), AudioBackgroundService.class));
                 startService(new Intent(getApplicationContext(), AudioBackgroundService.class)
                         .putExtra("connexionState", connexionState)
                         .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(0).getAudios()));
-
-                System.out.println("LA VALEUR ENVOYÉE EST : " + carrouselFormations.get(0).getAudios().get(0));
+                //System.out.println("==================================================LA VALEUR ENVOYÉE EST : " + carrouselFormations.get(0).getImages().size());
             }
         }
         /*Call<ArrayList<CarrouselFormation>> call = RetrofitClient
