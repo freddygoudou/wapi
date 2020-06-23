@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#Mon Jun 22 15:56:59 WAT 2020
-=======
 #Tue Jun 23 00:43:28 WAT 2020
->>>>>>> 5265507f8b22106a2ad4bf6c7e6f606e250fd60e
 path.2=classes2.dex
 path.1=classes.dex
 path.0=classes.dex
