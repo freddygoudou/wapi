@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
@@ -38,10 +39,10 @@ public class AudioBackgroundService extends Service {
             for (int i=0; i<audioCarrousels.size(); i++){
                 audios.add(audioCarrousels.get(i).getUrl());
             }
-            System.out.println("Audio is : "+audios.toString());
+            Log.d("onStart","=====================================================1onStart========================Audio is : " + audios.toString());
             playAudio(0);
         }else {
-            Toast.makeText(AudioBackgroundService.this,"Extra not find", Toast.LENGTH_LONG).show();
+            Toast.makeText(bj.app.wapi.ui.AudioBackgroundService.this,"Extra not find", Toast.LENGTH_LONG).show();
         }
 
         return START_STICKY;
@@ -80,6 +81,8 @@ public class AudioBackgroundService extends Service {
             player.release();
             player = null;
         }
+        Log.d("onTaskRemoved","=====================================================2onTaskRemoved========================");
+
     }
 
     @Override
@@ -89,24 +92,30 @@ public class AudioBackgroundService extends Service {
             player.release();
             player = null;
         }
+        Log.d("onDestroy","=====================================================3onDestroy========================");
+
     }
 
     public void playAudio(int position){
-        System.out.println("Audio for position : "+position+" start");
+        System.out.println("================================================Audio for position : "+position+" start");
 
-        Toast.makeText(AudioBackgroundService.this, "connexion sate :"+connexionState, Toast.LENGTH_SHORT).show();
+        Toast.makeText(bj.app.wapi.ui.AudioBackgroundService.this, "connexion sate :"+connexionState, Toast.LENGTH_SHORT).show();
         my_position = position;
         if (connexionState)
-            player = MediaPlayer.create(AudioBackgroundService.this, Uri.parse(audios.get(my_position)));
+            player = MediaPlayer.create(bj.app.wapi.ui.AudioBackgroundService.this, Uri.parse(audios.get(my_position)));
         else
-            player = MediaPlayer.create(AudioBackgroundService.this, Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(audios.get(my_position)).toString())));
+            player = MediaPlayer.create(bj.app.wapi.ui.AudioBackgroundService.this, Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(audios.get(my_position)).toString())));
+        Log.d("playAudio","=====================================================4create========================");
 
         player.setLooping(false);
         player.start();
+        Log.d("playAudio","=====================================================5start========================");
+
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                System.out.println("Audio for position : "+position+" is finish");
+
+                System.out.println("==============================================completion Audio for position : "+position+" is finish");
                 player.stop();
                 player.release();
                 player = null;
