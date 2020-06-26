@@ -37,6 +37,7 @@ import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthSettings;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -101,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                     /*startActivity(new Intent(LoginActivity.this, ConfirmCodeActivity.class)
                         .putExtra("phoneNumber", completePhoneNumber));*/
                     sendVerificationCodeToUser(completePhoneNumber);
+                    //FOR TESTING
                 }
             }
         });
@@ -240,6 +242,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
 
     @Override
     protected void onStart() {

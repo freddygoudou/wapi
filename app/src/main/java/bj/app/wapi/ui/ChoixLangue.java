@@ -18,6 +18,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_langue);
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         shake = AnimationUtils.loadAnimation(this, R.anim.shakeanimation);
 

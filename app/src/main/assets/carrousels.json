@@ -1,0 +1,923 @@
+[
+  {
+    "_id" : "",
+    "name" : "Mung Bean",
+    "url" : "http://217.160.241.185:8181/audios_files/french/mungbean/production/french.zip",
+    "description" : "Production de lentilles encore appelé Mung bean.",
+    "langue" : "French",
+    "subname" : "production",
+    "jsonfileUri" : "/Wapi/Formation/Carrousel/french/mungbean/production/json.json",
+    "carrouselFormations" : [
+      {
+        "texte": "Bienvenu à la formation sur \n« Comment bien produire les lentilles vertes encore appelées Mung bean » \nPour continuer la formation, appuie la main sur ta droite. Si tu souhaites revenir en arrière, appuie sur la main à gauche. Si tu souhaites reprendre cette partie, appuie la main qui te fait face au centre.",
+        "order": 1,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/1/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/1/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/1/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/1/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/1/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/1/audio2.mp3",
+            "order": 1,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Merci d’avoir choisi de produire le mung bean. \nLe mung bean est un haricot qui se produit en 50 jours, presque deux mois; donc tu pourras  le produire 2 fois si tu es dans une région comme le nord du Bénin où la saison pluvieuse s’étend sur une longue période. Tu pourras aussi le produire dans ton jardin en saison sèche mais il te faudra l’arroser. En cultivant le mung bean, tu enrichis ton terrain en azote c’est-à-dire ce que l’Urée apporte au plantes. Ainsi, la culture que tu vas semer après le mung bean sur ce terrain n’aura plus besoin que tu apportes de l’Urée.\nPour produire les lentilles vertes encore appelées Mung bean, il te faut semer de bonnes graines.\nComment peux-tu obtenir de bonnes graines de mung bean pour semer?",
+        "order": 2,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/2/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/2/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/2/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/2/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/2/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/2/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/2/audio3.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/2/audio3.mp3",
+            "order": 3,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/2/audio4.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/2/audio4.mp3",
+            "order": 4,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Pour obtenir de bonnes graines pour semer, il faudra te rapprocher d’un producteur qui a récolté et conservé dans de bonnes conditions de bonnes graines de mung bean la saison passée; celui-ci devrait avoir rechercher les graines sur les  premières gousses mûres; ces premières gousses mûres fournissent les meilleures semences. Pour cela, il doit choisir et laisser pousser les plants de mung bean vigoureux et récolter les gousses avant qu’elles ne s’ouvrent et laissent tomber les graines; il prendra les graines les plus belles qu’il va sécher et stocker à l’abri de l’humidité et de la chaleur. Il te faut 4kg de graines pour semer un hectare de mung bean. \nComment reconnaître que les graines semences sont de bonnes qualité?",
+        "order": 3,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/3/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/3/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/3/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/3/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/3/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/3/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Une bonne semence doit être constitué de graines bien mures, sèches et bien conservées, propres et pas mélangées avec des graines d’autres cultures. Les graines doivent se ressemblées en forme, en taille et en couleur. Les graines de mung bean sont de couleur verte. \nSi tu veux être un bon producteur, tu dois produire et récolter ta propre semence. Cela te permettra  d’économiser une partie de l’argent que tu réserves  souvent pour l’achat des semences. Tu pourras ainsi améliorer tes récoltes en ayant des semences adaptées à ton terrain et à ton climat. Cela te permettra aussi de disposer de semences exactement au moment où tu souhaites faire ton champs. Tu amélioreras ainsi les variétés de semences disponibles dans ta propre localité et tu contribueras surtout à la protection des espèces du patrimoine de ton pays. \nMaintenant que tu as obtenu de bonnes graines pour semer, quelle est l’étape suivante?",
+        "order": 4,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/4/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/4/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/4/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/4/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/4/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/4/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Il te faut choisir un bon terrain.\nLe mung bean pousse bien sur ce genre de sol, c’est-à-dire un sol léger, friable et qui ne se compacte pas. Ce sol est doux au toucher, poudreux quand il est sec, riche et fertile, facile à travailler et perméable à l'eau et à l'air. C’est un sol qui se réchauffe vite dès que le soleil apparaît. Mais si tu produit plusieurs fois sur ce terrain autre chose après le mung bean, il est important d’enrichir suffisamment ce genre de sol avec de la fumure organique. \nSouviens-toi aussi que le mung bean n’aime pas les basfonds.\nMaintenant que tu sais le type de sol qui convient au mung bean, que dois tu faire pour commencer ta production?",
+        "order": 5,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/5/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/5/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/5/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/5/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/5/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/5/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/5/audio3.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/5/audio3.mp3",
+            "order": 3,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Pour cultiver le mung bean, il faut débarrasser la parcelle des herbes et des petits arbustes, mais en prenant soin de laisser quelques arbustes  pour la protection de ton sol et de la nature.\nIl faut ensuite labourer la parcelle en retournant le sol à une profondeur de 10 à 20cm. Veilles à enfouir les herbes fauchées pour qu’elles se décomposent et enrichissent ton sol.\nTon sol est maintenant labouré. Comment vas-tu semer tes lentilles vertes?",
+        "order": 6,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/6/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/6/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/6/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/6/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/6/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/6/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Il faut semer le mung bean sur un sol bien mouillé soit après une pluie ou une bonne irrigation. Sèmes 2 à 3  graines par poquet à environ 4 à 5 cm de profondeur. Les lignes ou billons doivent être distantes de 45cm  et sur chaque ligne ou billon, il faut faire les poquets à 15cm d’intervalle. Les graines de mung bean germent entre  3 à 7 jours c’est-à-dire au plus une semaine.\nUne fois que les graines de lentilles vertes ont germé, que dois tu faire pour t‘assurer une bonne production?",
+        "order": 7,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/7/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/7/image1.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/7/image2.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/7/image2.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/7/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/7/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/7/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/7/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Comme toutes les autres cultures, le mung bean a besoin d’être entretenu. Tu dois faire un premier sarclage environ 15 jours après la germination afin de permettre aux jeunes plants de mung bean de bien évoluer sans se faire envahir par les mauvaises herbes. Durant ce 1ier sarclage, assures-toi de laisser 2 plants par poquet. Là où il y en a plus de 2, laisses les 2 plants les plus vigoureux. Repiques les autres plants dans les poquets où il n’y a que 1 ou pas du tout de plant. Pour ce faire, pratiques cette opération appelée « démariage » en fin de journée en prenant soin de préserver les racines des plants lorsque tu les enlèves.\nComment sera ton champ après cette opération?",
+        "order":8,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/8/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/8/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/8/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/8/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/8/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/8/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "2 semaines après le premier sarclage, tes plants deviendront de plus en plus grands et jolis. N’hésites pas à passer de temps en temps dans le champ et enlever à la main les quelques mauvaises herbes qui apparaitront.\nIl te faudra poursuivre l’entretien, mais quand et comment?",
+        "order": 9,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/9/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/9/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/9/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/9/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/9/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/9/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Environ 1 mois après le sarclage, tes plants de mung bean sont bien grands maintenant. Ils s’apprêtent à entrer en floraison. Il faudra faire un autre sarclage avant l’apparition des fleurs. Cette opération appelée « le sarclo-buttage » consiste à sarcler les mauvaises herbes et à ramenant la terre au pied des plants de mung bean pour les renforcer.Tu vas te demander pourquoi on n’apporte pas de l’engrais NPK ou l’Urée au Mung bean. Rappeles-toi, nous avons appris au début de cette formation que en cultivant le mung bean, tu enrichis ton terrain en azote c’est-à-dire ce que l’Urée apporte aux plantes. Ainsi, la culture que tu vas semer après le mung bean sur ce terrain n’aura plus besoin d’Urée. Mais si le terrain était déjà très pauvre, tes plants de mung bean ne donneront pas un bon rendement. Il te faut apporter aux plants du compost ou de l’engrais organique comme le super Engrais Magic appelé SEM juste après le sarclo-buttage. \nComme toutes les plantes, le mung bean peut être attaqué par des maladies et des parasites. Quels sont les maladies et les parasites du mung bean?",
+        "order": 10,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/10/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/10/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/10/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/10/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/10/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/10/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Quand les feuilles de tes plants de mung bean présentent ces genres de tâches ou de formes, ne te fatigues pas à chercher un insecte. Ces maladies sont causées par des parasites qu’on ne voit pas à l’œil nu. Elles sont dans la plante ou dans le sol. Ces maladies peuvent réduire sérieusement le rendement. \nMais il y a aussi des insectes qui peuvent attaquer tes plants de mung bean et c’est important que tu les connaissent. Souhaites-tu les connaître?",
+        "order": 11,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/11/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/11/image1.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/11/image2.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/11/image2.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/11/image3.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/11/image3.jpg",
+            "image": 1
+          }
+        ,
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/11/image4.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/11/image4.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/11/image5.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/11/image5.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/11/image6.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/11/image6.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/11/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/11/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/11/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/11/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Le mung bean n’est pas souvent attaqué mais il existe cependant quelques insectes qui peuvent l’emêcher de bien produire. Comme tu peux le voir, c’est un papillon. Il  est dangereux pour le champ de mung bean, pas dans sa forme papillon mais sous forme de larve.  Le papillon pond ses œufs sur les feuilles du mung bean. A l’éclosion des œufs, les larves se nourrissent des feuilles, percent les gousses et sucent leurs contenus, détruisant ainsi ta récolte. \nIl existe encore d’autres insectes qui attaquent le mung bean. Souhaites-tu les connaître?",
+        "order": 12,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/12/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/12/image1.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/12/image2.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/12/image2.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/12/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/12/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/12/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/12/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Cet insecte aussi est très dangereux pour le mung bean, pas dans sa forme papillon mais sous forme de larve aussi.  L’insecte pond ses œufs sur les feuilles du mung bean. A l’éclosion des œufs, les larves se nourrissent des feuilles, percent les gousses et sucent leurs contenus, détruisant ainsi ta récolte. Comme pour les autres maladies causées par des parasites qu’on ne voit pas à l’œil nu, utilises une méthode naturelle. Si la maladie n’est pas trop avancée et qu’elle n’a touché qu’un nombre de plants négligeable, procèdes à l’arrachage des plants attaqués et amènes les loin de la parcelle. Mais prends soin après cela de traiter le champs avec des extraits aqueux à base de feuille, de graines ou d’huile de neem. Tu peux y ajouter de l’ail, du tabac ou des feuilles de glyricidia. Tritures ces feuilles, filtres la solution obtenue. Ajoutes-y un peu de savon afin de permettre à la solution de coller aux feuilles lors du traitement. Prends soin de diluer légèrement la solution avant de l’appliquer sur les feuilles de peur de les bruler. Observes ton champ et répétes ce traitement toutes les 2 semaines au besoin.N’utilises les produits chimiques que sur conseil d’un technicien spécialisé. \nIl est important de savoir que tous les insectes dans le champ ne sont pas mauvais pour le mung bean. Certains insectes t’aident plutôt. Souhaites-tu les connaître?",
+        "order": 13,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/13/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/13/image1.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/13/image2.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/13/image2.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/13/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/13/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/13/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/13/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Connais-tu l’insecte rouge qui a des tâches noirs? Tu le vois souvent dans le champ! C’est ton ami parce qu’il se nourrit des insectes qui pourraient attaquer tes cultures. Comme tu peux le voir, il mange ces insectes qui s’attaquaient à la plante en suçant sa serve. Plus ces amis du cultivateur sont présents dans le champ, moins tu auras besoin de traiter ton champ contre ces parasites. Mais si tu utilises des produits chimiques, tous ces amis du cultivateur vont mourir et ton champ sera exposé aux parasites. Donc il faut les protéger.\n Il en existe d’autres comme et c’est bien que tu les connaissent!",
+        "order": 14,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/14/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/14/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/14/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/14/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/14/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/14/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Par exemple la guêpe: comme tu peux le voir, elle mange des vers qui s’attaquent aux feuilles. \nIl y a aussi d’autres, toujours important s à connaître.",
+        "order": 15,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/15/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/15/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/15/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/15/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/15/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/15/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "La mante religieuse: comme tu peux le voir elle mange un criquet qui est un redoutable ennemi des cultures. \nIl y a aussi d’autres insecte amis du cultivateur qui ne mangent pas les parasites mais qui vont aider tes plants de mung bean au moment de la floraison. \nIl y a par exemple :",
+        "order": 16,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/16/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/16/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/16/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/16/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/16/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/16/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "L’abeille: comme tu peux le voir, elle vient chercher dans la fleur ce qui lui permet de fabriquer le miel, mais grâce à ses pattes, elle apporte à la fleur ce qui va l’aider à former les gousses et les graines. Donc rappelle toi qu’en utilisant les produits chimiques comme les herbicides et les insecticides, tu ne feras que tuer tous ces insectes qui sont en fait tes amis et ton champ sera exposé aux parasites. \nMaintenant que tu sais  comment protéger ton champ de mung bean contre les parasites, que te faut-il savoir pour garantir une bonne récolte?",
+        "order":17,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/17/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/17/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/17/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/17/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/17/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/17/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Comme le soja et le niébé, le mung bean donne des gousses sur ses branches à côté de ses feuilles contrairement à d’autres plantes du même genre qui donne des gousses dans le sol comme le voandzou, le cassoulet et l’arachide. Les gousses du mung bean apparaissent sur les branches vers la fin du 2ième mois après le semis. \nQuand démarrer la récolte?",
+        "order": 18,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/18/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/18/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/18/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/18/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/18/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/18/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Après l’apparition des gousses, tu vas constater que les 1ières gousses deviennent foncées et après noires tandis que de nouvelles gousses de couleur vertes et minces continuent d’apparaître sur la plante. Tu vas  même constater sur certains plants, en même temps des fleurs, des gousses vertes, des gousses foncées et des gousses noires",
+        "order": 19,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/19/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/19/image1.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/19/image2.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/19/image2.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/19/image3.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/19/image3.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/19/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/19/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "La récolte est progressive. Tu commences la récolte en enlevant les gousses noires. Ensuite, tu devras désormais passer tous les jours dans le champs, de préférence avant midi pour récolter les gousses noires prêtes, et ainsi de suite jusqu’à la dernière récolte. \nSi tu ne le fais pas, qu’est qui pourrait se passer?",
+        "order": 20,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/20/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/20/image1.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/20/image2.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/20/image2.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/20/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/20/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/20/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/20/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Lorsque les gousses du mung bean deviennent noires, elles s’ouvrent  et tombent dans la terre et tu perds toutes les graines dans le champs si la récolte n’était pas faite. C’est pour cela qu’il te faut récolter chaque jours jusqu’à la maturité des dernières gousses. \nMaintenant que tu as commencé à récolter tes gousses noires, que dois-tu faire pour récupérer les graines?",
+        "order": 21,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/21/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/21/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/21/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/21/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/21/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/21/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Pour obtenir des graines de qualité, il faut procéder au séchage des gousses noires récoltées. Pour cela, il te faut disposer d’un espace propre et sec, à l’abri des animaux domestiques et des eaux de cuisine et de lessive. Cet endroit doit être plat et cimenté si possible; utilises une bâche si tu en as les moyens ou bien des toiles cirées ou des sacs propres.Assures-toi que l’endroit est exposée au soleil durant une bonne partie de la journée.\nEtales les gousses en séparant les lots afin de distinguer tes récoltes.Procédes régulièrement au retournement des gousses jusqu’au  séchage complet de chaque lot.\nUne fois les gousses bien séchées, que dois-tu faire à présent ?",
+        "order": 22,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/22/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/22/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/22/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/22/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/22/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/22/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "A l’aide d’un mortier, tu feras piler mais  légèrement les gousses séchées par petites quantités afin de t’assurer que toutes les gousses ont libéré  entièrement leurs graines. Tu peux utiliser un sac propre et y mettre des quantités moyennes de gousses que tu vas battre légèrement pour libérer les graines, mais la méthode du mortier est souvent plus efficace.\nAprès le battage  que doit tu faire pour récupérer les graines?",
+        "order": 23,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/23/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/23/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/23/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/23/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/23/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/23/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "A l’aide de calebasses ou de bassines, il faut vaner pour séparer les graines des fanes à l’aide du vent. Tu feras répéter cette opération jusqu’à obtenir des graines propres, sans fane, sans tige ni feuille morte et surtout sans grain de sable ni cailloux. \nEst-ce que tes lentilles vertes ou mung bean sont enfin prêtes à être utilisés?",
+        "order": 24,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/24/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/24/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/24/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/24/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/24/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/24/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Afin de t’assurer que ta récolte sera bien conservée et que tes efforts ne seront pas perdus, il faut une fois encore bien  sécher tes grains de mung bean avant de les stocker. Rappelles toi: le mung bean est comme du haricot, s’il n’est pas bien stocké, il peux être attaqué par des moisissures et des insectes. \nQuel insecte peut donc encore attaquer ta récolte?",
+        "order": 25,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/25/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/25/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/25/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/25/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/25/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/25/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Connais-tu cet insecte? Il attaque souvent le haricot lors du stockage. Comme pour le haricot, il peut détruire tout ton stock de mung bean comme tu peux le voir sur la 2ième image si tu ne prends pas les dispositions qu’il faut. \nQue faut-il faire alors pour t’assurer que ton stock de mung bean est bien conservé?",
+        "order": 26,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/26/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/26/image1.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/26/image2.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/26/image2.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/26/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/26/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/26/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/26/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "La solution efficace pour bien conserver ta récolte de mung bean est un bon séchage des grains. Ensuite procures-toi les sacs appelés PICS si tu en a les moyens. Ce sac empêche n’importe quel insecte de se développer et attaquer tes grains. A l’achat, on t’expliquera comment utiliser ce genre de sac. Mais si tu n’en a pas les moyens, procures toi des sacs ordinaires de 100kg et assures-toi de bien sécher les grains avant de les mettre dans le sac. Et procèdes chaque mois à un nouveau séchage afin de ralentir le développement des insectes. Surtout, n’utilises jamais des produits chimiques pour conserver tes produits car ils sont dangereux pour ta santé, celle de ta famille et des consommateurs. \nNous arrivons ainsi à la fin de notre formation. \nTu connais désormais comment bien produire les lentilles vertes encore appelées Mung bean? \nSouhaites tu que nous vérifions ensemble si tu as bien compris toute la formation? \nPour continuer, appuie la main sur ta droite. Si tu souhaites revenir en arrière pour mieux comprendre, appuie à chaque fois sur la main à gauche. Si tu souhaites reprendre cette partie, appuie la main qui te fait face au centre.",
+        "order": 27,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/27/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/27/image1.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/27/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/27/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/27/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/27/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          },{
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/27/audio3.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/27/audio3.mp3",
+            "order": 3,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/27/audio4.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/27/audio4.mp3",
+            "order": 4,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/27/audio5.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/27/audio5.mp3",
+            "order": 5,
+            "audio": 1
+          }
+        ]
+      },
+      {
+        "texte": "Ces images sont celles que tu as vu durant notre formation.\nPour te permettre de savoir si tu as bien maîtriser la formation, tu vas essayer de classer ces images dans l’ordre, selon ce que tu as appris au cours de la formation.\nPour le faire, poses ton doigt sur l’image que tu as choisi de classer, gardes ton dois dessus et amènes-la dans la position que tu penses qu’elle dois occuper dans l’ordre qui montre les différentes étapes décrites lors de la formation.\nSi tu penses avoir fini de ranger les images dans l’ordre correct, appuie sur a boule rouge en bas.\nSi tu as réussi, tu verras le visage souriant vibrer. Mais si ce n’est pas bon, c’est le visage faché qui sera en train de vibrer. Tu devras reprendre la formation.\nPour reprendre la formation, appuis sur le bouton blanc.",
+        "order": 28,
+        "images": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image1.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image1.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image2.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image2.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image3.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image3.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image4.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image4.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image5.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image5.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image6.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image6.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image7.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image7.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image8.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image8.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image9.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image9.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image10.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image10.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image11.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image11.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image12.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image12.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image13.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image13.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image14.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image14.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image15.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image15.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image16.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image16.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image17.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image17.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image18.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image18.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image19.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image19.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image20.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image20.jpg",
+            "image": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/image21.jpg",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/image21.jpg",
+            "image": 1
+          }
+        ],
+        "audios": [
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/audio1.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/audio1.mp3",
+            "order": 1,
+            "audio": 1
+          },
+          {
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/audio2.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/audio2.mp3",
+            "order": 2,
+            "audio": 1
+          },{
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/audio3.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/audio3.mp3",
+            "order": 3,
+            "audio": 1
+          },{
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/audio4.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/audio4.mp3",
+            "order": 4,
+            "audio": 1
+          },{
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/audio5.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/audio5.mp3",
+            "order": 5,
+            "audio": 1
+          },{
+            "url": "http://217.160.241.185:8181/audios_files/french/mungbean/production/28/audio6.mp3",
+            "baseUri": "/Wapi/Formation/Carrousel/french/mungbean/production/28/audio6.mp3",
+            "order": 6,
+            "audio": 1
+          }
+        ]
+      }
+    ]
+  }
+]

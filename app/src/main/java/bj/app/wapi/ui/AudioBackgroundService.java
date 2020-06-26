@@ -6,10 +6,10 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
@@ -31,18 +31,23 @@ public class AudioBackgroundService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
         if (intent.hasExtra("audiosFormation") && intent.hasExtra("connexionState")){
             connexionState = intent.getBooleanExtra("connexionState", false);
             audios = new ArrayList<>();
             audioCarrousels = new ArrayList<>();
             audioCarrousels = intent.getParcelableArrayListExtra("audiosFormation");
             for (int i=0; i<audioCarrousels.size(); i++){
-                audios.add(audioCarrousels.get(i).getUrl());
+                if (!connexionState)
+                    audios.add(audioCarrousels.get(i).getBaseUri());
+                else
+                    audios.add(audioCarrousels.get(i).getUrl());
             }
-            Log.d("onStart","=====================================================1onStart========================Audio is : " + audios.toString());
+            System.out.println("Audio is : "+audios.toString());
+            //Toast.makeText(AudioBackgroundService.this,"Extra founf :"+connexionState, Toast.LENGTH_LONG).show();
             playAudio(0);
         }else {
-            Toast.makeText(bj.app.wapi.ui.AudioBackgroundService.this,"Extra not find", Toast.LENGTH_LONG).show();
+            //Toast.makeText(AudioBackgroundService.this,"Extra not find", Toast.LENGTH_LONG).show();
         }
 
         return START_STICKY;
@@ -81,8 +86,6 @@ public class AudioBackgroundService extends Service {
             player.release();
             player = null;
         }
-        Log.d("onTaskRemoved","=====================================================2onTaskRemoved========================");
-
     }
 
     @Override
@@ -92,30 +95,27 @@ public class AudioBackgroundService extends Service {
             player.release();
             player = null;
         }
-        Log.d("onDestroy","=====================================================3onDestroy========================");
-
     }
 
     public void playAudio(int position){
-        System.out.println("================================================Audio for position : "+position+" start");
+        System.out.println("Audio for position : "+position+" start");
 
-        Toast.makeText(bj.app.wapi.ui.AudioBackgroundService.this, "connexion sate :"+connexionState, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(AudioBackgroundService.this, "connexion sate :"+connexionState, Toast.LENGTH_SHORT).show();
         my_position = position;
-        if (connexionState)
-            player = MediaPlayer.create(bj.app.wapi.ui.AudioBackgroundService.this, Uri.parse(audios.get(my_position)));
-        else
-            player = MediaPlayer.create(bj.app.wapi.ui.AudioBackgroundService.this, Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(audios.get(my_position)).toString())));
-        Log.d("playAudio","=====================================================4create========================");
-
+        if (connexionState) {
+            player = MediaPlayer.create(AudioBackgroundService.this, Uri.parse(audios.get(my_position)));
+        }
+        else {
+            System.out.println("En position : "+position+" audio value is :"+audios.get(my_position));
+            player = MediaPlayer.create(AudioBackgroundService.this, Uri.parse(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS+audios.get(my_position)))));
+        }
+        System.out.println("Audio Url : "+Uri.parse(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS+"/Wapi/Formation/Carrousel/mungbean/production/1/audio1.mp3"))));
         player.setLooping(false);
         player.start();
-        Log.d("playAudio","=====================================================5start========================");
-
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-
-                System.out.println("==============================================completion Audio for position : "+position+" is finish");
+                System.out.println("Audio for position : "+position+" is finish");
                 player.stop();
                 player.release();
                 player = null;

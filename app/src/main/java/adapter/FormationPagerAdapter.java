@@ -25,13 +25,13 @@ public class FormationPagerAdapter extends FragmentStateAdapter {
             case 1:
                 return new VideoFragment();
             default:
-                return new VideFragment();
+                return null;
 
         }
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 2;
     }
 }

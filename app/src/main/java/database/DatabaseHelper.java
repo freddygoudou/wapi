@@ -86,6 +86,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_NAME + " TEXT NOT NULL," +
                 DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_SUBNAME + " TEXT NOT NULL," +
+                DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_JSONFILEURI + " TEXT NOT NULL," +
                 DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_LANGUE + " TEXT NOT NULL);";
 
 
@@ -182,7 +183,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             if (l != -1){
                 int id_carrousel = getAllCarousselsRowsCount();
-                result = saveManyCarousselFormation(carrousel.getCarrouselFormations(), id_carrousel);
+                for(int i=0; i<carrousel.getCarrouselFormations().size(); i++){
+                    result = saveCarousselFormation(carrousel.getCarrouselFormations().get(i), id_carrousel) /*&& result*/;
+                }
+                //result = saveManyCarousselFormation(carrousel.getCarrouselFormations(), id_carrousel);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -291,7 +295,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 resources = resources.concat(list.get(i));
         }
 
-        System.out.println(" RESSUCE IPORT IS : "+resources);
+        System.out.println(" RESSUCE IMPORT IS : "+resources);
         return resources;
     }
     private ArrayList<String> getBaseUrlListFromAudios(ArrayList<AudioCarrousel> list){
@@ -308,6 +312,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return stringArrayList;
     }
+
     public ArrayList<CarrouselDownloded> getAllCarousselDownloaded(){
 
         ArrayList<CarrouselDownloded> carrouselDownlodeds = new ArrayList<>();
@@ -323,9 +328,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 Long id = cursor.getLong(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_ID));
                 String name = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_NAME));
                 String subname = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_SUBNAME));
+                String jsonfileUri = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_JSONFILEURI));
                 String langue = cursor.getString(cursor.getColumnIndex(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_LANGUE));
 
-                carrouselDownloded = new CarrouselDownloded(id, name, subname, langue);
+                carrouselDownloded = new CarrouselDownloded(id, name, subname, jsonfileUri, langue);
                 carrouselDownlodeds.add(carrouselDownloded);
             }
 
@@ -342,18 +348,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean saveCarousselDownloaded(CarrouselDownloded carrouselDownloded){
         long l = 0;
         db = this.getWritableDatabase();
-        db.beginTransaction();
         try{
             ContentValues params = new ContentValues();
             params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_NAME , carrouselDownloded.getName());
             params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_SUBNAME , carrouselDownloded.getSubname());
+            params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_JSONFILEURI, carrouselDownloded.getJsonfileUri());
             params.put(DatabaseContent.DatabaseEntry.COLUMN_CARROUSEL_DOWNLOADED_LANGUE , carrouselDownloded.getLangue());
 
             l = db.insert(DatabaseContent.DatabaseEntry.TABLE_CARROUSEL_DOWNLOADED, null, params);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
-            db.endTransaction();
         }
 
         return l != -1;

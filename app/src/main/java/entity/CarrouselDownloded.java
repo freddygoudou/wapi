@@ -5,16 +5,26 @@ public class CarrouselDownloded {
     private Long id;
     private String name;
     private String subname;
+    private String jsonfileUri;
     private String langue;
 
     public CarrouselDownloded() {
     }
 
-    public CarrouselDownloded(Long id, String name, String subname, String langue) {
+    public CarrouselDownloded(Long id, String name, String subname, String jsonfileUri, String langue) {
         this.id = id;
         this.name = name;
         this.subname = subname;
+        this.jsonfileUri = jsonfileUri;
         this.langue = langue;
+    }
+
+    public String getJsonfileUri() {
+        return jsonfileUri;
+    }
+
+    public void setJsonfileUri(String jsonfileUri) {
+        this.jsonfileUri = jsonfileUri;
     }
 
     public Long getId() {
@@ -54,6 +64,8 @@ public class CarrouselDownloded {
         return "CarrouselDownloded{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", subname='" + subname + '\'' +
+                ", jsonfileUri='" + jsonfileUri + '\'' +
                 ", langue='" + langue + '\'' +
                 '}';
     }
