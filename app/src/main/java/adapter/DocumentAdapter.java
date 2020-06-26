@@ -98,9 +98,9 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         }
         else {
             if (mData.size()>0){
-                File file = new File(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS+mData.get(position).getCarrouselFormations().get(0).getImages().get(0).getBaseUri())));
+                File file = new File(String.valueOf(Environment.getExternalStoragePublicDirectory(mData.get(position).getCarrouselFormations().get(0).getImages().get(0).getBaseUri())));
                 System.out.println("His file is  :"+file.getName()+" and his name is :"+file.getAbsolutePath());
-                System.out.println("His file base uri is  :"+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS+mData.get(position).getCarrouselFormations().get(0).getImages().get(0).getBaseUri()));
+                System.out.println("His file base uri is  :"+Environment.getExternalStoragePublicDirectory(mData.get(position).getCarrouselFormations().get(0).getImages().get(0).getBaseUri()));
                 Picasso.get().load(file).into(holder.iv_produit);
             }
         }

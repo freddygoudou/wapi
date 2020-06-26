@@ -44,7 +44,7 @@ public class CarrouselFormationAdapter extends RecyclerView.Adapter <CarrouselFo
         if (connexionState){
             Picasso.get().load(Uri.parse(mData.get(position).getUrl())).into(holder.iv_formation_image);
         }else {
-            File file = new File(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS+mData.get(position).getBaseUri())));
+            File file = new File(String.valueOf(Environment.getExternalStoragePublicDirectory(mData.get(position).getBaseUri())));
             Picasso.get().load(file).into(holder.iv_formation_image);
         }
 

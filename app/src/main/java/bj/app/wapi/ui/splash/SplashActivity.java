@@ -87,10 +87,10 @@ public class SplashActivity extends AppCompatActivity {
             e.printStackTrace();
         }*/
 
-        ArrayList<Carrousel> carrousels = IOHelper.readCarrouselJson(this);
-        Carrousel carrousell = carrousels.get(0);
+        //ArrayList<Carrousel> carrousels = IOHelper.readCarrouselJson(this);
+        //Carrousel carrousell = carrousels.get(0);
         //IOHelper.writeJson(carrousell);
-        carrousels.add(carrousell);
+        //carrousels.add(carrousell);
         //System.out.println("CARROUSEL FROM ASSET FILE : "+carrousels.toString());
         //System.out.println("CARROUSEL FROM ASSET FILE SIZE: "+carrousels.size());
 

@@ -34,6 +34,7 @@ import entity.CarrouselDownloded;
 import entityBackend.Carrousel;
 import entity.Document;
 import entity.SlideItem;
+import entityBackend.CarrouselFormation;
 import entityBackend.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -157,14 +158,13 @@ public class DocumentFragment extends Fragment {
             }
         }
         else {
-            ArrayList<Carrousel> carrouselsList = IOHelper.readCarrouselJson(getActivity());
+            ArrayList<Carrousel> carrouselsList;
             ArrayList<String> jsonFileUriList;
             ArrayList<CarrouselDownloded> carrouselDownlodeds ;
 
-            System.out.println("CARROUSEL  AKP: "+carrouselsList.toString());
-            System.out.println("CARROUSEL  AKP COUNT : "+carrouselsList.get(0).getCarrouselFormations().size());
 
-            /*carrouselDownlodeds = new ArrayList<>();
+            carrouselsList = new ArrayList<>();
+            carrouselDownlodeds = new ArrayList<>();
             jsonFileUriList = new ArrayList<>();
             databaseHelper = new DatabaseHelper(getActivity());
             carrouselDownlodeds.addAll(databaseHelper.getAllCarousselDownloaded());
@@ -175,18 +175,18 @@ public class DocumentFragment extends Fragment {
                 jsonFileUriList.add(carrouselDownlodeds.get(i).getJsonfileUri());
             }
 
-            System.out.println("JsonFileUriList LIST : "+jsonFileUriList.toString());*/
+            System.out.println("JsonFileUriList LIST : "+jsonFileUriList.toString());
 
-            /*for (int i=0; i<jsonFileUriList.size(); i++){
+            for (int i=0; i<jsonFileUriList.size(); i++){
 
-                Carrousel carrousel = IOHelper.readCarrouselJsonFromLocal(String.valueOf(Environment.getExternalStoragePublicDirectory(jsonFileUriList.get(i))));
-                //System.out.println("READING CARROUSEL : "+carrousel.toString());
-                //carrouselsList.add(carrousel);
+                Carrousel carrousel = orderCarrouselFormation(IOHelper.readCarrouselJsonFromLocal(String.valueOf(Environment.getExternalStoragePublicDirectory(jsonFileUriList.get(i)))));
+                System.out.println(/*"READING CARROUSEL : "+carrousel.toString()*/"AND CARROUSEL FORMATION SIZE IS : "+carrousel.getCarrouselFormations().size());
+                carrouselsList.add(carrousel);
                 //System.out.println("EN LOCAL ON A :"+carrousel.getJsonfileUri());
                 //Lire le fichier sur cette uri
                 //Convertir le contenu en json avec Gson et le formater en objet de class Carrousels
                 //Ajouter l'objet obtenu à carrouselsList
-            }*/
+            }
 
 
 
@@ -212,5 +212,17 @@ public class DocumentFragment extends Fragment {
 
         databaseHelper = new DatabaseHelper(getActivity());
         System.out.println("CONTENU IS : "+databaseHelper.getAllCarousselDownloaded().toString());
+    }
+
+    public Carrousel orderCarrouselFormation(Carrousel carrousel){
+        ArrayList<CarrouselFormation> carrouselFormationArrayList = new ArrayList<>();
+        CarrouselFormation carrouselFormation = carrousel.getCarrouselFormations().get(0);
+
+        for (int i=0; i<carrousel.getCarrouselFormations().size(); i++){
+            if (Integer.valueOf(carrousel.getCarrouselFormations().get(i).getOrder()) > Integer.valueOf(carrouselFormation.getOrder())){
+
+            }
+        }
+        return carrousel;
     }
 }

@@ -133,8 +133,10 @@ public class IOHelper {
         try{
 
             Carrousel carrousel = new Gson().fromJson(String.valueOf(jsonString), Carrousel.class);
+            System.out.println("CARROUSSEL OBJECT ATTR4 COUNT IS :"+carrousel.getCarrouselFormations().size());
 
             //JSONObject carrouselsJson =  new JSONObject(jsonString);
+            //Carrousel carrousel = new Gson().fromJson(String.valueOf(carrouselJsonO), (Type) Carrousel.class);
 
             //System.out.println("CARROUSSEL JSON ARRAY LENGHT IS :"+carrouselsJson);
             /*for (int i=0; i<carrouselsJson.length();i++){
@@ -152,7 +154,7 @@ public class IOHelper {
                 //System.out.println("CARROUSSEL OBJECT ATTR COUNT IS :"+carrousel.getCarrouselFormations().size());
 
             }*/
-            return carrousels.get(0);
+            return carrousel;
 
         }catch (Exception e){
             e.printStackTrace();

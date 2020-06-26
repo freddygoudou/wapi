@@ -107,9 +107,9 @@ public class AudioBackgroundService extends Service {
         }
         else {
             System.out.println("En position : "+position+" audio value is :"+audios.get(my_position));
-            player = MediaPlayer.create(AudioBackgroundService.this, Uri.parse(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS+audios.get(my_position)))));
+            player = MediaPlayer.create(AudioBackgroundService.this, Uri.parse(String.valueOf(Environment.getExternalStoragePublicDirectory(audios.get(my_position)))));
         }
-        System.out.println("Audio Url : "+Uri.parse(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS+"/Wapi/Formation/Carrousel/mungbean/production/1/audio1.mp3"))));
+        System.out.println("Audio Url : "+Uri.parse(String.valueOf(Environment.getExternalStoragePublicDirectory(audios.get(my_position)))));
         player.setLooping(false);
         player.start();
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
