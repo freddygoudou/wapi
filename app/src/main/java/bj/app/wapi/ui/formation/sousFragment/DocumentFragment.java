@@ -80,7 +80,7 @@ public class DocumentFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadCarrousels();
+        //loadCarrousels();
     }
 
     @Override
@@ -216,13 +216,13 @@ public class DocumentFragment extends Fragment {
 
     public Carrousel orderCarrouselFormation(Carrousel carrousel){
         ArrayList<CarrouselFormation> carrouselFormationArrayList = new ArrayList<>();
-        CarrouselFormation carrouselFormation = carrousel.getCarrouselFormations().get(0);
+        //CarrouselFormation carrouselFormation = carrousel.getCarrouselFormations().get(0);
 
-        for (int i=0; i<carrousel.getCarrouselFormations().size(); i++){
+        /*for (int i=0; i<carrousel.getCarrouselFormations().size(); i++){
             if (Integer.valueOf(carrousel.getCarrouselFormations().get(i).getOrder()) > Integer.valueOf(carrouselFormation.getOrder())){
 
             }
-        }
+        }*/
         return carrousel;
     }
 }

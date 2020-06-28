@@ -180,7 +180,7 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
 
                         String folder = createCarousselFolder(SharedPrefManager.getmInstance(mContext).getUser().getLangue());
                         ZipArchive zipArchive = new ZipArchive();
-                        ZipArchive.unzip(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/"+mData.get(position).getName()+".zip",Environment.getExternalStoragePublicDirectory(folder).getAbsolutePath(),"");
+                        ZipArchive.unzip(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/"+mData.get(position).getName()+" "+mData.get(position).getLangue() +".zip",Environment.getExternalStoragePublicDirectory(folder).getAbsolutePath(),"");
 
                         //SAVE A LIST OF
                         databaseHelper = new DatabaseHelper(mContext);
@@ -232,13 +232,14 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
     private void startDownloadingCaroussel(Carrousel carrousel) {
 
         //String folder = createCarousselFolder(SharedPrefManager.getmInstance(mContext).getUser().getLangue());
+        String langue = SharedPrefManager.getmInstance(mContext).getUser().getLangue();
 
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(carrousel.getUrl()));
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
         request.setTitle(carrousel.getName());
         request.setDescription(carrousel.getDescription());
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, carrousel.getName() +".zip");
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, carrousel.getName()+" "+langue +".zip");
         DownloadManager manager = (DownloadManager) mContext.getSystemService(DOWNLOAD_SERVICE);
         downloadId = manager.enqueue(request);
     }

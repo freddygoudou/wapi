@@ -34,6 +34,7 @@ public class AudioBackgroundService extends Service {
 
         if (intent.hasExtra("audiosFormation") && intent.hasExtra("connexionState")){
             connexionState = intent.getBooleanExtra("connexionState", false);
+            System.out.println("connexionState is : "+connexionState);
             audios = new ArrayList<>();
             audioCarrousels = new ArrayList<>();
             audioCarrousels = intent.getParcelableArrayListExtra("audiosFormation");
@@ -103,9 +104,11 @@ public class AudioBackgroundService extends Service {
         //Toast.makeText(AudioBackgroundService.this, "connexion sate :"+connexionState, Toast.LENGTH_SHORT).show();
         my_position = position;
         if (connexionState) {
+            System.out.println("Inside true");
             player = MediaPlayer.create(AudioBackgroundService.this, Uri.parse(audios.get(my_position)));
         }
         else {
+            System.out.println("Inside false");
             System.out.println("En position : "+position+" audio value is :"+audios.get(my_position));
             player = MediaPlayer.create(AudioBackgroundService.this, Uri.parse(String.valueOf(Environment.getExternalStoragePublicDirectory(audios.get(my_position)))));
         }
