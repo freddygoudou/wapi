@@ -26,6 +26,7 @@ public class DatabaseContent {
         public static final String COLUMN_CARROUSEL_DOWNLOADED_ID = "id";
         public static final String COLUMN_CARROUSEL_DOWNLOADED_NAME = "name";
         public static final String COLUMN_CARROUSEL_DOWNLOADED_SUBNAME = "subname";
+        public static final String COLUMN_CARROUSEL_DOWNLOADED_JSONFILEURI = "jsonfileUri";
         public static final String COLUMN_CARROUSEL_DOWNLOADED_LANGUE = "langue";
 
 

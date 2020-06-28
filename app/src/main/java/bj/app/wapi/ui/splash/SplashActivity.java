@@ -11,6 +11,7 @@ import bj.app.wapi.ui.ThreeImagesMenu;
 import bj.app.wapi.ui.login.LoginActivity;
 import bj.app.wapi.ui.main.MainActivity;
 import database.DatabaseHelper;
+import database.IOHelper;
 import de.hdodenhof.circleimageview.CircleImageView;
 import entity.AudioCarrousel;
 import entity.ImageCarrousel;
@@ -40,11 +41,16 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
 import java.util.ArrayList;
@@ -70,6 +76,24 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        //Carrousel carrousels = IOHelper.readCarrouselJson(this);
+
+        /*String jsonString = IOHelper.stringFromAsset(this, "carrousels.json");
+        System.out.println("L OBJET EXTRAIT EST : "+jsonString);
+        JSONObject carrouselJsonO = null;
+        try {
+            carrouselJsonO = new JSONObject(jsonString);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }*/
+
+        //ArrayList<Carrousel> carrousels = IOHelper.readCarrouselJson(this);
+        //Carrousel carrousell = carrousels.get(0);
+        //IOHelper.writeJson(carrousell);
+        //carrousels.add(carrousell);
+        //System.out.println("CARROUSEL FROM ASSET FILE : "+carrousels.toString());
+        //System.out.println("CARROUSEL FROM ASSET FILE SIZE: "+carrousels.size());
+
         //DatabaseHelper databaseHelper = new DatabaseHelper(this);
         ArrayList<CarrouselFormation> carrouselFormations = new ArrayList<>();
         ArrayList<AudioCarrousel> audioCarrousels = new ArrayList<>();
@@ -86,7 +110,7 @@ public class SplashActivity extends AppCompatActivity {
         imageCarrousels.add(new ImageCarrousel("urlimage4","mybaseurli", 4));
 
         carrouselFormations.add(new CarrouselFormation("Le résumé","1",imageCarrousels, audioCarrousels));
-        Carrousel carrousel = new Carrousel("","Mung Bean","url","Production de Mung Bean", "English", carrouselFormations);
+        //Carrousel carrousel = new Carrousel("","Mung Bean","url","Production de Mung Bean", "English", carrouselFormations);
         //databaseHelper.saveCaroussel(carrousel);
 
         //System.out.println("SQLITE RESULT : "+databaseHelper.getAllCarousselsRowsCount());
@@ -102,8 +126,7 @@ public class SplashActivity extends AppCompatActivity {
         Animation welcome_animation = AnimationUtils.loadAnimation(SplashActivity.this,R.anim.welcome_animation);
         appIcon.startAnimation(welcome_animation);
 
-        /*
-        MediaPlayer player = MediaPlayer.create(this, Uri.fromFile(Environment.getExternalStoragePublicDirectory("Download/Wapi/Formation/Carrousel/french/mungbean/production/1/audio1.mp3")));
+        /*MediaPlayer player = MediaPlayer.create(this, Uri.fromFile(Environment.getExternalStoragePublicDirectory("Download/Wapi/Formation/Carrousel/biali/mungbean/production/1/audio1.mp3")));
         player.start();*/
 
         System.out.println("Unzip Start ..."+Environment.DIRECTORY_DOWNLOADS+"/Wapi/FormationCaroussel/Biali/Mung Been/Mung Been.zip");

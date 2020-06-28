@@ -18,6 +18,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_langue);
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         shake = AnimationUtils.loadAnimation(this, R.anim.shakeanimation);
 
@@ -68,7 +69,7 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
 
         tv_french.setOnClickListener(this);
         tv_english.setOnClickListener(this);
-        //tv_bariba.setOnClickListener(this);
+        tv_bariba.setOnClickListener(this);
         tv_baili.setOnClickListener(this);
         /*tv_more.setOnClickListener(this);
         tv_gourmantche.setOnClickListener(this);
@@ -185,6 +186,7 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
         audioAndTextviews.add(new AudioAndTextview(tv_french, R.raw.french));
         audioAndTextviews.add(new AudioAndTextview(tv_english, R.raw.english));
         audioAndTextviews.add(new AudioAndTextview(tv_baili, R.raw.biali));
+        audioAndTextviews.add(new AudioAndTextview(tv_bariba, R.raw.biali));
         audioAndTextviews.add(new AudioAndTextview(tv_more, R.raw.more));
         audioAndTextviews.add(new AudioAndTextview(tv_gourmantche, R.raw.gourmantche));
         audioAndTextviews.add(new AudioAndTextview(tv_haoussa, R.raw.haoussa));

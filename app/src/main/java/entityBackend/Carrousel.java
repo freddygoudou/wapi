@@ -12,29 +12,44 @@ public class Carrousel implements Parcelable {
     private String name;
     private String subname;
     private String url;
+    private String jsonfileUri;
     private String description;
     private String langue;
     private ArrayList<CarrouselFormation> carrouselFormations;
 
     public Carrousel(){}
 
-    public Carrousel(String name, String subname, String url, String description, String langue, ArrayList<CarrouselFormation> carrouselFormations) {
+    public Carrousel(String _id, String name, String subname, String url, String jsonfileUri, String description, String langue, ArrayList<CarrouselFormation> carrouselFormations) {
+        this._id = _id;
         this.name = name;
         this.subname = subname;
         this.url = url;
+        this.jsonfileUri = jsonfileUri;
         this.description = description;
         this.langue = langue;
         this.carrouselFormations = carrouselFormations;
     }
 
-    public Carrousel(String _id, String name, String subname, String url, String description, String langue, ArrayList<CarrouselFormation> carrouselFormations) {
-        this._id = _id;
+    public Carrousel(String name, String subname, String url, String jsonfileUri, String description, String langue, ArrayList<CarrouselFormation> carrouselFormations) {
         this.name = name;
         this.subname = subname;
         this.url = url;
+        this.jsonfileUri = jsonfileUri;
         this.description = description;
         this.langue = langue;
         this.carrouselFormations = carrouselFormations;
+    }
+
+    public String getJsonfileUri() {
+        return jsonfileUri;
+    }
+
+    public void setJsonfileUri(String jsonfileUri) {
+        this.jsonfileUri = jsonfileUri;
+    }
+
+    public Carrousel(String _id) {
+        this._id = _id;
     }
 
     public String get_id() {
@@ -86,8 +101,7 @@ public class Carrousel implements Parcelable {
     }
 
     public ArrayList<CarrouselFormation> getCarrouselFormations() {
-         return carrouselFormations;
-       // return  new ArrayList<CarrouselFormation>();
+        return carrouselFormations;
     }
 
     public void setCarrouselFormations(ArrayList<CarrouselFormation> carrouselFormations) {
@@ -101,11 +115,26 @@ public class Carrousel implements Parcelable {
                 ", name='" + name + '\'' +
                 ", subname='" + subname + '\'' +
                 ", url='" + url + '\'' +
+                ", jsonfileUri='" + jsonfileUri + '\'' +
+                ", description='" + description + '\'' +
+                ", langue='" + langue + '\'' +
+                ", carrouselFormations=" + carrouselFormations +
+                '}';
+    }
+
+    public String toJsonString() {
+        return "{" +
+                "_id='" + _id + '\'' +
+                ", name='" + name + '\'' +
+                ", subname='" + subname + '\'' +
+                ", url='" + url + '\'' +
                 ", description='" + description + '\'' +
                 ", langue='" + langue + '\'' +
                 ", carrouselFormations=" + carrouselFormations.toString() +
                 '}';
     }
+
+
 
     protected Carrousel(Parcel in) {
         _id = in.readString();

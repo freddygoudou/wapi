@@ -57,9 +57,7 @@ public class AudioVideoChoixFormation extends AppCompatActivity {
             public void onClick(View view) {
                 player.release();
                 //stopService(new Intent(AudioVideoChoixFormation.this, StartBackgroundAudioService.class));
-                startActivity(new Intent(AudioVideoChoixFormation.this, MainActivity.class)
-                        .putExtra("from_wapi_e_learning", "wapi_e_learning")
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                startActivity(new Intent(AudioVideoChoixFormation.this, TestVideoFromYoutube.class));
             }
         });
 
@@ -85,6 +83,11 @@ public class AudioVideoChoixFormation extends AppCompatActivity {
             audios.add(R.raw.audio_english_d_3_2);
             audios.add(R.raw.audio_english_d_3_3);
         }else if (SharedPrefManager.getmInstance(AudioVideoChoixFormation.this).getUser().getLangue().equals(getResources().getString(R.string.langueBiali))){
+            audios = new ArrayList<>();
+            audios.add( R.raw.audio_biali_d_3_1);
+            audios.add(R.raw.audio_biali_d_3_2);
+            audios.add(R.raw.audio_biali_d_3_3);
+        }else if (SharedPrefManager.getmInstance(AudioVideoChoixFormation.this).getUser().getLangue().equals(getResources().getString(R.string.langueBariba))){
             audios = new ArrayList<>();
             audios.add( R.raw.audio_biali_d_3_1);
             audios.add(R.raw.audio_biali_d_3_2);

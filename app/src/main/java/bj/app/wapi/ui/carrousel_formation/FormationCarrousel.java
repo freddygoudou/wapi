@@ -8,7 +8,6 @@ import adapter.CarrouselFormationAdapter;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -19,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.AudioBackgroundService;
@@ -65,7 +65,7 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
     @Override
     public void onStop() {
         super.onStop();
-        //getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         formationPosition = 0;
         stopService(new Intent(getApplicationContext(), AudioBackgroundService.class));
     }
@@ -73,7 +73,7 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
@@ -81,37 +81,37 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_carrousel_formation);
 
-            //getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-            tv_formation_texte_content = findViewById(R.id.tv_formation_texte_content);
+        tv_formation_texte_content = findViewById(R.id.tv_formation_texte_content);
 
-            rv_carrousel_formation_image = findViewById(R.id.rv_carrousel_formation_image);
+        rv_carrousel_formation_image = findViewById(R.id.rv_carrousel_formation_image);
 
-            btn_show_texte = findViewById(R.id.btn_show_texte);
-            btn_show_texte.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (tv_formation_texte_content.getVisibility() == View.INVISIBLE)
-                        tv_formation_texte_content.setVisibility(View.VISIBLE);
-                    else
-                        tv_formation_texte_content.setVisibility(View.INVISIBLE);
-                }
-            });
-            ib_back_formation = findViewById(R.id.ib_back_formation);
-            ib_repeat_formation = findViewById(R.id.ib_repeat_formation);
-            ib_next_formation = findViewById(R.id.ib_next_formation);
+        btn_show_texte = findViewById(R.id.btn_show_texte);
+        btn_show_texte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (tv_formation_texte_content.getVisibility() == View.INVISIBLE)
+                    tv_formation_texte_content.setVisibility(View.VISIBLE);
+                else
+                    tv_formation_texte_content.setVisibility(View.INVISIBLE);
+            }
+        });
+        ib_back_formation = findViewById(R.id.ib_back_formation);
+        ib_repeat_formation = findViewById(R.id.ib_repeat_formation);
+        ib_next_formation = findViewById(R.id.ib_next_formation);
 
 
-            progressDialog = new ProgressDialog(this);
-            ib_back_formation.setOnClickListener(this);
-            ib_repeat_formation.setOnClickListener(this);
-            ib_next_formation.setOnClickListener(this);
+        progressDialog = new ProgressDialog(this);
+        ib_back_formation.setOnClickListener(this);
+        ib_repeat_formation.setOnClickListener(this);
+        ib_next_formation.setOnClickListener(this);
 
         imageCarrousels = new ArrayList<>();
         audioCarrousels = new ArrayList<>();
         carrouselFormations = new ArrayList<>();
 
-            loadRessources();
+        loadRessources();
 
 
 
@@ -120,7 +120,7 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
 
     private void updateUiAboutFormation(int position, String direction){
         stopService(new Intent(getApplicationContext(), AudioBackgroundService.class));
-         System.out.println("======================================================EXÉCUTION DE LA FORMATION N° "+0);
+        System.out.println("======================================================EXÉCUTION DE LA FORMATION N° "+0);
         if ((carrouselFormations != null) || (carrouselFormations.size()-1>=formationPosition) || (formationPosition >= 0)){
             System.out.println("======================================================EXÉCUTION DE LA FORMATION N° "+1);
 
@@ -135,7 +135,7 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
                 //rv_carrousel_formation_image.setAdapter(adapter);
                 //PLAY AUDIOS
                 startService(new Intent(getApplicationContext(), AudioBackgroundService.class)
-                    .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(position).getAudios())
+                        .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(position).getAudios())
                         .putExtra("connexionState",connexionState));
 
             }else if (direction.equals(REPEAT)){
@@ -226,9 +226,9 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
 //
 //            System.out.println("LA VALEUR ENVOYÉE EST : "+carrouselFormations.get(0).getAudios().get(0));
 //        }
-     //   if() {
+        //   if() {
 
-            if (getIntent().hasExtra("carrouselFormations") && (getIntent().hasExtra("connexionState"))) {
+        if (getIntent().hasExtra("carrouselFormations") && (getIntent().hasExtra("connexionState"))) {
 //                Long my_id = Long.parseLong(getIntent().getStringExtra("carrouselFormations"));
 //                System.out.println("=============================================================my_id:" + my_id);
 //
@@ -236,19 +236,55 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
 //
 //                if (!connexionState) {
 
-                    carrouselFormations = new ArrayList<CarrouselFormation>();
-                    carrouselFormations.clear();
-               //     carrouselFormations.addAll(databaseHelper.getAllCarousselFormationsById(my_id));
+            carrouselFormations = new ArrayList<CarrouselFormation>();
+            carrouselFormations.clear();
+            //     carrouselFormations.addAll(databaseHelper.getAllCarousselFormationsById(my_id));
 //                } else {
 //
 //                }
-                  carrouselFormations.addAll(getIntent().getParcelableArrayListExtra("carrouselFormations"));
+            carrouselFormations.addAll(getIntent().getParcelableArrayListExtra("carrouselFormations"));
+            connexionState = getIntent().getBooleanExtra("connexionState", false);
+
+            mData.clear();
+            mData.addAll(carrouselFormations.get(0).getImages());
+            adapter = new CarrouselFormationAdapter(FormationCarrousel.this, mData, connexionState);
+            rv_carrousel_formation_image.setLayoutManager(new LinearLayoutManager(FormationCarrousel.this));
+            rv_carrousel_formation_image.setAdapter(adapter);
+
+            tv_formation_texte_content.setText(carrouselFormations.get(0).getTexte());
+
+            //JOUER LE PREMIER AUDIO
+            stopService(new Intent(getApplicationContext(), AudioBackgroundService.class));
+            startService(new Intent(getApplicationContext(), AudioBackgroundService.class)
+                    .putExtra("connexionState", connexionState)
+                    .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(0).getAudios()));
+
+            System.out.println("LA VALEUR ENVOYÉE EST : " + carrouselFormations.get(0).getAudios().get(0));
+        }
+
+        //   }
+        /*else{
+            if (getIntent().hasExtra("my_id") && (getIntent().getStringExtra("my_id") != null)) {
+                Long my_id = Long.parseLong(getIntent().getStringExtra("my_id"));
+                System.out.println("=============================================================my_id:" + my_id);
+
+                DatabaseHelper databaseHelper = new DatabaseHelper(this);
+
+
+
+                carrouselFormations = new ArrayList<CarrouselFormation>();
+                carrouselFormations.clear();
+                carrouselFormations.addAll(databaseHelper.getAllCarousselFormationsById(my_id));
+
+                //  carrouselFormations.addAll(getIntent().getParcelableArrayListExtra("carrouselFormations"));
                 connexionState = getIntent().getBooleanExtra("connexionState", false);
 
                 mData.clear();
                 mData.addAll(carrouselFormations.get(0).getImages());
-                adapter = new CarrouselFormationAdapter(FormationCarrousel.this, mData);
-                rv_carrousel_formation_image.setLayoutManager(new GridLayoutManager(FormationCarrousel.this, 2));
+                System.out.println("ELEMENT "+databaseHelper.getAllCarousselFormationsById(my_id).size());
+                System.out.println("AKAPELA  .... " + carrouselFormations.get(0).getImages().size());
+                adapter = new CarrouselFormationAdapter(FormationCarrousel.this, mData, connexionState);
+                rv_carrousel_formation_image.setLayoutManager(new LinearLayoutManager(FormationCarrousel.this));
                 rv_carrousel_formation_image.setAdapter(adapter);
 
                 tv_formation_texte_content.setText(carrouselFormations.get(0).getTexte());
@@ -261,50 +297,7 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
 
                 System.out.println("LA VALEUR ENVOYÉE EST : " + carrouselFormations.get(0).getAudios().get(0));
             }
-
-     //   }
-        else{
-            if (getIntent().hasExtra("my_id") && (getIntent().getStringExtra("my_id") != null)) {
-                Long my_id = Long.parseLong(getIntent().getStringExtra("my_id"));
-                System.out.println("=============================================================my_id:" + my_id);
-
-                DatabaseHelper databaseHelper = new DatabaseHelper(this);
-
-
-
-                    carrouselFormations = new ArrayList<CarrouselFormation>();
-                    carrouselFormations.clear();
-                    carrouselFormations.addAll(databaseHelper.getAllCarousselFormationsById(my_id));
-
-                   // Toast.makeText("")
-
-                //Log.d("my_id", "================================================="+my_id);
-                System.out.println("nums des caroousels : "+databaseHelper.getAllCarousselFormationsById(my_id).size());
-                System.out.println("count des caroousels formation : "+databaseHelper.getAllCarousselsRowsCount());
-                System.out.println("lescaroousels "+databaseHelper.getAllCarousselFormationsById(my_id).get(0).toString());
-
-                //  carrouselFormations.addAll(getIntent().getParcelableArrayListExtra("carrouselFormations"));
-                connexionState = getIntent().getBooleanExtra("connexionState", false);
-
-                mData.clear();
-                mData.addAll(carrouselFormations.get(0).getImages());
-                System.out.println("Les images :"+carrouselFormations.get(2).getImages().size());
-                System.out.println("Les audios :"+carrouselFormations.get(2).getAudios().size());
-                adapter = new CarrouselFormationAdapter(FormationCarrousel.this, mData);
-                rv_carrousel_formation_image.setLayoutManager(new GridLayoutManager(FormationCarrousel.this, 2));
-                rv_carrousel_formation_image.setAdapter(adapter);
-
-                tv_formation_texte_content.setText(carrouselFormations.get(0).getTexte());
-                //tv_formation_texte_content.setText(carrouselFormations.get(0).getAudios().toString());
-
-                //JOUER LE PREMIER AUDIO
-                stopService(new Intent(getApplicationContext(), AudioBackgroundService.class));
-                startService(new Intent(getApplicationContext(), AudioBackgroundService.class)
-                        .putExtra("connexionState", connexionState)
-                        .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(0).getAudios()));
-                //System.out.println("==================================================LA VALEUR ENVOYÉE EST : " + carrouselFormations.get(0).getImages().size());
-            }
-        }
+        }*/
         /*Call<ArrayList<CarrouselFormation>> call = RetrofitClient
                 .getmInstance()
                 .getApi()

@@ -96,10 +96,14 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         if (this.connexionState){
             Picasso.get().load(mData.get(position).getCarrouselFormations().get(0).getImages().get(0).getUrl()).placeholder(R.drawable.mung_bean).into(holder.iv_produit);
         }
-        /*else {
-            File file = new File(String.valueOf(Uri.fromFile(Environment.getExternalStoragePublicDirectory(mData.get(position).getCarrouselFormations().get(0).getImages().get(0).getBaseUri()))));
-            Picasso.get().load(file).into(holder.iv_produit);
-        }*/
+        else {
+            if (mData.size()>0){
+                File file = new File(String.valueOf(Environment.getExternalStoragePublicDirectory(mData.get(position).getCarrouselFormations().get(0).getImages().get(0).getBaseUri())));
+                System.out.println("His file is  :"+file.getName()+" and his name is :"+file.getAbsolutePath());
+                System.out.println("His file base uri is  :"+Environment.getExternalStoragePublicDirectory(mData.get(position).getCarrouselFormations().get(0).getImages().get(0).getBaseUri()));
+                Picasso.get().load(file).into(holder.iv_produit);
+            }
+        }
 
         if (checkIfDownloaded(mData.get(position),carrouselDownlodeds)){
             holder.btn_download_carrousel.setEnabled(false);
@@ -115,22 +119,22 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         holder.ll_one_document.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Intent intent = new Intent(mContext,  FormationCarrousel.class);
+                /*Intent intent = new Intent(mContext,  FormationCarrousel.class);
                 Bundle bundle = new Bundle();
-                intent.putExtra("my_id", mData.get(position).get_id());
-               // bundle.putParcelab("connexionState",connexionState);
-                intent.putExtras(bundle);
-               // intent.putExtra("connexionState",connexionState);
+                intent.putExtra("my_id", mData.get(position).get_id());*/
+                // bundle.putParcelab("connexionState",connexionState);
+                //intent.putExtras(bundle);
+                // intent.putExtra("connexionState",connexionState);
 
-               //  mData.get(position).getCarrouselFormations()
-               // JSONObject jsonObject = (JSONObject) new JsonParser().parse(your json string);
-                if(connexionState){
-               mContext. startActivity(new Intent(mContext, FormationCarrousel.class)
-                    .putExtra("carrouselFormations",mData.get(position).getCarrouselFormations())
-                        .putExtra("connexionState",connexionState));
-                }else {
+                //  mData.get(position).getCarrouselFormations()
+                // JSONObject jsonObject = (JSONObject) new JsonParser().parse(your json string);
+               /* if(connexionState){*/
+                    mContext. startActivity(new Intent(mContext, FormationCarrousel.class)
+                            .putExtra("carrouselFormations",mData.get(position).getCarrouselFormations())
+                            .putExtra("connexionState",connexionState));
+                /*}else {
                     mContext.startActivity(intent);
-                }
+                }*/
 
 
                 //System.out.println("carrouselFormations is now :"+mData.get(position).getCarrouselFormations().toString());
@@ -162,9 +166,9 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
                 holder.tv_download_completed.setText(R.string.downloading);
                 onComplete=new BroadcastReceiver() {
                     public void onReceive(Context ctxt, Intent intent) {
-                //File file = new File(Environment.DIRECTORY_DOWNLOADS + "/Wapi/Formation/Caroussel/french/Mung Bean/Mung Bean.zip");
-                //Toast.makeText(mContext, "The file name is  : "+file.getName(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(mContext, "DOWNLOAD FINISH ....", Toast.LENGTH_SHORT).show();*//*
+                        //File file = new File(Environment.DIRECTORY_DOWNLOADS + "/Wapi/Formation/Caroussel/french/Mung Bean/Mung Bean.zip");
+                        //Toast.makeText(mContext, "The file name is  : "+file.getName(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(mContext, "DOWNLOAD FINISH ....", Toast.LENGTH_SHORT).show();*//*
                         ProgressDialog dezippageStart = new ProgressDialog(mContext);
                         dezippageStart.setMessage("Dézippage en cours ...");
                         dezippageStart.setCanceledOnTouchOutside(false);
@@ -176,12 +180,12 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
 
                         String folder = createCarousselFolder(SharedPrefManager.getmInstance(mContext).getUser().getLangue());
                         ZipArchive zipArchive = new ZipArchive();
-                        ZipArchive.unzip(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/"+mData.get(position).getName()+".zip",Environment.getExternalStoragePublicDirectory(folder).getAbsolutePath(),"");
+                        ZipArchive.unzip(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/"+mData.get(position).getName()+" "+mData.get(position).getLangue() +".zip",Environment.getExternalStoragePublicDirectory(folder).getAbsolutePath(),"");
 
                         //SAVE A LIST OF
                         databaseHelper = new DatabaseHelper(mContext);
-                        databaseHelper.saveCaroussel(mData.get(position));
-                        databaseHelper.saveCarousselDownloaded(new CarrouselDownloded(1L,mData.get(position).getName(),mData.get(position).getSubname(), langue));
+                        //databaseHelper.saveCaroussel(mData.get(position));
+                        databaseHelper.saveCarousselDownloaded(new CarrouselDownloded(1L,mData.get(position).getName(),mData.get(position).getSubname(),mData.get(position).getJsonfileUri(), langue));
                         downloadSart.hide();
                     }
                 };
@@ -228,13 +232,14 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
     private void startDownloadingCaroussel(Carrousel carrousel) {
 
         //String folder = createCarousselFolder(SharedPrefManager.getmInstance(mContext).getUser().getLangue());
+        String langue = SharedPrefManager.getmInstance(mContext).getUser().getLangue();
 
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(carrousel.getUrl()));
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
         request.setTitle(carrousel.getName());
         request.setDescription(carrousel.getDescription());
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, carrousel.getName() +".zip");
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, carrousel.getName()+" "+langue +".zip");
         DownloadManager manager = (DownloadManager) mContext.getSystemService(DOWNLOAD_SERVICE);
         downloadId = manager.enqueue(request);
     }

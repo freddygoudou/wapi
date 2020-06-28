@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "916121766608-k1qgktlr2gtbogt34vag6ho8hudr3ci6.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "bj.app.wapi",
-            "certificate_hash": "68c2ddfa9940655b465ab799524c1922a342d4a7"
-          }
-        },
-        {
           "client_id": "916121766608-4iih29nitpg44gbplalevmvjo1nkv82b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
