@@ -129,6 +129,9 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:r2.4.0'
     implementation 'com.google.android.exoplayer:exoplayer-ui:r2.4.0'*/
 
+    // PierfrancescoSoffritti : android-youtube-player
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+
     //ExoPlayer2 last version
     implementation 'com.google.android.exoplayer:exoplayer:2.10.5'
     //implementation 'com.google.android.exoplayer:exoplayer:2.9.6'

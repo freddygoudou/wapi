@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_layout"
+    android:layout_marginBottom="25dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/colorGray"
+    app:cardElevation="22dp"
+    app:cardPreventCornerOverlap="false"
+    style="@style/Widget.MaterialComponents.CardView">
+
+    <LinearLayout
+        android:id="@+id/ll_one_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:autoPlay="false"
+            app:showVideoCurrentTime="true"
+            app:enableAutomaticInitialization="true"
+            app:handleNetworkEvents="true"
+            app:showVideoDuration="true"
+            app:showFullScreenButton="false" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
