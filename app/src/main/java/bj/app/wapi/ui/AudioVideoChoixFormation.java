@@ -58,6 +58,7 @@ public class AudioVideoChoixFormation extends AppCompatActivity {
                 player.release();
                 //stopService(new Intent(AudioVideoChoixFormation.this, StartBackgroundAudioService.class));
                 startActivity(new Intent(AudioVideoChoixFormation.this, TestVideoFromYoutube.class));
+                //startActivity(new Intent(AudioVideoChoixFormation.this, TestGrid.class));
             }
         });
 

@@ -129,9 +129,16 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
                 //  mData.get(position).getCarrouselFormations()
                 // JSONObject jsonObject = (JSONObject) new JsonParser().parse(your json string);
                /* if(connexionState){*/
+                if(!connexionState){
                     mContext. startActivity(new Intent(mContext, FormationCarrousel.class)
                             .putExtra("carrouselFormations",mData.get(position).getCarrouselFormations())
                             .putExtra("connexionState",connexionState));
+                }else {
+                    Toast.makeText(mContext,"Lecture hors ligne seulement autorisée. Module en maintenance ...", Toast.LENGTH_LONG).show();
+                }
+
+
+
                 /*}else {
                     mContext.startActivity(intent);
                 }*/
@@ -153,44 +160,70 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
         holder.btn_download_carrousel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProgressDialog downloadSart = new ProgressDialog(mContext);
-                downloadSart.setMessage(mContext.getString(R.string.please_wait_for_download_and_unziping));
-                downloadSart.setCanceledOnTouchOutside(false);
-                downloadSart.show();
-                //SharedPrefManager.getmInstance(mContext).saveFormationInDownloadingName(mData.get(position).getName());
-                //System.out.println("Value of formationName : "+formationName);
-                //System.out.println("Value of langue : "+langue);
-                holder.btn_download_carrousel.setVisibility(View.INVISIBLE);
-                holder.btn_download_carrousel.setActivated(false);
-                holder.btn_download_carrousel.setEnabled(false);
-                holder.tv_download_completed.setText(R.string.downloading);
-                onComplete=new BroadcastReceiver() {
-                    public void onReceive(Context ctxt, Intent intent) {
-                        //File file = new File(Environment.DIRECTORY_DOWNLOADS + "/Wapi/Formation/Caroussel/french/Mung Bean/Mung Bean.zip");
-                        //Toast.makeText(mContext, "The file name is  : "+file.getName(), Toast.LENGTH_SHORT).show();
-                        //Toast.makeText(mContext, "DOWNLOAD FINISH ....", Toast.LENGTH_SHORT).show();*//*
-                        ProgressDialog dezippageStart = new ProgressDialog(mContext);
-                        dezippageStart.setMessage("Dézippage en cours ...");
-                        dezippageStart.setCanceledOnTouchOutside(false);
-                        holder.btn_download_carrousel.setVisibility(View.INVISIBLE);
-                        holder.btn_download_carrousel.setActivated(false);
-                        holder.btn_download_carrousel.setEnabled(false);
-                        holder.tv_download_completed.setText(R.string.downloaded);
-                        //Toast.makeText(mContext, "Formation downloaded is : "+mData.get(position).getName(), Toast.LENGTH_LONG).show();
+                /*if (checkZipExist(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/"+mData.get(position).getName()+" "+mData.get(position).getLangue() +".zip")){
 
-                        String folder = createCarousselFolder(SharedPrefManager.getmInstance(mContext).getUser().getLangue());
-                        ZipArchive zipArchive = new ZipArchive();
-                        ZipArchive.unzip(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/"+mData.get(position).getName()+" "+mData.get(position).getLangue() +".zip",Environment.getExternalStoragePublicDirectory(folder).getAbsolutePath(),"");
+                    Toast.makeText(mContext, "Is file", Toast.LENGTH_SHORT).show();*/
+                    ProgressDialog downloadSart = new ProgressDialog(mContext);
+                    downloadSart.setMessage(mContext.getString(R.string.please_wait_for_download_and_unziping));
+                    downloadSart.setCanceledOnTouchOutside(false);
+                    downloadSart.show();
+                    //SharedPrefManager.getmInstance(mContext).saveFormationInDownloadingName(mData.get(position).getName());
+                    //System.out.println("Value of formationName : "+formationName);
+                    //System.out.println("Value of langue : "+langue);
+                    holder.btn_download_carrousel.setVisibility(View.INVISIBLE);
+                    holder.btn_download_carrousel.setActivated(false);
+                    holder.btn_download_carrousel.setEnabled(false);
+                    holder.tv_download_completed.setText(R.string.downloading);
+                    onComplete=new BroadcastReceiver() {
+                        public void onReceive(Context ctxt, Intent intent) {
+                            //File file = new File(Environment.DIRECTORY_DOWNLOADS + "/Wapi/Formation/Caroussel/french/Mung Bean/Mung Bean.zip");
+                            //Toast.makeText(mContext, "The file name is  : "+file.getName(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(mContext, "DOWNLOAD FINISH ....", Toast.LENGTH_SHORT).show();*//*
+                            ProgressDialog dezippageStart = new ProgressDialog(mContext);
+                            dezippageStart.setMessage("Dézippage en cours ...");
+                            dezippageStart.setCanceledOnTouchOutside(false);
+                            holder.btn_download_carrousel.setVisibility(View.INVISIBLE);
+                            holder.btn_download_carrousel.setActivated(false);
+                            holder.btn_download_carrousel.setEnabled(false);
+                            holder.tv_download_completed.setText(R.string.downloaded);
+                            //Toast.makeText(mContext, "Formation downloaded is : "+mData.get(position).getName(), Toast.LENGTH_LONG).show();
 
-                        //SAVE A LIST OF
-                        databaseHelper = new DatabaseHelper(mContext);
-                        //databaseHelper.saveCaroussel(mData.get(position));
-                        databaseHelper.saveCarousselDownloaded(new CarrouselDownloded(1L,mData.get(position).getName(),mData.get(position).getSubname(),mData.get(position).getJsonfileUri(), langue));
-                        downloadSart.hide();
-                    }
-                };
-                mContext.registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-                startDownloadingCaroussel(mData.get(position));
+                            String folder = createCarousselFolder(SharedPrefManager.getmInstance(mContext).getUser().getLangue());
+                            ZipArchive zipArchive = new ZipArchive();
+                            ZipArchive.unzip(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/"+mData.get(position).getName()+" "+mData.get(position).getLangue() +".zip",Environment.getExternalStoragePublicDirectory(folder).getAbsolutePath(),"");
+
+                            //SAVE A LIST OF
+                            databaseHelper = new DatabaseHelper(mContext);
+                            //databaseHelper.saveCaroussel(mData.get(position));
+                            databaseHelper.saveCarousselDownloaded(new CarrouselDownloded(1L,mData.get(position).getName(),mData.get(position).getSubname(),mData.get(position).getJsonfileUri(), langue));
+                            downloadSart.hide();
+                        }
+                    };
+                    mContext.registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+                    startDownloadingCaroussel(mData.get(position));
+
+                    /*File file;
+                    
+                    String folder = createCarousselFolder(SharedPrefManager.getmInstance(mContext).getUser().getLangue());
+                    ZipArchive zipArchive = new ZipArchive();
+                    ZipArchive.unzip(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/"+mData.get(position).getName()+" "+mData.get(position).getLangue() +".zip",Environment.getExternalStoragePublicDirectory(folder).getAbsolutePath(),"");
+                    databaseHelper.saveCarousselDownloaded(new CarrouselDownloded(1L,mData.get(position).getName(),mData.get(position).getSubname(),mData.get(position).getJsonfileUri(), langue));
+*/
+               /* }else{
+                    Toast.makeText(mContext, "Not a Is file", Toast.LENGTH_SHORT).show();
+                    ProgressDialog downloadSart = new ProgressDialog(mContext);
+                    downloadSart.setMessage(mContext.getString(R.string.please_wait_for_download_and_unziping));
+                    downloadSart.setCanceledOnTouchOutside(false);
+                    downloadSart.show();
+
+                    String folder = createCarousselFolder(SharedPrefManager.getmInstance(mContext).getUser().getLangue());
+                    ZipArchive zipArchive = new ZipArchive();
+                    ZipArchive.unzip(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/"+mData.get(position).getName()+" "+mData.get(position).getLangue() +".zip",Environment.getExternalStoragePublicDirectory(folder).getAbsolutePath(),"");
+
+                    databaseHelper.saveCarousselDownloaded(new CarrouselDownloded(1L,mData.get(position).getName(),mData.get(position).getSubname(),mData.get(position).getJsonfileUri(), langue));
+                    downloadSart.hide();
+                }*/
+
             }
         });
     }
@@ -284,6 +317,12 @@ public class DocumentAdapter extends RecyclerView.Adapter <DocumentAdapter.Docum
             }
         }
         return fileToReturn.getName();
+    }
+
+    public boolean checkZipExist(String path){
+        File file = new File(path);
+        boolean exists = file.exists();
+        return exists;
     }
 
     public File getDownloadedFile(ArrayList<String> list, File files){

@@ -129,6 +129,9 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:r2.4.0'
     implementation 'com.google.android.exoplayer:exoplayer-ui:r2.4.0'*/
 
+    //Image View and Badge
+    implementation 'com.github.nikartm:image-support:1.0.5'
+
     // PierfrancescoSoffritti : android-youtube-player
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 

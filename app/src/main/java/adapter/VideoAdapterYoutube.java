@@ -33,6 +33,7 @@ public class VideoAdapterYoutube extends RecyclerView.Adapter <VideoAdapterYoutu
     private Context mContext;
     private ArrayList<VideoYoutube> mData;
     private boolean connexionState;
+    YouTubePlayer youTubePlayerG;
 
     public VideoAdapterYoutube(Context mContext, ArrayList<VideoYoutube> mData, boolean connexionState) {
         this.mContext = mContext;
@@ -55,7 +56,8 @@ public class VideoAdapterYoutube extends RecyclerView.Adapter <VideoAdapterYoutu
         holder.youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                youTubePlayer.cueVideo(mData.get(position).getVideoId(), 0);
+                youTubePlayerG = youTubePlayer;
+                youTubePlayerG.cueVideo(mData.get(position).getVideoId(), 0);
                 //youTubePlayer.play();
             }
         });
@@ -73,6 +75,7 @@ public class VideoAdapterYoutube extends RecyclerView.Adapter <VideoAdapterYoutu
         public VideoViewHolder(@NonNull View itemView) {
             super(itemView);
             youTubePlayerView = itemView.findViewById(R.id.youtube_player_view);
+
         }
     }
 
@@ -85,5 +88,8 @@ public class VideoAdapterYoutube extends RecyclerView.Adapter <VideoAdapterYoutu
         return path.substring(8); //Download
     }
 
-
+    @Override
+    public void onViewDetachedFromWindow(@NonNull VideoViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+    }
 }

@@ -25,13 +25,15 @@ public class TestVideoFromYoutube extends AppCompatActivity {
     ArrayList<VideoYoutube> ressourceArrayList = new ArrayList<>();
     RecyclerView recyclerView;
     VideoAdapterYoutube adapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_video_from_youtube);
 
 
-        ressourceArrayList.add(new VideoYoutube("", "", "qS01oRF1U1k", "",""));
+        ressourceArrayList.add(new VideoYoutube("", "", "qS01oRF1U1k", "","")); //
         ressourceArrayList.add(new VideoYoutube("", "", "KZDJmFSTnVw", "",""));
         ressourceArrayList.add(new VideoYoutube("", "", "KTKnE2aY4qI", "",""));
         ressourceArrayList.add(new VideoYoutube("", "", "KG3__qwQEkg", "",""));

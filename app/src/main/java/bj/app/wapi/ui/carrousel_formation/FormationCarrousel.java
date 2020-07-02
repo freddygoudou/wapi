@@ -125,10 +125,15 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
             System.out.println("======================================================EXÉCUTION DE LA FORMATION N° "+1);
 
             if (direction.equals(BACK)){
+
+                rv_carrousel_formation_image.setLayoutManager(new LinearLayoutManager(FormationCarrousel.this));
+                rv_carrousel_formation_image.requestLayout();
+
                 mData.clear();
                 System.out.println("========================================IMAGE NAME LIST FOR POSITION :"+position+" IS "+carrouselFormations.get(0).getImages().toString());
                 mData.addAll(carrouselFormations.get(position).getImages());
                 adapter.notifyDataSetChanged();
+                adapter.setDiapo(position);
                 //tv_formation_texte_content.setText(carrouselFormations.get(position).getAudios().get(0).getTexte());
                 tv_formation_texte_content.setText(carrouselFormations.get(position).getTexte());
                 //System.out.println("Adapter Item count ="+adapter.getItemCount()+" .En position "+formationPosition+" MDATA SIZE = "+mData.size()+" AND MDATA = "+mData.toString());
@@ -148,10 +153,18 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
                 //System.out.println("Adapter Item count ="+adapter.getItemCount()+" .En position "+formationPosition+" MDATA SIZE = "+mData.size()+" AND MDATA = "+mData.toString());
 
             }else if (direction.equals(NEXT)){
+                if (formationPosition == 27){
+                    rv_carrousel_formation_image.setLayoutManager(new GridLayoutManager(FormationCarrousel.this,3,LinearLayoutManager.VERTICAL,false));
+                    rv_carrousel_formation_image.requestLayout();
+                }else {
+                    rv_carrousel_formation_image.setLayoutManager(new LinearLayoutManager(FormationCarrousel.this));
+                    rv_carrousel_formation_image.requestLayout();
+                }
                 mData.clear();
                 //System.out.println("IMAGE NAME LIST FOR POSITION :"+position+" IS "+carrouselFormations.get(position).getImages().toString());
                 mData.addAll(carrouselFormations.get(position).getImages());
                 adapter.notifyDataSetChanged();
+                adapter.setDiapo(position);
                 //tv_formation_texte_content.setText(carrouselFormations.get(position).getAudios().get(0).getTexte());
                 tv_formation_texte_content.setText(carrouselFormations.get(position).getTexte());
 
@@ -247,7 +260,7 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
 
             mData.clear();
             mData.addAll(carrouselFormations.get(0).getImages());
-            adapter = new CarrouselFormationAdapter(FormationCarrousel.this, mData, connexionState);
+            adapter = new CarrouselFormationAdapter(FormationCarrousel.this, mData, connexionState, 0);
             rv_carrousel_formation_image.setLayoutManager(new LinearLayoutManager(FormationCarrousel.this));
             rv_carrousel_formation_image.setAdapter(adapter);
 
