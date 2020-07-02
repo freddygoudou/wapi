@@ -180,19 +180,24 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                                    //Toast.makeText(LoginActivity.this, "One one", Toast.LENGTH_LONG).show();
                                     if (dataSnapshot.getValue() == null){
 
                                         mUserDatabase.child(mAuth.getCurrentUser().getUid()).child("phone").setValue(completePhoneNumber).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
+                                                //Toast.makeText(LoginActivity.this, "One two", Toast.LENGTH_LONG).show();
                                                 startActivity(new Intent(LoginActivity.this, RegisterUserFormActivity.class));
                                             }
                                         });
 
                                     }else {
+                                        //Toast.makeText(LoginActivity.this, "Two one", Toast.LENGTH_LONG).show();
                                         String phone = dataSnapshot.getValue().toString();
+                                        System.out.println("phone is: "+phone+" and completePhoneNumber is :"+completePhoneNumber);
                                         if(phone.equals(completePhoneNumber)){
 
+                                            //Toast.makeText(LoginActivity.this, "Two two", Toast.LENGTH_LONG).show();
                                             //SI FARMER EXISTE  CONTINUER SI NON RegisterUserFormActivity
                                             Call<Farmer> call = RetrofitClient
                                                     .getmInstance()
@@ -204,13 +209,16 @@ public class LoginActivity extends AppCompatActivity {
                                                     if (response.code() == 200){
                                                         farmer = response.body();
                                                         if (farmer != null){
+                                                            //Toast.makeText(LoginActivity.this, "Two two", Toast.LENGTH_LONG).show();
                                                             User user = new User(FirebaseAuth.getInstance().getUid(), farmer.getName(), farmer.getPhoneNumber(),farmer.getLangue());
                                                             SharedPrefManager.getmInstance(LoginActivity.this).saveUser(user);
                                                             startActivity(new Intent(LoginActivity.this, ThreeImagesMenu.class));
                                                         }else {
+                                                            //Toast.makeText(LoginActivity.this, "Two three", Toast.LENGTH_LONG).show();
                                                             startActivity(new Intent(LoginActivity.this, RegisterUserFormActivity.class));
                                                         }
                                                     }else {
+                                                        Toast.makeText(LoginActivity.this, "Two four", Toast.LENGTH_LONG).show();
                                                         System.out.println("Farmer n'existe pas  : "+response.message());
                                                         startActivity(new Intent(LoginActivity.this, RegisterUserFormActivity.class));
                                                     }

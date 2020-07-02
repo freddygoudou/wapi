@@ -58,6 +58,7 @@ public class AudioVideoChoixFormation extends AppCompatActivity {
                 player.release();
                 //stopService(new Intent(AudioVideoChoixFormation.this, StartBackgroundAudioService.class));
                 startActivity(new Intent(AudioVideoChoixFormation.this, TestVideoFromYoutube.class));
+                //startActivity(new Intent(AudioVideoChoixFormation.this, TestGrid.class));
             }
         });
 
@@ -89,9 +90,9 @@ public class AudioVideoChoixFormation extends AppCompatActivity {
             audios.add(R.raw.audio_biali_d_3_3);
         }else if (SharedPrefManager.getmInstance(AudioVideoChoixFormation.this).getUser().getLangue().equals(getResources().getString(R.string.langueBariba))){
             audios = new ArrayList<>();
-            audios.add( R.raw.audio_biali_d_3_1);
-            audios.add(R.raw.audio_biali_d_3_2);
-            audios.add(R.raw.audio_biali_d_3_3);
+            audios.add( R.raw.audio_bariba_d_3_1);
+            audios.add(R.raw.audio_bariba_d_3_2);
+            audios.add(R.raw.audio_bariba_d_3_3);
         }
         //System.out.println("My audio is : "+audios.toString());
         return  audios;

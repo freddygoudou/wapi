@@ -149,12 +149,12 @@ public class ThreeImagesMenu extends AppCompatActivity {
             audios.add(R.raw.audio_biali_d_2_6);
         }else if (SharedPrefManager.getmInstance(ThreeImagesMenu.this).getUser().getLangue().equals(getResources().getString(R.string.langueBariba))){
             audios = new ArrayList<>();
-            audios.add( R.raw.audio_biali_d_2_1);
-            audios.add(R.raw.audio_biali_d_2_2);
-            audios.add(R.raw.audio_biali_d_2_3);
-            audios.add(R.raw.audio_biali_d_2_4);
-            audios.add(R.raw.audio_biali_d_2_5);
-            audios.add(R.raw.audio_biali_d_2_6);
+            audios.add( R.raw.audio_bariba_d_2_1);
+            audios.add(R.raw.audio_bariba_d_2_2);
+            audios.add(R.raw.audio_bariba_d_2_3);
+            audios.add(R.raw.audio_bariba_d_2_4);
+            audios.add(R.raw.audio_bariba_d_2_5);
+            audios.add(R.raw.audio_bariba_d_2_6);
         }
         System.out.println("My audio is : "+audios.toString());
         return  audios;

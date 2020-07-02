@@ -283,7 +283,8 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
                     if (response.code() == 200){
                         farmerReturned = response.body();
                         if (farmerReturned != null){
-                            stopService(new Intent(ChoixLangue.this, AudioBackgroundService.class));
+                            //stopService(new Intent(ChoixLangue.this, AudioBackgroundService.class));
+                            player.release();
                             startActivity(new Intent(ChoixLangue.this, ThreeImagesMenu.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         }
