@@ -1,28 +1,36 @@
 package adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
 import entity.ImageCarrousel;
+import ru.nikartm.support.BadgePosition;
+import ru.nikartm.support.ImageBadgeView;
 
-public class CarrouselFormationAdapter extends RecyclerView.Adapter <CarrouselFormationAdapter.CarrouselFormationViewHolder>{
+public class CarrouselFormationAdapter extends  RecyclerView.Adapter <CarrouselFormationAdapter.CarrouselFormationViewHolder>{
 
     private Context mContext;
     private ArrayList<ImageCarrousel> mData;
@@ -58,10 +66,12 @@ public class CarrouselFormationAdapter extends RecyclerView.Adapter <CarrouselFo
     @Override
     public void onBindViewHolder(@NonNull final CarrouselFormationViewHolder holder, final int position) {
 
+
+
         if (diapo == DIAPO_MAX_INDEX){
             //Toast.makeText(mContext, "in 1", Toast.LENGTH_LONG).show();
             //holder.iv_formation_image.requestLayout();
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+            ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,200
             );
             holder.iv_formation_image.requestLayout();
@@ -72,12 +82,12 @@ public class CarrouselFormationAdapter extends RecyclerView.Adapter <CarrouselFo
             //Toast.makeText(mContext, "in the "+diapo, Toast.LENGTH_LONG).show();
             //holder.iv_formation_image.requestLayout();
 
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+            ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,450
             );
             holder.iv_formation_image.requestLayout();
             holder.iv_formation_image.setLayoutParams(params);
-            //holder.iv_formation_image.setBackground(null);
+            holder.iv_formation_image.setBackground(null);
         }
 
 
@@ -92,20 +102,33 @@ public class CarrouselFormationAdapter extends RecyclerView.Adapter <CarrouselFo
             @Override
             public void onClick(View view) {
                 if (diapo == DIAPO_MAX_INDEX){
-
                     //holder.iv_formation_image.setBackground(ContextCompat.getDrawable(mContext, R.drawable.background_iv_exam));
+                    //view.requestLayout();
+                    //view.setBackgroundResource(R.drawable.background_iv_exam);
+                    view.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.click_anim));
+
 
                     int check = getImageIndex(examList, position);
+
                     if (check != -1){
+                        //Toast.makeText(mContext, "Check value is not :"+check, Toast.LENGTH_SHORT).show();
+                        holder.iv_image_order.setVisibility(View.INVISIBLE);
+
                         examList.remove(check);
                         System.out.println("Exam list from remove is : "+ examList.toString());
                         System.out.println("Valid exam is : "+ validExam(examList));
                         //remove background color
                     }else {
+                        //Toast.makeText(mContext, "Check value is :"+check, Toast.LENGTH_SHORT).show();
+
+
                         examList.add(position);
                         System.out.println("Exam list from add is : "+ examList.toString());
                         System.out.println("Valid exam is : "+ validExam(examList));
                         //May be color in background
+
+                        //holder.iv_image_order.setText(String.valueOf(examList.size()));
+                        holder.iv_image_order.setVisibility(View.VISIBLE);
                     }
                 }else{
                     //Toast.makeText(mContext, "Ce n'est pas encore l'heure de l\'examen", Toast.LENGTH_LONG).show();
@@ -124,11 +147,13 @@ public class CarrouselFormationAdapter extends RecyclerView.Adapter <CarrouselFo
 
     public class CarrouselFormationViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_formation_image;
-        LinearLayout ll_formation_image;
+        ConstraintLayout ll_formation_image;
+        CircularImageView iv_image_order;
         public CarrouselFormationViewHolder(@NonNull View itemView) {
             super(itemView);
             iv_formation_image = itemView.findViewById(R.id.iv_formation_image);
             ll_formation_image = itemView.findViewById(R.id.ll_formation_image);
+            iv_image_order = itemView.findViewById(R.id.iv_image_order);
         }
     }
 

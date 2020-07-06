@@ -117,4 +117,6 @@
     <string name="downloaded">Téléchargé</string>
     <string name="downloading">Téléchargement en cours ... </string>
     <string name="please_wait_for_download_and_unziping">Téléchargement en cours. Patientez un instant ...</string>
+    <string name="message_validation_formation">Félicitation ! \n Vous avez bel et bien validé la formation.</string>
+    <string name="ok">OK</string>
 </resources>

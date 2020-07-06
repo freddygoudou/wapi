@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="bj.app.wapi" >
+    package="bj.app.wapi">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -18,13 +18,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        tools:ignore="LockedOrientationActivity" >
-        <activity android:name=".ui.TestGrid" >
+        tools:ignore="LockedOrientationActivity">
+        <activity android:name=".ui.CvaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppSecondTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.CVAACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name="examen.ExamActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="bj.app.wapi.EXAMACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.TestGrid" />
         <activity
             android:name=".ui.TestVideoFromYoutube"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.TESTVIDEOFROMYOUTUBE" />
 
@@ -34,7 +52,7 @@
         <activity
             android:name=".ui.AudioVideoChoixFormation"
             android:screenOrientation="portrait"
-            android:theme="@style/AppSecondTheme" >
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.AUDIOVIDEOCHOIXFORMATION " />
 
@@ -45,7 +63,7 @@
             android:name=".ui.ThreeImagesMenu"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppSecondTheme" >
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.THREEIMAGESMENU " /> <!-- bj.app.wapi.THREEIMAGESMENU -->
 
@@ -56,7 +74,7 @@
             android:name=".ui.ChoixLangue"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppSecondTheme" >
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.CHOIXLANGUE " /> <!-- bj.app.wapi.CHOIXLANGUE -->
 
@@ -68,7 +86,7 @@
             android:label="@string/app_name"
             android:parentActivityName=".ui.main.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.FORMATIONCARROUSEL" /> <!-- bj.app.wapi.FORMATIONCARROUSEL -->
                 <category android:name="android.intent.category.DEFAULT" />
@@ -79,7 +97,7 @@
             android:label="@string/title_activity_details_exploitation"
             android:parentActivityName=".ui.main.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.DETAILSEXPLOITATION-" /> <!-- bj.app.wapi.DETAILSEXPLOITATION -->
 
@@ -91,7 +109,7 @@
             android:label="@string/infos_culture"
             android:parentActivityName=".ui.NewChampsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.INFOSCULTUREACTIVITY" />
 
@@ -103,7 +121,7 @@
             android:label="@string/title_new_champs"
             android:parentActivityName=".ui.main.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.CHAMPSDETAILSACTIVITY" />
 
@@ -115,7 +133,7 @@
             android:label="@string/title_detail_champs"
             android:parentActivityName=".ui.main.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.CHAMPSDETAILSACTIVITY" />
 
@@ -127,7 +145,7 @@
             android:name=".ui.registerUserForm.RegisterUserFormActivity"
             android:parentActivityName=".ui.login.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppSecondTheme" >
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.REGISTERUSERFORMACTIVITY" /> <!-- bj.app.wapi.REGISTERUSERFORMACTIVITY -->
 
@@ -138,7 +156,7 @@
             android:name=".ui.confirmCode.ConfirmCodeActivity"
             android:parentActivityName=".ui.login.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppSecondTheme" >
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.CONFIRMCODEACTIVITY" /> <!-- bj.app.wapi.CONFIRMCODEACTIVITY -->
 
@@ -150,7 +168,7 @@
             android:label="@string/details_formation"
             android:parentActivityName=".ui.main.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.DETAILSFORMATION" /> <!-- bj.app.wapi.DETAILSFORMATION -->
 
@@ -160,7 +178,7 @@
         <activity
             android:name=".ui.login.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppSecondTheme" >
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" /> <!-- bj.app.wapi.LOGINACTIVITY -->
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -171,7 +189,7 @@
             android:label="Nouvelle Annonce"
             android:parentActivityName=".ui.main.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.NOUVELLEANNONCE" /> <!-- bj.app.wapi.NOUVELLEANNONCE -->
 
@@ -183,7 +201,7 @@
             android:label="@string/mon_compte"
             android:parentActivityName=".ui.compte.CompteActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.COMPTEACTIVITY" /> <!-- bj.app.wapi.NOUVELLEANNONCE -->
 
@@ -197,7 +215,7 @@
             android:name=".ui.videoplayer.VideoPlayerActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppSecondTheme" >
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.VIDEOPLAYERACTIVITY" /> <!-- bj.app.wapi.MAINACTIVITY -->
 
@@ -213,7 +231,7 @@
         <activity
             android:name=".ui.splash.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppSecondTheme" >
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.SPLASHACTIVITY" /> <!-- bj.app.wapi.SPLASHACTIVITY -->
                 <category android:name="android.intent.category.DEFAULT" />
@@ -222,7 +240,7 @@
         <activity
             android:name=".ui.wapi.Wapi"
             android:screenOrientation="portrait"
-            android:theme="@style/AppSecondTheme" >
+            android:theme="@style/AppSecondTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.WAPIACTIVITY " /> <!-- bj.app.wapi.WAPIACTIVITY -->
 
@@ -232,7 +250,7 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="bj.app.wapi.MAINACTIVITY" /> <!-- bj.app.wapi.MAINACTIVITY -->
 

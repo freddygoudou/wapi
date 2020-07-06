@@ -46,9 +46,9 @@ public class AudioVideoChoixFormation extends AppCompatActivity {
             public void onClick(View view) {
                 player.release();
                 //stopService(new Intent(AudioVideoChoixFormation.this, StartBackgroundAudioService.class));
-                startActivity(new Intent(AudioVideoChoixFormation.this, MainActivity.class)
-                        .putExtra("from_wapi_e_learning", "wapi_e_learning")
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                startActivity(new Intent(AudioVideoChoixFormation.this, CvaActivity.class)
+                        /*.putExtra("from_wapi_e_learning", "wapi_e_learning")
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK)*/);
             }
         });
 

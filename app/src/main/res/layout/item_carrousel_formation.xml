@@ -12,19 +12,36 @@
     app:cardPreventCornerOverlap="false"
     style="@style/Widget.MaterialComponents.CardView">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ll_formation_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/iv_formation_image"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             android:scaleType="centerCrop"
-            android:src="@drawable/index"/>
-    </LinearLayout>
+            app:srcCompat="@drawable/apiculture" />
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/iv_image_order"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:textColor="@color/colorBlack"
+            android:src="@drawable/ic_done_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
