@@ -7,14 +7,13 @@ import bj.app.wapi.ui.main.MainActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.google.android.gms.common.internal.AccountType;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 public class CvaActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView iv_cva_mung_bean, iv_cva_2, iv_cva_3, iv_cva_4, iv_cva_5, iv_cva_6, iv_cva_7, iv_cva_8;
+    CircularImageView iv_cva_mung_bean, iv_cva_2, iv_cva_3, iv_cva_4, iv_cva_5, iv_cva_6, iv_cva_7, iv_cva_8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
