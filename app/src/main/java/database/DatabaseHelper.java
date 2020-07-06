@@ -223,7 +223,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 resources.clear();
                 resources = exportLocalsResources(image);
                 for (int i=0;i<resources.size();i++){
-                    images.add(new ImageCarrousel(resources.get(i),resources.get(i),1));
+                    images.add(new ImageCarrousel(resources.get(i),resources.get(i),1,1));
                 }
 
                 carrouselFormation = new CarrouselFormation(texte,String.valueOf(cursor.getCount()),images, audios);

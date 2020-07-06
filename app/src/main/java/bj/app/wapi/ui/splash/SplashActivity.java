@@ -104,10 +104,10 @@ public class SplashActivity extends AppCompatActivity {
         audioCarrousels.add(new AudioCarrousel("urlaudio3","mybaseurla", 3,1));
         audioCarrousels.add(new AudioCarrousel("urlaudio4","mybaseurla", 4,1));
 
-        imageCarrousels.add(new ImageCarrousel("urlimage1","mybaseurli", 1));
-        imageCarrousels.add(new ImageCarrousel("urlimage2","mybaseurli", 2));
-        imageCarrousels.add(new ImageCarrousel("urlimage3","mybaseurli", 3));
-        imageCarrousels.add(new ImageCarrousel("urlimage4","mybaseurli", 4));
+        imageCarrousels.add(new ImageCarrousel("urlimage1","mybaseurli", 1,1));
+        imageCarrousels.add(new ImageCarrousel("urlimage2","mybaseurli", 2,2));
+        imageCarrousels.add(new ImageCarrousel("urlimage3","mybaseurli", 3,3));
+        imageCarrousels.add(new ImageCarrousel("urlimage4","mybaseurli", 4,3));
 
         carrouselFormations.add(new CarrouselFormation("Le résumé","1",imageCarrousels, audioCarrousels));
         //Carrousel carrousel = new Carrousel("","Mung Bean","url","Production de Mung Bean", "English", carrouselFormations);

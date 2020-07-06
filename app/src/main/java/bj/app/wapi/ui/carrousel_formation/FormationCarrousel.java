@@ -22,8 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import bj.app.wapi.R;
 import bj.app.wapi.ui.AudioBackgroundService;
-import bj.app.wapi.ui.WapiApplication;
-import database.DatabaseHelper;
+import examen.ExamActivity;
 import entity.AudioCarrousel;
 import entityBackend.CarrouselFormation;
 import entity.ImageCarrousel;
@@ -153,26 +152,31 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
                 //System.out.println("Adapter Item count ="+adapter.getItemCount()+" .En position "+formationPosition+" MDATA SIZE = "+mData.size()+" AND MDATA = "+mData.toString());
 
             }else if (direction.equals(NEXT)){
-                if (formationPosition == 27){
-                    rv_carrousel_formation_image.setLayoutManager(new GridLayoutManager(FormationCarrousel.this,3,LinearLayoutManager.VERTICAL,false));
-                    rv_carrousel_formation_image.requestLayout();
+                if (formationPosition == carrouselFormations.size()-1){
+                    //rv_carrousel_formation_image.setLayoutManager(new GridLayoutManager(FormationCarrousel.this,3,LinearLayoutManager.VERTICAL,false));
+                    //rv_carrousel_formation_image.requestLayout();
+                    startActivity(new Intent(FormationCarrousel.this, ExamActivity.class)
+                        .putExtra("ImageForTest", carrouselFormations.get(carrouselFormations.size()-1).getImages())
+                            .putExtra("AudioForTest", carrouselFormations.get(carrouselFormations.size()-1).getAudios()));
+                    //PASSER À L'ACTIVITÉ SUIVANTE EN LUI PASSANT LA LISTE LA LISTE DES IMAGES
                 }else {
                     rv_carrousel_formation_image.setLayoutManager(new LinearLayoutManager(FormationCarrousel.this));
                     rv_carrousel_formation_image.requestLayout();
-                }
-                mData.clear();
-                //System.out.println("IMAGE NAME LIST FOR POSITION :"+position+" IS "+carrouselFormations.get(position).getImages().toString());
-                mData.addAll(carrouselFormations.get(position).getImages());
-                adapter.notifyDataSetChanged();
-                adapter.setDiapo(position);
-                //tv_formation_texte_content.setText(carrouselFormations.get(position).getAudios().get(0).getTexte());
-                tv_formation_texte_content.setText(carrouselFormations.get(position).getTexte());
+                    mData.clear();
+                    //System.out.println("IMAGE NAME LIST FOR POSITION :"+position+" IS "+carrouselFormations.get(position).getImages().toString());
+                    mData.addAll(carrouselFormations.get(position).getImages());
+                    adapter.notifyDataSetChanged();
+                    adapter.setDiapo(position);
+                    //tv_formation_texte_content.setText(carrouselFormations.get(position).getAudios().get(0).getTexte());
+                    tv_formation_texte_content.setText(carrouselFormations.get(position).getTexte());
 
-                //System.out.println("Adapter Item count ="+adapter.getItemCount()+" .En position "+formationPosition+" MDATA SIZE = "+mData.size()+" AND MDATA = "+mData.toString());
-                //PLAY AUDIOS
-                startService(new Intent(getApplicationContext(), AudioBackgroundService.class)
-                        .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(position).getAudios())
-                        .putExtra("connexionState",connexionState));
+                    //System.out.println("Adapter Item count ="+adapter.getItemCount()+" .En position "+formationPosition+" MDATA SIZE = "+mData.size()+" AND MDATA = "+mData.toString());
+                    //PLAY AUDIOS
+                    startService(new Intent(getApplicationContext(), AudioBackgroundService.class)
+                            .putParcelableArrayListExtra("audiosFormation", carrouselFormations.get(position).getAudios())
+                            .putExtra("connexionState",connexionState));
+                }
+
             }
         }else if(carrouselFormations.size()-1>=formationPosition){
             Toast.makeText(FormationCarrousel.this, R.string.dernier_module_formation, Toast.LENGTH_SHORT).show();
