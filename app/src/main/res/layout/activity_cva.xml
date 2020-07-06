@@ -12,19 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:weightSum="2"
+        android:gravity="center"
         android:orientation="horizontal">
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_mung_bean"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:padding="10dp"
+            android:layout_marginRight="7dp"
             android:layout_height="match_parent"
             android:src="@drawable/mung_bean"/>
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_2"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:padding="10dp"
+            android:layout_marginLeft="7dp"
             android:layout_height="match_parent"
             android:src="@drawable/cva2"/>
     </LinearLayout>
@@ -32,19 +35,22 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:weightSum="2"
+        android:gravity="center"
         android:orientation="horizontal">
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_3"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:padding="10dp"
+            android:layout_marginRight="7dp"
             android:layout_height="match_parent"
             android:src="@drawable/cva3"/>
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_4"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:padding="10dp"
+            android:layout_marginLeft="7dp"
             android:layout_height="match_parent"
             android:src="@drawable/cva4"/>
     </LinearLayout>
@@ -52,19 +58,22 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:weightSum="2"
+        android:gravity="center"
         android:orientation="horizontal">
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_5"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:padding="10dp"
+            android:layout_marginRight="7dp"
             android:layout_height="match_parent"
             android:src="@drawable/cva5"/>
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_6"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:padding="10dp"
+            android:layout_marginLeft="7dp"
             android:layout_height="match_parent"
             android:src="@drawable/cva6"/>
     </LinearLayout>
@@ -72,19 +81,22 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:weightSum="2"
+        android:gravity="center"
         android:orientation="horizontal">
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_7"
             android:layout_width="0dp"
             android:padding="10dp"
             android:layout_weight="1"
+            android:layout_marginRight="7dp"
             android:layout_height="match_parent"
             android:src="@drawable/cva7"/>
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_8"
             android:layout_width="0dp"
             android:padding="10dp"
             android:layout_weight="1"
+            android:layout_marginLeft="7dp"
             android:layout_height="match_parent"
             android:src="@drawable/cva8"/>
     </LinearLayout>

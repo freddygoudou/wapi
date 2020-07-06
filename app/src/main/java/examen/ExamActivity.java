@@ -187,17 +187,7 @@ public class ExamActivity extends AppCompatActivity  implements StartDragListene
         }
         //stopService(new Intent(getApplicationContext(), AudioBackgroundService.class));
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (player != null){
-            player.stop();
-            player.release();
-        }
-        //stopService(new Intent(getApplicationContext(), AudioBackgroundService.class));
-    }
-
+    
     public void playAudio(ArrayList<AudioCarrousel> audioCarrousels, int position){
 
         my_position = position;
