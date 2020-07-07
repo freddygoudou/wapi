@@ -29,19 +29,6 @@
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/apiculture" />
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/iv_image_order"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@color/colorWhite"
-            android:gravity="center"
-            android:visibility="invisible"
-            android:textColor="@color/colorBlack"
-            android:src="@drawable/ic_done_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

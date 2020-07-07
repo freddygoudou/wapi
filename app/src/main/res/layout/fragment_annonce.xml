@@ -9,20 +9,21 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@color/colorDivider"
+        android:background="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="@+id/tbl_annonce"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tbl_annonce"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:tabIndicatorColor="@color/colorPrimary"
+        android:background="@color/colorPrimaryDark"
+        app:tabIndicatorColor="@color/colorWhite"
         app:layout_constraintTop_toTopOf="parent"
         app:tabIndicatorHeight="3dp"
         app:tabMode="fixed"
         app:tabGravity="fill"
-        app:tabTextColor="@color/colorGray"
+        app:tabIconTint="@color/colorWhite"
+        app:tabTextColor="@color/colorWhite"
         app:tabPaddingBottom="5dp"
         app:tabPaddingTop="5dp"/>
 
@@ -40,7 +41,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="bottom|end"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorWhite"
         android:src="@drawable/ic_add_white_24dp"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
         android:layout_marginEnd="22dp"

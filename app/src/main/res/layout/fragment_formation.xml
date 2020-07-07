@@ -9,20 +9,21 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@color/colorDivider"
+        android:background="@drawable/flag_transparent"
         app:layout_constraintBottom_toBottomOf="@+id/tbl_formation"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tbl_formation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:tabIndicatorColor="@color/colorPrimary"
+        android:background="@drawable/flag_transparent"
+        app:tabIconTint="@color/colorWhite"
+        app:tabIndicatorColor="@color/colorWhite"
         app:layout_constraintTop_toTopOf="parent"
         app:tabIndicatorHeight="3dp"
         app:tabMode="fixed"
         app:tabGravity="fill"
-        app:tabTextColor="@color/colorGray"
+        app:tabTextColor="@color/colorWhite"
         app:tabPaddingBottom="8dp"
         app:tabPaddingTop="5dp"/>
 

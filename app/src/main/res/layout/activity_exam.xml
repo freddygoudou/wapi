@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="examen.ExamActivity"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
@@ -12,19 +13,20 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
         android:orientation="vertical">
     </androidx.recyclerview.widget.RecyclerView>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="15dp"
         android:layout_height="70dp">
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_exam_ok"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/exam_emoji_ok"/>
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_exam_no"
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -37,14 +39,14 @@
             android:layout_height="70dp"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/iv_exam_valid"
-            android:src="@drawable/flag_burkina_faso"/>
+            android:src="@drawable/white"/>
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_exam_valid"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginLeft="5dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/flag_benin"/>
+            android:src="@drawable/red"/>
     </RelativeLayout>
 
     <TextView
@@ -54,6 +56,7 @@
         android:background="#f4f4f4"
         android:text="Détails"
         android:id="@+id/log"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

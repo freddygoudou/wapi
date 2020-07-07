@@ -6,11 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="25dp"
-    android:background="@drawable/background_layout"
+    android:background="@color/colorWhite"
     app:strokeWidth="1dp"
     app:strokeColor="@color/colorGray"
     app:cardElevation="10dp"
     app:cardPreventCornerOverlap="false"
+    android:backgroundTint="@color/colorPrimaryDark"
     style="@style/Widget.MaterialComponents.CardView">
 
     <LinearLayout
@@ -49,7 +50,7 @@
                     android:paddingEnd="30dp"
                     android:layout_marginTop="11dp"
                     android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textColor="@color/colorPrimary"/>
+                    android:textColor="@color/colorWhite"/>
                 <TextView
                     android:id="@+id/tv_description"
                     android:layout_width="wrap_content"
@@ -57,9 +58,10 @@
                     android:textSize="13dp"
                     android:layout_marginTop="11dp"
                     android:paddingEnd="30dp"
+                    android:textStyle="bold"
                     android:text="Bonne pratique de transformation artisanale des feuilles de baobab"
                     android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"/>
+                    android:textColor="@color/colorWhite"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -73,7 +75,7 @@
                         android:layout_height="match_parent"
                         android:paddingLeft="10dp"
                         android:textStyle="bold|italic"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@color/colorWhite"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text=""/>
@@ -82,13 +84,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@color/colorPrimary"
+                        android:background="@color/colorWhite"
                         android:textSize="12sp"
                         android:layout_gravity="center_horizontal"
                         android:textAllCaps="false"
                         android:textStyle="bold"
-
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:text="@string/download"/>
                 </LinearLayout>
             </LinearLayout>

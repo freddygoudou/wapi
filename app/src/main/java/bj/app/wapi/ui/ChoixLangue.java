@@ -151,7 +151,7 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
                 player.stop();
                 player.release();
                 audioAndTextviews.get(my_position).getTextView().startAnimation(shake);
-                Toast.makeText(ChoixLangue.this, audioAndTextviews.get(my_position).getTextView().getText(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ChoixLangue.this, audioAndTextviews.get(my_position).getTextView().getText(), Toast.LENGTH_SHORT).show();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -201,24 +201,31 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onResume() {
         super.onResume();
-        if (player != null)
+        if (player != null){
+            player.stop();
             player.release();
+        }
         playAudio(loadRessources(),0);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if (player != null)
+        if (player != null){
+            player.stop();
             player.release();
+        }
+
         //stopService(new Intent(ChoixLangue.this, StartBackgroundAudioService.class));
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (player != null)
+        if (player != null){
+            player.stop();
             player.release();
+        }
         //stopService(new Intent(ChoixLangue.this, StartBackgroundAudioService.class));
     }
 
