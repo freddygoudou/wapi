@@ -116,11 +116,11 @@ public class FormationFragment extends Fragment {
                 switch (position){
                     case 0:
                         //tab.setText(R.string.documents);
-                        tab.setIcon(R.drawable.ic_insert_drive_file_black_24dp);
+                        tab.setIcon(R.drawable.ic_insert_drive_file_white_24dp);
                         break;
                     case 1:
                         //tab.setText(R.string.videos);
-                        tab.setIcon(R.drawable.ic_video_library_black_24dp);
+                        tab.setIcon(R.drawable.ic_video_library_white_24dp);
                         break;
                     /*case 2:
                         //tab.setText(R.string.vide);

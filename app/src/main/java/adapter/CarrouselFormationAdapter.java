@@ -112,7 +112,7 @@ public class CarrouselFormationAdapter extends  RecyclerView.Adapter <CarrouselF
 
                     if (check != -1){
                         //Toast.makeText(mContext, "Check value is not :"+check, Toast.LENGTH_SHORT).show();
-                        holder.iv_image_order.setVisibility(View.INVISIBLE);
+                        //holder.iv_image_order.setVisibility(View.INVISIBLE);
 
                         examList.remove(check);
                         System.out.println("Exam list from remove is : "+ examList.toString());
@@ -128,7 +128,7 @@ public class CarrouselFormationAdapter extends  RecyclerView.Adapter <CarrouselF
                         //May be color in background
 
                         //holder.iv_image_order.setText(String.valueOf(examList.size()));
-                        holder.iv_image_order.setVisibility(View.VISIBLE);
+                        //holder.iv_image_order.setVisibility(View.VISIBLE);
                     }
                 }else{
                     //Toast.makeText(mContext, "Ce n'est pas encore l'heure de l\'examen", Toast.LENGTH_LONG).show();
@@ -148,12 +148,12 @@ public class CarrouselFormationAdapter extends  RecyclerView.Adapter <CarrouselF
     public class CarrouselFormationViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_formation_image;
         ConstraintLayout ll_formation_image;
-        CircularImageView iv_image_order;
+        //CircularImageView iv_image_order;
         public CarrouselFormationViewHolder(@NonNull View itemView) {
             super(itemView);
             iv_formation_image = itemView.findViewById(R.id.iv_formation_image);
             ll_formation_image = itemView.findViewById(R.id.ll_formation_image);
-            iv_image_order = itemView.findViewById(R.id.iv_image_order);
+            //iv_image_order = itemView.findViewById(R.id.iv_image_order);
         }
     }
 

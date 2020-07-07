@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     card_view:cardCornerRadius="0dp"
+    android:backgroundTint="@color/colorPrimary"
     card_view:cardElevation="2dp">
 
 
@@ -12,14 +13,16 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         android:gravity="center"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imageView"
-            android:padding="8dp"
+            android:layout_margin="8dp"
             android:scaleType="centerCrop"
+            android:backgroundTint="@color/colorPrimaryDark"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/wapi" />

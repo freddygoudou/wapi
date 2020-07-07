@@ -80,6 +80,8 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_carrousel_formation);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         tv_formation_texte_content = findViewById(R.id.tv_formation_texte_content);
