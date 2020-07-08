@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="100dp"
     android:gravity="center"
-    android:background="@color/colorPrimaryDark"
+    android:padding="15dp"
+    android:background="@color/colorWhite"
     tools:context=".ui.login.LoginActivity">
 
 
@@ -16,7 +16,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="33dp"
+        android:layout_marginBottom="30dp"
         android:src="@drawable/wapi" />
 
     <LinearLayout
@@ -42,8 +42,8 @@
             android:id="@+id/tILPhoneNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorWhite"
-            app:boxStrokeColor="@color/colorWhite"
+            android:backgroundTint="@color/colorBlue"
+            app:boxStrokeColor="@color/colorBlue"
             android:layout_weight="3">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -81,16 +81,17 @@
 
     <Button
         android:id="@+id/btnConnexion"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:textAllCaps="true"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/colorWhite"
-        android:textColor="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorBlue"
+        android:textColor="@color/colorWhite"
         android:textStyle="bold"
+        android:textSize="7pt"
         android:text="@string/connexion"/>
 
     <ProgressBar

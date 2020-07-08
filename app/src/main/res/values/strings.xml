@@ -106,7 +106,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dernier_module_formation">Ce module est le dernier de cette formation</string>
     <string name="premier_module_formation">Ce module est le premier de cette formation</string>
-    <string name="message_choix_langue">Veillez choisir votre langue en suivant l\'animation</string>
+    <string name="message_choix_langue">Veuillez choisir votre langue en suivant l\'animation</string>
     <string name="coordonnees_geo">Coordo .. Géo</string>
     <string name="employee">Employés</string>
     <string name="saisons">Saisons</string>

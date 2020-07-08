@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 verifyCode(code);
             }
-            Log.d("PHONE AUTH", "onVerificationCompleted:" + credential);
+            Log.e("***PHONE AUTH", "onVerificationCompleted:" + credential);
 
             signInWithPhoneAuthCredential(credential);
         }

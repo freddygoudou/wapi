@@ -23,7 +23,7 @@
                 android:text="Culture de manioc"
                 android:textAllCaps="false"
                 android:textSize="13dp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorBlue"
                 android:textStyle="bold" />
 
             <TextView

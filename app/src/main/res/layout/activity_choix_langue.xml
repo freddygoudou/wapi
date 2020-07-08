@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorWhite"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     tools:context=".ui.ChoixLangue">
@@ -17,8 +17,7 @@
         android:layout_marginBottom="30dp"
         android:textSize="16dp"
         android:gravity="center"
-        android:textStyle="bold"
-        android:textColor="@color/colorGray"
+        android:textColor="@color/colorBlue"
         android:text="@string/message_choix_langue"/>
 
     <LinearLayout

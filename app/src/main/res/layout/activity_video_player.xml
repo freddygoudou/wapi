@@ -17,17 +17,16 @@
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/exoplayerView"
         android:layout_width="match_parent"
-        android:background="@color/colorBlack"
+        android:background="@color/colorWhite"
         android:layout_height="300dp"/>
     <Button
         android:id="@+id/download"
         android:layout_width="match_parent"
-        android:layout_height="77dp"
+        android:layout_height="60dp"
         android:layout_marginTop="11dp"
-        android:textSize="33dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
-        android:text="DOWNLOAD"/>
+        android:textSize="7pt"
+        android:layout_marginHorizontal="20dp"
+        android:text="Télécharger"/>
 
 
 </LinearLayout>

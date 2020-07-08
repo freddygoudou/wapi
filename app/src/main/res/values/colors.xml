@@ -21,4 +21,7 @@
     <color name="colorYellowG">#f2a60c</color>
     <color name="colorGreenG">#08851b</color>
     <color name="colorRedG">#c71610</color>
+    <color name="colorBlue">#1180D8</color>
+    <color name="colorBlue2">#03A9F4</color>
+    <color name="colorGreyLigth">#D5D5D5</color>
 </resources>

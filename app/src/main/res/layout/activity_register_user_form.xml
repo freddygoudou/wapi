@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorWhite"
     tools:context=".ui.registerUserForm.RegisterUserFormActivity">
 
     <LinearLayout
@@ -35,7 +35,7 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:textSize="16dp"
-                android:backgroundTint="@color/colorWhite"
+                android:backgroundTint="@color/colorBlue"
                 android:drawableRight="@drawable/ic_person_black_24dp"
                 android:hint="@string/nom"/>
 
@@ -120,14 +120,15 @@
 
         <Button
             android:id="@+id/btnInscription"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:textAllCaps="true"
             android:layout_margin="15dp"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="@color/colorWhite"
-            android:textColor="@color/colorPrimary"
+            android:backgroundTint="@color/colorBlue"
+            android:textColor="@color/colorWhite"
             android:textStyle="bold"
+            android:textSize="7pt"
             android:text="@string/finaliser_inscription"/>
     </LinearLayout>
 

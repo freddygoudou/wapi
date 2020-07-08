@@ -9,7 +9,7 @@
     android:paddingBottom="7dp"
     android:layout_marginBottom="16dp"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorWhite"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -43,7 +43,7 @@
                 android:text="ACHAT-cajoux"
                 android:textAllCaps="true"
                 android:textSize="13dp"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorBlue"
                 android:textStyle="bold" />
 
             <TextView
@@ -56,7 +56,7 @@
                 android:layout_marginTop="3dp"
                 android:textSize="12dp"
                 android:text="Quantité: 33 Tonnes"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorBlack"
                 android:textAllCaps="false"/>
 
             <TextView
@@ -70,7 +70,7 @@
                 android:textSize="12dp"
                 android:text="Date: 2020-04-22 19:03:00"
                 android:textAllCaps="false"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="@color/colorBlack"/>
 
         </RelativeLayout>
 
