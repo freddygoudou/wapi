@@ -211,14 +211,14 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onStop() {
         super.onStop();
-        if (player != null){
+        /*if (player != null){
             player.stop();
             player.release();
-        }
+        }*/
 
         //stopService(new Intent(ChoixLangue.this, StartBackgroundAudioService.class));
     }
-
+/*
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -227,7 +227,7 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
             player.release();
         }
         //stopService(new Intent(ChoixLangue.this, StartBackgroundAudioService.class));
-    }
+    }*/
 
     @Override
     public void onClick(View view) {
@@ -291,6 +291,7 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
                         farmerReturned = response.body();
                         if (farmerReturned != null){
                             //stopService(new Intent(ChoixLangue.this, AudioBackgroundService.class));
+                            player.stop();
                             player.release();
                             startActivity(new Intent(ChoixLangue.this, ThreeImagesMenu.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
