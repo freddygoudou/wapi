@@ -15,7 +15,7 @@
         android:allowBackup="true"
         android:icon="@drawable/wapi"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/wapi"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity">

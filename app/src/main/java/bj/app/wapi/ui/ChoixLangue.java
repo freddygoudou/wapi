@@ -186,7 +186,7 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
         audioAndTextviews.add(new AudioAndTextview(tv_french, R.raw.french));
         audioAndTextviews.add(new AudioAndTextview(tv_english, R.raw.english));
         audioAndTextviews.add(new AudioAndTextview(tv_baili, R.raw.biali));
-        audioAndTextviews.add(new AudioAndTextview(tv_bariba, R.raw.biali));
+        audioAndTextviews.add(new AudioAndTextview(tv_bariba, R.raw.bariba));
         audioAndTextviews.add(new AudioAndTextview(tv_more, R.raw.more));
         audioAndTextviews.add(new AudioAndTextview(tv_gourmantche, R.raw.gourmantche));
         audioAndTextviews.add(new AudioAndTextview(tv_haoussa, R.raw.haoussa));
