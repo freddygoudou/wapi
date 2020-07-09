@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorWhite"
     tools:context=".ui.AudioVideoChoixFormation">
 
     <LinearLayout
@@ -25,7 +25,7 @@
             android:layout_marginRight="5dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:src="@drawable/k1"/>
+            android:src="@drawable/k2"/>
         <ImageView
             android:id="@+id/iv_formatio_video"
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:src="@drawable/k2"/>
+            android:src="@drawable/k1"/>
     </LinearLayout>
     </LinearLayout>
 </ScrollView>

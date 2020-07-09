@@ -18,7 +18,7 @@
         android:textSize="16dp"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="@color/colorGray"
+        android:textColor="@color/colorWhite"
         android:text="@string/message_choix_langue"/>
 
     <LinearLayout
