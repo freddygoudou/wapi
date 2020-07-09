@@ -16,7 +16,6 @@
         android:layout_marginLeft="20dp"
         android:padding="10dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/background_iv"
         android:src="@drawable/wapi_e_learning"/>
 
     <ImageView
@@ -27,7 +26,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="10dp"
-        android:background="@drawable/background_iv"
         android:src="@drawable/wapi_business"/>
 
     <ImageView
@@ -38,6 +36,5 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="10dp"
-        android:background="@drawable/background_iv"
         android:src="@drawable/wapi_mon_exploitation"/>
 </LinearLayout>

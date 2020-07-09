@@ -9,14 +9,14 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@drawable/flag_transparent"
+        android:background="@color/colorBlue"
         app:layout_constraintBottom_toBottomOf="@+id/tbl_formation"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tbl_formation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/flag_transparent"
+        android:background="@color/colorBlue"
         app:tabIconTint="@color/colorWhite"
         app:tabIndicatorColor="@color/colorWhite"
         app:layout_constraintTop_toTopOf="parent"

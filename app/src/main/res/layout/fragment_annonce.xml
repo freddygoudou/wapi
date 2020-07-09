@@ -9,14 +9,14 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@color/colorWhite"
+        android:background="@color/colorBlue"
         app:layout_constraintBottom_toBottomOf="@+id/tbl_annonce"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tbl_annonce"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorBlue"
         app:tabIndicatorColor="@color/colorWhite"
         app:layout_constraintTop_toTopOf="parent"
         app:tabIndicatorHeight="3dp"

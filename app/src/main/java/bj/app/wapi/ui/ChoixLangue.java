@@ -17,6 +17,7 @@ import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -202,8 +203,12 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
     protected void onResume() {
         super.onResume();
         if (player != null){
-            player.stop();
-            player.release();
+            try {
+                player.stop();
+                player.release();
+            } catch(Exception e){
+                Log.d("Audio stopped", e.toString());
+            }
         }
         playAudio(loadRessources(),0);
     }
@@ -211,9 +216,14 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onStop() {
         super.onStop();
+
         if (player != null){
-            player.stop();
-            player.release();
+            try {
+                player.stop();
+                player.release();
+            } catch(Exception e){
+                Log.d("Audio stopped", e.toString());
+            }
         }
 
         //stopService(new Intent(ChoixLangue.this, StartBackgroundAudioService.class));
@@ -223,8 +233,12 @@ public class ChoixLangue extends AppCompatActivity implements View.OnClickListen
     protected void onDestroy() {
         super.onDestroy();
         if (player != null){
-            player.stop();
-            player.release();
+            try {
+                player.stop();
+                player.release();
+            } catch(Exception e){
+                Log.d("Audio stopped", e.toString());
+            }
         }
         //stopService(new Intent(ChoixLangue.this, StartBackgroundAudioService.class));
     }

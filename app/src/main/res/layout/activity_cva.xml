@@ -22,6 +22,8 @@
             android:padding="10dp"
             android:layout_marginRight="7dp"
             android:layout_height="match_parent"
+            app:civ_border_color="@color/colorBlue"
+            app:civ_border_width="1dp"
             android:src="@drawable/mung_bean"/>
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_2"
@@ -30,6 +32,8 @@
             android:padding="10dp"
             android:layout_marginLeft="7dp"
             android:layout_height="match_parent"
+            app:civ_border_color="@color/colorBlue"
+            app:civ_border_width="1dp"
             android:src="@drawable/cva2"/>
     </LinearLayout>
     <LinearLayout
@@ -45,6 +49,8 @@
             android:padding="10dp"
             android:layout_marginRight="7dp"
             android:layout_height="match_parent"
+            app:civ_border_color="@color/colorBlue"
+            app:civ_border_width="1dp"
             android:src="@drawable/cva3"/>
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_4"
@@ -53,6 +59,8 @@
             android:padding="10dp"
             android:layout_marginLeft="7dp"
             android:layout_height="match_parent"
+            app:civ_border_color="@color/colorBlue"
+            app:civ_border_width="1dp"
             android:src="@drawable/cva4"/>
     </LinearLayout>
     <LinearLayout
@@ -68,6 +76,8 @@
             android:padding="10dp"
             android:layout_marginRight="7dp"
             android:layout_height="match_parent"
+            app:civ_border_color="@color/colorBlue"
+            app:civ_border_width="1dp"
             android:src="@drawable/cva5"/>
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_6"
@@ -76,6 +86,8 @@
             android:padding="10dp"
             android:layout_marginLeft="7dp"
             android:layout_height="match_parent"
+            app:civ_border_color="@color/colorBlue"
+            app:civ_border_width="1dp"
             android:src="@drawable/cva6"/>
     </LinearLayout>
     <LinearLayout
@@ -91,6 +103,8 @@
             android:layout_weight="1"
             android:layout_marginRight="7dp"
             android:layout_height="match_parent"
+            app:civ_border_color="@color/colorBlue"
+            app:civ_border_width="1dp"
             android:src="@drawable/cva7"/>
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_cva_8"
@@ -99,6 +113,8 @@
             android:layout_weight="1"
             android:layout_marginLeft="7dp"
             android:layout_height="match_parent"
+            app:civ_border_color="@color/colorBlue"
+            app:civ_border_width="1dp"
             android:src="@drawable/cva8"/>
     </LinearLayout>
 </LinearLayout>

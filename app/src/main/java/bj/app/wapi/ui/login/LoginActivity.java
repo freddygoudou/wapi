@@ -99,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                     phoneNumberTIL.requestFocus();
                     return;
                 }else{
+                    Log.e("***PHONE AUTH", "onVerificationPhone:" + completePhoneNumber);
                     /*startActivity(new Intent(LoginActivity.this, ConfirmCodeActivity.class)
                         .putExtra("phoneNumber", completePhoneNumber));*/
                     sendVerificationCodeToUser(completePhoneNumber);
@@ -137,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onVerificationFailed(FirebaseException e) {
-            Log.w("PHONE AUTH", "onVerificationFailed", e);
+            Log.e("***PHONE AUTH", "onVerificationFailed", e);
 
             if (e instanceof FirebaseAuthInvalidCredentialsException) {
                 //Toast.makeText(LoginActivity.this,e.getMessage(), Toast.LENGTH_LONG).show();
@@ -149,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onCodeSent(@NonNull String verificationId,
                                @NonNull PhoneAuthProvider.ForceResendingToken token) {
-            Log.d("PHONE AUTH", "onCodeSent:" + verificationId);
+            Log.e("***PHONE AUTH", "onCodeSent:" + verificationId);
 
             // Save verification ID and resending token so we can use them later
             mVerificationId = verificationId;

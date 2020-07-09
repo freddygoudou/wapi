@@ -5,19 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="25dp"
+    android:layout_marginBottom="10dp"
     android:background="@color/colorWhite"
     app:cardElevation="5dp"
     app:cardPreventCornerOverlap="false"
     android:backgroundTint="@color/colorWhite"
     style="@style/Widget.MaterialComponents.CardView"
-    android:layout_margin="10dp">
+    android:layout_marginHorizontal="1dp">
 
     <LinearLayout
         android:id="@+id/ll_one_document"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
+        android:paddingBottom="5dp"
         android:orientation="vertical">
 
         <ImageView
@@ -55,11 +55,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="13dp"
-                    android:layout_marginTop="11dp"
-                    android:paddingEnd="30dp"
-                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
                     android:text="Bonne pratique de transformation artisanale des feuilles de baobab"
-                    android:textColor="@color/colorGray"/>
+                    android:textColor="@color/colorBlack"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,7 +80,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@color/colorBlue"
+                        android:backgroundTint="@color/colorBlue"
                         android:textSize="7pt"
                         android:layout_gravity="center_horizontal"
                         android:textAllCaps="false"

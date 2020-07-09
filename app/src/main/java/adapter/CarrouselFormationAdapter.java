@@ -154,6 +154,7 @@ public class CarrouselFormationAdapter extends  RecyclerView.Adapter <CarrouselF
             iv_formation_image = itemView.findViewById(R.id.iv_formation_image);
             ll_formation_image = itemView.findViewById(R.id.ll_formation_image);
             //iv_image_order = itemView.findViewById(R.id.iv_image_order);
+
         }
     }
 
