@@ -91,6 +91,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                progressBar.setVisibility(View.VISIBLE);
+
                 ccp.getFullNumberWithPlus();
                 completePhoneNumber = ccp.getSelectedCountryCodeWithPlus()+ phoneNumberTIL.getEditText().getText().toString().trim();
 
@@ -127,7 +129,6 @@ public class LoginActivity extends AppCompatActivity {
            
             String code = credential.getSmsCode();
             if (code != null){
-                progressBar.setVisibility(View.VISIBLE);
                 verifyCode(code);
             }
             Log.d("PHONE AUTH", "onVerificationCompleted:" + credential);
@@ -138,6 +139,8 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onVerificationFailed(FirebaseException e) {
             Log.w("PHONE AUTH", "onVerificationFailed", e);
+
+            progressBar.setVisibility(View.INVISIBLE);
 
             if (e instanceof FirebaseAuthInvalidCredentialsException) {
                 //Toast.makeText(LoginActivity.this,e.getMessage(), Toast.LENGTH_LONG).show();
