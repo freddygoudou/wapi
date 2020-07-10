@@ -6,19 +6,19 @@
         android:id="@+id/menu_search"
         android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/title_recherche"
-        app:showAsAction="ifRoom|collapseActionView"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+        app:showAsAction="ifRoom|collapseActionView" />
+    <!--app:actionViewClass="androidx.appcompat.widget.SearchView"-->
 
-    <item
-        android:id="@+id/menu_compte"
-        android:icon="@drawable/ic_person_white_24dp"
-        android:title="@string/mon_profil"
-        app:showAsAction="never"/>
+        <item
+            android:id="@+id/menu_compte"
+            android:icon="@drawable/ic_person_white_24dp"
+            android:title="@string/mon_profil"
+            app:showAsAction="never"/>
 
-    <item
-        android:id="@+id/menu_deconnexion"
-        android:icon="@drawable/ic_arrow_forward_white_24dp"
-        android:title="@string/deconnexion"
-        app:showAsAction="never"/>
+        <item
+            android:id="@+id/menu_deconnexion"
+            android:icon="@drawable/ic_arrow_forward_white_24dp"
+            android:title="@string/deconnexion"
+            app:showAsAction="never"/>
 
 </menu>

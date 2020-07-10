@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         //navView.setLabelVisibilityMode();
         // Passing each menu ID as a set of Ids because each

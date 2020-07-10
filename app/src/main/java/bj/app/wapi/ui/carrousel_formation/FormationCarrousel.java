@@ -2,6 +2,7 @@ package bj.app.wapi.ui.carrousel_formation;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import adapter.CarrouselFormationAdapter;
@@ -80,7 +81,13 @@ public class FormationCarrousel extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_carrousel_formation);
 
+
+        Drawable backArrow = getResources().getDrawable(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setHomeAsUpIndicator(backArrow);
+
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 

@@ -21,7 +21,6 @@
         app:itemIconTint="@drawable/bottom_nav_view_selected"
         app:itemTextColor="@drawable/bottom_nav_view_selected"
         app:labelVisibilityMode="labeled"
-
         app:menu="@menu/bottom_nav_menu" />
 
     <fragment

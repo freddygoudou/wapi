@@ -20,15 +20,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_marginTop="15dp"
+        android:background="@color/colorWhite"
+        android:padding="10dp"
         android:layout_height="70dp">
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_exam_ok"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            app:civ_border_color="@color/colorBlack"
             android:src="@drawable/exam_emoji_ok"/>
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/iv_exam_no"
             android:layout_width="70dp"
+            app:civ_border_color="@color/colorBlack"
             android:layout_height="70dp"
             android:layout_toRightOf="@+id/iv_exam_ok"
             android:src="@drawable/exam_emoji_no"/>
@@ -37,6 +41,7 @@
             android:id="@+id/iv_exam_repeat"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            app:civ_border_color="@color/colorBlack"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/iv_exam_valid"
             android:src="@drawable/white"/>
@@ -44,6 +49,7 @@
             android:id="@+id/iv_exam_valid"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            app:civ_border_color="@color/colorBlack"
             android:layout_marginLeft="5dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/red"/>
