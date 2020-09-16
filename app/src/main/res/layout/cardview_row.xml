@@ -20,7 +20,6 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_margin="8dp"
             android:scaleType="centerCrop"
             android:backgroundTint="@color/colorPrimaryDark"
             android:layout_width="match_parent"

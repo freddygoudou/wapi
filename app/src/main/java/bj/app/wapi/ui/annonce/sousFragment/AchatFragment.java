@@ -67,6 +67,5 @@ public class AchatFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(AchatFragment.this.getContext()));
-
     }
 }
