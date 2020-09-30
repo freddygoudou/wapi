@@ -29,7 +29,9 @@ import entityBackend.User;
 import storage.SharedPrefManager;
 
 public class MainActivity extends AppCompatActivity {
-
+//53:A1:9B:90:0F:29:EE:F4:2A:D1:4D:E4:F0:8D:43:C7:D7:0E:E4:86
+//03:E4:03:8E:4E:8D:6A:A9:A1:28:ED:86:6F:6C:6A:49:C6:99:5D:A5
+//44:44:D1:17:89:90:5D:A3:42:59:87:F3:2A:BC:92:F9:45:7B:59:C7
     FirebaseAuth mAuth;
     public static final int PERMISSION_STORAGE_CODE = 1000;
     boolean result;
